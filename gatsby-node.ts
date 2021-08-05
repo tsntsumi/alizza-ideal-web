@@ -1,14 +1,17 @@
-import { createFilePath } from 'gatsby-source-filesystem';
-import { GatsbyNode } from 'gatsby';
-import path from 'path';
+import { createFilePath } from "gatsby-source-filesystem"
+import { GatsbyNode, graphql } from "gatsby"
+import path from "path"
 
-
-export const onCreateNode: GatsbyNode['onCreateNode'] = async ({ node, getNode, actions }) => {
+export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
+    node,
+    getNode,
+    actions,
+}) => {
     const { createNodeField } = actions
     if (node.internal.type === `Mdx`) {
         const slug = createFilePath({ node, getNode })
         const sourceName = getNode(node.parent).sourceInstanceName
-        const prefix = sourceName === "basepages" ? '' : '/'+sourceName;
+        const prefix = sourceName === "basepages" ? "" : "/" + sourceName
 
         createNodeField({
             node,
@@ -23,8 +26,10 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({ node, getNode, 
     }
 }
 
-
-export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({
+    graphql,
+    actions,
+}) => {
     const { createPage } = actions
 
     return graphql<any>(`
@@ -46,7 +51,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
                     }
                 }
             }
-            portfolio: allMdx(filter: { fields: { sourceName: { eq: "portfolio" } } }) {
+            portfolio: allMdx(
+                filter: { fields: { sourceName: { eq: "portfolio" } } }
+            ) {
                 edges {
                     node {
                         id
@@ -90,11 +97,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
             })
         })
 
-
         const portfolioItems = result.data.portfolio.edges
         const portfolioItemsPerPage =
             result.data.limitPost.siteMetadata.portfolioItemsPerPage
-        const numPortfolioItems = Math.ceil(portfolioItems.length / portfolioItemsPerPage)
+        const numPortfolioItems = Math.ceil(
+            portfolioItems.length / portfolioItemsPerPage
+        )
 
         Array.from({ length: numPortfolioItems }).forEach((_, i) => {
             createPage({
