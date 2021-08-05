@@ -6,10 +6,20 @@ import Img from "gatsby-image"
 import { Calendar } from "react-feather"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import { CodeBlock } from "../components/CodeBlock"
 import { Row, Col } from "../components/shortcodes/index"
 import { PortfolioQuery } from "./__generated__/PortfolioQuery"
 
-export default function porfolio ({ location, data }: PageProps<PortfolioQuery, {}>) {
+const components = {
+    code: CodeBlock,
+    Row: Row,
+    Col: Col,
+}
+
+export default function porfolio({
+    location,
+    data,
+}: PageProps<PortfolioQuery, {}>) {
     return (
         <Layout
             seo={{
@@ -38,14 +48,14 @@ export default function porfolio ({ location, data }: PageProps<PortfolioQuery, 
                                     {data.mdx.frontmatter.date}
                                 </span>
                             </p>
-                            <p className="mt-3 md:w-3/4 mx-auto">
+                            <p className="post-content mt-3 md:w-2/5 mx-2 text-justify">
                                 {data.mdx.frontmatter.description}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mt-4 md:mt-6 mx-auto lg:mt-12">
-                    <MDXProvider components={{ Row, Col }}>
+                <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mt-4 md:mt-6 mx-auto lg:mt-12 text-justify post-content">
+                    <MDXProvider components={components}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>
                 </div>

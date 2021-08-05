@@ -6,10 +6,17 @@ import Img from "gatsby-image"
 import { Calendar } from "react-feather"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import { CodeBlock } from "../components/CodeBlock"
 import { Row, Col } from "../components/shortcodes/index"
 
 import Comments from "../components/comments"
 import { BlogQuery } from "./__generated__/BlogQuery"
+
+const components = {
+    code: CodeBlock,
+    Row: Row,
+    Col: Col,
+}
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
     return (
@@ -17,7 +24,7 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
             seo={{
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
-                image: data.mdx.frontmatter.banner.publicURL
+                image: data.mdx.frontmatter.banner.publicURL,
             }}
             location={location}
         >
@@ -46,12 +53,15 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                     </div>
                 </div>
                 <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mx-auto mt-12 post-content">
-                    <MDXProvider components={{ Row, Col }}>
+                    <MDXProvider components={components}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>
                 </div>
                 <div className="comments mt-8">
-                    <Comments title={data.mdx.frontmatter.title} location={location} />
+                    <Comments
+                        title={data.mdx.frontmatter.title}
+                        location={location}
+                    />
                 </div>
             </div>
         </Layout>
