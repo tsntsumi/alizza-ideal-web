@@ -25,12 +25,12 @@ Airtable API にはアクセスレートに制限があります。
 このレートを超えると、429 ステータスコードが返ってきます。
 そうなると、リクエストの送信前に３０秒待たなければなりません。
 
-## 前提条件
+#### 前提条件
 
 このエントリを参考にして React アプリを試してみるには、
 無料の Airtable アカウントと API キーを入手する必要があります。
 
-## 新しい React アプリをセットアップする
+#### 新しい React アプリをセットアップする
 
 まず、新しいReactプロジェクトを作成しましょう。
 `create-react-app` ジェネレータツールをインストールしたら、
@@ -51,7 +51,7 @@ Airtable API にはアクセスレートに制限があります。
 
 ![New React app](./new-react-app.png)
 
-## Airtable のセットアップ
+#### Airtable のセットアップ
 
 それでは、Airtableの[サイト(https://airtable.com/)](https://airtable.com/)に
 サインインしましょう。サインインすると、ダッシュボード画面がヒュおじされます。
@@ -86,7 +86,7 @@ Reactアプリに表示しようとする内容に基づいて
 
 ![Update table fields](./update-table.png)
 
-## Airtable API でデータを読み出す
+#### Airtable API でデータを読み出す
 
 React アプリで Airtable API を使用するには、
 `airtable` プラグインを使用します。
@@ -193,7 +193,7 @@ API key とベース ID を指定してベースオブジェクトを生成し�
 ![Message list component](./message-list-component.png)
 
 
-## Airtable へデータを保存する
+#### Airtable へデータを保存する
 
 次に、Web フォームに入力されたデータを Airtable に保存してみましょう。
 まずは、フォームを作成します。
@@ -457,7 +457,7 @@ API key とベース ID を指定してベースオブジェクトを生成し�
 ![Saved data in Airtable table](./airtable-posted-data.png)
 
 
-## API key を守る
+#### API key を守る
 
 うまく動作しています。
 
@@ -499,7 +499,7 @@ import env from "react-dotenv"
     )
 ```
 
-## まとめ
+#### まとめ
 
 このエントリを最初から試してみれば、 ReactJS と Airtable を使って
 動的な Web アプリを作る方法がわかったと思います。
