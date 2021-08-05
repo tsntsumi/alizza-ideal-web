@@ -1,18 +1,21 @@
 const siteMetadata = {
-    title: `Elemental`,
+    title: `Alizza Ideal`,
     siteUrl: `http://localhost`,
     capitalizeTitleOnHome: false,
     logo: `/images/logo.png`,
     icon: `/images/icon.png`,
-    titleImage: `/images/wall.png`,
-    ogImage: `/images/wall.png`,
+    titleImage: `/images/alizza-at-sea-side.jpg`,
+    ogImage: `/images/alizza-at-seashore.jpg`,
     twoColumnWall: true,
     cookiePolicy: true,
-    introTag: `PHOTOGRAPHER | VIDEOGRAPHER`,
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
-    about:
-        "Cras accumsan a lectus at tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus elementum dapibus dictum. Mauris auctor quam nec est tincidunt hendrerit. Donec pulvinar lobortis mauris. Cras vulputate ullamcorper ligula a rhoncus. Nunc venenatis elementum ligula in semper. Mauris malesuada purus nunc, et ultricies leo aliquam ac. Ut sit amet nunc id magna accumsan hendrerit in eget metus.",
-    author: `@_akzhy`,
+    introTag: `WEB MARKETING | HAND MADE CRAFTING | PROGRAMMING`,
+    description: `ネットでの集客と販売のアドバイスと、それらにまつわる技術サポートをしています`,
+    about: "\
+Alizza Ideal (アリザアイデアル) では、Webやメールなどを使った\
+　ネット販売（集客からセールス、顧客管理など）のアドバイスをしています。\
+中の人は、何年もの間いろいろなソフトウェアの開発に携わっていました。\
+その経験をもとに、集客やセールスにとどまらない包括的技術的サポートも行っています。",
+    author: `@tsntsumi`,
     blogItemsPerPage: 10,
     portfolioItemsPerPage: 10,
     darkmode: true,
@@ -46,43 +49,43 @@ const siteMetadata = {
         },
         {
             name: "GitHub",
-            url: "https://github.com/akzhy/gatsby-starter-elemental",
+            url: "https://github.com/tsntsumi/",
         },
     ],
     social: [
         {
             name: "Facebook",
             icon: "/images/Facebook.svg",
-            url: "#",
+            url: "https://www.facebook.com/alizza.ideal",
         },
         {
             name: "Twitter",
             icon: "/images/Twitter.svg",
-            url: "#",
+            url: "https://twitter.com/tsntsumi",
         },
         {
             name: "Instagram",
             icon: "/images/Instagram.svg",
-            url: "#",
+            url: "https://www.instagram.com/alizza.ideal/",
         },
-        {
-            name: "Youtube",
-            icon: "/images/Youtube.svg",
-            url: "#",
-        },
+        // {
+        //   name: "Youtube",
+        //   icon: "/images/Youtube.svg",
+        //   url: "#",
+        // },
     ],
     contact: {
         // leave empty ('') or false to hide form
-        api_url: "https://getform.io/f/f227a36e-096a-4c6a-9963-9f1918a85bb3",
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
-        mail: "hi@akzhy.com",
-        phone: "000-000-0000",
-        address: "1234 \nLocation \nLocation",
+        api_url: "appPUUN2pou85BGK4",
+        description: "基本的に２営業日以内にお返事いたします",
+        mail: "",
+        phone: "+81292405021",
+        address: "1397-2 Tōmae-chō Mito-shi Ibaraki, JAPAN",
     },
-    disqus: "elemental-netlify-com",
+    disqus: "",
 }
 
-const beforeContactFormSubmit = data => {
+const beforeContactFormSubmit = (data) => {
     // Code 0 - success
     // Code 1 - Name
     // Code 2 - Email
@@ -127,26 +130,38 @@ const beforeContactFormSubmit = data => {
     }
 }
 
+const Airtable = require("airtable")
+
 const contactFormSubmit = async (api, data) => {
-    let res: any = await fetch(api, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    })
+    const base = new Airtable({
+        apiKey: process.env.GATSBY_AIRTABLE_API_KEY,
+    }).base(api)
 
-    res = await res.json()
+    let error = null
 
-    if (res.success) {
+    base("Contacts").create(
+        [
+            {
+                fields: data,
+            },
+        ],
+        (err, records) => {
+            if (err) {
+                error = err
+                return
+            }
+        }
+    )
+
+    if (error) {
         return {
-            result: true,
+            result: false,
+            error: error,
         }
     }
+
     return {
-        result: false,
-        ...res,
+        result: true,
     }
 }
 
@@ -156,10 +171,10 @@ const defaults = {
     darkmode: false,
     switchTheme: true,
     capitalizeTitleOnHome: true,
-    cookiePolicy: false
+    cookiePolicy: false,
 }
 
-Object.keys(defaults).forEach(item => {
+Object.keys(defaults).forEach((item) => {
     if (siteMetadata[item] === undefined) {
         siteMetadata[item] = defaults[item]
     }
