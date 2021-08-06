@@ -10,7 +10,8 @@ const siteMetadata = {
     cookiePolicy: true,
     introTag: `WEB MARKETING | HAND MADE CRAFTING | PROGRAMMING`,
     description: `ネットでの集客と販売のアドバイスと、それらにまつわる技術サポートをしています`,
-    about: "\
+    about:
+        "\
 Alizza Ideal (アリザアイデアル) では、Webやメールなどを使った\
 　ネット販売（集客からセールス、顧客管理など）のアドバイスをしています。\
 中の人は、何年もの間いろいろなソフトウェアの開発に携わっていました。\
@@ -85,7 +86,7 @@ Alizza Ideal (アリザアイデアル) では、Webやメールなどを使っ�
     disqus: "",
 }
 
-const beforeContactFormSubmit = (data) => {
+const beforeContactFormSubmit = data => {
     // Code 0 - success
     // Code 1 - Name
     // Code 2 - Email
@@ -142,7 +143,11 @@ const contactFormSubmit = async (api, data) => {
     base("Contacts").create(
         [
             {
-                fields: data,
+                fields: {
+                    Name: data.name,
+                    Email: data.email,
+                    Message: data.message,
+                },
             },
         ],
         (err, records) => {
@@ -174,7 +179,7 @@ const defaults = {
     cookiePolicy: false,
 }
 
-Object.keys(defaults).forEach((item) => {
+Object.keys(defaults).forEach(item => {
     if (siteMetadata[item] === undefined) {
         siteMetadata[item] = defaults[item]
     }
