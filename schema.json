@@ -1337,11 +1337,31 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "resolutions",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ImageSharpResolutionsFilterInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "fluid",
                   "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "ImageSharpFluidFilterInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sizes",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ImageSharpSizesFilterInput",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -2502,11 +2522,31 @@
               "defaultValue": null
             },
             {
+              "name": "resolutions",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ImageSharpResolutionsFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "fluid",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "ImageSharpFluidFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "sizes",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ImageSharpSizesFilterInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -2699,7 +2739,249 @@
         },
         {
           "kind": "INPUT_OBJECT",
+          "name": "ImageSharpResolutionsFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "base64",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "tracedSVG",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "aspectRatio",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "FloatQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "width",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "FloatQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "height",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "FloatQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "src",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "srcSet",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "srcWebp",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "srcSetWebp",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "originalName",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
           "name": "ImageSharpFluidFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "base64",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "tracedSVG",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "aspectRatio",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "FloatQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "src",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "srcSet",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "srcWebp",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "srcSetWebp",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "sizes",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "originalImg",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "originalName",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "presentationWidth",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "IntQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "presentationHeight",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "IntQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "ImageSharpSizesFilterInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -3521,6 +3803,16 @@
             },
             {
               "name": "template",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "avatar",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -5503,6 +5795,209 @@
               "deprecationReason": null
             },
             {
+              "name": "resolutions",
+              "description": null,
+              "args": [
+                {
+                  "name": "width",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "height",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "base64Width",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "jpegProgressive",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "true"
+                },
+                {
+                  "name": "pngCompressionSpeed",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "4"
+                },
+                {
+                  "name": "grayscale",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                },
+                {
+                  "name": "duotone",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "DuotoneGradient",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "traceSVG",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "Potrace",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "quality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "jpegQuality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "pngQuality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "webpQuality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "toFormat",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageFormat",
+                    "ofType": null
+                  },
+                  "defaultValue": "AUTO"
+                },
+                {
+                  "name": "toFormatBase64",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageFormat",
+                    "ofType": null
+                  },
+                  "defaultValue": "AUTO"
+                },
+                {
+                  "name": "cropFocus",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageCropFocus",
+                    "ofType": null
+                  },
+                  "defaultValue": "ATTENTION"
+                },
+                {
+                  "name": "fit",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageFit",
+                    "ofType": null
+                  },
+                  "defaultValue": "COVER"
+                },
+                {
+                  "name": "background",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"rgba(0,0,0,1)\""
+                },
+                {
+                  "name": "rotate",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "0"
+                },
+                {
+                  "name": "trim",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Float",
+                    "ofType": null
+                  },
+                  "defaultValue": "0"
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ImageSharpResolutions",
+                "ofType": null
+              },
+              "isDeprecated": true,
+              "deprecationReason": "Resolutions was deprecated in Gatsby v2. It's been renamed to \"fixed\" https://example.com/write-docs-and-fix-this-example-link"
+            },
+            {
               "name": "fluid",
               "description": null,
               "args": [
@@ -5730,12 +6225,239 @@
               "deprecationReason": null
             },
             {
+              "name": "sizes",
+              "description": null,
+              "args": [
+                {
+                  "name": "maxWidth",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "maxHeight",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "base64Width",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "grayscale",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                },
+                {
+                  "name": "jpegProgressive",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "true"
+                },
+                {
+                  "name": "pngCompressionSpeed",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "4"
+                },
+                {
+                  "name": "duotone",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "DuotoneGradient",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "traceSVG",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "Potrace",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "quality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "jpegQuality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "pngQuality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "webpQuality",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "toFormat",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageFormat",
+                    "ofType": null
+                  },
+                  "defaultValue": "AUTO"
+                },
+                {
+                  "name": "toFormatBase64",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageFormat",
+                    "ofType": null
+                  },
+                  "defaultValue": "AUTO"
+                },
+                {
+                  "name": "cropFocus",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageCropFocus",
+                    "ofType": null
+                  },
+                  "defaultValue": "ATTENTION"
+                },
+                {
+                  "name": "fit",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ImageFit",
+                    "ofType": null
+                  },
+                  "defaultValue": "COVER"
+                },
+                {
+                  "name": "background",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"rgba(0,0,0,1)\""
+                },
+                {
+                  "name": "rotate",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "0"
+                },
+                {
+                  "name": "trim",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Float",
+                    "ofType": null
+                  },
+                  "defaultValue": "0"
+                },
+                {
+                  "name": "sizes",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"\""
+                },
+                {
+                  "name": "srcSetBreakpoints",
+                  "description": "A list of image widths to be generated. Example: [ 200, 340, 520, 890 ]",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Int",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ImageSharpSizes",
+                "ofType": null
+              },
+              "isDeprecated": true,
+              "deprecationReason": "Sizes was deprecated in Gatsby v2. It's been renamed to \"fluid\" https://example.com/write-docs-and-fix-this-example-link"
+            },
+            {
               "name": "gatsbyImageData",
               "description": null,
               "args": [
                 {
                   "name": "layout",
-                  "description": "The layout for the image.\nFIXED: A static image sized, that does not resize according to the screen width\nFULL_WIDTH: The image resizes to fit its container. Pass a \"sizes\" option if it isn't going to be the full width of the screen.\nCONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.",
+                  "description": "The layout for the image.\nFIXED: A static image sized, that does not resize according to the screen width\nFULL_WIDTH: The image resizes to fit its container. Pass a \"sizes\" option if it isn't going to be the full width of the screen. \nCONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.",
                   "type": {
                     "kind": "ENUM",
                     "name": "ImageLayout",
@@ -5745,7 +6467,7 @@
                 },
                 {
                   "name": "width",
-                  "description": "The display width of the generated image for layout = FIXED, and the maximum display width of the largest image for layout = CONSTRAINED.\nIgnored if layout = FLUID.",
+                  "description": "The display width of the generated image for layout = FIXED, and the maximum display width of the largest image for layout = CONSTRAINED.  \nIgnored if layout = FLUID.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -5755,7 +6477,7 @@
                 },
                 {
                   "name": "height",
-                  "description": "The display height of the generated image for layout = FIXED, and the maximum display height of the largest image for layout = CONSTRAINED.\nThe image will be cropped if the aspect ratio does not match the source image. If omitted, it is calculated from the supplied width,\nmatching the aspect ratio of the source image.",
+                  "description": "The display height of the generated image for layout = FIXED, and the maximum display height of the largest image for layout = CONSTRAINED.  \nThe image will be cropped if the aspect ratio does not match the source image. If omitted, it is calculated from the supplied width, \nmatching the aspect ratio of the source image.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -5765,7 +6487,7 @@
                 },
                 {
                   "name": "aspectRatio",
-                  "description": "If set along with width or height, this will set the value of the other dimension to match the provided aspect ratio, cropping the image if needed.\nIf neither width or height is provided, height will be set based on the intrinsic width of the source image.",
+                  "description": "If set along with width or height, this will set the value of the other dimension to match the provided aspect ratio, cropping the image if needed. \nIf neither width or height is provided, height will be set based on the intrinsic width of the source image.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Float",
@@ -5775,7 +6497,7 @@
                 },
                 {
                   "name": "placeholder",
-                  "description": "Format of generated placeholder image, displayed while the main image loads.\nBLURRED: a blurred, low resolution image, encoded as a base64 data URI (default)\nDOMINANT_COLOR: a solid color, calculated from the dominant color of the image.\nTRACED_SVG: a low-resolution traced SVG of the image.\nNONE: no placeholder. Set \"background\" to use a fixed background color.",
+                  "description": "Format of generated placeholder image, displayed while the main image loads. \nBLURRED: a blurred, low resolution image, encoded as a base64 data URI (default)\nDOMINANT_COLOR: a solid color, calculated from the dominant color of the image. \nTRACED_SVG: a low-resolution traced SVG of the image.\nNONE: no placeholder. Set \"background\" to use a fixed background color.",
                   "type": {
                     "kind": "ENUM",
                     "name": "ImagePlaceholder",
@@ -5805,7 +6527,7 @@
                 },
                 {
                   "name": "formats",
-                  "description": "The image formats to generate. Valid values are \"AUTO\" (meaning the same format as the source image), \"JPG\", \"PNG\", \"WEBP\" and \"AVIF\".\nThe default value is [AUTO, WEBP], and you should rarely need to change this. Take care if you specify JPG or PNG when you do\nnot know the formats of the source images, as this could lead to unwanted results such as converting JPEGs to PNGs. Specifying\nboth PNG and JPG is not supported and will be ignored.",
+                  "description": "The image formats to generate. Valid values are \"AUTO\" (meaning the same format as the source image), \"JPG\", \"PNG\", \"WEBP\" and \"AVIF\". \nThe default value is [AUTO, WEBP], and you should rarely need to change this. Take care if you specify JPG or PNG when you do\nnot know the formats of the source images, as this could lead to unwanted results such as converting JPEGs to PNGs. Specifying \nboth PNG and JPG is not supported and will be ignored.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -5819,7 +6541,7 @@
                 },
                 {
                   "name": "outputPixelDensities",
-                  "description": "A list of image pixel densities to generate. It will never generate images larger than the source, and will always include a 1x image.\nDefault is [ 1, 2 ] for FIXED images, meaning 1x and 2x and [0.25, 0.5, 1, 2] for CONSTRAINED. In this case, an image with a constrained layout\nand width = 400 would generate images at 100, 200, 400 and 800px wide. Ignored for FULL_WIDTH images, which use breakpoints instead",
+                  "description": "A list of image pixel densities to generate. It will never generate images larger than the source, and will always include a 1x image. \nDefault is [ 1, 2 ] for FIXED images, meaning 1x and 2x and [0.25, 0.5, 1, 2] for CONSTRAINED. In this case, an image with a constrained layout \nand width = 400 would generate images at 100, 200, 400 and 800px wide. Ignored for FULL_WIDTH images, which use breakpoints instead",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -5847,7 +6569,7 @@
                 },
                 {
                   "name": "sizes",
-                  "description": "The \"sizes\" property, passed to the img tag. This describes the display size of the image.\nThis does not affect the generated images, but is used by the browser to decide which images to download.\nYou should usually leave this blank, and a suitable value will be calculated. The exception is if a FULL_WIDTH image\ndoes not actually span the full width of the screen, in which case you should pass the correct size here.",
+                  "description": "The \"sizes\" property, passed to the img tag. This describes the display size of the image. \nThis does not affect the generated images, but is used by the browser to decide which images to download. \nYou should usually leave this blank, and a suitable value will be calculated. The exception is if a FULL_WIDTH image\ndoes not actually span the full width of the screen, in which case you should pass the correct size here.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -6744,7 +7466,333 @@
         },
         {
           "kind": "OBJECT",
+          "name": "ImageSharpResolutions",
+          "description": null,
+          "fields": [
+            {
+              "name": "base64",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tracedSVG",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "aspectRatio",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "width",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "height",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "src",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "srcSet",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "srcWebp",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "srcSetWebp",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "originalName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "ImageSharpFluid",
+          "description": null,
+          "fields": [
+            {
+              "name": "base64",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tracedSVG",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "aspectRatio",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "src",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "srcSet",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "srcWebp",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "srcSetWebp",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sizes",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "originalImg",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "originalName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "presentationWidth",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "presentationHeight",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "ImageSharpSizes",
           "description": null,
           "fields": [
             {
@@ -7766,6 +8814,18 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "avatar",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -8255,6 +9315,66 @@
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
             },
             {
+              "name": "childrenImageSharp___resolutions___base64",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___tracedSVG",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___aspectRatio",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___width",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___height",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___src",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___srcSet",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___srcWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___srcSetWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___resolutions___originalName",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
               "name": "childrenImageSharp___fluid___base64",
               "description": null,
               "isDeprecated": true,
@@ -8322,6 +9442,78 @@
             },
             {
               "name": "childrenImageSharp___fluid___presentationHeight",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___base64",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___tracedSVG",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___aspectRatio",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___src",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___srcSet",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___srcWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___srcSetWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___sizes",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___originalImg",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___originalName",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___presentationWidth",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childrenImageSharp___sizes___presentationHeight",
               "description": null,
               "isDeprecated": true,
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
@@ -8675,6 +9867,66 @@
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
             },
             {
+              "name": "childImageSharp___resolutions___base64",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___tracedSVG",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___aspectRatio",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___width",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___height",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___src",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___srcSet",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___srcWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___srcSetWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___resolutions___originalName",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
               "name": "childImageSharp___fluid___base64",
               "description": null,
               "isDeprecated": true,
@@ -8742,6 +9994,78 @@
             },
             {
               "name": "childImageSharp___fluid___presentationHeight",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___base64",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___tracedSVG",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___aspectRatio",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___src",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___srcSet",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___srcWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___srcSetWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___sizes",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___originalImg",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___originalName",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___presentationWidth",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childImageSharp___sizes___presentationHeight",
               "description": null,
               "isDeprecated": true,
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
@@ -9528,6 +10852,12 @@
             },
             {
               "name": "childrenMdx___frontmatter___template",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childrenMdx___frontmatter___avatar",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -10338,6 +11668,12 @@
             },
             {
               "name": "childMdx___frontmatter___template",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___avatar",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -16893,6 +18229,66 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "wrapperStyle",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "backgroundColor",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "linkImagesToOriginal",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "showCaptions",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "pathPrefix",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "withWebp",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -17913,6 +19309,78 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "wrapperStyle",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "backgroundColor",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "linkImagesToOriginal",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "showCaptions",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pathPrefix",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "withWebp",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -19900,6 +21368,66 @@
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
             },
             {
+              "name": "resolutions___base64",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___tracedSVG",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___aspectRatio",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___width",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___height",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___src",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___srcSet",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___srcWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___srcSetWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "resolutions___originalName",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
               "name": "fluid___base64",
               "description": null,
               "isDeprecated": true,
@@ -19967,6 +21495,78 @@
             },
             {
               "name": "fluid___presentationHeight",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___base64",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___tracedSVG",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___aspectRatio",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___src",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___srcSet",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___srcWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___srcSetWebp",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___sizes",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___originalImg",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___originalName",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___presentationWidth",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "sizes___presentationHeight",
               "description": null,
               "isDeprecated": true,
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
@@ -21948,6 +23548,12 @@
             },
             {
               "name": "frontmatter___template",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___avatar",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -24699,6 +26305,42 @@
             },
             {
               "name": "pluginOptions___gatsbyRemarkPlugins___options___maxWidth",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___gatsbyRemarkPlugins___options___wrapperStyle",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___gatsbyRemarkPlugins___options___backgroundColor",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___gatsbyRemarkPlugins___options___linkImagesToOriginal",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___gatsbyRemarkPlugins___options___showCaptions",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___gatsbyRemarkPlugins___options___pathPrefix",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___gatsbyRemarkPlugins___options___withWebp",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
