@@ -76,7 +76,6 @@ const Wall = ({ data }) => {
         spanAttrs.style = {
             backgroundImage: `url('${data.titleImage}')`,
         }
-
     }
 
     const innerComponents = (
@@ -149,6 +148,12 @@ const About = ({ data }) => {
                     About
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
+                <Button
+                    to={"/about"}
+                    label={`View Detail`}
+                    title={"Detail"}
+                    iconRight={<ArrowRight />}
+                />
             </div>
         </div>
     )
