@@ -35,24 +35,25 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                             data.mdx.frontmatter.banner.childImageSharp.fluid
                         }
                     />
-                    <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 box-border lg:box-content mx-auto bg-bg text-color-default blog-wall-content shadow-xl md:-mt-16 ">
-                        <div className="p-3">
+                    <div className="flex items-center justify-center relative lg:absolute w-full h-full top-0 left-0">
+                        <div className="hidden lg:block absolute w-full h-full bg-black opacity-50"></div>
+                        <div className="px-4 py-8 lg:p-0 relative z-10 text-center text-color-default lg:text-white bg-bgalt lg:bg-transparent">
                             <h1 className="text-5xl font-bold text-primary">
                                 {data.mdx.frontmatter.title}
                             </h1>
-                            <p className="mt-1 flex">
+                            <p className="mt-1 flex items-center justify-center">
                                 <Calendar />{" "}
                                 <span className="ml-2">
                                     {data.mdx.frontmatter.date}
                                 </span>
                             </p>
-                            <p className="mt-3">
+                            <p className="post-content mt-3 md:w-2/5 mx-2 text-justify">
                                 {data.mdx.frontmatter.description}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mx-auto mt-12 post-content">
+                <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mx-auto mt-12 text-justify post-content">
                     <MDXProvider components={components}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>
