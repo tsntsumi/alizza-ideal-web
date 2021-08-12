@@ -29,8 +29,8 @@ export default function porfolio({
             mode="payment"
             cartMode="client-only"
             stripe={process.env.GATSBY_STRIPE_PUBLISHABLE_KEY}
-            successUrl={`${window.location.origin}/portfolio/`}
-            cancelUrl={`${window.location.origin}/`}
+            successUrl="/portfolio/"
+            cancelUrl="/portfolio/"
             currency="JPY"
             allowedCountries={["JP", "US", "PH", "GB", "CA"]}
             billingAddressCollection={true}
