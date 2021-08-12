@@ -9,6 +9,14 @@ const plugins = [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {
+        resolve: `gatsby-source-stripe`,
+        options: {
+            objects: ["Price"],
+            secretKey: process.env.GATSBY_STRIPE_SECRET_KEY,
+            donloadFiles: false,
+        },
+    },
+    {
         resolve: `gatsby-plugin-google-gtag`,
         options: {
             trackingIds: ["G-B30ZBB27H6"],

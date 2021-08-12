@@ -98,15 +98,18 @@ banner: ./banner.jpg
 ただいまミンネで発売しています。
 
 import { Button } from "../../../src/components/ui"
+import ItemProduct from "../../../src/components/item-product"
 
 <center>
     <Button
+        type="link"
 	to="https://minne.com/items/23850986"
 	label={`ミンネでマスクチャームを見る`}
 	title={"ミンネで見てみる"}
 	iconRight={<ArrowRight />}
-	 type="button"
     />
+    {' '}
+    <ItemProduct skuid='price_1J7dSLFI0fllSO6vb56BJMzu' />
 </center>
 
 <Row>
