@@ -63,7 +63,7 @@ export default function porfolio({
                                         {data.mdx.frontmatter.date}
                                     </span>
                                 </p>
-                                <p className="post-content mt-3 md:w-2/5 mx-2 text-justify">
+                                <p className="post-content mt-3 px-9 md:px-20 mx-2 text-justify">
                                     {data.mdx.frontmatter.description}
                                 </p>
                             </div>
