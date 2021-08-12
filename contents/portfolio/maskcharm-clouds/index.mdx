@@ -95,21 +95,25 @@ banner: ./banner.jpg
 
 この機会にぜひご購入ください。
 
-ただいまミンネで発売しています。
+ただいまミンネで販売しています。
 
 import { Button } from "../../../src/components/ui"
+import { ArrowRight } from "react-feather"
 import ItemProduct from "../../../src/components/item-product"
 
 <center>
-    <Button
-        type="link"
-	to="https://minne.com/items/23850986"
-	label={`ミンネでマスクチャームを見る`}
-	title={"ミンネで見てみる"}
-	iconRight={<ArrowRight />}
-    />
+    <Button type="button"
+		label={`ミンネでマスクチャームを見る`}
+		title={"ミンネで見てみる"}
+		iconRight={<ArrowRight />} >
+		<Button
+			type="link"
+			to="https://minne.com/items/23850986"
+		/>
+    </Button>
     {' '}
-    <ItemProduct skuid='price_1J7dSxFI0fllSO6vKLR56jTD' />
+	<p>また、以下のボタンから、本サイトでご購入いただいた方には、特別価格１割引にてご提供しています。</p>
+	<ItemProduct skuid='price_1J7dSxFI0fllSO6vKLR56jTD' />
 </center>
 
 <Row>

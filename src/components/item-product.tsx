@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
+import { Button } from "./ui"
 
 type ItemProductProps = {
     id: string
@@ -25,18 +26,16 @@ const CheckoutNow = ({ product, children }) => {
     } = useShoppingCart()
 
     return (
-        <button
+        <Button
             tyype="button"
             disabled={loading}
-            className={`btn btn-primary${loading ? " disabled" : ""}`}
             onClick={() => {
                 clearCart()
                 addItem(product)
                 redirectToCheckout()
             }}
-        >
-            {children}
-        </button>
+            title={children}
+        />
     )
 }
 
