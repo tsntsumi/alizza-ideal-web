@@ -264,6 +264,18 @@ p {
     @apply p-2 py-3 text-left;
 }
 
+.post-content table th {
+    background-color: rgba(209, 250, 229, 1);
+}
+
+.post-content table table th {
+    background-color: rgba(236, 253, 245, 1);
+}
+
+.post-content table a {
+    color: blue; text-decoration: underline;
+}
+
 .post-content blockquote{
     @apply border-l-4 border-primary p-3;
 }
