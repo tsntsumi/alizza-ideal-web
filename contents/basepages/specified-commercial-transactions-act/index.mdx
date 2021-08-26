@@ -1,0 +1,75 @@
+---
+title: 特定商取引法に基づく表記
+template: basepage
+---
+import { Link } from "gatsby"
+const bg = { backgroundColor: "rgba(199, 252, 242, 1)"}
+
+<div className="text-center">
+    <div>
+        <table class="table-auto" class="bg-blue-50">
+            <tr class="w-1/4">
+                <th style={bg}>販売業者</th>
+                <td>Alizza Ideal 堤　紀久夫</td>
+            </tr>
+            <tr>
+                <th style={bg}>運営統括責任者</th>
+                <td>堤　紀久夫</td>
+            </tr>
+            <tr>
+                <th style={bg}>所在地</th>
+                <td>〒311-1132 茨城県水戸市東前町１３９７番地の２</td>
+            </tr>
+            <tr>
+                <th style={bg}>連絡先</th>
+                <td style={{padding: 0}}>
+                    <table style={{margin: "0.4rem"}}>
+                        <tr>
+                            <th style={{backgroundColor: "rgba(242, 255, 253, 1)"}}>電話番号</th>
+                            <td>+81 29-240-5021</td>
+                        </tr>
+                        <tr>
+                            <th style={{backgroundColor: "rgba(242, 255, 253, 1)"}} rowspan="3">メールアドレス</th>
+                            <td>info🅰alizza-ideal.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                (スパム対策のため 🅰 を @
+                                に変えてお送りください。)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ※お電話でのお問い合わせ、ご質問は承っておりません。
+                                <Link
+                                    to="/contact"
+                                    title="お問い合わせページ"
+				    className="text-blue-500 underline"
+                                >お問い合わせページ</Link>
+                                からお願いします。
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th style={bg}>販売価格</th>
+                <td>商品ページに記載</td>
+            </tr>
+            <tr>
+                <th style={bg}>商品代金以外の必要金額</th>
+                <td>商品ページに記載（送料など）</td>
+            </tr>
+            <tr>
+                <th style={bg}>個人情報について</th>
+                <td>
+                    当社はお客様のプライバシーを第一に考え運営しております。
+                    <br />
+                    詳細は弊サイト
+                    <Link to="/privacy-policy" title="プライバシーポリシー" className="text-blue-500 underline">プライバシーポリシー</Link>を
+                    ご覧ください。
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
