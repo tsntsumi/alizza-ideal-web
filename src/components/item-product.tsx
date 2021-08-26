@@ -89,7 +89,7 @@ export const ItemProduct: React.FC<{ data: ItemProductProps }> = ({
     })
 
     return (
-        <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
+        <div className="blog-item w-full md:w-1/2 p-4">
             <div
                 className={`transition-all duration-300 hover:shadow-2xl shadow ${focused &&
                     "focused"}`}
