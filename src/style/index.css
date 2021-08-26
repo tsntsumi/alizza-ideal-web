@@ -272,8 +272,20 @@ p {
     background-color: rgba(236, 253, 245, 1);
 }
 
+.theme-dark .post-content table th {
+    background-color: rgba(4, 120, 87, 3);
+}
+
+.theme-dark .post-content table table th {
+    background-color: rgba(5, 150, 105, 3);
+}
+
 .post-content table a {
     color: blue; text-decoration: underline;
+}
+
+.theme-dark .post-content table a {
+    color: cyan; text-decoration: underline;
 }
 
 .post-content blockquote{
