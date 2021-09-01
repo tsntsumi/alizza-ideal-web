@@ -1,24 +1,49 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { graphql, PageProps } from "gatsby"
-import Layout from "../components/layout"
-import Img from "gatsby-image"
-import { Calendar } from "react-feather"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-
-import { CodeBlock } from "../components/CodeBlock"
-import { Row, Col } from "../components/shortcodes/index"
-
+import Avatar from "../components/Avatar"
 import Comments from "../components/comments"
+import Img from "gatsby-image"
+import ItemProduct from "../components/item-product"
+import Layout from "../components/layout"
+import recommended from "remark-preset-lint-recommended"
+import remarkHtml from "remark-html"
+import { ArrowLeft, ArrowRight } from "react-feather"
 import { BlogQuery } from "./__generated__/BlogQuery"
+import { Button, Offer, Cta } from "../components/ui"
+import { Calendar } from "react-feather"
+import { CodeBlock } from "../components/CodeBlock"
+import { Link } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { Row, Col } from "../components/shortcodes/index"
+import { remark } from "remark"
 
 const components = {
+    Offer: Offer,
+    Cta: Cta,
+    ArrowLeft: ArrowLeft,
+    ArrowRight: ArrowRight,
+    Avatar: Avatar,
     code: CodeBlock,
+    Link: Link,
     Row: Row,
     Col: Col,
+    ItemProduct: ItemProduct,
+    h1: props => <h4 {...props} class="text-color-1" />,
+    h2: props => <h4 {...props} class="text-color-1" />,
+    h3: props => <h4 {...props} class="text-color-1" />,
+    h4: props => <h4 {...props} class="text-color-1" />,
+    h5: props => <h4 {...props} class="text-color-1" />,
+    h6: props => <h4 {...props} class="text-color-1" />,
 }
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
+    const author = data.mdx.frontmatter.author ?? ""
+    const description = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(data.mdx.frontmatter.description)
+        .toString()
     return (
         <Layout
             seo={{
@@ -47,9 +72,16 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                                     {data.mdx.frontmatter.date}
                                 </span>
                             </p>
-                            <p className="post-content mt-3 px-9 md:px-20 mx-2 text-justify">
-                                {data.mdx.frontmatter.description}
+                            <p className="mt-1 flex items-center justify-center">
+                                <span className="ml-2">{author}</span>
                             </p>
+                            <div className="post-content mt-3 px-9 md:px-20 mx-2 text-justify">
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: description,
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,6 +106,7 @@ export const query = graphql`
         mdx(fields: { slug: { eq: $slug } }) {
             body
             frontmatter {
+                author
                 title
                 date(formatString: "DD MMMM YYYY")
                 description

@@ -1,29 +1,51 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { graphql, PageProps } from "gatsby"
-import Layout from "../components/layout"
+import Avatar from "../components/Avatar"
 import Img from "gatsby-image"
+import { ItemProduct } from "../components/item-product"
+import Layout from "../components/layout"
+import recommended from "remark-preset-lint-recommended"
+import remarkHtml from "remark-html"
+import { ArrowLeft, ArrowRight } from "react-feather"
+import { Button, Offer, Cta } from "../components/ui"
 import { Calendar } from "react-feather"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-
-import { CodeBlock } from "../components/CodeBlock"
-import { Row, Col } from "../components/shortcodes/index"
-import { PortfolioQuery } from "./__generated__/PortfolioQuery"
-
-import ItemProduct from "../components/item-product"
-
 import { CartProvider } from "use-shopping-cart"
+import { CodeBlock } from "../components/CodeBlock"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { PortfolioQuery } from "./__generated__/PortfolioQuery"
+import { Row, Col } from "../components/shortcodes/index"
+import { remark } from "remark"
 
 const components = {
+    Offer: Offer,
+    Cta: Cta,
+    ArrowLeft: ArrowLeft,
+    ArrowRight: ArrowRight,
+    Avatar: Avatar,
+    Button: Button,
     code: CodeBlock,
     Row: Row,
     Col: Col,
+    ItemProduct: ItemProduct,
+    h1: props => <h4 {...props} class="text-color-1" />,
+    h2: props => <h4 {...props} class="text-color-1" />,
+    h3: props => <h4 {...props} class="text-color-1" />,
+    h4: props => <h4 {...props} class="text-color-1" />,
+    h5: props => <h4 {...props} class="text-color-1" />,
+    h6: props => <h4 {...props} class="text-color-1" />,
 }
 
 export default function porfolio({
     location,
     data,
 }: PageProps<PortfolioQuery, {}>) {
+    const description = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(data.mdx.frontmatter.description)
+        .toString()
+
     return (
         <CartProvider
             mode="payment"
@@ -64,7 +86,11 @@ export default function porfolio({
                                     </span>
                                 </p>
                                 <p className="post-content mt-3 px-9 md:px-20 mx-2 text-justify">
-                                    {data.mdx.frontmatter.description}
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: description,
+                                        }}
+                                    />
                                 </p>
                             </div>
                         </div>
