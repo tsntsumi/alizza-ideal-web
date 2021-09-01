@@ -4,6 +4,7 @@
 
 body {
     font-family: "Raleway", sans-serif;
+    @apply m-0 p-0;
 }
 
 p {
@@ -195,7 +196,11 @@ p {
 }
 
 .post-content h1, h2, h3, h4, h5, h6 {
-    @apply font-black text-color-2 my-8;
+    @apply font-black text-color-1 my-8;
+}
+
+.theme-dark .post-content h1, h2, h3, h4, h5, h6 {
+    @apply text-color-1 font-black;
 }
 
 .post-content h1 {
@@ -326,3 +331,45 @@ p {
         font-size: 15px;
     }
 }
+
+@font-face {
+    font-family: HuiFontP29;
+    src: url("/HuiFontP29.ttf") format("truetype");
+}
+
+.post-it {
+    background:#ffa;
+    position:relative;
+    overflow:hidden;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    padding: 1rem;
+    opacity: 0.7;
+    border-radius:0 0 0 30px/45px;
+    box-shadow:
+	0 5px 6px 5px rgba(0,0,0,0.2);
+    font-family: 'HuiFontP29';
+    line-height:1.7em;
+    font-size:19px;
+    color:#130d6b;
+}
+
+.post-it li {
+    cursor:pointer; 
+}
+
+.post-it:before {
+    content:"";
+    display:block;
+    position:absolute;
+    width:20px;
+    height:25px;
+    background:#ffa;
+    box-shadow:
+	3px -2px 10px rgba(0,0,0,0.2);
+    left:0;
+    bottom:0;
+    z-index:2;
+    transform:skewX(25deg);
+}
+
