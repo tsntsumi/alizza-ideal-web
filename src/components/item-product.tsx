@@ -1,22 +1,13 @@
 import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
+import recommended from "remark-preset-lint-recommended"
+import remarkHtml from "remark-html"
 import { Button } from "./ui"
+import { remark } from "remark"
+import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
 
-type ItemProductProps = {
-    id: string
-    active: Boolean
-    currency: stirng
-    unit_amount: number
-    product: {
-        id: string
-        name: string
-        description: string
-        image: any
-    }
-}
-
-const CheckoutNow = ({ product, children }) => {
+const CheckoutNow = props => {
+    const { product, children } = props
     const [loading, setLoading] = useState(false)
     const {
         addItem,
@@ -27,7 +18,7 @@ const CheckoutNow = ({ product, children }) => {
 
     return (
         <Button
-            tyype="button"
+            type="button"
             disabled={loading}
             onClick={() => {
                 clearCart()
@@ -39,47 +30,38 @@ const CheckoutNow = ({ product, children }) => {
     )
 }
 
-export const ItemProduct: React.FC<{ data: ItemProductProps }> = ({
-    skuid,
-}) => {
-    const data = useStaticQuery(graphql`
-        query {
-            prices: allStripePrice(
-                filter: { active: { eq: true } }
-                sort: { fields: unit_amount }
-            ) {
-                edges {
-                    node {
-                        active
-                        id
-                        currency
-                        unit_amount
-                        product {
-                            id
-                            name
-                            description
-                            images
-                        }
-                    }
+export const ItemProduct = ({ skuid }) => {
+    const query = useStaticQuery(graphql`
+        query StripeProductQuery($skuid: String) {
+            stripePrice(id: { eq: $skuid }, active: { eq: true }) {
+                active
+                id
+                currency
+                unit_amount
+                product {
+                    id
+                    name
+                    description
+                    images
                 }
             }
         }
     `)
-    const found = data.prices.edges.find(edge => edge.node.id === skuid)
-
-    if (!found) {
-        return ""
-    }
 
     const [focused, changeFocused] = useState(false)
+    const description = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(query.stripePrice.product.description)
+        .toString()
 
     const product = {
-        sku: skuid,
-        name: found.node.product.name,
-        price: found.node.unit_amount,
-        currency: found.node.currency,
-        description: found.node.product.description,
-        images: found.node.product.images,
+        sku: query.stripePrice.id,
+        name: query.stripePrice.product.name,
+        price: query.stripePrice.unit_amount,
+        currency: query.stripePrice.currency,
+        description: query.stripePrice.product.description,
+        images: query.stripePrice.product.images,
     }
 
     const price = formatCurrencyString({
@@ -89,7 +71,7 @@ export const ItemProduct: React.FC<{ data: ItemProductProps }> = ({
     })
 
     return (
-        <div className="blog-item w-full md:w-1/2 p-4">
+        <div className="blog-item w-full md:w-1/2 lg:w-1/3 xl:1/4 py-4 px-8 mx-12">
             <div
                 className={`transition-all duration-300 hover:shadow-2xl shadow ${focused &&
                     "focused"}`}
