@@ -7,6 +7,7 @@ type AvatarProps = {
     altText?: string
     title?: string
     user?: "monster1" | "monster2"
+    diameter?: string
 }
 
 type ChildImage = {
@@ -20,7 +21,7 @@ type Data = {
     monster2: Childimage
 }
 
-export const Avatar = (props: AvatarProps) => {
+export default (props: AvatarProps) => {
     const data = useStaticQuery<Data>(graphql`
         query {
             monster1: file(relativePath: { eq: "monster-01-headshot.png" }) {
@@ -40,25 +41,30 @@ export const Avatar = (props: AvatarProps) => {
         }
     `)
 
-    const { url, altText, title, user } = props
+    const { url, altText, title, user, diameter, className } = props
     const styles = {
-        width: "75px",
-        height: "75px",
+        width: diameter || "75px",
+        height: diameter || "75px",
         borderRadius: "50%",
+        classes: className || "",
     }
 
     if (url) {
-        return <img style={styles} src={url} alt={altText} title={title} />
+        return (
+            <React.Fragment>
+                <img style={styles} src={url} alt={altText} title={title} />
+            </React.Fragment>
+        )
     }
 
     return (
-        <Img
-            style
-            fixed={user && data[user].childImageSharp.fixed}
-            alt={altText}
-            title={title}
-        />
+        <React.Fragment>
+            <Img
+                style
+                fixed={user && data[user].childImageSharp.fixed}
+                alt={altText}
+                title={title}
+            />
+        </React.Fragment>
     )
 }
-
-export default Avatar
