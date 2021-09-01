@@ -1,17 +1,27 @@
 import React, { useState, useEffect, useRef } from "react"
-import { Button } from "./ui"
 import Img from "gatsby-image"
-import { ArrowRight } from "react-feather"
-
 import Parallax from "../utils/parallax"
+import recommended from "remark-preset-lint-recommended"
+import remarkHtml from "remark-html"
+import { ArrowRight } from "react-feather"
+import { Button } from "./ui"
 import { IndexPageQuery_portfolio_edges_node } from "../pages/__generated__/IndexPageQuery"
+import { remark } from "remark"
 
-type ItemPortfolioProps = { data: IndexPageQuery_portfolio_edges_node, even: boolean };
+type ItemPortfolioProps = {
+    data: IndexPageQuery_portfolio_edges_node
+    even: boolean
+}
 export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
     const [state, changeState] = useState({
         animated: false,
         percentage: 0,
     })
+    const description = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(data.frontmatter.description)
+        .toString()
 
     const getWindowHeight = () => {
         const w = window
@@ -35,14 +45,16 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
 
     const percentageThreshold = 0.3
 
-    let transform = useRef(0);
+    let transform = useRef(0)
 
     useEffect(() => {
-        transform.current = Math.min(getWindowHeight() / 2, 300) * Math.max(0, state.percentage - percentageThreshold);
-        
-        if(getWindowWidth() < 1024) {
+        transform.current =
+            Math.min(getWindowHeight() / 2, 300) *
+            Math.max(0, state.percentage - percentageThreshold)
+
+        if (getWindowWidth() < 1024) {
             updateState({
-                animated: true
+                animated: true,
             })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -83,9 +95,13 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
                             <h3 className="text-color-1 text-5xl font-black to-up">
                                 {data.frontmatter.title}
                             </h3>
-                            <p className="lg:mt-4 to-up">
-                                {data.frontmatter.description}
-                            </p>
+                            <div className="lg:mt-4 to-up">
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: description,
+                                    }}
+                                />
+                            </div>
                             <Button
                                 to={data.fields.slug}
                                 label={`View ${data.frontmatter.title}`}
@@ -100,4 +116,4 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
     )
 }
 
-export default ItemPortfolio;
+export default ItemPortfolio
