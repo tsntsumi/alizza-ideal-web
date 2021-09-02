@@ -47,10 +47,15 @@ const components = {
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
     const author = data.mdx.frontmatter.author ?? ""
+    const credit = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(data.mdx.frontmatter.credit ?? "")
+        .toString()
     const description = remark()
         .use(recommended)
         .use(remarkHtml)
-        .processSync(data.mdx.frontmatter.description)
+        .processSync(data.mdx.frontmatter.description ?? "")
         .toString()
     return (
         <Layout
@@ -67,6 +72,12 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                         fluid={
                             data.mdx.frontmatter.banner.childImageSharp.fluid
                         }
+                    />
+                    <div
+                        className="text-right text-xs"
+                        dangerouslySetInnerHTML={{
+                            __html: credit,
+                        }}
                     />
                     <div className="flex items-center justify-center relative lg:absolute w-full h-full top-0 left-0">
                         <div className="hidden lg:block absolute w-full h-full bg-black opacity-50"></div>
@@ -118,6 +129,7 @@ export const query = graphql`
                 title
                 date(formatString: "DD MMMM YYYY")
                 description
+                credit
                 banner {
                     publicURL
                     childImageSharp {
