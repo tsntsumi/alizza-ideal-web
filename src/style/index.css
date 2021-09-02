@@ -337,7 +337,7 @@ p {
     src: url("/HuiFontP29.ttf") format("truetype");
 }
 
-.post-it {
+.sticky-note {
     background:#ffa;
     position:relative;
     overflow:hidden;
@@ -354,11 +354,11 @@ p {
     color:#130d6b;
 }
 
-.post-it li {
+.sticky-note li {
     cursor:pointer; 
 }
 
-.post-it:before {
+.sticky-note:before {
     content:"";
     display:block;
     position:absolute;
