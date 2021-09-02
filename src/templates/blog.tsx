@@ -9,32 +9,40 @@ import Layout from "../components/layout"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowLeft, ArrowRight } from "react-feather"
+import { ArrowDown, ArrowDownCircle } from "react-feather"
+import { ArrowUp, ArrowUpCircle } from "react-feather"
 import { BlogQuery } from "./__generated__/BlogQuery"
 import { Button, Offer, Cta } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CodeBlock } from "../components/CodeBlock"
 import { Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Sticky from "../components/Sticky"
 import { Row, Col } from "../components/shortcodes/index"
 import { remark } from "remark"
 
 const components = {
-    Offer: Offer,
-    Cta: Cta,
+    ArrowDown: ArrowDown,
+    ArrowDownCircle: ArrowDownCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
+    ArrowUp: ArrowUp,
+    ArrowUpCircle: ArrowUpCircle,
     Avatar: Avatar,
-    code: CodeBlock,
-    Link: Link,
-    Row: Row,
     Col: Col,
+    Cta: Cta,
     ItemProduct: ItemProduct,
-    h1: props => <h4 {...props} class="text-color-1" />,
-    h2: props => <h4 {...props} class="text-color-1" />,
-    h3: props => <h4 {...props} class="text-color-1" />,
-    h4: props => <h4 {...props} class="text-color-1" />,
-    h5: props => <h4 {...props} class="text-color-1" />,
-    h6: props => <h4 {...props} class="text-color-1" />,
+    Link: Link,
+    Offer: Offer,
+    Row: Row,
+    Sticky: Sticky,
+    code: CodeBlock,
+    h1: props => <h1 {...props} className="text-color-1" />,
+    h2: props => <h2 {...props} className="text-color-1" />,
+    h3: props => <h3 {...props} className="text-color-1" />,
+    h4: props => <h4 {...props} className="text-color-1" />,
+    h5: props => <h5 {...props} className="text-color-1" />,
+    h6: props => <h6 {...props} className="text-color-1" />,
 }
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
