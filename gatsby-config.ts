@@ -5,9 +5,34 @@ import tailwindcss from "tailwindcss"
 
 const plugins = [
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    {
+        resolve: `gatsby-plugin-robots-txt`,
+        options: {
+            resolveEnv: () => process.env.GATSBY_ENV,
+            env: {
+                development: {
+                    policy: [{ userAgent: "*", disallow: ["/"] }],
+                },
+                production: {
+                    policy: [
+                        { userAgent: "*", allow: ["/"] },
+                        { userAgent: "*", disallow: ["/landingpage"] },
+                    ],
+                },
+            },
+        },
+    },
+    {
+        resolve: `gatsby-plugin-canonical-urls`,
+        options: {
+            siteUrl: `https://www.alizza-ideal.com`,
+            stripQueryString: true,
+        },
+    },
     {
         resolve: `gatsby-source-stripe`,
         options: {

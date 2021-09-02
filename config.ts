@@ -1,6 +1,6 @@
 const siteMetadata = {
     title: `Alizza Ideal`,
-    siteUrl: `http://localhost`,
+    siteUrl: `https://www.alizza-ideal.com`,
     capitalizeTitleOnHome: false,
     logo: `/images/logo.png`,
     icon: `/images/icon.png`,
