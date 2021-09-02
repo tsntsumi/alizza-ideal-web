@@ -12,18 +12,8 @@ const plugins = [
     {
         resolve: `gatsby-plugin-robots-txt`,
         options: {
+            policy: [{ userAgent: "*", allow: "/" }],
             resolveEnv: () => process.env.GATSBY_ENV,
-            env: {
-                development: {
-                    policy: [{ userAgent: "*", disallow: ["/"] }],
-                },
-                production: {
-                    policy: [
-                        { userAgent: "*", allow: ["/"] },
-                        { userAgent: "*", disallow: ["/landingpage"] },
-                    ],
-                },
-            },
         },
     },
     {
