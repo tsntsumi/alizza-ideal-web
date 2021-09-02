@@ -69,6 +69,13 @@ const plugins = [
         },
     },
     {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            name: `landingpage`,
+            path: `${__dirname}/contents/landingpage`,
+        },
+    },
+    {
         resolve: `gatsby-plugin-mdx`,
         options: {
             gatsbyRemarkPlugins: [

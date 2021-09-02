@@ -6,42 +6,51 @@ import Img from "gatsby-image"
 import Layout from "../components/layout-lp"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
+import Sticky from "../components/Sticky"
 import { ArrowLeft, ArrowRight } from "react-feather"
+import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { Button, Offer, Cta } from "../components/ui"
-import { LandingPagesQuery } from "./__generated__/LandingPagesQuery"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { remark } from "remark"
 
 const components = {
+    ArrowDown: ArrowDown,
+    ArrowDownCircle: ArrowDownCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
     Avatar: Avatar,
     Cta: Cta,
     Offer: Offer,
-    h1: props => <h4 {...props} class="text-color-1" />,
-    h2: props => <h4 {...props} class="text-color-1" />,
-    h3: props => <h4 {...props} class="text-color-1" />,
-    h4: props => <h4 {...props} class="text-color-1" />,
-    h5: props => <h4 {...props} class="text-color-1" />,
-    h6: props => <h4 {...props} class="text-color-1" />,
+    Sticky: Sticky,
+    h1: props => <h1 {...props} className="text-color-1" />,
+    h2: props => <h2 {...props} className="text-color-1" />,
+    h3: props => <h3 {...props} className="text-color-1" />,
+    h4: props => <h4 {...props} className="text-color-1" />,
+    h5: props => <h5 {...props} className="text-color-1" />,
+    h6: props => <h6 {...props} className="text-color-1" />,
 }
 
-export default function landingPages({
+export default function landingpage({
     data,
     location,
-}: PageProps<LandingPagesQuery, {}>) {
+}: PageProps<LandingPageQuery, {}>) {
     const cta =
         data.mdx.frontmatter.cta === null
             ? "今すぐ確認"
             : data.mdx.frontmatter.cta
-    const credit = data.mdx.frontmatter.credits
+    const credit = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(data.mdx.frontmatter.credit ?? "")
+        .toString()
     const desc = "<p>" + data.mdx.frontmatter.description + "</p>"
     const description = remark()
         .use(recommended)
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.description)
         .toString()
+
     return (
         <Layout
             seo={{
@@ -63,7 +72,7 @@ export default function landingPages({
                         <div
                             className="text-xs text-right"
                             dangerouslySetInnerHTML={{
-                                __html: data.mdx.frontmatter.credit,
+                                __html: credit,
                             }}
                         ></div>
                     </div>
@@ -71,9 +80,11 @@ export default function landingPages({
                         {data.mdx.frontmatter.title}
                     </h4>
                     <div className="post-content my-0 py-0 text-md text-justify w-full clear-left leading-none">
-                        <MDXProvider components={components}>
-                            <MDXRenderer>{description}</MDXRenderer>
-                        </MDXProvider>
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: description,
+                            }}
+                        />
                     </div>
                 </div>
                 <div className="post-content clear-both pb-12 text-justify">
@@ -87,7 +98,7 @@ export default function landingPages({
 }
 
 export const query = graphql`
-    query LandingPagesQuery($slug: String!) {
+    query LandingPageQuery($slug: String!) {
         mdx(fields: { slug: { eq: $slug } }) {
             body
             frontmatter {

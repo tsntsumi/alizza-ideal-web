@@ -63,10 +63,20 @@ export const createPages: GatsbyNode["createPages"] = async ({
                     }
                 }
             }
+            landingpage: allMdx(
+                filter: { fields: { sourceName: { eq: "landingpage" } } }
+            ) {
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
             limitPost: site {
                 siteMetadata {
                     blogItemsPerPage
                     portfolioItemsPerPage
+                    landingPageItemsPerPage
                 }
             }
         }
@@ -118,6 +128,26 @@ export const createPages: GatsbyNode["createPages"] = async ({
                     limit: portfolioItemsPerPage,
                     skip: i * portfolioItemsPerPage,
                     numPages: numPortfolioItems,
+                    currentPage: i + 1,
+                },
+            })
+        })
+
+        const landingPageItems = result.data.landingpage.edges
+        const landingPageItemsPerPage =
+            result.data.limitPost.siteMetadata.landingPageItemsPerPage
+        const numLandingPageItems = Math.ceil(
+            landingPageItems.length / landingPageItemsPerPage
+        )
+
+        Array.from({ length: numLandingPageItems }).forEach((_, i) => {
+            createPage({
+                path: i === 0 ? `/landingpage` : `/landingpage/${i + 1}`,
+                component: path.resolve("./src/templates/landingpage-list.tsx"),
+                context: {
+                    limit: landingPageItemsPerPage,
+                    skip: i * landingPageItemsPerPage,
+                    numPages: numLandingPageItems,
                     currentPage: i + 1,
                 },
             })

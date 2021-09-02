@@ -19,6 +19,7 @@ Alizza Ideal (アリザアイデアル) では、Webやメールなどを使っ�
     author: `@tsntsumi`,
     blogItemsPerPage: 10,
     portfolioItemsPerPage: 10,
+    landingPageItemsPerPage: 10,
     darkmode: true,
     switchTheme: true,
     navLinks: [
