@@ -28,12 +28,11 @@ const Button: React.FC<ButtonProps> = props => {
     if (type) {
         const b = type.split(",")
         const t = b[1] ? b[1] : "button"
-        const dis = disabled === undefined ? false : disabled
+        const dis = disabled ?? false
         if (b[0] === "button") {
             return (
                 <button
                     type={t}
-                    disabled={dis}
                     className={`btn btn-primary${dis ? " disabled" : ""}`}
                 >
                     {innerComponents}
@@ -42,8 +41,8 @@ const Button: React.FC<ButtonProps> = props => {
         }
     }
     return (
-        <Link to={to} className="btn btn-primary" title={label || title}>
-            {innerComponents}
+        <Link to={to} title={label || title}>
+            <div className="btn btn-primary">{innerComponents}</div>
         </Link>
     )
 }
@@ -96,25 +95,24 @@ const TextInput = ({ label, type = "text", name, onChange, footer }) => {
 
 type CtaProps = {
     title: string
-    to?: string
+    to: string
     disabled?: boolean
     iconLeft?: JSX.Element
     iconRight?: JSX.Element
+    align?: string
 }
-const Cta: React.FC<ButtonProps> = props => {
-    const { title, to, disabled, iconLeft, iconRight } = props
+const Cta: React.FC<CtaProps> = props => {
+    const { title, to, disabled, iconLeft, iconRight, align } = props
     return (
-        <center>
+        <div className={`text-${align}`}>
             <Button
-                className="m-0"
-                type="button"
+                type="link"
+                to={to}
                 title={title}
                 iconLeft={iconLeft}
                 iconRight={iconRight}
-            >
-                <Button type="link" to={to} />
-            </Button>
-        </center>
+            />
+        </div>
     )
 }
 
