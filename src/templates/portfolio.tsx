@@ -45,6 +45,11 @@ export default function porfolio({
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.description)
         .toString()
+    const credit = remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .processSync(data.mdx.frontmatter.credit ?? "")
+        .toString()
 
     return (
         <CartProvider
@@ -72,6 +77,12 @@ export default function porfolio({
                                 data.mdx.frontmatter.banner.childImageSharp
                                     .fluid
                             }
+                        />
+                        <div
+                            className="text-right text-xs"
+                            dangerouslySetInnerHTML={{
+                                __html: credit,
+                            }}
                         />
                         <div className="flex items-center justify-center relative lg:absolute w-full h-full top-0 left-0">
                             <div className="hidden lg:block absolute w-full h-full bg-black opacity-50"></div>
