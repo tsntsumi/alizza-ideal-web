@@ -28,12 +28,12 @@ const components = {
     Row: Row,
     Col: Col,
     ItemProduct: ItemProduct,
-    h1: props => <h4 {...props} class="text-color-1" />,
-    h2: props => <h4 {...props} class="text-color-1" />,
-    h3: props => <h4 {...props} class="text-color-1" />,
-    h4: props => <h4 {...props} class="text-color-1" />,
-    h5: props => <h4 {...props} class="text-color-1" />,
-    h6: props => <h4 {...props} class="text-color-1" />,
+    h1: props => <h1 {...props} className="text-color-1" />,
+    h2: props => <h2 {...props} className="text-color-1" />,
+    h3: props => <h3 {...props} className="text-color-1" />,
+    h4: props => <h4 {...props} className="text-color-1" />,
+    h5: props => <h5 {...props} className="text-color-1" />,
+    h6: props => <h6 {...props} className="text-color-1" />,
 }
 
 export default function porfolio({
