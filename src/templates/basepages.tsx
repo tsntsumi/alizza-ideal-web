@@ -6,7 +6,7 @@ import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { BasePagesQuery } from "./__generated__/BasePagesQuery"
-import { Button, Offer, Cta } from "../components/ui"
+import { Button, Offer, CtaButton } from "../components/ui"
 import { CodeBlock } from "../components/CodeBlock"
 import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
@@ -18,7 +18,7 @@ const components = {
     ArrowRight: ArrowRight,
     Avatar: Avatar,
     Button: Button,
-    Cta: Cta,
+    CtaButton: CtaButton,
     code: CodeBlock,
     Link: Link,
     Offer: Offer,
