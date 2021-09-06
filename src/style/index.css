@@ -288,7 +288,7 @@ p {
 }
 
 .post-content table {
-    @apply w-full my-6;
+    @apply w-full my-6 text-md;
 }
 
 .post-content table tr {
@@ -301,15 +301,17 @@ p {
 }
 
 .post-content table tr td, .post-content table tr th {
-    @apply p-2 py-3 text-left;
+    @apply p-2 py-3 text-left text-md;
 }
 
 .post-content table th {
-    background-color: rgba(209, 250, 229, 1);
+    /* background-color: rgba(209, 250, 229, 1); */
+    @apply bg-color-1 text-white;
 }
 
 .post-content table table th {
-    background-color: rgba(236, 253, 245, 1);
+    /* background-color: rgba(236, 253, 245, 1); */
+    @apply bg-color-2 text-white;
 }
 
 .theme-dark .post-content table th {
