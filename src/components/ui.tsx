@@ -102,7 +102,7 @@ const TextInput = ({
     )
 }
 
-type CtaProps = {
+type CtaButtonProps = {
     title: string
     to: string
     disabled?: boolean
@@ -110,7 +110,7 @@ type CtaProps = {
     iconRight?: JSX.Element
     align?: string
 }
-const Cta: React.FC<CtaProps> = props => {
+const CtaButton: React.FC<CtaButtonProps> = props => {
     const { title, to, disabled, iconLeft, iconRight, align } = props
     return (
         <div className={`text-${align}`}>
@@ -139,4 +139,4 @@ const Offer = props => {
     )
 }
 
-export { Button, TextInput, Cta, Offer }
+export { Button, TextInput, CtaButton, Offer }
