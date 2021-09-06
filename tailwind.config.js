@@ -40,6 +40,7 @@ module.exports = {
             "color-1": "#0066ff",
             "color-2": "#003399",
             "color-3": "#aeb4c5",
+            note: "#ffa",
             primary: "#f55555",
             secondary: "#6888df",
             link: "#0a71c5",
