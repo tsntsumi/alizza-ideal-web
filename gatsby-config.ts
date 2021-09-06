@@ -10,6 +10,14 @@ const plugins = [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {
+        resolve: `gatsby-plugin-react-svg`,
+        options: {
+            rule: {
+                include: `/svg/`,
+            },
+        },
+    },
+    {
         resolve: `gatsby-plugin-robots-txt`,
         options: {
             resolveEnv: () => process.env.GATSBY_ENV,
