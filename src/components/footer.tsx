@@ -43,8 +43,8 @@ export default function() {
                     </ul>
                 </div>
                 <p className="text-color-default text-lg">
-                    Copyright &copy; {query.site.siteMetadata.title}{" "}
-                    {new Date().getFullYear()}
+                    Copyright &copy; 2021 {query.site.siteMetadata.title}
+                    {". "} All Rights Reserved.
                 </p>
             </div>
         </footer>

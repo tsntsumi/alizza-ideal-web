@@ -47,12 +47,21 @@ const Button: React.FC<ButtonProps> = props => {
     )
 }
 
-const TextInput = ({ label, type = "text", name, onChange, footer }) => {
+const TextInput = ({
+    label,
+    type = "text",
+    placeholder,
+    name,
+    onChange,
+    footer,
+}) => {
     const [focused, changeFocused] = useState(false)
 
     let elem = (
         <input
+            label={label}
             type={type}
+            placeholder={placeholder}
             name={name}
             className="block w-full outline-none px-4 py-2 focus:outline-none bg-bg text-color-default"
             onFocus={() => changeFocused(true)}
@@ -93,7 +102,7 @@ const TextInput = ({ label, type = "text", name, onChange, footer }) => {
     )
 }
 
-type CtaProps = {
+type CtaButtonProps = {
     title: string
     to: string
     disabled?: boolean
@@ -101,7 +110,7 @@ type CtaProps = {
     iconRight?: JSX.Element
     align?: string
 }
-const Cta: React.FC<CtaProps> = props => {
+const CtaButton: React.FC<CtaButtonProps> = props => {
     const { title, to, disabled, iconLeft, iconRight, align } = props
     return (
         <div className={`text-${align}`}>
@@ -130,4 +139,4 @@ const Offer = props => {
     )
 }
 
-export { Button, TextInput, Cta, Offer }
+export { Button, TextInput, CtaButton, Offer }

@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowLeft, ArrowRight } from "react-feather"
-import { Button, Offer, Cta } from "../components/ui"
+import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CartProvider } from "use-shopping-cart"
 import { CodeBlock } from "../components/CodeBlock"
@@ -19,7 +19,7 @@ import { remark } from "remark"
 
 const components = {
     Offer: Offer,
-    Cta: Cta,
+    CtaButton: CtaButton,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
     Avatar: Avatar,

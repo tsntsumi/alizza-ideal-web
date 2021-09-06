@@ -204,27 +204,27 @@ p {
 }
 
 .post-content h1 {
-    @apply text-5xl;
-}
-
-.post-content h2 {
-    @apply text-4xl;
-}
-
-.post-content h3 {
-    @apply text-3xl;
-}
-
-.post-content h4 {
     @apply text-2xl;
 }
 
-.post-content h5 {
+.post-content h2 {
     @apply text-xl;
 }
 
-.post-content h5 {
+.post-content h3 {
     @apply text-lg;
+}
+
+.post-content h4 {
+    @apply text-lg;
+}
+
+.post-content h5 {
+    @apply text-base;
+}
+
+.post-content h6 {
+    @apply text-base;
 }
 
 .post-content hr {
@@ -236,12 +236,13 @@ p {
 }
 
 .post-content ol {
-    list-style: decimal;
+    list-style: none;
+    counter-reset: item;
 }
 
 .post-content ul, .post-content ol {
-    @apply ml-12 my-6;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    @apply my-2 ml-8 mr-1 p-0
 }
 
 .post-content ul ul, .post-content ol ol {
@@ -249,11 +250,45 @@ p {
 }
 
 .post-content li {
+    line-height: 165%;
+    @apply font-serif text-justify w-full;
+}
+
+.post-content ul li {
     @apply my-2 ml-2;
 }
 
+.post-content ol>li {
+    display: table;
+    counter-increment: item;
+    min-width: 100%
+    @apply my-0 ml-2 pr-0 mr-0 min-w-full;
+}
+
+.post-content ol>li:before {
+    content: counters(item, '.') '. ';
+    display: table-cell;
+    width: 1.4rem;
+    margin: 0.1em;
+    padding-right: 0.8rem;
+}
+
+.post-content li ol>li {
+    @apply my-0 ml-1 pr-0 mr-0 min-w-full;
+    min-width: 100%
+}
+
+.post-content li ol>li:before {
+    content: counters(item, '.') ' ';
+    display: table-cell;
+    width: 1.4rem;
+    font-weight: 0;
+    margin: 0.1em;
+    padding-right: 0.8rem;
+}
+
 .post-content table {
-    @apply w-full my-6;
+    @apply w-full my-6 text-md;
 }
 
 .post-content table tr {
@@ -266,15 +301,17 @@ p {
 }
 
 .post-content table tr td, .post-content table tr th {
-    @apply p-2 py-3 text-left;
+    @apply p-2 py-3 text-left text-md;
 }
 
 .post-content table th {
-    background-color: rgba(209, 250, 229, 1);
+    /* background-color: rgba(209, 250, 229, 1); */
+    @apply bg-color-1 text-white;
 }
 
 .post-content table table th {
-    background-color: rgba(236, 253, 245, 1);
+    /* background-color: rgba(236, 253, 245, 1); */
+    @apply bg-color-2 text-white;
 }
 
 .theme-dark .post-content table th {
@@ -350,7 +387,7 @@ p {
 	0 5px 6px 5px rgba(0,0,0,0.2);
     font-family: 'HuiFontP29';
     line-height:1.7em;
-    font-size:19px;
+    font-size:10pt;
     color:#130d6b;
 }
 
