@@ -50,14 +50,9 @@ export default ({
             label: "Light Theme",
             icon: <Sun />,
         },
-        {
-            name: "theme-dark",
-            label: "Dark Theme",
-            icon: <Moon />,
-        },
     ]
 
-    const isDarkTheme = query.site.siteMetadata.darkmode
+    const isDarkTheme = false
     const cookiePolicyEnabled = query.site.siteMetadata.cookiePolicy
 
     const [theme, changeTheme] = useState(isDarkTheme ? 1 : 0)
