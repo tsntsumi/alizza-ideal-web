@@ -204,27 +204,27 @@ p {
 }
 
 .post-content h1 {
-    @apply text-5xl;
-}
-
-.post-content h2 {
-    @apply text-4xl;
-}
-
-.post-content h3 {
-    @apply text-3xl;
-}
-
-.post-content h4 {
     @apply text-2xl;
 }
 
-.post-content h5 {
+.post-content h2 {
     @apply text-xl;
 }
 
-.post-content h5 {
+.post-content h3 {
     @apply text-lg;
+}
+
+.post-content h4 {
+    @apply text-lg;
+}
+
+.post-content h5 {
+    @apply text-base;
+}
+
+.post-content h6 {
+    @apply text-base;
 }
 
 .post-content hr {
