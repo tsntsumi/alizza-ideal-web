@@ -9,20 +9,29 @@ import remarkHtml from "remark-html"
 import Sticky from "../components/Sticky"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowDown, ArrowDownCircle } from "react-feather"
-import { Button, Offer, Cta } from "../components/ui"
+import { ArrowUp, ArrowUpCircle } from "react-feather"
+import { Button, Offer, CtaButton } from "../components/ui"
+import { Squeeze } from "../components/squeeze"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { remark } from "remark"
+import { Row, Col } from "../components/shortcodes/index"
 
 const components = {
     ArrowDown: ArrowDown,
     ArrowDownCircle: ArrowDownCircle,
+    ArrowUp: ArrowUp,
+    ArrowUpCircle: ArrowUpCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
     Avatar: Avatar,
-    Cta: Cta,
+    Col: Col,
+    Row: Row,
+    CtaButton: CtaButton,
     Offer: Offer,
     Sticky: Sticky,
+    Squeeze: Squeeze,
+    Img: Img,
     h1: props => <h1 {...props} className="text-color-1" />,
     h2: props => <h2 {...props} className="text-color-1" />,
     h3: props => <h3 {...props} className="text-color-1" />,
@@ -35,10 +44,6 @@ export default function landingpage({
     data,
     location,
 }: PageProps<LandingPageQuery, {}>) {
-    const cta =
-        data.mdx.frontmatter.cta === null
-            ? "今すぐ確認"
-            : data.mdx.frontmatter.cta
     const credit = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -60,7 +65,7 @@ export default function landingpage({
             }}
             location={location}
         >
-            <div className="post-content w-full m-0 p-0 max-w-full px-4 lg:px-24 md:px-8 py-8 text-justify">
+            <div className="post-content w-full m-0 p-0 max-w-full px-2 lg:px-8 md:px-4 py-8 text-justify">
                 <div name="Head Line" className="post-content w-full">
                     <div className="float-right w-full md:w-1/2 ml-8">
                         <Img
