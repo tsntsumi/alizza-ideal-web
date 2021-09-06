@@ -119,6 +119,7 @@ const Head = ({ data }) => {
                 href="https://fonts.googleapis.com/css?family=Raleway:500,800&display=swap"
                 rel="stylesheet"
             />
+            <meta name="robots" content="noindex, nofollow" />
         </Helmet>
     )
 }

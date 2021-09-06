@@ -10,28 +10,10 @@ const plugins = [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {
-        resolve: `gatsby-plugin-react-svg`,
-        options: {
-            rule: {
-                include: `/svg/`,
-            },
-        },
-    },
-    {
         resolve: `gatsby-plugin-robots-txt`,
         options: {
+            policy: [{ userAgent: "*", allow: "/" }],
             resolveEnv: () => process.env.GATSBY_ENV,
-            env: {
-                development: {
-                    policy: [{ userAgent: "*", disallow: ["/"] }],
-                },
-                production: {
-                    policy: [
-                        { userAgent: "*", allow: ["/"] },
-                        { userAgent: "*", disallow: ["/landingpage"] },
-                    ],
-                },
-            },
         },
     },
     {
