@@ -12,7 +12,7 @@ import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
 import { BlogQuery } from "./__generated__/BlogQuery"
-import { Button, Offer, Cta } from "../components/ui"
+import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CodeBlock } from "../components/CodeBlock"
 import { Link } from "gatsby"
@@ -30,7 +30,7 @@ const components = {
     ArrowUpCircle: ArrowUpCircle,
     Avatar: Avatar,
     Col: Col,
-    Cta: Cta,
+    CtaButton: CtaButton,
     ItemProduct: ItemProduct,
     Link: Link,
     Offer: Offer,
