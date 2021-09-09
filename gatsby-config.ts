@@ -4,11 +4,21 @@ import autoprefixer from "autoprefixer"
 import tailwindcss from "tailwindcss"
 
 const plugins = [
-    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sitemap`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    {
+        resolve: `gatsby-plugin-sharp`,
+        options: {
+            defaults: {
+                quality: 70,
+                formats: ["auto", "webp", "avif"],
+                placeholder: "blurred",
+            },
+        },
+    },
     {
         resolve: `gatsby-plugin-robots-txt`,
         options: {
@@ -42,6 +52,13 @@ const plugins = [
         options: {
             name: `blog`,
             path: `${__dirname}/contents/blog/`,
+        },
+    },
+    {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            name: `images`,
+            path: `${__dirname}/contents/images/`,
         },
     },
     {
