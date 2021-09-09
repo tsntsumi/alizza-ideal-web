@@ -81,7 +81,7 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
                         >
                             <GatsbyImage
                                 image={image}
-                                alt={data.frontmatter.image}
+                                alt={data.frontmatter.name || "Image"}
                             />
                         </div>
                     </div>

@@ -10,7 +10,7 @@ import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CartProvider } from "use-shopping-cart"
 import { CodeBlock } from "../components/CodeBlock"
-import { GatsbyImage, srcImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { ItemProduct } from "../components/item-product"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -38,9 +38,18 @@ const components = {
     Col: Col,
     CtaButton: CtaButton,
     FileImage: props => <FileImage {...props} />,
-    ItemProduct: ItemProduct,
+    ItemProduct: props => (
+        <ItemProduct
+            skuid={
+                process.env.NODE_ENV === "development"
+                    ? props.testPrice
+                    : props.price
+            }
+        />
+    ),
     Offer: Offer,
     Offer: Offer,
+    Row: Row,
     Squeeze: Squeeze,
     Sticky: Sticky,
     code: CodeBlock,
@@ -105,19 +114,24 @@ export default function porfolio({
                                         {data.mdx.frontmatter.date}
                                     </span>
                                 </p>
-                                <p className="post-content mt-3 px-9 md:px-20 mx-2 text-justify">
+                                <div className="post-content mt-3 px-9 md:px-20 mx-2 text-justify">
                                     <div
                                         dangerouslySetInnerHTML={{
                                             __html: description,
                                         }}
                                     />
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mt-4 md:mt-6 mx-auto lg:mt-12 text-justify post-content">
                         <MDXProvider components={components}>
-                            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+                            <MDXRenderer
+                                type={data.mdx.fields.sourceName}
+                                post={data.mdx.slug?.replace(/\/$/, "")}
+                            >
+                                {data.mdx.body}
+                            </MDXRenderer>
                         </MDXProvider>
                     </div>
                 </div>
@@ -129,6 +143,10 @@ export default function porfolio({
 export const query = graphql`
     query PortfolioQuery($slug: String!) {
         mdx(fields: { slug: { eq: $slug } }) {
+            fields {
+                sourceName
+            }
+            slug
             body
             frontmatter {
                 title

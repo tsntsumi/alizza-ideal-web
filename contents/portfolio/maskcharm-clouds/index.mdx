@@ -106,8 +106,8 @@ credit: Photo by <a href="https://unsplash.com/@insvezia?utm_source=unsplash&utm
 ただいまミンネで販売しています。
 
 <center>
-    <Button type="button"
-		label={`ミンネでマスクチャームを見る`}
+   <Button type="button"
+     label={`ミンネでマスクチャームを見る`}
 		title={"ミンネで見てみる"}
 		iconRight={<ArrowRight />} >
 		<Button
@@ -116,8 +116,13 @@ credit: Photo by <a href="https://unsplash.com/@insvezia?utm_source=unsplash&utm
 		/>
     </Button>
     {' '}
-	<p>また、以下のボタンから、本サイトでご購入いただいた方には、特別価格１割引にてご提供しています。</p>
-	<ItemProduct skuid='price_1J7dSxFI0fllSO6vKLR56jTD' />
+  <p className="text-justify mx-1/10">
+    また、以下のボタンから、本サイトでご購入いただいた方には、
+    特別価格１割引にてご提供しています。</p>
+
+  <ItemProduct
+	price="price_1J7dSxFI0fllSO6vKLR56jTD"
+	testPrice="price_1J7dSLFI0fllSO6vb56BJMzu" />
 </center>
 
 <Row>

@@ -37,7 +37,7 @@ const plugins = [
         resolve: `gatsby-source-stripe`,
         options: {
             objects: ["Price"],
-            secretKey: process.env.GATSBY_STRIPE_SECRET_KEY,
+            secretKey: process.env.STRIPE_SECRET_KEY,
             donloadFiles: false,
         },
     },
