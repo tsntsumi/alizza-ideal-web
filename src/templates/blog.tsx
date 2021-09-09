@@ -102,7 +102,12 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                 </div>
                 <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mx-auto mt-12 text-justify post-content">
                     <MDXProvider components={components}>
-                        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+                        <MDXRenderer
+                            type={data.mdx.fields.sourceName}
+                            post={data.mdx.slug?.replace(/\/$/, "")}
+                        >
+                            {data.mdx.body}
+                        </MDXRenderer>
                     </MDXProvider>
                 </div>
                 <div className="comments mt-8">
@@ -119,6 +124,10 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
 export const query = graphql`
     query BlogQuery($slug: String!) {
         mdx(fields: { slug: { eq: $slug } }) {
+            fields {
+                sourceName
+            }
+            slug
             body
             frontmatter {
                 author
