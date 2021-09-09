@@ -7,6 +7,7 @@ import remarkHtml from "remark-html"
 import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
+import { Avatar } from "../components/Avatar"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { FileImage } from "../components/file-image"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -25,21 +26,23 @@ const components = {
     ArrowUpCircle: ArrowUpCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
-    Avatar: props => (
-        <FileImage
-            name={props.name || "avatar.png"}
-            type={props.type || "images"}
-            post={props.post || ""}
-            {...props}
-        />
-    ),
+    Avatar: ({ name, type, post, ...props }) => {
+        return (
+            <Avatar
+                name={name || "avatar.png"}
+                type={type || "images"}
+                post={post || ""}
+                {...props}
+            />
+        )
+    },
     Col: Col,
     Row: Row,
     CtaButton: CtaButton,
     Offer: Offer,
     Sticky: Sticky,
     Squeeze: Squeeze,
-    FileImage: props => <FileImage {...props} />,
+    FileImage: FileImage,
 }
 
 export default function landingpage({

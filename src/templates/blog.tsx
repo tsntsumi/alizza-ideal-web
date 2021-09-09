@@ -10,6 +10,7 @@ import remarkHtml from "remark-html"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
+import { Avatar } from "../components/Avatar"
 import { BlogQuery } from "./__generated__/BlogQuery"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
@@ -28,14 +29,16 @@ const components = {
     ArrowRight: ArrowRight,
     ArrowUp: ArrowUp,
     ArrowUpCircle: ArrowUpCircle,
-    Avatar: props => (
-        <FileImage
-            name={props.name || "avatar.png"}
-            type={props.type || "images"}
-            post={props.post || ""}
-            {...props}
-        />
-    ),
+    Avatar: ({ name, type, post, ...props }) => {
+        return (
+            <Avatar
+                name={name || "avatar.png"}
+                type={type || "images"}
+                post={post || ""}
+                {...props}
+            />
+        )
+    },
     Col: Col,
     CtaButton: CtaButton,
     ItemProduct: ItemProduct,

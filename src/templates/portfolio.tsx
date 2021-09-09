@@ -6,6 +6,7 @@ import remarkHtml from "remark-html"
 import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
+import { Avatar } from "../components/Avatar"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CartProvider } from "use-shopping-cart"
@@ -21,14 +22,16 @@ import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
 
 const components = {
-    Avatar: props => (
-        <FileImage
-            name={props.name || "avatar.png"}
-            type={props.type || "images"}
-            post={props.post || ""}
-            {...props}
-        />
-    ),
+    Avatar: ({ name, type, post, ...props }) => {
+        return (
+            <Avatar
+                name={name || "avatar.png"}
+                type={type || "images"}
+                post={post || ""}
+                {...props}
+            />
+        )
+    },
     ArrowDown: ArrowDown,
     ArrowDownCircle: ArrowDownCircle,
     ArrowLeft: ArrowLeft,
@@ -39,13 +42,10 @@ const components = {
     Col: Col,
     CtaButton: CtaButton,
     FileImage: props => <FileImage {...props} />,
-    ItemProduct: props => (
+    ItemProduct: ({ price, testPrice, ...props }) => (
         <ItemProduct
-            skuid={
-                process.env.NODE_ENV === "development"
-                    ? props.testPrice
-                    : props.price
-            }
+            skuid={process.env.NODE_ENV === "development" ? testPrice : price}
+            {...props}
         />
     ),
     Offer: Offer,

@@ -12,18 +12,21 @@ import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { remark } from "remark"
+import { Avatar } from "../components/Avatar"
 
 const components = {
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
-    Avatar: props => (
-        <FileImage
-            name={props.name || "avatar.png"}
-            type={props.type || "images"}
-            post={props.post || ""}
-            {...props}
-        />
-    ),
+    Avatar: ({ name, type, post, ...props }) => {
+        return (
+            <Avatar
+                name={name || "avatar.png"}
+                type={type || "images"}
+                post={post || ""}
+                {...props}
+            />
+        )
+    },
     Button: Button,
     CtaButton: CtaButton,
     code: CodeBlock,
