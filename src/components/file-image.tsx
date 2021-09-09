@@ -69,7 +69,7 @@ export const FileImage = props => {
         )
     }
 
-    const Image = () => {
+    const Image = props => {
         const isSvg = name.match(/\.svg$/i)
         const edges = isSvg ? query.allFile.edges : query.allImageSharp.edges
         const found = edges.find(edge => {
@@ -85,11 +85,11 @@ export const FileImage = props => {
         if (!found) {
             return <NoImage />
         } else if (isSvg) {
-            return <img src={found.node.publicURL} alt={alt} />
+            return <img src={found.node.publicURL} alt={alt} {...props} />
         } else {
             const image = getImage(found.node.gatsbyImageData)
 
-            return <GatsbyImage image={image} alt={alt} />
+            return <GatsbyImage image={image} alt={alt} {...props} />
         }
     }
 

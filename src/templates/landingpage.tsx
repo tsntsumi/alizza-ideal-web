@@ -30,6 +30,7 @@ const components = {
             name={props.name || "avatar.png"}
             type={props.type || "images"}
             post={props.post || ""}
+            {...props}
         />
     ),
     Col: Col,

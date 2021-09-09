@@ -1,7 +1,6 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { graphql, PageProps } from "gatsby"
-import Avatar from "../components/Avatar"
 import Comments from "../components/comments"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ItemProduct from "../components/item-product"
@@ -29,7 +28,14 @@ const components = {
     ArrowRight: ArrowRight,
     ArrowUp: ArrowUp,
     ArrowUpCircle: ArrowUpCircle,
-    Avatar: Avatar,
+    Avatar: props => (
+        <FileImage
+            name={props.name || "avatar.png"}
+            type={props.type || "images"}
+            post={props.post || ""}
+            {...props}
+        />
+    ),
     Col: Col,
     CtaButton: CtaButton,
     ItemProduct: ItemProduct,

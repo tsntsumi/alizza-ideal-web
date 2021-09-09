@@ -21,6 +21,7 @@ const components = {
             name={props.name || "avatar.png"}
             type={props.type || "images"}
             post={props.post || ""}
+            {...props}
         />
     ),
     Button: Button,
