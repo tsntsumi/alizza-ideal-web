@@ -238,9 +238,7 @@ export const query = graphql`
                         description
                         image {
                             childImageSharp {
-                                fluid(maxWidth: 1000) {
-                                    ...GatsbyImageSharpFluid
-                                }
+                                gatsbyImageData(width: 1000)
                             }
                         }
                     }
@@ -263,9 +261,7 @@ export const query = graphql`
                         date(formatString: "DD MMMM YYYY")
                         image {
                             childImageSharp {
-                                fluid(maxWidth: 1000) {
-                                    ...GatsbyImageSharpFluid
-                                }
+                                gatsbyImageData(width: 1000)
                             }
                         }
                     }

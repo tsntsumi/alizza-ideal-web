@@ -5,6 +5,7 @@ import remarkHtml from "remark-html"
 import { Button } from "./ui"
 import { remark } from "remark"
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const CheckoutNow = props => {
     const { product, children } = props
@@ -64,6 +65,8 @@ export const ItemProduct = ({ skuid }) => {
         images: query.stripePrice.product.images,
     }
 
+    const image = getImage(product.images)
+
     const price = formatCurrencyString({
         value: product.price,
         currency: product.currency,
@@ -77,9 +80,11 @@ export const ItemProduct = ({ skuid }) => {
                     "focused"}`}
             >
                 <div className="imag">
-                    <img
-                        src={product.images}
+                    <GatsbyImage
+                        image={image}
                         alt={product.name}
+                        placeholder="blurred"
+                        layout="fixed"
                         className="w-full"
                     />
                 </div>

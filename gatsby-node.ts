@@ -2,6 +2,11 @@ import { createFilePath } from "gatsby-source-filesystem"
 import { GatsbyNode, graphql } from "gatsby"
 import path from "path"
 
+const sharp = require("sharp")
+
+sharp.cache(false)
+sharp.simd(false)
+
 export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
     node,
     getNode,

@@ -90,7 +90,7 @@ export default ({
             <Head data={query} />
             <SEO {...seo} />
             <div className={`wrapper ${themes[theme].name}`}>
-                <div className="text-color-default bg-bg px-4 md:px-8 lg:px-16">
+                <div className="text-color-default bg-bg px-4 md:px-8 lfg:px-16 xl:px-40">
                     {children}
                     <Footer />
                 </div>

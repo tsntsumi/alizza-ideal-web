@@ -3,7 +3,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { graphql, PageProps } from "gatsby"
 import Avatar from "../components/Avatar"
 import Comments from "../components/comments"
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ItemProduct from "../components/item-product"
 import Layout from "../components/layout"
 import recommended from "remark-preset-lint-recommended"
@@ -20,6 +20,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Sticky from "../components/Sticky"
 import { Row, Col } from "../components/shortcodes/index"
 import { remark } from "remark"
+import { Squeeze } from "../components/squeeze"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -37,12 +38,6 @@ const components = {
     Row: Row,
     Sticky: Sticky,
     code: CodeBlock,
-    h1: props => <h1 {...props} className="text-color-1" />,
-    h2: props => <h2 {...props} className="text-color-1" />,
-    h3: props => <h3 {...props} className="text-color-1" />,
-    h4: props => <h4 {...props} className="text-color-1" />,
-    h5: props => <h5 {...props} className="text-color-1" />,
-    h6: props => <h6 {...props} className="text-color-1" />,
 }
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
@@ -57,6 +52,8 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.description ?? "")
         .toString()
+    const banner = getImage(data.mdx.frontmatter.banner)
+
     return (
         <Layout
             seo={{
@@ -68,10 +65,9 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
         >
             <div className="md:px-4 mt-12 py-6 md:w-11/12 mx-auto">
                 <div className="mx-auto relative">
-                    <Img
-                        fluid={
-                            data.mdx.frontmatter.banner.childImageSharp.fluid
-                        }
+                    <GatsbyImage
+                        image={banner}
+                        alt={data.mdx.frontmatter.title}
                     />
                     <div
                         className="text-right text-xs"
@@ -130,13 +126,17 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
+                image {
+                    publicURL
+                }
                 banner {
                     publicURL
                     childImageSharp {
-                        fluid(maxWidth: 1920) {
-                            srcSet
-                            ...GatsbyImageSharpFluid
-                        }
+                        gatsbyImageData(
+                            width: 1920
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                        )
                         id
                     }
                 }

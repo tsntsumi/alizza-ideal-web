@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react"
-import Img from "gatsby-image"
 import Parallax from "../utils/parallax"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
@@ -7,6 +6,7 @@ import { ArrowRight } from "react-feather"
 import { Button } from "./ui"
 import { IndexPageQuery_portfolio_edges_node } from "../pages/__generated__/IndexPageQuery"
 import { remark } from "remark"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 type ItemPortfolioProps = {
     data: IndexPageQuery_portfolio_edges_node
@@ -22,6 +22,7 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
+    const image = getImage(data.frontmatter.image)
 
     const getWindowHeight = () => {
         const w = window
@@ -78,11 +79,9 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
                                 transform: `translate(0px,${transform.current}px)`,
                             }}
                         >
-                            <Img
-                                fluid={
-                                    data.frontmatter.image.childImageSharp.fluid
-                                }
-                                alt={data.frontmatter.title}
+                            <GatsbyImage
+                                image={image}
+                                alt={data.frontmatter.image}
                             />
                         </div>
                     </div>

@@ -47,8 +47,8 @@ credit: <a href="https://www.vecteezy.com/free-vector/cartoon">
   写真を真面目な信頼のおけるものに変更する
 </Sticky>
 
-<div className="float-left mx-8 mb-4">
-  <Avatar diameter="7rem" url="/images/avatar.png" />
+<div className="w-24 float-left mr-8">
+  <Avatar />
 </div>
 
 ## はじめまして！
@@ -148,8 +148,8 @@ Webサイトを作り、副業で高収益を上げている個人の方が数�
 その時に、せめて Webサイトがあればと、その必要性を痛感しました。
 
 <div className="float-right w-1/4 h-auto lg:w-1/5 ml-4 mt-0">
-     <img alt="Marketing books"
-          src="/images/marketing-books.jpg" />
+     <FileImage alt="Marketing books"
+            name="marketing-books.jpg" {...props}/>
 </div>
 
 そこで私は、商品を買ってもらうにはどうすればよいか、
@@ -333,28 +333,24 @@ Amazon のライバルが増えるということです。
 
 <div className="p-0 my-auto flex flex-row flex-wrap flex-auto justify-around">
 <div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/4 flex-glow flex-shrink">
-<img className="mt-0"
-     alt="集客型サイトのデザイン例"
-     src="/images/website-samples-acquire.jpg" />
-	 <div className="mb-8 text-center font-bold font-sans">集客型サイトのデザイン例</div>
+	<FileImage className="mt-0"
+		alt="集客型サイトのデザイン例"
+		name="website-samples-acquire.jpg" {...props} />
 </div>
 <div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/4 flex-glow flex-shrink">
-<img className="mt-0"
-     alt="ECサイトの例（観葉植物）"
-     src="/images/website-samples-plants.jpg" />
-	 <div className="mb-8 text-center font-bold font-sans">ECサイトのデザイン例（観葉植物販売）</div>
+<FileImage className="mt-0"
+	   alt="ECサイトの例（観葉植物）"
+           name="website-samples-plants.jpg" {...props} />
 </div>
 <div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/4 flex-glow flex-shrink">
-<img className="mt-0"
-     alt="ECサイトのデザイン例（ケーキショップ）"
-     src="/images/website-samples-cake-shop.jpg" />
-	 <div className="mb-8 text-center font-bold font-sans">ECサイトのデザイン例（ケーキショップ）</div>
+     <FileImage className="mt-0"
+		 alt="ECサイトのデザイン例（ケーキショップ）"
+		 name="website-samples-cake-shop.jpg" {...props} />
 </div>
 <div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/2 flex-glow flex-shrink">
-<img className="mt-0"
-     alt="ECサイトのデザイン例（アパレル）"
-     src="/images/website-samples-apparel.jpg" />
-	 <div className="mb-8 text-center font-bold font-sans">ECサイトのデザイン例（アパレル販売）</div>
+	<FileImage className="mt-0"
+		alt="ECサイトのデザイン例（アパレル）"
+		name="website-samples-apparel.jpg" {...props} />
 </div>
 </div>
 
@@ -382,12 +378,15 @@ Amazon のライバルが増えるということです。
 
 １ヶ月の中央値は、約４．１万円でした。
 
-import hours from "./svg/lp-website-houre.svg"
-import revenue from "./svg/lp-website-revenue.svg"
-
 <div className="flex flex-wrap flex-auto justify-around">
-<div className="w-1/2 xs:w-full lg:w-2/5"><img src={hours} /></div>
-<div className="w-1/2 xs:w-full lg:w-2/5"><img src={revenue} /></div>
+<div className="w-1/2 xs:w-full lg:w-2/5">
+	<FileImage alt="副業で１ヶ月にかけた平均時間"
+		name="lp-website-houre.svg" {...props} />
+</div>
+<div className="w-1/2 xs:w-full lg:w-2/5">
+	<FileImage alt="副業１ヶ月の収入の中央地"
+		name="lp-website-revenue.svg" {...props} />
+</div>
 </div>
 
 残念ながら、平均的な人は、毎日１時間を副業に費やしても、
@@ -583,7 +582,7 @@ import revenue from "./svg/lp-website-revenue.svg"
 この Webサイト制作サービスで作ったあなたのサイトを使って、
 あなたの商品・サービスが、より多くのお客さんに広まることをお祈りいたします。
 
-<center><large>Alizza Ideal 堤　紀久夫</large></center>
+<center>Alizza Ideal 堤　紀久夫</center>
 
 * お預かりいたしましたお客様の情報などをご本人の意志、および許可なく企業、
   または第三者へ提出することは一切ありません。

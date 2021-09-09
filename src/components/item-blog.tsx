@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import Img from "gatsby-image"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowRight } from "react-feather"
@@ -9,6 +8,7 @@ import { Calendar } from "react-feather"
 import { IndexPageQuery_blog_edges_node } from "../pages/__generated__/IndexPageQuery"
 import { Link } from "gatsby"
 import { remark } from "remark"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 type ItemBlogProps =
     | BlogListQuery_allMdx_edges_node
@@ -20,6 +20,7 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps }> = ({ data }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
+    const image = getImage(data.frontmatter.image)
 
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
@@ -34,9 +35,9 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps }> = ({ data }) => {
                     onBlur={() => changeFocused(false)}
                 >
                     <div className="image">
-                        <Img
-                            fluid={data.frontmatter.image.childImageSharp.fluid}
-                            alt={data.frontmatter.title}
+                        <GatsbyImage
+                            image={image}
+                            alt={data.frontmatter.image}
                             className="w-full"
                         />
                     </div>

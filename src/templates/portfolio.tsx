@@ -1,39 +1,49 @@
 import React from "react"
-import { MDXProvider } from "@mdx-js/react"
-import { graphql, PageProps } from "gatsby"
-import Avatar from "../components/Avatar"
-import Img from "gatsby-image"
-import { ItemProduct } from "../components/item-product"
 import Layout from "../components/layout"
+import Sticky from "../components/Sticky"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
+import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowLeft, ArrowRight } from "react-feather"
+import { ArrowUp, ArrowUpCircle } from "react-feather"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CartProvider } from "use-shopping-cart"
 import { CodeBlock } from "../components/CodeBlock"
+import { GatsbyImage, srcImage } from "gatsby-plugin-image"
+import { ItemProduct } from "../components/item-product"
+import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { PortfolioQuery } from "./__generated__/PortfolioQuery"
 import { Row, Col } from "../components/shortcodes/index"
+import { Squeeze } from "../components/squeeze"
+import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
 
 const components = {
-    Offer: Offer,
-    CtaButton: CtaButton,
+    Avatar: props => (
+        <FileImage
+            name={props.name || "avatar.png"}
+            type={props.type || "images"}
+            post={props.post || ""}
+        />
+    ),
+    ArrowDown: ArrowDown,
+    ArrowDownCircle: ArrowDownCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
-    Avatar: Avatar,
+    ArrowUp: ArrowUp,
+    ArrowUpCircle: ArrowUpCircle,
     Button: Button,
-    code: CodeBlock,
-    Row: Row,
     Col: Col,
+    CtaButton: CtaButton,
+    FileImage: props => <FileImage {...props} />,
     ItemProduct: ItemProduct,
-    h1: props => <h1 {...props} className="text-color-1" />,
-    h2: props => <h2 {...props} className="text-color-1" />,
-    h3: props => <h3 {...props} className="text-color-1" />,
-    h4: props => <h4 {...props} className="text-color-1" />,
-    h5: props => <h5 {...props} className="text-color-1" />,
-    h6: props => <h6 {...props} className="text-color-1" />,
+    Offer: Offer,
+    Offer: Offer,
+    Squeeze: Squeeze,
+    Sticky: Sticky,
+    code: CodeBlock,
 }
 
 export default function porfolio({
@@ -50,6 +60,7 @@ export default function porfolio({
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.credit ?? "")
         .toString()
+    const banner = getImage(data.mdx.frontmatter.banner)
 
     return (
         <CartProvider
@@ -72,11 +83,9 @@ export default function porfolio({
             >
                 <div className="md:px-4 mt-12 py-6 md:w-11/12 mx-auto">
                     <div className="mx-auto relative">
-                        <Img
-                            fluid={
-                                data.mdx.frontmatter.banner.childImageSharp
-                                    .fluid
-                            }
+                        <GatsbyImage
+                            image={banner}
+                            alt={data.mdx.frontmatter.title}
                         />
                         <div
                             className="text-right text-xs"
@@ -125,13 +134,17 @@ export const query = graphql`
                 title
                 date(formatString: "DD MMMM YYYY")
                 description
+                image {
+                    publicURL
+                }
                 banner {
                     publicURL
                     childImageSharp {
-                        fluid(maxWidth: 1920) {
-                            srcSet
-                            ...GatsbyImageSharpFluid
-                        }
+                        gatsbyImageData(
+                            width: 1920
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                        )
                         id
                     }
                 }

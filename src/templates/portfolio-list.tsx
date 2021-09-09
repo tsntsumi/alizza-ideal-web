@@ -5,15 +5,21 @@ import PortfolioItem from "../components/item-portfolio"
 import Pagination from "../components/pagination"
 import { PortfolioListQuery } from "./__generated__/PortfolioListQuery"
 
-export default function portfolioList({ data, pageContext, location }: PageProps<PortfolioListQuery, {}>) {
-
-
+export default function portfolioList({
+    data,
+    pageContext,
+    location,
+}: PageProps<PortfolioListQuery, {}>) {
     useEffect(() => {
-        window.dispatchEvent(new CustomEvent('scroll'))
+        window.dispatchEvent(new CustomEvent("scroll"))
     }, [])
 
     const portfolioItems = data.allMdx.edges.map((item, i) => (
-        <PortfolioItem data={item.node} key={item.node.id} even={(i + 1) % 2 === 0}/>
+        <PortfolioItem
+            data={item.node}
+            key={item.node.id}
+            even={(i + 1) % 2 === 0}
+        />
     ))
 
     return (
@@ -55,10 +61,7 @@ export const query = graphql`
                         image {
                             publicURL
                             childImageSharp {
-                                fluid(maxWidth: 1920) {
-                                    srcSet
-                                    ...GatsbyImageSharpFluid
-                                }
+                                gatsbyImageData(width: 1920)
                                 id
                             }
                         }
