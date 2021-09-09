@@ -18,16 +18,17 @@ const CheckoutNow = props => {
     } = useShoppingCart()
 
     return (
-        <Button
-            type="button"
+        <button
             disabled={loading}
-            onClick={() => {
+            onClick={e => {
                 clearCart()
                 addItem(product)
                 redirectToCheckout()
             }}
-            title={children}
-        />
+            className={`btn btn-primary ${loading && "disabled"}`}
+        >
+            {children}
+        </button>
     )
 }
 
