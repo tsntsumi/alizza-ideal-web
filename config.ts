@@ -53,10 +53,6 @@ Alizza Ideal (アリザアイデアル) では、Webやメールなどを使っ�
             name: "特定商取引法について",
             url: "/specified-commercial-transactions-act",
         },
-        {
-            name: "GitHub",
-            url: "https://github.com/tsntsumi/",
-        },
     ],
     social: [
         {
