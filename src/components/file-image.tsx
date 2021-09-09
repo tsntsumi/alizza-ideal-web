@@ -11,8 +11,7 @@ type FileImageProps = {
     className?: string /* className style classes */
 }
 
-export const FileImage = props => {
-    const { name, alt, type, post, title, className } = props
+export const FileImage = ({ title, className, ...rest }) => {
     const query = useStaticQuery(graphql`
         {
             allFile {
@@ -33,6 +32,7 @@ export const FileImage = props => {
                             ... on File {
                                 base
                                 ext
+                                name
                                 sourceInstanceName
                                 relativeDirectory
                             }
@@ -61,7 +61,7 @@ export const FileImage = props => {
         )
     }
 
-    const NoImage = () => {
+    const NoImage = ({ name }) => {
         return (
             <div className="bg-error text-white">
                 ファイル {name} が見つかりません
@@ -69,7 +69,7 @@ export const FileImage = props => {
         )
     }
 
-    const Image = props => {
+    const Image = ({ name, alt, type, post, ...props }) => {
         const isSvg = name.match(/\.svg$/i)
         const edges = isSvg ? query.allFile.edges : query.allImageSharp.edges
         const found = edges.find(edge => {
@@ -77,25 +77,31 @@ export const FileImage = props => {
             return (
                 node &&
                 node.base === name &&
-                node.relativeDirectory === post &&
+                (post === "" || node.relativeDirectory === post) &&
                 node.sourceInstanceName === type
             )
         })
 
         if (!found) {
-            return <NoImage />
+            return <NoImage name={name} />
         } else if (isSvg) {
             return <img src={found.node.publicURL} alt={alt} {...props} />
         } else {
             const image = getImage(found.node.gatsbyImageData)
 
-            return <GatsbyImage image={image} alt={alt} {...props} />
+            return (
+                <GatsbyImage
+                    image={image}
+                    alt={alt || found.node.parent.name}
+                    {...props}
+                />
+            )
         }
     }
 
     return (
-        <div className={`$className`}>
-            <Image />
+        <div className={className}>
+            <Image {...rest} />
             <Title title={title} />
         </div>
     )

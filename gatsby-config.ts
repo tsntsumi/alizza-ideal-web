@@ -13,8 +13,6 @@ const plugins = [
         resolve: `gatsby-plugin-sharp`,
         options: {
             defaults: {
-                quality: 70,
-                formats: ["auto", "webp", "avif"],
                 placeholder: "blurred",
             },
         },
