@@ -46,6 +46,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
                             slug
                             sourceName
                         }
+                        slug
                         frontmatter {
                             template
                         }
@@ -96,6 +97,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
                 component: path.resolve("./src/templates/" + template + ".tsx"),
                 context: {
                     slug: node.fields.slug,
+                    relativeDirectory: node.slug.replace(/\/$/, ""),
+                    sourceInstanceName: node.fields.sourceName,
                 },
             })
         })

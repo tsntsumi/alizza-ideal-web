@@ -1,9 +1,9 @@
 import React from "react"
 import { FileImage } from "./file-image"
 
-export const Avatar = ({ name, type, post, ...rest }) => (
+export const Avatar = ({ base, type, post, ...rest }) => (
     <FileImage
-        name={name || "avatar.png"}
+        base={base || "avatar.png"}
         type={type || "images"}
         post={post || ""}
         {...rest}

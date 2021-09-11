@@ -22,16 +22,7 @@ import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
 
 const components = {
-    Avatar: ({ name, type, post, ...props }) => {
-        return (
-            <Avatar
-                name={name || "avatar.png"}
-                type={type || "images"}
-                post={post || ""}
-                {...props}
-            />
-        )
-    },
+    Avatar: Avatar,
     ArrowDown: ArrowDown,
     ArrowDownCircle: ArrowDownCircle,
     ArrowLeft: ArrowLeft,
@@ -71,6 +62,16 @@ export default function porfolio({
         .processSync(data.mdx.frontmatter.credit ?? "")
         .toString()
     const banner = getImage(data.mdx.frontmatter.banner)
+    const images = data.allFile.edges.reduce((acc, edge) => {
+        acc[edge.node?.base] = {
+            image: edge.node.childImageSharp?.gatsbyImageData,
+            base: edge.node?.base,
+            name: edge.node?.name,
+            ext: edge.node?.ext,
+            publicURL: edge.node?.publicURL,
+        }
+        return acc
+    }, {})
 
     return (
         <CartProvider
@@ -127,10 +128,7 @@ export default function porfolio({
                     </div>
                     <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mt-4 md:mt-6 mx-auto lg:mt-12 text-justify post-content">
                         <MDXProvider components={components}>
-                            <MDXRenderer
-                                type={data.mdx.fields.sourceName}
-                                post={data.mdx.slug?.replace(/\/$/, "")}
-                            >
+                            <MDXRenderer images={images}>
                                 {data.mdx.body}
                             </MDXRenderer>
                         </MDXProvider>
@@ -142,7 +140,11 @@ export default function porfolio({
 }
 
 export const query = graphql`
-    query PortfolioQuery($slug: String!) {
+    query PortfolioQuery(
+        $slug: String!
+        $relativeDirectory: String!
+        $sourceInstanceName: String!
+    ) {
         mdx(fields: { slug: { eq: $slug } }) {
             fields {
                 sourceName
@@ -166,6 +168,32 @@ export const query = graphql`
                         )
                         id
                     }
+                }
+            }
+        }
+        allFile: allFile(
+            filter: {
+                ext: { ne: ".mdx" }
+                sourceInstanceName: { in: [$sourceInstanceName, "images"] }
+                relativeDirectory: { in: [$relativeDirectory, ""] }
+            }
+        ) {
+            edges {
+                node {
+                    relativeDirectory
+                    sourceInstanceName
+                    childImageSharp {
+                        gatsbyImageData(
+                            breakpoints: [98, 128, 256, 512]
+                            placeholder: BLURRED
+                            layout: FULL_WIDTH
+                            quality: 8
+                        )
+                    }
+                    base
+                    name
+                    ext
+                    publicURL
                 }
             }
         }

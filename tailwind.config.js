@@ -1,5 +1,5 @@
 const plugin = require("tailwindcss/plugin")
-const _ = require("lodash");
+const _ = require("lodash")
 
 const gradient = plugin(function({ addUtilities, e, theme, variants }) {
     const gradients = theme("gradients", {})
@@ -14,9 +14,13 @@ const gradient = plugin(function({ addUtilities, e, theme, variants }) {
     addUtilities(utilities, gradientVariants)
 })
 
-
 module.exports = {
-    purge: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
+    purge: [
+        "./src/**/*.js",
+        "./src/**/*.jsx",
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+    ],
     theme: {
         gradients: theme => ({
             primary: [theme("colors.primary"), theme("colors.secondary")],
@@ -30,7 +34,7 @@ module.exports = {
                 "color-2": "#ffcc99",
                 border: "#718096",
                 primary: "#f55555",
-                medium: "#222"
+                medium: "#222",
             },
         },
         colors: {
@@ -49,20 +53,19 @@ module.exports = {
             black: "#000",
             transparent: "rgba(0,0,0,0)",
             error: "#ef5350",
-            success: "#8bc34a"
+            red: "#c53030",
+            success: "#8bc34a",
         },
         extend: {
             fontSize: {
-                '7xl': '5rem'
+                "7xl": "5rem",
             },
             spacing: {
-                '1px': '1px',
-                '2px': '2px'
-            }
+                "1px": "1px",
+                "2px": "2px",
+            },
         },
     },
     variants: {},
     plugins: [require(`tailwind-theme-switcher`), gradient],
 }
-
-

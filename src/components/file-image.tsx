@@ -2,109 +2,60 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-type FileImageProps = {
-    name: string /* base name of image file */
-    alt: string /* alt text for image object */
-    type?: string /* dir name under contents -- blog, portfolio, landingpage, ... */
-    post?: string /* sub dir name under type dir -- post dir of blog and others */
-    title?: string /* title for display under the image */
-    className?: string /* className style classes */
-}
+export const FileImage = props => {
+    const { base, images, alt, ...rest } = props
 
-export const FileImage = ({ title, className, ...rest }) => {
-    const query = useStaticQuery(graphql`
-        {
-            allFile {
-                edges {
-                    node {
-                        base
-                        ext
-                        relativeDirectory
-                        sourceInstanceName
-                        publicURL
-                    }
-                }
-            }
-            allImageSharp {
-                edges {
-                    node {
-                        parent {
-                            ... on File {
-                                base
-                                ext
-                                name
-                                sourceInstanceName
-                                relativeDirectory
-                            }
-                        }
-                        gatsbyImageData(
-                            layout: FULL_WIDTH
-                            placeholder: BLURRED
-                        )
-                    }
-                }
-            }
-        }
-    `)
-
-    const Title = ({ title }) => {
-        if (!title) {
-            return ""
-        }
+    if (!base) {
         return (
-            <div
-                className="mx-auto px-auto text-center \
-                text-sm font-suns font-bold"
-            >
-                {title}
+            <div className={rest.className}>
+                <div className="bg-error text-white">
+                    ファイル名が指定されていません。 ファイル名を base
+                    タグで指定しているか確認してください。
+                </div>
+            </div>
+        )
+    }
+    if (!images) {
+        return (
+            <div className={rest.className}>
+                <div className="bg-error text-white">
+                    イメージ一覧を取り出せませんでした。 FileImage
+                    タグの引数に「props.images」を したか確認してください。
+                </div>
+            </div>
+        )
+    }
+    if (!images[base]) {
+        return (
+            <div className={rest.className}>
+                <div className="bg-error text-white">
+                    {`「${base}」というファイルが見つかりません。
+                    ファイル名を間違えていないか確認してください。`}
+                </div>
             </div>
         )
     }
 
-    const NoImage = ({ name }) => {
+    if (images[base]?.image) {
         return (
-            <div className="bg-error text-white">
-                ファイル {name} が見つかりません
-            </div>
+            <GatsbyImage
+                image={images[base].image}
+                alt={alt || base}
+                {...rest}
+            />
         )
-    }
-
-    const Image = ({ name, alt, type, post, ...props }) => {
-        const isSvg = name.match(/\.svg$/i)
-        const edges = isSvg ? query.allFile.edges : query.allImageSharp.edges
-        const found = edges.find(edge => {
-            const node = isSvg ? edge.node : edge.node?.parent
-            return (
-                node &&
-                node.base === name &&
-                (post === "" || node.relativeDirectory === post) &&
-                node.sourceInstanceName === type
-            )
-        })
-
-        if (!found) {
-            return <NoImage name={name} />
-        } else if (isSvg) {
-            return <img src={found.node.publicURL} alt={alt} {...props} />
-        } else {
-            const image = getImage(found.node.gatsbyImageData)
-
-            return (
-                <GatsbyImage
-                    image={image}
-                    alt={alt || found.node.parent.name}
-                    {...props}
+    } else if (images[base].ext === ".svg") {
+        const { className, ...imgProps } = rest
+        return (
+            <div className={className}>
+                <img
+                    alt={alt || base}
+                    src={images[base]?.publicURL}
+                    {...imgProps}
                 />
-            )
-        }
+            </div>
+        )
     }
-
-    return (
-        <div className={className}>
-            <Image {...rest} />
-            <Title title={title} />
-        </div>
-    )
 }
 
 export default FileImage

@@ -15,6 +15,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
+import { StaticImage } from "gatsby-plugin-image"
 import { getImage } from "gatsby-plugin-image"
 import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
@@ -26,16 +27,7 @@ const components = {
     ArrowUpCircle: ArrowUpCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
-    Avatar: ({ name, type, post, ...props }) => {
-        return (
-            <Avatar
-                name={name || "avatar.png"}
-                type={type || "images"}
-                post={post || ""}
-                {...props}
-            />
-        )
-    },
+    Avatar: Avatar,
     Col: Col,
     Row: Row,
     CtaButton: CtaButton,
@@ -61,6 +53,16 @@ export default function landingpage({
         .processSync(data.mdx.frontmatter.description)
         .toString()
     const banner = getImage(data.mdx.frontmatter.banner)
+    const images = data.allFile.edges.reduce((acc, edge) => {
+        acc[edge.node?.base] = {
+            image: edge.node.childImageSharp?.gatsbyImageData,
+            base: edge.node?.base,
+            name: edge.node?.name,
+            ext: edge.node?.ext,
+            publicURL: edge.node?.publicURL,
+        }
+        return acc
+    }, {})
 
     return (
         <Layout
@@ -99,10 +101,7 @@ export default function landingpage({
                 </div>
                 <div className="post-content clear-both pb-12 text-justify">
                     <MDXProvider components={components}>
-                        <MDXRenderer
-                            type={data.mdx.fields.sourceName}
-                            post={data.mdx.slug?.replace(/\/$/, "")}
-                        >
+                        <MDXRenderer images={images}>
                             {data.mdx.body}
                         </MDXRenderer>
                     </MDXProvider>
@@ -113,8 +112,12 @@ export default function landingpage({
 }
 
 export const query = graphql`
-    query LandingPageQuery($slug: String!) {
-        mdx(fields: { slug: { eq: $slug } }) {
+    query LandingPageQuery(
+        $slug: String!
+        $relativeDirectory: String!
+        $sourceInstanceName: String!
+    ) {
+        mdx: mdx(fields: { slug: { eq: $slug } }) {
             fields {
                 sourceName
             }
@@ -138,6 +141,32 @@ export const query = graphql`
                         )
                         id
                     }
+                }
+            }
+        }
+        allFile: allFile(
+            filter: {
+                ext: { ne: ".mdx" }
+                sourceInstanceName: { in: [$sourceInstanceName, "images"] }
+                relativeDirectory: { in: [$relativeDirectory, ""] }
+            }
+        ) {
+            edges {
+                node {
+                    relativeDirectory
+                    sourceInstanceName
+                    childImageSharp {
+                        gatsbyImageData(
+                            breakpoints: [98, 128, 256, 512]
+                            placeholder: BLURRED
+                            layout: FULL_WIDTH
+                            quality: 8
+                        )
+                    }
+                    base
+                    name
+                    ext
+                    publicURL
                 }
             }
         }

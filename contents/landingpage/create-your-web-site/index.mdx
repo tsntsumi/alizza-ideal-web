@@ -47,7 +47,9 @@ credit: <a href="https://www.vecteezy.com/free-vector/cartoon">
   写真を真面目な信頼のおけるものに変更する
 </Sticky>
 
-<Avatar className="w-12 float-left mr-8"/>
+<div className="w-16 float-left mr-8" >
+  <Avatar {...props} />
+</div>
 
 ## はじめまして！
 
@@ -145,10 +147,7 @@ Webサイトを作り、副業で高収益を上げている個人の方が数�
 
 その時に、せめて Webサイトがあればと、その必要性を痛感しました。
 
-<div className="float-right w-1/4 h-auto lg:w-1/5 ml-4 mt-0">
-  <FileImage alt="Marketing books"
-    name="marketing-books.jpg" {...props}/>
-</div>
+<FileImage base="marketing-books.jpg" alt="Marketing Books" className="float-right ml-8" style={{width:"128px"}} {...props} />
 
 そこで私は、商品を買ってもらうにはどうすればよいか、
 勉強するようになりました。
@@ -329,27 +328,27 @@ Amazon のライバルが増えるということです。
 
 サンプルのWebサイト・デザインを見てご納得ください。
 
-<div className="p-0 my-auto flex flex-row flex-wrap flex-auto justify-around">
-<div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/4 flex-glow flex-shrink">
+<div className="p-0 my-auto flex flex-wrap justify-between">
   <FileImage className="mt-0" 
     alt="集客型サイトのデザイン例"
-	name="website-samples-acquire.jpg" {...props} />
-</div>
-<div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/4 flex-glow flex-shrink">
-  <FileImage className="mt-0"
-    alt="ECサイトの例（観葉植物）"
-    name="website-samples-plants.jpg" {...props} />
-</div>
-<div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/4 flex-glow flex-shrink">
+    className="flex-shrink flex-grow align-center"
+    style={{width: "45%"}}
+    base="website-samples-acquire.jpg" {...props} />
   <FileImage className="mt-0"
     alt="ECサイトのデザイン例（ケーキショップ）"
-    name="website-samples-cake-shop.jpg" {...props} />
-</div>
-<div className="p-0 m-4 w-1/2 md:w-1/3 lg:w-1/2 flex-glow flex-shrink">
+    className="flex-shrink flex-grow align-center"
+    style={{width:"45%"}}
+    base="website-samples-cake-shop.jpg" {...props} />
   <FileImage className="mt-0"
-	alt="ECサイトのデザイン例（アパレル）"
-	name="website-samples-apparel.jpg" {...props} />
-</div>
+    alt="ECサイトの例（観葉植物）"
+    style={{width:"30%"}}
+    className="flex-shrink w-1/3 align-center"
+    base="website-samples-plants.jpg" {...props} />
+  <FileImage className="mt-0"
+    alt="ECサイトのデザイン例（アパレル）"
+    className="flex-shrink align-center"
+    style={{width:"60%"}}
+    base="website-samples-apparel.jpg" {...props} />
 </div>
 
 <Sticky position="right">
@@ -376,15 +375,17 @@ Amazon のライバルが増えるということです。
 
 １ヶ月の中央値は、約４．１万円でした。
 
-<div className="flex flex-wrap flex-auto justify-around">
-<div className="w-1/2 xs:w-full lg:w-2/5">
+<div className="flex flex-wrap w-full my-4 justify-around">
   <FileImage alt="副業で１ヶ月にかけた平均時間"
-	name="lp-website-houre.svg" {...props} />
-</div>
-<div className="w-1/2 xs:w-full lg:w-2/5">
-  <FileImage alt="副業１ヶ月の収入の中央地"
-	name="lp-website-revenue.svg" {...props} />
-</div>
+	base="lp-website-houre.svg"
+	style={{width:"100%"}}
+	className="flex-1 align-center"
+	{...props} />
+  <FileImage alt="副業１ヶ月の収入の中央値"
+	base="lp-website-revenue.svg"
+	style={{width:"100%"}}
+	className="flex-1 text-center"
+	{...props} />
 </div>
 
 残念ながら、平均的な人は、毎日１時間を副業に費やしても、
@@ -543,16 +544,24 @@ Amazon のライバルが増えるということです。
 
 秋分の日の９月２３日までにご契約を決めていただけるなら、先着５名様にかぎり……
 
-<div className="border-4 border-color-1 rounded-3xl w-3/4 mx-auto my-12 p-8 text-center">
-  通常 <span className="text-3xl font-bold line-through text-error"> 150,000 </span> 円
-  のところを
+<div className="px-8 py-4 my-8 mx-4 text-black text-center"
+  style={{
+    borderWidth: "0.5rem",
+    borderRadius: "1rem",
+    borderStyle: "double",
+    borderColor: "#434190",
+    backgroundColor: "#e6fffa"}}>
 
-  <center className="my-8 "><ArrowDownCircle className="bg-color-2 text-white rounded-xl" /><br/> ６０％オフ</center>
+通常 <span className="text-3xl font-black" style={{color: "red"}}> **~~150,000~~** </span> 円のところを
 
-  特別価格 <span className="text-5xl font-black text-color-1"> 60,000 </span> 円
+<ArrowDownCircle style={{width: "5rem", margin: "auto", color: "indigo"}} />
+
+<span className="text-2xl font-bold"> ６０％オフ </span>
+
+<p className="mt-20">特別価格 <span className="text-5xl font-black text-color-1"> 60,000 </span> 円</p>
+
+で、ご契約いただけます。
   
-  
-  で、ご契約いただけます。
 </div>
 
 

@@ -1,26 +1,27 @@
 import React from "react"
-import { MDXProvider } from "@mdx-js/react"
-import { graphql, PageProps } from "gatsby"
 import Comments from "../components/comments"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ItemProduct from "../components/item-product"
 import Layout from "../components/layout"
+import Sticky from "../components/Sticky"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
-import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowDown, ArrowDownCircle } from "react-feather"
+import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
 import { Avatar } from "../components/Avatar"
 import { BlogQuery } from "./__generated__/BlogQuery"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CodeBlock } from "../components/CodeBlock"
+import { FileImage } from "../components/file-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Sticky from "../components/Sticky"
 import { Row, Col } from "../components/shortcodes/index"
-import { remark } from "remark"
 import { Squeeze } from "../components/squeeze"
+import { graphql, PageProps } from "gatsby"
+import { remark } from "remark"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -29,16 +30,7 @@ const components = {
     ArrowRight: ArrowRight,
     ArrowUp: ArrowUp,
     ArrowUpCircle: ArrowUpCircle,
-    Avatar: ({ name, type, post, ...props }) => {
-        return (
-            <Avatar
-                name={name || "avatar.png"}
-                type={type || "images"}
-                post={post || ""}
-                {...props}
-            />
-        )
-    },
+    Avatar: Avatar,
     Col: Col,
     CtaButton: CtaButton,
     ItemProduct: ItemProduct,
@@ -47,6 +39,7 @@ const components = {
     Row: Row,
     Sticky: Sticky,
     code: CodeBlock,
+    FileImage: FileImage,
 }
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
@@ -62,6 +55,16 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
         .processSync(data.mdx.frontmatter.description ?? "")
         .toString()
     const banner = getImage(data.mdx.frontmatter.banner)
+    const images = data.allFile.edges.reduce((acc, edge) => {
+        acc[edge.node?.base] = {
+            image: edge.node.childImageSharp?.gatsbyImageData,
+            base: edge.node?.base,
+            name: edge.node?.name,
+            ext: edge.node?.ext,
+            publicURL: edge.node?.publicURL,
+        }
+        return acc
+    }, {})
 
     return (
         <Layout
@@ -111,10 +114,7 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                 </div>
                 <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mx-auto mt-12 text-justify post-content">
                     <MDXProvider components={components}>
-                        <MDXRenderer
-                            type={data.mdx.fields.sourceName}
-                            post={data.mdx.slug?.replace(/\/$/, "")}
-                        >
+                        <MDXRenderer images={images}>
                             {data.mdx.body}
                         </MDXRenderer>
                     </MDXProvider>
@@ -131,7 +131,11 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
 }
 
 export const query = graphql`
-    query BlogQuery($slug: String!) {
+    query BlogQuery(
+        $slug: String!
+        $relativeDirectory: String!
+        $sourceInstanceName: String!
+    ) {
         mdx(fields: { slug: { eq: $slug } }) {
             fields {
                 sourceName
@@ -157,6 +161,32 @@ export const query = graphql`
                         )
                         id
                     }
+                }
+            }
+        }
+        allFile: allFile(
+            filter: {
+                ext: { ne: ".mdx" }
+                sourceInstanceName: { in: [$sourceInstanceName, "images"] }
+                relativeDirectory: { in: [$relativeDirectory, ""] }
+            }
+        ) {
+            edges {
+                node {
+                    relativeDirectory
+                    sourceInstanceName
+                    childImageSharp {
+                        gatsbyImageData(
+                            breakpoints: [98, 128, 256, 512]
+                            placeholder: BLURRED
+                            layout: FULL_WIDTH
+                            quality: 8
+                        )
+                    }
+                    base
+                    name
+                    ext
+                    publicURL
                 }
             }
         }
