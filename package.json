@@ -22,6 +22,7 @@
     "@stripe/stripe-js": "^1.16.0",
     "airtable": "^0.11.1",
     "apollo-language-server": "^1.26.4",
+    "assert": "^2.0.0",
     "eslint": "^7.32.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-canonical-urls": "^3.13.0",
