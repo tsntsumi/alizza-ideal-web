@@ -39,7 +39,7 @@ export const ItemLandingPage: React.FC<{ data: ItemLandingPageProps }> = ({
                     <div className="image">
                         <GatsbyImage
                             image={image}
-                            alt={data.frontmatter.image}
+                            alt={data.frontmatter.title || "Image"}
                             className="w-full"
                         />
                     </div>
