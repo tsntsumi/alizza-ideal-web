@@ -55,7 +55,7 @@ export default function landingpage({
     const banner = getImage(data.mdx.frontmatter.banner)
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
-            image: edge.node.childImageSharp?.gatsbyImageData,
+            image: getImage(edge.node),
             base: edge.node?.base,
             name: edge.node?.name,
             ext: edge.node?.ext,

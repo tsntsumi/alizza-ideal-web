@@ -9,6 +9,7 @@ const plugins = [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-postcss`,
     {
         resolve: `gatsby-plugin-sharp`,
         options: {
@@ -102,18 +103,6 @@ const plugins = [
                         maxWidth: 1200,
                     },
                 },
-            ],
-        },
-    },
-    {
-        resolve: `gatsby-plugin-postcss`,
-        options: {
-            postCssPlugins: [
-                tailwindcss(tailwindConfig),
-                autoprefixer,
-                ...(process.env.NODE_ENV === `production`
-                    ? [require(`cssnano`)]
-                    : []),
             ],
         },
     },

@@ -86,7 +86,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
                 }
             }
         }
-    `).then(result => {
+    `).then((result) => {
         result.data.all.edges.forEach(({ node }) => {
             let template =
                 node.frontmatter.template === null
