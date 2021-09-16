@@ -13,7 +13,12 @@ export const CodeBlock = (props) => {
             : ""
 
     return (
-        <Highlight {...defaultProps} code={children} language={language}>
+        <Highlight
+            {...defaultProps}
+            code={props.children}
+            language={language}
+            theme={props.theme || theme}
+        >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre
                     className={className}
