@@ -30,6 +30,7 @@ export default ({
     seo,
     navPlaceholder = true,
     location,
+    robots,
 }: LPLayoutProps) => {
     const query = useStaticQuery<LPThemeQuery>(graphql`
         query LPThemeQuery {
@@ -87,7 +88,7 @@ export default ({
 
     return (
         <React.Fragment>
-            <Head data={query} />
+            <Head data={query} robots={robots} />
             <SEO {...seo} />
             <div className={`wrapper ${themes[theme].name}`}>
                 <div className="text-color-default bg-bg px-4 md:px-8 lfg:px-16 xl:px-40">
@@ -102,7 +103,8 @@ export default ({
     )
 }
 
-const Head = ({ data }) => {
+const Head = ({ data, robots }) => {
+    const robotsContent = robots || "noindex, nofollow"
     return (
         <Helmet>
             <link
@@ -114,7 +116,7 @@ const Head = ({ data }) => {
                 href="https://fonts.googleapis.com/css?family=Raleway:500,800&display=swap"
                 rel="stylesheet"
             />
-            <meta name="robots" content="noindex, nofollow" />
+            <meta name="robots" content={robotsContent} />
         </Helmet>
     )
 }
