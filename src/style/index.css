@@ -110,7 +110,7 @@ p {
 
 .btn:before{
     content: "";
-    @apply absolute w-full h-full top-0;
+    @apply absolute w-full h-full top-0 opacity-30;
     left: 100%;
     transition: left 0.25s;
     transition-timing-function: cubic-bezier(1, 2.13, 1, -0.1);
