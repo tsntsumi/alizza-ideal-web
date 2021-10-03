@@ -40,7 +40,6 @@ const components = {
         />
     ),
     Offer: Offer,
-    Offer: Offer,
     Row: Row,
     Squeeze: Squeeze,
     Sticky: Sticky,
