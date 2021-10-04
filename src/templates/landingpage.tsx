@@ -1,6 +1,6 @@
 import React from "react"
+import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout-lp"
-import ReactDOM from "react-dom"
 import Sticky from "../components/Sticky"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
@@ -17,8 +17,8 @@ import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 import { StaticImage } from "gatsby-plugin-image"
 import { getImage } from "gatsby-plugin-image"
-import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
+import { Inquire } from "../components/Inquire"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -35,6 +35,7 @@ const components = {
     Sticky: Sticky,
     Squeeze: Squeeze,
     FileImage: FileImage,
+    Inquire: Inquire,
 }
 
 export default function landingpage({
