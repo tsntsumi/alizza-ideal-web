@@ -39,24 +39,24 @@ const Form: React.FC<{ api: string }> = ({ api }) => {
                                 setFeedback({
                                     4: {
                                         type: "success",
-                                        message: "Your message has been sent.",
+                                        message: "メッセージが送信されました。",
                                     },
                                 })
                             } else {
                                 setFeedback({
                                     4: {
                                         message:
-                                            "There was an error sending the message. Please try again.",
+                                            "メッセージの送信中にエラーが発生しました。もう一度送信してみてください。",
                                     },
                                 })
                             }
                             setTransactionState(false)
                         })
-                        .catch(err => {
+                        .catch((err) => {
                             setFeedback({
                                 4: {
                                     message:
-                                        "There was an error sending the message. Please try again.",
+                                        "メッセージの送信中にエラーが発生しました。もう一度送信してみてください。",
                                 },
                             })
                             setTransactionState(false)
@@ -110,7 +110,8 @@ const Form: React.FC<{ api: string }> = ({ api }) => {
                 label="Message"
                 name="message"
                 type="textarea"
-                onChange={e =>
+                placeholder="メッセージは、１５文字以上入力してください"
+                onChange={(e) =>
                     updateData({
                         message: e.target.value,
                     })
