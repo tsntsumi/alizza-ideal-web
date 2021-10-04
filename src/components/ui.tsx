@@ -93,9 +93,9 @@ const TextInput = ({
         <div
             className={`${
                 focused ? "input focused shadow-2xl" : ""
-            } transition-all duration-300 py-3 lg:p-4 pb-6`}
+            } transition-all duration-300 py-3 lg:p-4`}
         >
-            <p className="text-color-3">{label}</p>
+            <div className="text-color-3 pt-0">{label}</div>
             <div className="bg-gradient-primary p-2px">{elem}</div>
             {footer && <>{footer}</>}
         </div>
