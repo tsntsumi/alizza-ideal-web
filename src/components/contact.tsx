@@ -10,11 +10,12 @@ import { ContactQuery_site_siteMetadata_contact } from "../pages/__generated__/C
 
 type FeedbackState = { [id: number]: { message?: string; type?: string } }
 
-const Form: React.FC<{ api: string }> = ({ api }) => {
+const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
     const [data, changeData] = useState({
         name: "",
         email: "",
         message: "",
+        tag: tag || "Contact",
     })
 
     const [feedback, setFeedback] = useState<FeedbackState>({})
