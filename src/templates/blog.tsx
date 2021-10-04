@@ -179,7 +179,7 @@ export const query = graphql`
                         gatsbyImageData(
                             breakpoints: [98, 128, 256, 512]
                             placeholder: BLURRED
-                            layout: FULL_WIDTH
+                            layout: CONSTRAINED
                             quality: 8
                         )
                     }
