@@ -55,7 +55,7 @@ export default function landingpage({
     const banner = getImage(data.mdx.frontmatter.banner)
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
-            image: getImage(edge.node),
+            image: edge.node.childImageSharp?.gatsbyImageData,
             base: edge.node?.base,
             name: edge.node?.name,
             ext: edge.node?.ext,
@@ -135,7 +135,6 @@ export const query = graphql`
                     publicURL
                     childImageSharp {
                         gatsbyImageData(
-                            width: 1920
                             placeholder: BLURRED
                             formats: [AUTO, WEBP, AVIF]
                         )
@@ -157,9 +156,9 @@ export const query = graphql`
                     sourceInstanceName
                     childImageSharp {
                         gatsbyImageData(
-                            breakpoints: [98, 128, 256, 512]
+                            width: 640
                             placeholder: BLURRED
-                            layout: FULL_WIDTH
+                            layout: CONSTRAINED
                             quality: 8
                         )
                     }

@@ -41,6 +41,8 @@ export const FileImage = props => {
             <GatsbyImage
                 image={images[base].image}
                 alt={alt || base}
+                objectFit="scale-down"
+                objectPosition="50% 50%"
                 {...rest}
             />
         )
