@@ -164,6 +164,11 @@ export const createPages: GatsbyNode["createPages"] = async ({
 }
 
 exports.onCreateWebpackConfig = ({ actions, stage, plugins, getConfig }) => {
+    if (stage === "build-javascript" || stage === "develop") {
+        actions.setWebpackConfig({
+            plugins: [plugins.provide({ process: "process/browser" })],
+        })
+    }
     // override config only during
     // production JS & CSS build
     if (stage === "build-javascript") {
