@@ -98,21 +98,21 @@ const beforeContactFormSubmit = data => {
     if (data.name.trim().length < 2) {
         errors.push({
             code: 1,
-            message: "Enter a name",
+            message: "お名前を入力してください",
         })
     }
 
     if (!data.email.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/)) {
         errors.push({
             code: 2,
-            message: "Enter a valid email address",
+            message: "正しいメールアドレスを入力してください",
         })
     }
 
     if (data.message.trim().length < 15) {
         errors.push({
             code: 3,
-            message: "Enter a message with atleast 15 characters",
+            message: "メッセージは、１５文字以上入力してください。",
         })
     }
 
@@ -148,6 +148,7 @@ const contactFormSubmit = async (api, data) => {
                     Name: data.name,
                     Email: data.email,
                     Message: data.message,
+                    Tag: data.tag,
                 },
             },
         ],
