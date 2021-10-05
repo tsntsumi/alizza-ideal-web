@@ -20,7 +20,8 @@ const SqueezeForm: React.FC<{
     const [lead, changeLead] = useState({
         name: "Jack Landingpage",
         email: "",
-        message: "Request for own Web site",
+        message: "e-mail register",
+        tag: tag || "lead squeezer",
     })
 
     const [feedback, setFeedback] = useState<FeedbackState>({})
@@ -81,7 +82,7 @@ const SqueezeForm: React.FC<{
         >
             <TextInput
                 label="e-mail"
-                placeholder="ただいま準備中。お申し込みできません"
+                placeholder="メールアドレスを入力してください"
                 name="email"
                 type="email"
                 disabled={true}
@@ -107,11 +108,26 @@ const SqueezeForm: React.FC<{
                     iconRight={<ArrowUpCircle />}
                 />
             </div>
+            <div className="py-3 lg:p-4 text-sm">
+                <h4>このボタンを押すと、</h4>
+                <ol>
+                    <li>
+                        １分程度で登録完了メールが届きます。
+                        <br />
+                        届かない場合は、メールアプリのスパムメールフォルダなどに
+                        入っている可能性があります。ご確認ください。
+                    </li>
+                    <li>その後、２４時間以内に正式なメールが届きます。</li>
+                </ol>
+            </div>
         </form>
     )
 }
 
-const Squeeze: React.FC<{ title: string }> = ({ title }) => {
+const Squeeze: React.FC<{
+    ctaTitle: string
+    tag: string
+}> = ({ ctaTitle, tag }) => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -131,7 +147,7 @@ const Squeeze: React.FC<{ title: string }> = ({ title }) => {
             <div className="flex flex-wrap pb-12">
                 {api_url && (
                     <div className="w-full lg:w-2/3 px-4 lg:pl-2 lg:pr-6">
-                        <SqueezeForm api={api_url} title={title} />
+                        <SqueezeForm api={api_url} ctaTitle={ctaTitle} />
                     </div>
                 )}
             </div>
