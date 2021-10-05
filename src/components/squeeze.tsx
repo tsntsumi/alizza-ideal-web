@@ -14,9 +14,9 @@ type FeedbackState = {
 
 const SqueezeForm: React.FC<{
     api: string
-    ctaTitle: string
+    title: string
     tag: string
-}> = ({ api, ctaTitle, tag }) => {
+}> = ({ api, title, tag }) => {
     const [lead, changeLead] = useState({
         name: "Jack Landingpage",
         email: "",
@@ -103,31 +103,35 @@ const SqueezeForm: React.FC<{
                 />
                 <Button
                     type="button,submit"
-                    title={ctaTitle}
+                    title={title}
                     disabled={true || transactionState}
                     iconRight={<ArrowUpCircle />}
                 />
             </div>
             <div className="py-3 lg:p-4 text-sm">
                 <h4>このボタンを押すと、</h4>
-                <ol>
-                    <li>
-                        １分程度で登録完了メールが届きます。
-                        <br />
-                        届かない場合は、メールアプリのスパムメールフォルダなどに
-                        入っている可能性があります。ご確認ください。
-                    </li>
-                    <li>その後、２４時間以内に正式なメールが届きます。</li>
-                </ol>
+                <p>
+                    ２４時間以内に、こちらからご案内のメールを返信いたします。
+                </p>
+                <p>
+                    ２４時間立っても届かない場合は、
+                    メールアプリの迷惑メールフォルダや Spamメールフォルダなどに
+                    入っている可能性があります。ご確認ください。
+                </p>
+                <p>
+                    そのフォルダにもない場合は、入力されたメールアドレスが
+                    間違っていた可能性もあります。
+                    もう一度、登録しなおしてみてください。
+                </p>
             </div>
         </form>
     )
 }
 
 const Squeeze: React.FC<{
-    ctaTitle: string
+    title: string
     tag: string
-}> = ({ ctaTitle, tag }) => {
+}> = ({ title, tag }) => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -147,7 +151,7 @@ const Squeeze: React.FC<{
             <div className="flex flex-wrap pb-12">
                 {api_url && (
                     <div className="w-full lg:w-2/3 px-4 lg:pl-2 lg:pr-6">
-                        <SqueezeForm api={api_url} ctaTitle={ctaTitle} />
+                        <SqueezeForm api={api_url} title={title} />
                     </div>
                 )}
             </div>
