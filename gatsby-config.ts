@@ -43,7 +43,7 @@ const plugins = [
     {
         resolve: `gatsby-plugin-google-gtag`,
         options: {
-            trackingIds: ["G-B30ZBB27H6"],
+            trackingIds: ["G-B30ZBB27H6", "G-91BYZ134RN"],
         },
     },
     {
