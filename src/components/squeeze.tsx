@@ -85,7 +85,7 @@ const SqueezeForm: React.FC<{
                 placeholder="メールアドレスを入力してください"
                 name="email"
                 type="email"
-                disabled={true}
+                disabled={false}
                 onChange={(e) => updateLead({ email: e.target.value })}
                 footer={
                     <FeedbackMessage
@@ -104,7 +104,7 @@ const SqueezeForm: React.FC<{
                 <Button
                     type="button,submit"
                     title={title}
-                    disabled={true || transactionState}
+                    disabled={transactionState}
                     iconRight={<ArrowUpCircle />}
                 />
             </div>
