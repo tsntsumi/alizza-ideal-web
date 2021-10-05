@@ -10,7 +10,7 @@ import { ContactQuery_site_siteMetadata_contact } from "../pages/__generated__/C
 
 type FeedbackState = { [id: number]: { message?: string; type?: string } }
 
-const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
+const Form: React.FC<{ api: string }> = ({ api, tag }) => {
     const [data, changeData] = useState({
         name: "",
         email: "",
@@ -22,11 +22,11 @@ const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
 
     const [transactionState, setTransactionState] = useState(false)
 
-    const updateData = v => changeData({ ...data, ...v })
+    const updateData = (v) => changeData({ ...data, ...v })
 
     return (
         <form
-            onSubmit={event => {
+            onSubmit={(event) => {
                 event.preventDefault()
                 setTransactionState(true)
 
@@ -35,7 +35,7 @@ const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
                 if (validate.result) {
                     setFeedback({})
                     contactFormSubmit(api, validate.data)
-                        .then(res => {
+                        .then((res) => {
                             if (res.result) {
                                 setFeedback({
                                     4: {
@@ -65,7 +65,7 @@ const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
                 } else {
                     const errs = {}
 
-                    validate.errors.forEach(err => {
+                    validate.errors.forEach((err) => {
                         errs[err.code] = { message: err.message }
                     })
 
@@ -77,7 +77,7 @@ const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
             <TextInput
                 label="Name"
                 name="name"
-                onChange={e =>
+                onChange={(e) =>
                     updateData({
                         name: e.target.value,
                     })
@@ -94,7 +94,7 @@ const Form: React.FC<{ api: string; tag: string }> = ({ api, tag }) => {
                 label="Email"
                 name="email"
                 type="email"
-                onChange={e =>
+                onChange={(e) =>
                     updateData({
                         email: e.target.value,
                     })
