@@ -18,7 +18,6 @@ import { Squeeze } from "../components/squeeze"
 import { StaticImage } from "gatsby-plugin-image"
 import { getImage } from "gatsby-plugin-image"
 import { remark } from "remark"
-import { Squeeze } from "../components/Squeeze"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -35,7 +34,6 @@ const components = {
     Sticky: Sticky,
     Squeeze: Squeeze,
     FileImage: FileImage,
-    Squeeze: Squeeze,
 }
 
 export default function landingpage({
