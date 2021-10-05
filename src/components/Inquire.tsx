@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Form } from "./contact"
 
-const Inquire = ({ desc }) => {
+const Inquire: React.FC<{ desc: string; tag: string }> = ({ desc, tag }) => {
     const query = useStaticQuery(graphql`
         {
             site {

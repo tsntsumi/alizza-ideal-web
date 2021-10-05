@@ -12,10 +12,11 @@ type FeedbackState = {
     }
 }
 
-const SqueezeForm: React.FC<{ api: string; title: string }> = ({
-    api,
-    title,
-}) => {
+const SqueezeForm: React.FC<{
+    api: string
+    ctaTitle: string
+    tag: string
+}> = ({ api, ctaTitle, tag }) => {
     const [lead, changeLead] = useState({
         name: "Jack Landingpage",
         email: "",
@@ -25,7 +26,7 @@ const SqueezeForm: React.FC<{ api: string; title: string }> = ({
     const [feedback, setFeedback] = useState<FeedbackState>({})
 
     const [transactionState, setTransactionState] = useState(false)
-    const updateLead = info => changeLead({ ...lead, ...info })
+    const updateLead = (info) => changeLead({ ...lead, ...info })
 
     const succeeded = {
         4: {
@@ -51,7 +52,7 @@ const SqueezeForm: React.FC<{ api: string; title: string }> = ({
 
     return (
         <form
-            onSubmit={event => {
+            onSubmit={(event) => {
                 event.preventDefault()
                 setTransactionState(true)
 
@@ -63,7 +64,7 @@ const SqueezeForm: React.FC<{ api: string; title: string }> = ({
                 } else {
                     setFeedback({})
                     contactFormSubmit(api, lead)
-                        .then(res => {
+                        .then((res) => {
                             if (res.result) {
                                 setFeedback(succeeded)
                             } else {
@@ -71,7 +72,7 @@ const SqueezeForm: React.FC<{ api: string; title: string }> = ({
                             }
                             setTransactionState(false)
                         })
-                        .catch(err => {
+                        .catch((err) => {
                             setFeedback(failed)
                             setTransactionState(false)
                         })
@@ -84,7 +85,7 @@ const SqueezeForm: React.FC<{ api: string; title: string }> = ({
                 name="email"
                 type="email"
                 disabled={true}
-                onChange={e => updateLead({ email: e.target.value })}
+                onChange={(e) => updateLead({ email: e.target.value })}
                 footer={
                     <FeedbackMessage
                         show={feedback[2] !== undefined}
@@ -101,7 +102,7 @@ const SqueezeForm: React.FC<{ api: string; title: string }> = ({
                 />
                 <Button
                     type="button,submit"
-                    title={title}
+                    title={ctaTitle}
                     disabled={true || transactionState}
                     iconRight={<ArrowUpCircle />}
                 />
