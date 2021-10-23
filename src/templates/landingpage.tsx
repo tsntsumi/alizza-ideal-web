@@ -22,18 +22,18 @@ import { remark } from "remark"
 const components = {
     ArrowDown: ArrowDown,
     ArrowDownCircle: ArrowDownCircle,
-    ArrowUp: ArrowUp,
-    ArrowUpCircle: ArrowUpCircle,
     ArrowLeft: ArrowLeft,
     ArrowRight: ArrowRight,
+    ArrowUp: ArrowUp,
+    ArrowUpCircle: ArrowUpCircle,
     Avatar: Avatar,
     Col: Col,
-    Row: Row,
     CtaButton: CtaButton,
-    Offer: Offer,
-    Sticky: Sticky,
-    Squeeze: Squeeze,
     FileImage: FileImage,
+    Offer: Offer,
+    Row: Row,
+    Squeeze: Squeeze,
+    Sticky: Sticky,
 }
 
 export default function landingpage({
@@ -74,28 +74,31 @@ export default function landingpage({
         >
             <div className="post-content w-full m-0 p-0 max-w-full px-2 lg:px-8 md:px-4 py-8 text-justify">
                 <div name="Head Line" className="post-content w-full">
-                    <div className="float-right w-full md:w-1/2 ml-8">
-                        <GatsbyImage
-                            image={banner}
-                            alt={data.mdx.frontmatter.title}
-                        />
-
-                        <div
-                            className="text-xs text-right"
-                            dangerouslySetInnerHTML={{
-                                __html: credit,
-                            }}
-                        ></div>
-                    </div>
-                    <h1 className="font-black text-color-1 mt-0">
-                        {data.mdx.frontmatter.title}
-                    </h1>
-                    <div className="post-content my-0 py-0 text-md text-justify w-full clear-left leading-none">
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: description,
-                            }}
-                        />
+                    <div className="flex flex-col md:flex-row flex-wrap w-auto space-x-4 item-start">
+                        <div className="flex-1">
+                            <h1 className="post-content font-black text-color-1 mt-0 pt-0">
+                                {data.mdx.frontmatter.title}
+                            </h1>
+                            <div className="post-content my-0 py-0 text-md text-justify leading-none">
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: description,
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex-1 text-center">
+                            <GatsbyImage
+                                image={banner}
+                                alt={data.mdx.frontmatter.title}
+                            />
+                            <div
+                                className="text-xs text-right"
+                                dangerouslySetInnerHTML={{
+                                    __html: credit,
+                                }}
+                            ></div>
+                        </div>
                     </div>
                 </div>
                 <div className="post-content clear-both pb-12 text-justify">
