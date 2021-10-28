@@ -1,7 +1,7 @@
 const plugin = require("tailwindcss/plugin")
 const _ = require("lodash")
 
-const gradient = plugin(function({ addUtilities, e, theme, variants }) {
+const gradient = plugin(function ({ addUtilities, e, theme, variants }) {
     const gradients = theme("gradients", {})
     const gradientVariants = variants("gradients", [])
 
@@ -54,6 +54,7 @@ module.exports = {
             transparent: "rgba(0,0,0,0)",
             error: "#ef5350",
             red: "#c53030",
+            darkblue: "darkblue",
             success: "#8bc34a",
         },
         extend: {

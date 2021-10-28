@@ -9,9 +9,10 @@ type ButtonProps = {
     disabled?: boolean
     iconLeft?: JSX.Element
     iconRight?: JSX.Element
+    bgColor?: string
 }
-const Button: React.FC<ButtonProps> = props => {
-    const { title, to, type, label, disabled } = props
+const Button: React.FC<ButtonProps> = (props) => {
+    const { title, to, type, label, disabled, bgColor } = props
 
     let innerComponents = (
         <React.Fragment>
@@ -42,7 +43,15 @@ const Button: React.FC<ButtonProps> = props => {
     }
     return (
         <Link to={to} title={label || title}>
-            <div className="btn btn-primary">{innerComponents}</div>
+            <div
+                className="btn btn-primary"
+                style={{
+                    borderRadius: "2",
+                    backgroundColor: bgColor || "#f55555",
+                }}
+            >
+                {innerComponents}
+            </div>
         </Link>
     )
 }
@@ -109,9 +118,10 @@ type CtaButtonProps = {
     iconLeft?: JSX.Element
     iconRight?: JSX.Element
     align?: string
+    bgColor: string
 }
-const CtaButton: React.FC<CtaButtonProps> = props => {
-    const { title, to, disabled, iconLeft, iconRight, align } = props
+const CtaButton: React.FC<CtaButtonProps> = (props) => {
+    const { title, to, disabled, iconLeft, iconRight, align, bgColor } = props
     return (
         <div className={`text-${align}`}>
             <Button
@@ -120,18 +130,20 @@ const CtaButton: React.FC<CtaButtonProps> = props => {
                 title={title}
                 iconLeft={iconLeft}
                 iconRight={iconRight}
+                bgColor={bgColor}
             />
         </div>
     )
 }
 
-const Offer = props => {
+const Offer = (props) => {
     const { children, className, bgColor } = props
 
     return (
         <div
-            className={`border-4 border-double rounded-md border-blue-400 rounded-md px-8 py-4 my-8 text-black ${className ||
-                ""}`}
+            className={`border-4 border-double rounded-md border-blue-400 rounded-md px-8 py-4 my-8 text-black ${
+                className || ""
+            }`}
             style={{ backgroundColor: bgColor || "#e6fffa" }}
         >
             {children}

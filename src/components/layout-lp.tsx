@@ -91,7 +91,7 @@ export default ({
             <Head data={query} robots={robots} />
             <SEO {...seo} />
             <div className={`wrapper ${themes[theme].name}`}>
-                <div className="text-color-default bg-bg px-4 md:px-8 lfg:px-16 xl:px-40">
+                <div className="text-color-default bg-bg m-0 p-0 w-full">
                     {children}
                     <Footer />
                 </div>

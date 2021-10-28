@@ -72,14 +72,12 @@ export default function landingpage({
             }}
             location={location}
         >
-            <div className="post-content w-full m-0 p-0 max-w-full px-2 lg:px-8 md:px-4 py-8 text-justify">
-                <div name="Head Line" className="post-content w-full">
-                    <div className="flex flex-col md:flex-row flex-wrap w-auto space-x-4 item-start">
-                        <div className="flex-1">
-                            <h1 className="post-content font-black text-color-1 mt-0 pt-0">
-                                {data.mdx.frontmatter.title}
-                            </h1>
-                            <div className="post-content my-0 py-0 text-md text-justify leading-none">
+            <div className="lp-content m-0 p-0 text-justify">
+                <div name="Head Line" className="w-full">
+                    <div className="flex flex-col md:flex-row space-x-4 items-center">
+                        <div className="flex-1 mx-0 lg:ml-24 xl:ml-32">
+                            <h1>{data.mdx.frontmatter.title}</h1>
+                            <div className="text-sm md:text-lg xl:text-xl">
                                 <div
                                     dangerouslySetInnerHTML={{
                                         __html: description,
@@ -87,7 +85,7 @@ export default function landingpage({
                                 />
                             </div>
                         </div>
-                        <div className="flex-1 text-center">
+                        <div className="flex-1 mx-auto w-2/3 sm:w-1/2">
                             <GatsbyImage
                                 image={banner}
                                 alt={data.mdx.frontmatter.title}
@@ -101,7 +99,7 @@ export default function landingpage({
                         </div>
                     </div>
                 </div>
-                <div className="post-content clear-both pb-12 text-justify">
+                <div className="lp-content text-justify text-base">
                     <MDXProvider components={components}>
                         <MDXRenderer images={images}>
                             {data.mdx.body}
