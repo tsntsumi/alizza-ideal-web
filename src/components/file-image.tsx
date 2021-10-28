@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-export const FileImage = props => {
+export const FileImage = (props) => {
     const { base, images, alt, ...rest } = props
 
     if (!base) {
