@@ -76,7 +76,7 @@ const TextInput = ({
             <textarea
                 className="block w-full outline-none resize-none px-4 py-2 focus:outline-none bg-bg text-color-default"
                 name={name}
-                onChange={event => {
+                onChange={(event) => {
                     event.target.style.height = "auto"
                     event.target.style.height = event.target.scrollHeight + "px"
 

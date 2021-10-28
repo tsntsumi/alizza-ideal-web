@@ -22,7 +22,7 @@ module.exports = {
         "./src/**/*.tsx",
     ],
     theme: {
-        gradients: theme => ({
+        gradients: (theme) => ({
             primary: [theme("colors.primary"), theme("colors.secondary")],
         }),
         themes: {

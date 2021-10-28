@@ -24,7 +24,7 @@ const Logo = ({ className = "logo" }) => {
     )
 }
 
-const Link = props => {
+const Link = (props) => {
     if (props.to) {
         if (props.to.startsWith("/")) {
             return <GatsbyLink {...props}>{props.children}</GatsbyLink>
@@ -32,9 +32,7 @@ const Link = props => {
 
         return <a href={props.to}>{props.children}</a>
     } else {
-        return (
-            <button {...props}></button>
-        )
+        return <button {...props}></button>
     }
 }
 
