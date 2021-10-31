@@ -235,7 +235,7 @@ p {
 }
 
 .post-content h1, .lp-content h1 {
-    @apply text-3xl;
+    @apply text-3xl text-center mb-12;
 }
 
 .post-content h2, .lp-content h2 {
@@ -287,7 +287,7 @@ p {
 
 .lp-content ul, .lp-content ol {
     font-size: 1rem;
-    @apply my-2 ml-8 mr-1 p-0
+    @apply my-2 ml-12 mr-4 p-0
 }
 
 .post-content ul ul, .post-content ol ol, .lp-content ul ul, .lp-content ol ol {
@@ -312,6 +312,10 @@ p {
     counter-increment: item;
     min-width: 100%
     @apply my-0 ml-2 pr-0 mr-0 min-w-full;
+}
+
+.lp-content div#desc ul>li, .lp-content div#desc ol>li {
+    line-height: 1.8rem
 }
 
 .post-content ol>li:before, .lp-content ol>li:before {

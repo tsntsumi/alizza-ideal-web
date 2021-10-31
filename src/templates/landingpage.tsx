@@ -75,28 +75,41 @@ export default function landingpage({
             <div className="lp-content m-0 p-0 text-justify">
                 <div name="Head Line" className="w-full">
                     <div className="flex flex-col md:flex-row space-x-4 items-center">
-                        <div className="flex-1 mx-0 lg:ml-24 xl:ml-32">
-                            <h1>{data.mdx.frontmatter.title}</h1>
+                        <div
+                            id="headline"
+                            className="flex-1 mx-0 lg:ml-24 xl:ml-32"
+                        >
+                            <h1
+                                dangerouslySetInnerHTML={{
+                                    __html: data.mdx.frontmatter.title.replaceAll(
+                                        "。",
+                                        "<br/>"
+                                    ),
+                                }}
+                            />
                             <div className="text-sm md:text-lg xl:text-xl">
                                 <div
+                                    id="desc"
                                     dangerouslySetInnerHTML={{
                                         __html: description,
                                     }}
                                 />
                             </div>
                         </div>
-                        <div className="flex-1 mx-auto w-2/3 sm:w-1/2">
-                            <GatsbyImage
-                                image={banner}
-                                alt={data.mdx.frontmatter.title}
-                            />
-                            <div
-                                className="text-xs text-right"
-                                dangerouslySetInnerHTML={{
-                                    __html: credit,
-                                }}
-                            ></div>
-                        </div>
+                        {banner && (
+                            <div className="flex-1 mx-auto w-2/3 sm:w-1/2">
+                                <GatsbyImage
+                                    image={banner}
+                                    alt={data.mdx.frontmatter.title}
+                                />
+                                <div
+                                    className="text-xs text-right"
+                                    dangerouslySetInnerHTML={{
+                                        __html: credit,
+                                    }}
+                                ></div>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="lp-content text-justify text-base">
