@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /assets/offer/
+Sitemap: https://www.alizza-ideal.com/sitemap/sitemap-index.xml
+Host: https://www.alizza-ideal.com
