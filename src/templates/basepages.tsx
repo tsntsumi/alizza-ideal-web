@@ -1,6 +1,6 @@
 import React from "react"
-import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
+import { graphql, PageProps } from "gatsby"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowDown, ArrowDownCircle } from "react-feather"

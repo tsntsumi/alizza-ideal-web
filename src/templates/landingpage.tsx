@@ -1,23 +1,23 @@
 import React from "react"
-import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout-lp"
-import Sticky from "../components/Sticky"
+import { graphql, PageProps } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
+import { remark } from "remark"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
-import { ArrowDown, ArrowDownCircle } from "react-feather"
-import { ArrowLeft, ArrowRight } from "react-feather"
-import { ArrowUp, ArrowUpCircle } from "react-feather"
-import { Avatar } from "../components/Avatar"
-import { Button, Offer, CtaButton } from "../components/ui"
-import { FileImage } from "../components/file-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { ArrowDown, ArrowDownCircle } from "react-feather"
+import { ArrowLeft, ArrowRight } from "react-feather"
+import { ArrowUp, ArrowUpCircle } from "react-feather"
+
+import Sticky from "../components/Sticky"
+import { Avatar } from "../components/Avatar"
+import { Button, Offer, CtaButton } from "../components/ui"
+import { FileImage } from "../components/file-image"
 import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
-import { StaticImage } from "gatsby-plugin-image"
-import { getImage } from "gatsby-plugin-image"
-import { remark } from "remark"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -148,7 +148,10 @@ export const query = graphql`
                     publicURL
                     childImageSharp {
                         gatsbyImageData(
+                            breakpoints: [98, 128, 256, 512]
                             placeholder: BLURRED
+                            layout: CONSTRAINED
+                            quality: 8
                             formats: [AUTO, WEBP, AVIF]
                         )
                         id

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
-import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
+import { graphql, PageProps } from "gatsby"
 import PortfolioItem from "../components/item-portfolio"
 import Pagination from "../components/pagination"
 import { PortfolioListQuery } from "./__generated__/PortfolioListQuery"
@@ -61,7 +61,12 @@ export const query = graphql`
                         image {
                             publicURL
                             childImageSharp {
-                                gatsbyImageData(width: 1920)
+                                gatsbyImageData(
+                                    breakpoints: [98, 128, 256, 512]
+                                    placeholder: BLURRED
+                                    layout: CONSTRAINED
+                                    quality: 8
+                                )
                                 id
                             }
                         }

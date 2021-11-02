@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react"
+import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 
 import { ArrowRight } from "react-feather"
 import ScrollIntoView from "react-scroll-into-view"
 
-import Layout from "../components/layout"
 import { Button } from "../components/ui"
 
 import ItemPortfolio from "../components/item-portfolio"
@@ -23,7 +23,7 @@ export default ({ data, location }: PageProps<IndexPageQuery>) => {
         />
     ))
 
-    const blogList = data.blog.edges.map(item => (
+    const blogList = data.blog.edges.map((item) => (
         <ItemBlog data={item.node} key={`b-item-index-${item.node.id}`} />
     ))
 

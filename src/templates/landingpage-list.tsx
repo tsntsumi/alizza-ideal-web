@@ -1,6 +1,6 @@
 import React from "react"
-import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
+import { graphql, PageProps } from "gatsby"
 import LandingPageItem from "../components/item-landingpage"
 import Pagination from "../components/pagination"
 import { LandingPageListQuery } from "./__generated__/LandingPageListQuery"
@@ -10,7 +10,7 @@ export default function landingPagelist({
     pageContext,
     location,
 }: PageProps<LandingPageListQuery, {}>) {
-    const landingPageItems = data.allMdx.edges.map(item => (
+    const landingPageItems = data.allMdx.edges.map((item) => (
         <LandingPageItem data={item.node} key={item.node.id} />
     ))
 
