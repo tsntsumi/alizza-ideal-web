@@ -95,7 +95,7 @@ const SqueezeForm: React.FC<{
                     />
                 }
             />
-            <div className="py-3 lg:p-4">
+            <div className="py-1">
                 <FeedbackMessage
                     show={feedback[4] !== undefined}
                     type={feedback[4]?.type || "error"}
@@ -108,8 +108,10 @@ const SqueezeForm: React.FC<{
                     iconRight={<ArrowUpCircle />}
                 />
             </div>
-            <div className="py-3 lg:p-4 text-sm">
-                <h4>このボタンを押すと、</h4>
+            <div className="text-sm">
+                <h4 className="text-lg pt-1 mt-1" style={{ marginTop: "0px" }}>
+                    このボタンを押すと、
+                </h4>
                 <p>１分程度で、こちらからご案内のメールを返信いたします。</p>
                 <p>
                     ５分以上たっても届かない場合は、
@@ -148,7 +150,7 @@ const Squeeze: React.FC<{
         <div className="container mx-auto">
             <div className="flex flex-wrap pb-12">
                 {api_url && (
-                    <div className="w-full lg:w-2/3 px-4 lg:pl-2 lg:pr-6">
+                    <div className="w-full px-4">
                         <SqueezeForm api={api_url} title={title} />
                     </div>
                 )}
