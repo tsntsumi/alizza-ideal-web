@@ -151,7 +151,7 @@ const Squeeze: React.FC<{
             <div className="flex flex-wrap pb-12">
                 {api_url && (
                     <div className="w-full px-4">
-                        <SqueezeForm api={api_url} title={title} />
+                        <SqueezeForm api={api_url} title={title} tag={tag} />
                     </div>
                 )}
             </div>
