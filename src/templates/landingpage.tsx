@@ -74,11 +74,8 @@ export default function landingpage({
         >
             <div className="lp-content m-0 p-0 text-justify">
                 <div name="Head Line" className="w-full">
-                    <div className="flex flex-col md:flex-row space-x-4 items-center">
-                        <div
-                            id="headline"
-                            className="flex-1 mx-0 lg:ml-24 xl:ml-32"
-                        >
+                    <div className="flex flex-col md:flex-row space-x-4 mx-0 lg:mx-24 xl:mx-32 items-center">
+                        <div id="headline" className="flex-1">
                             <h1
                                 dangerouslySetInnerHTML={{
                                     __html: data.mdx.frontmatter.title.replaceAll(
