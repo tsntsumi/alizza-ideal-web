@@ -31,7 +31,7 @@ robots: all
 
 お申し込み画面で、プロモーションコード **GMAP21NOV3** を入力してください。
 
-<p><CtaButton title="運用３ヶ月を試してみる"
+<p><CtaButton title="運用３ヶ月を半額で試してみる"
 	 to="https://buy.stripe.com/14k3eIbuC0br07u9AG"
      align="center"
      iconRight={<ArrowRight/>}
@@ -45,15 +45,11 @@ robots: all
 Googleマップを使って、
 ドカンとその地域にいるお客さんを集客することができます。
 
-<div className="flex justify-center">
-<div className="w-3/4 lg:max-w-2/3 mx-auto px-auto">
-<iframe width="800" height="480"
-  src="https://www.youtube.com/embed/6cQeN0oajXo"
-  title="Google ローカル検索"
-  frameborder="0"
-  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen></iframe>
-</div>
+<div class="par flex flex-wrap text-center mx-auto px-auto">
+  <FileImage base="gmap-local-search.png"
+    alt="Local search result Map"
+    style={{width:"60%", marginRight: "auto", marginLeft: "auto"}}
+    {...props} />
 </div>
 
 そして、その検索結果の一番上に、
@@ -82,9 +78,9 @@ Googleマップを使って、
 
 ### 理由１：お店を探している人の４割はGoogleで検索しているから
 
-<div className="flex flex-wrap">
+<div className="par flex flex-wrap space-x-4">
 
-<div className="flex-1 w-3/4">
+<div className="flex-auto w-2/3">
 
 実は、２年ほど前までは、「地域　業種」で検索しても、
 Google検索ではGoogleマップは表示されませんでした。
@@ -100,22 +96,24 @@ Googleマップを使って探しているんです。
 
 </div>
 
-<div className="flex-1 w-1/4 px-auto">
+<div className="flex-1 w-1/4 text-right">
 
-<p><FileImage base="searching-map.png"
+<FileImage base="searching-map.png"
   alt="Searching Map"
-  className="flex align-center w-full mx-auto px-auto"
-  {...props} /></p>
+  {...props} />
 
-<p className="text-sm text-right">
-<a href="https://www.vecteezy.com/free-vector/map">Map Vectors by Vecteezy</a>
-</p>
+<a class="text-xs"
+  href="https://www.vecteezy.com/free-vector/map">Map Vectors by Vecteezy
+</a>
 
 </div>
 
 </div>
 
 ### 理由２：ポータルサイトや自社サイトよりも上位表示されるから
+
+<div className="par flex flex-wrap space-x-4">
+<div className="flex-auto w-2/3">
 
 「地域　業種」など、お店を探している人が検索するような
 キーワードで検索された場合、検索結果の一番上に表示されるのが、
@@ -129,12 +127,22 @@ Googleマップを使って探しているんです。
 * 自社サイトをお金をかけて作ってSEO対策するより
 
 より多くの人に、あなたのお店を見つけてもらうことができるのです。
+</div>
 
-### 理由３：今すぐ、お客さんに一番アピールできるから
+<div className="flex-1 w-1/4 text-right">
 
-<div className="flex flex-wrap">
+<FileImage base="gmap-local-search.png"
+  alt="Local search result Map"
+  {...props} />
 
-<div className="flex-1 w-3/4">
+</div>
+
+</div>
+
+### 理由３：今すぐ客に一番アピールできるから
+
+<div className="par flex flex-wrap space-x-4">
+<div className="flex-auto w-2/3">
 
 Googleマップ対策で、なぜ集客できるのか？
 その最大の理由が、今すぐ、お客さんに一番アピールできるからです。
@@ -155,26 +163,24 @@ Googleマップを使うユーザーの大半が、
 簡単ですよね。焼肉を食べたいと思っている人です。
 
 これこそ、Googleマップで集客できる理由なのです。
-
 </div>
 
-<div className="flex-1 w-1/4">
+<div className="flex-1 w-1/4 text-right">
+  <FileImage base="customer-acquired.png"
+    alt="Custormer acquired"
+    {...props} />
 
-<p><FileImage base="customer-acquired.png"
-  alt="Custormer acquired"
-  className="flex align-center w-full mx-auto px-auto"
-  {...props} /></p>
-
-<p className="text-sm text-right w-3/4 mx-auto">
+<div className="text-xs">
 <a href="https://www.vecteezy.com/free-vector/girl">Girl Vectors by Vecteezy</a><br/>
 <a href="https://www.vecteezy.com/free-vector/street">Street Vectors by Vecteezy</a>
-</p>
-
 </div>
-
+</div>
 </div>
 
 ## でも問題が・・・<br/>Googleマップ対策をしても、上位表示されなければ意味がない
+
+<div className="par flex flex-wrap space-x-4">
+<div className="flex-1 w-2/3 sm:w-full">
 
 こんなにメリットばかりのGoogleマップ対策ですが、
 誰でも恩恵を受けられるわけではありません。
@@ -182,14 +188,16 @@ Googleマップを使うユーザーの大半が、
 例えば、「ひたちなか市　焼肉」と検索すると、
 Googleマップ内だけで、約５０件以上のお店がヒットします。
 
-<p><FileImage
-	className="flex align-center w-full mx-auto px-auto"
-	base="google-local-search-hitachinaka.png"
-	alt="Google Local Search"
-	{...props} /></p>
-
 もし、あなたのお店が５０番目に表示されていたら・・・。
 おそらく、Googleマップから集客することはできません。
+</div>
+
+<div className="flex-1 w-1/3 sm:w-full">
+  <FileImage base="google-local-search-hitachinaka.png"
+    alt="Google Local Search"
+    {...props} />
+</div>
+</div>
 
 でも、もしあなたのお店が１番目に表示されていたとしたら・・・。
 かなりの集客が見込めるでしょう。
@@ -217,10 +225,6 @@ Googleマップ対策のすべてを、私たちがまるっと代行いたし�
 
 では、どんな内容なのか？詳しく説明させてください。
 
-<div className="flex flex-row">
-
-<div className="flex-1 w-4/5">
-
 ### おまかせ１：わずらわしいアカウント開設＆初期設定をすべて代行
 
 Googleマップ対策をするためには、
@@ -228,24 +232,6 @@ Googleマップ対策をするためには、
 Googleのサービスを使えるようにしなければなりません。
 
 そのアカウント開設と、初期設定をすべて代行いたします。
-
-</div>
-
-<div className="flex-1 w-1/5">
-
-<p><FileImage 
-	className="flex align-center w-full mx-auto px-auto"
-	alt="Operation agent"
-	base="operation-agent.png"
-	{...props} /></p>
-	
-<p className="text-sm text-right w-3/4 mx-auto">
-<a href="https://www.vecteezy.com/free-vector/computer-operator">Computer Operator Vectors by Vecteezy</a>
-</p>
-
-</div>
-
-</div>
 
 ### おまかせ２：週１回の更新作業を代行
 
@@ -311,24 +297,23 @@ Googeマップ対策、写真の投稿、動画の投稿、口コミ対策、
 その他にも、あなたのホームページの動画の設定や、商品登録、
 クーポンの管理など、Googleマップ対策に必要なことをすべて代行します。
 
-## でもちょっと待ってください！これだけじゃありません<br/>毎月レポートを提出。安心してご利用いただけます
+## でもちょっと待ってください！これだけじゃありません<br/>毎月レポートを提出<br/>安心してご利用いただけます
 
-<div className="flex flex-row">
+<div className="par flex flex-row space-x-4">
 
-<div className="flex-1 w-1/5">
+<div className="flex-1 w-1/4">
 
-<p><FileImage 
-	className="flex align-center w-full mx-auto px-auto"
+<FileImage 
 	alt="Google My Business Report"
-	base="google-my-business-report.png" {...props} /></p>
+	base="google-my-business-report.png" {...props} />
 
-<p className="text-sm text-right w-3/4 mx-auto">
-<a href="https://www.vecteezy.com/free-vector/monthly-report">Monthly Report Vectors by Vecteezy</a>
-</p>
+<div className="text-xs text-right">
+  <a href="https://www.vecteezy.com/free-vector/monthly-report">Monthly Report Vectors by Vecteezy</a>
+</div>
 
 </div>
 
-<div className="flex-1 w-4/5">
+<div className="flex-1 w-3/5">
 
 もし、私たちのこのサービスを利用しても、
 Googleマップからどのくらい集客できたかがわからないと不安ですよね？
@@ -342,30 +327,26 @@ Googleマップからどのくらい集客できたかがわからないと不�
 
 などなど・・・
 
+</div>
+</div>
+
 もし、数字がよくわからないなど感じたら、
 すぐにやめることもできます。
 何より、数字がわかることで、安心してGoogleマップ対策を続けることができます。
-
-</div>
-
-</div>
 
 ## 価格について
 
 では、このサービスの価格についてです。
 
 でもその前に、あなたに考えてほしいことがあります。
-
 冒頭でご紹介したとおり、Googleマップ対策をした多くの会社が、
 ３倍から１０倍の集客をしているということです。
 
 もし仮に、ネットからの集客数が今の３倍になったとしたらどうでしょうか？
-
 きっと、毎月、数十万円から数百万円の売上アップになるんじゃないでしょうか？
 
 しかも、一度来店してくれたお客さんが、リピートしてくれるようになったら。
 売上は、もっと増えます。
-
 そしてそれが、今月も、来月も、そしてその次の月も・・・。
 Googleマップ対策を続ける限り、増え続けるのです。
 
@@ -378,7 +359,9 @@ Googleマップ対策を続ける限り、増え続けるのです。
 <div id="pricing"/>
 
 <p className="ml-8 font-bold font-sans text-lg">
-月額　３万円　（税別）<br/><br/>
+月額　３万円
+</p>
+<p className="ml-16 font-sans text-base">
 ＊ただし、契約は３ヶ月単位になります。
 </p>
 
@@ -401,9 +384,8 @@ Googleマップ対策を続ける限り、増え続けるのです。
 
 ### １１月３０日火曜日　午後１１時５９分までのお申し込みで<br/>最初の３ヶ月は半額でご提供します
 
-<div className="flex flex-wrap">
-
-<div className="flex-1 w-3/5">
+<div className="par flex flex-wrap space-x-4">
+<div className="flex-auto w-2/3">
 
 もしあなたが、このサービスを申し込んでくれるなら、
 最初の３ヶ月のみになりますが、
@@ -419,13 +401,10 @@ Googleマップ対策を続ける限り、増え続けるのです。
 
 </div>
 
-<div className="flex-1 w-1/5">
-
-<p><FileImage 
-	className="flex align-center w-full mx-auto px-auto"
+<div className="flex-1 w-1/4 mt-16">
+<FileImage 
 	alt="Google My Business Report"
-	base="offered-price.png" {...props} /></p>
-
+	base="offered-price.png" {...props} />
 </div>
 
 </div>
@@ -478,7 +457,9 @@ Googleマップ対策を続ける限り、増え続けるのです。
 もうあなたの考えは決まっていますよね？
 
 もし、私たちのサービスを選んでいただけるのなら、
-問い合わせフォームからサービスをお申し込みください。
+メール <a href="mailto:info+gmap@alizza-ideal.com">
+info+gmap@alizza-ideal.com</a> にお問い合わせいただくか、
+下のボタンからお申し込みください。
 
 あなたからのお申し込みをお待ちしております。
 
@@ -500,13 +481,13 @@ Googleマップ対策を続ける限り、増え続けるのです。
 集客や売上アップのサポートをする Alizza Ideal (アリザ・アイデアル）
 という個人事業を運営しています。
 
-<div className="flex justify-center">
+<center>
 <FileImage
-	base="i-programmer.png"
-	style={{width: "20%"}}
+	base="profile-handshake.png"
 	alt="Avatar"
+	style={{width: "20%"}}
 	{...props} />
-</div>
+</center>
 
 その前は、某大手製作所の関連会社でプログラムの製作を
 ３０年以上続けてきました。
