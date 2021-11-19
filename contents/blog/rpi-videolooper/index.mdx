@@ -1,0 +1,375 @@
+---
+title: Raspberry Pi でデジタルサイネージ（ビデオ看板）をＤＩＹ
+author: TSUTSUMI Kikuo
+date: 2021-11-13
+description: |
+   店舗のＰＯＰの効果が薄れていませんか？
+   いくら素敵なＰＯＰでも、お客さんの注意を引くのは容易ではありません。
+   どうしても、背景に埋もれてしまって、お客さんが気づかないことがよくあります。
+   
+   それには、動画を流すのが効果的です。
+   でも、手頃なポータブルビデオプレーヤーは、なかなか手に入りません。
+
+   そこで、Raspberry Piで、動画をループ再生する装置をＤＩＹしてはどうでしょうか。
+   Raspberry Pi (900円〜6000円）、Micro SDカード（1,000円〜）、
+   USBメモリスティック（1,000円〜）、
+   HDMI接続のモバイルディスプレイ（10,000円〜）があれば、
+   Vido Looperソフトウェアをインストールするだけです。
+
+   Raspberry Pi Video Looper は、
+   Raspberry Pi を、1080p 動画の再生専用ツールにします。
+   アート・インスタレーション、デジタルサイネージ、
+   それから猫ビデオだけを再生するのに最適です。
+
+   この文書は、 [adafruit の記事](https://learn.adafruit.com/raspberry-pi-video-looper) の非公式な翻訳です。
+---
+## 概要
+
+動画ファイルをシームレスにループ再生する簡単な方法をお探しですか？
+アートの展示や、デジタルサイネージとか。
+
+この Raspberry Pi Video Looper の記事では、
+Raspberry Pi をどのように専用動画再生マシーンにするかを学べます。
+
+USBメモリスティックに格納した動画ファイルをロードして、ループ再生し続けます。
+
+Raspberry Piは、動画再生装置を構築するのにとても優れたプラットホームです。
+安価で小さく、ハードウェアビデオアクセラレーションをサポートしています。
+
+ただ、動画再生ループをさせるための設定が数多くあって混乱の元になっています。
+しかも、すべてを使いやすいパッケージに入れるのは、さらに面倒です。
+
+この文書では、Raspberry Piで最も人気があり、
+信頼性の高い動画再生を簡単に行うために、
+苦労しなければならない設定のすべてを説明します。
+
+**何より、音声とのシームレスなループのために Raspberry Pi の動画プレーヤーを微調整して最適化しました！**
+（動画の最後のフレームと次のループの間に100msの一時停止がありますが、黒い画面のチラツキを抑えました）
+
+必要な Raspberry Pi は、第1世代モデル(A、B、A+、B+)または第2世代Pi 2 以降です。
+また、動画ファイルを格納するUSBメモリスティックも必要です。
+
+Raspberry Piの使い方や、OSのインストール方法については、
+この文書では説明しません。
+他のサイトの記事を参考にしてください。
+
+## インストール
+
+まず、Raspberry Piをインターネットに接続してください。
+接続できたら、次のステップを実行して、動画ループシステムを構築しましょう。
+
+### インストールコマンド
+
+次のコマンドを使って、 `pi_video_looper.git` リポジトリをダウンロードしてください。
+
+```
+    sudo apt update
+    sudo apt install -y git
+    git clone https://github.com/adafruit/pi_video_looper.git
+```
+
+実行すると、Video Looper プロジェクトのソースコードがダウンロードされます。
+ダウンロードされたことを確認したら、
+次の２つのコマンドを実行すれば、インストールは完了です。
+
+```
+    cd pi_video_looper
+    sudo ./install.sh
+```
+
+上を実行すると、たくさんのメッセージが画面に表示されます。
+これは、必要なソフトウェアをダウンロードして、
+インストールしている状況表示です。
+
+pi_hello_video でエラーになる場合は、
+no_pi_hello_video オプションを指定してください。
+
+だいたい５分くらいでインストールが終わって、「Finished!」という
+メッセージが最後に表示されます。このメッセージが表示されれば、
+インストールは成功です。
+
+```
+@r2d2:~/pi_video_looper $ sudo ./install.sh
+Installing dependencies...
+==========================
+Hit:1 http://raspbian.raspberrypi.org/raspbian buster InRelease
+Hit:2 http://archive.raspberrypi.org/debian buster InRelease
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+227 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+（中略）
+
+
+Installed /usr/local/lib/python3.7/dist-packages/pyudev-0.22.0-py3.7.egg
+Searching for pygame==1.9.4.post1
+Best match: pygame 1.9.4.post1
+Adding pygame 1.9.4.post1 to easy-install.pth file
+
+Using /usr/lib/python3/dist-packages
+Searching for six==1.12.0
+Best match: six 1.12.0
+Adding six 1.12.0 to easy-install.pth file
+
+Using /usr/lib/python3/dist-packages
+Finished processing dependencies for Adafruit-Video-Looper==1.0.8
+Configuring video_looper to run on start...
+===========================================
+Finished!
+@r2d2:~/pi_video_looper $ 
+```
+
+もし、何らかの理由でインストールが失敗すると、
+実行が停止してエラーメッセージが表示されます。
+
+ターミナルのエラーメッセージをチェックして、
+
+何らかの理由でインストールが失敗した場合、
+すぐに停止し、エラーが表示されます。
+端末でエラーメッセージを確認してインターネットにアクセスし、
+簡単にエラーを修正できるか検索してください。
+または、Adafruitフォーラムで助けを求めてみてください。
+
+ソフトウェアのインストール後、HDMIポートにビデオルーパーディスプレイが表示されます。
+映画付きのUSBドライブがPiに接続されていないと仮定すると、
+次のようなUSBドライブを挿入するように指示するメッセージが表示されます。
+
+```
+    Insert USB drive with compatible movies.
+```
+
+もし、上のメッセージが表示されれば、おめでとうございます。
+Video Looperソフトウェアがインストールされました。
+
+## 使い方
+
+インストール後、Raspberry Piに挿入されたUSBドライブからムービーを再生
+するようにビデオルーパーが設定されます。
+
+デフォルトのビデオプレーヤーであるomxplayerは、H.264ビデオコーデックで
+エンコードされたほとんどのビデオを、.avi、.mov、.mkv、.mp4、または.m4v
+などの拡張機能を持つビデオ形式で再生できます。omxplayerはPiのGPU(グラ
+フィックス処理ユニット)を使用してビデオを効率的に再生するため、720pと
+1080pのムービーを再生することもできます!
+
+ビデオルーパーを実行すると、挿入されたUSBスティックから
+検出されたムービーの数と、10秒のカウントダウン・メッセージが表示されます。
+
+利用可能な映画が1つしかない場合、ループで継続的に再生されます。
+
+複数の動画ファイルが見つかった場合、各動画はファイル名でアルファベット
+順に再生されます。最後の動画を再生すると、最初の動画にループバックし、
+すべてのビデオを繰り返し再生します。
+
+Omxplayerによるひとつの動画再生は、複数の動画再生と比較して、よ
+り多くの「シームレス」ループができます。
+複数の動画では、動画と動画の間に小さな可視遅延があります。
+しかし、1つの動画だけならループ遅延は約100ミリ秒になります。
+ループで動画を再生することで最良の結果を得る方法についてのアドバイスは、
+ループセクションのヒントを参照してください
+
+動画を再生するときは、HDMI出力とRaspberry Piのアナログサウンド出力の
+両方でオーディオが出力されます。
+
+どちらの出力もスピーカーに接続して、映画の音声を聞くことができます。
+
+## 構成
+
+ビデオルーパーの動作をカスタマイズするには、
+構成ファイルの設定を変更します。
+USBメモリスティックから動画を再生する場合は、
+設定を変更する必要はありません。
+インストール後、すべてが準備完了です!
+
+ただし、SDカードからムービーを再生したい場合は、
+ビデオプレーヤーを変更し、画面上の表示メッセージを無効にするかします。
+
+設定ファイルは、Raspberry PiのSDカードの/boot部分に保存されているため、
+コンピュータ上で直接編集できます。
+ラズベリーパイをシャットダウンし、
+マイクロSDカードを引き出し、コンピュータに挿入します。
+コンピュータがカードにファイルを表示したら、
+テキストエディタでvideo_looper.iniファイルを開きます。
+
+設定ファイルの上部には、次のようなテキストが表示されます。
+
+```
+# Main configuration file for video looper.
+# You can change settings like what video player is used or where to search for
+# movie files.  Lines that begin with # are comments that will be ignored.
+# Uncomment a line by removing its preceding # character.
+
+# Video looper configuration block follows.
+[video_looper]
+
+# What video player will be used to play movies.  Can be either omxplayer or
+# hello_video.  omxplayer can play common formats like avi, mov, mp4, etc. and
+# with full audio and video, but it has a small ~100ms delay between loops.
+# hello_video is a simpler player that doesn't do audio and only plays raw H264
+# streams, but loops seemlessly.  The default is omxplayer.
+video_player = omxplayer
+#video_player = hello_video
+
+# Where to find movie files.  Can be either usb_drive or directory.  When using
+# usb_drive any USB stick inserted in to the Pi will be automatically mounted
+# and searched for video files (only in the root directory).  Alternatively the
+# directory option will search only a specified directory on the SD card for
+# movie files.  Note that you change the directory by modifying the setting in
+# the [directory] section below.  The default is usb_drive.
+file_reader = usb_drive
+#file_reader = directory
+```
+
+`#`で始まる行は、完全に無視されるコメントです。コメントを読んで、設定で
+利用可能なオプションを理解してください。
+
+変更する最も一般的なオプションの2つは、ファイルの上部、`video_player`オ
+プションと`file_read`オプションです。
+
+Video_playerは、動画の再生に使用するビデオプレーヤーを制御します。
+ビデオプレーヤーの設定には、2つのオプションのいずれかを選択できます。
+
+* **`omxplayer`** はデフォルトのビデオプレーヤーであり、
+  `.avi`、`.mov` などの典型的なビデオ形式でビデオを再生するのに最適です。
+  ビデオは、デフォルトでHDMIとアナログオーディオ出力の両方で
+  サウンド出力しながら再生されます。
+  ただし、`omxplayer` はビデオをループするときに小さな遅延があります。
+  ビデオのこの遅延の影響を減らす方法のヒントについては、ループのヒントセクショ
+  ンを参照してください。
+* **`hello_video`** はより限られたビデオプレーヤーですが、ビデオの非常に高速
+  でシームレスなループを備えています。残念ながら、hello_videoはオーディ
+  オの再生をサポートしておらず、ムービーを生のH.264ストリームに変換す
+  る必要があります。.Avi、.movなどの形式のビデオファイルは直接再生され
+  ません。[このページ](https://learn.adafruit.com/raspberry-pi-video-looper/hello-video)では、
+  hello_videoで使用される形式にビデオを変換する方法を見つけることができます。
+
+Omxplayerからhello_videoに変更したい場合は、次のように設定を更新します
+(omxplayer行がコメントされ、hello_video行がコメントされていないことに
+注意してください)。
+
+```
+#video_player = omxplayer
+video_player = hello_video
+```
+
+`file_reader` は、USBドライブまたはRaspberry Piのディレクトリからビデオが
+見つかる場所を制御します。繰り返しになりますが、2つのオプションのいず
+れかを選択できます。
+
+  * `usb_drive` はデフォルトであり、接続されているすべてのUSBドライブ
+    でムービーを検索します。USBドライブを接続すると、自動的に再生する
+    映画が検索されます。
+  * `directory` は、Raspberry Piの単一のディレクトリで映画を検索します。
+    これは、ラズベリーパイにUSBドライブを接続できない場合に便利です。
+
+Usb_driveからディレクトリに変更したい場合は、次のように設定を更新します。
+
+```
+#file_reader = usb_drive
+file_reader = directory
+```
+
+ムービーに使用されるディレクトリを選択するには、構成のこの部分までスク
+ロールし、パス構成の値を変更します。
+
+```
+# Directory file reader configuration follows.
+[directory]
+
+# The path to search for movies when using the directory file reader.
+path = /home/pi
+```
+
+フル構成ファイルには、画面にメッセージを印刷する場合や背景の色など、ビ
+デオルーパーの動作と外観を変更する設定がさらにあります。これらの設定を
+変更することは一般的ではありませんが、設定内のコメントを読んで詳細を学
+ぶことができます。
+
+設定ファイルの編集が完了したら、保存し、コンピュータからマイクロSDカー
+ドを取り外し、カードをRaspberry Piに挿入する必要があります。Raspberry
+Piを起動すると、ビデオルーパーが更新された設定をロードする必要があります。
+
+## ビデオルーパーを無効にする
+
+いったんインストールされると、Raspberry Piが起動するたびにビデオルーパー
+が自動的に実行されます。ビデオルーパーを停止または無効にしたい場合は、
+いくつかのオプションがあります。
+
+ビデオルーパーを一時的に停止するには、ターミナル/SSHセッションで
+Raspberry Piに接続し、次のコマンドを実行します。
+
+```
+    sudo supervisorctl stop video_looper
+```
+
+しばらくすると、ビデオルーパーは映画の再生を停止して終了する必要があり
+ます。ラズベリーパイが再起動されるまで、TVideoルーパーは再び実行されま
+せん。
+
+ビデオルーパーを完全に無効にするには、つまり、再び起動時に起動しないよ
+うにするには、ビデオルーパーコードに含まれている小さなスクリプトを実行
+できます。ターミナル/SSHセッションでRaspberry Piに接続し、video_looper
+がダウンロードされたフォルダに移動します。このガイドのインストールに従っ
+た場合は、以下を実行します。
+
+```
+    cd pi_video_looper
+    sudo ./disable.sh
+```
+
+ビデオルーパーがすでに停止しているというエラーメッセージが表示されても
+心配しないでください(これは、ビデオルーパーが無効になっているときに実
+行されていない場合に発生する可能性があります)。上記のビデオルーパーの
+スクリプトを実行した後、無効になり、起動時に実行されなくなります。
+
+ビデオルーパーを再度有効にするには、インストール手順を再度実行するだけ
+です。
+
+## ビデオをループさせるためのヒント
+
+パフォーマンスを向上させ、ビデオのシームレスなループに近づくために、こ
+れらのヒントのいくつかを覚えておいてください。
+
+* 複数のビデオがある場合は、それらをすべて1つのビデオにまとめます。1つ
+  のビデオのループは、複数のビデオをループするよりも少し速く、よりシーム
+  レスです(複数のビデオを持つ短い一時停止と空白の画面があります)。iMovie
+  のようなビデオ編集ツールを使用して、複数のビデオを1つの長いビデオに結
+  合し、クロスフェード、ワイプなどのビデオ間にトランジションを追加するこ
+  ともできます。編集プログラムからムービーをH.264ビデオ形式
+  で.avi、.mov、.mkv、.mp4、または.m4vファイルでエクスポートしてください。
+
+* 同じ画像とオーディオがフェードダウンしてムービーを開始および終了します。
+  このようにして、ビデオが開始にループすると、小さな遅延やしゃっくりがあ
+  る場合、目立ちません。または、映画の終わりと映画の開始をカットの自然な
+  ポイントにして、ビデオが端から最初から最後まで直接流れるように見えます。
+
+* ビデオのみの絶対的な最もシームレスなループが必要な場合は、(残念ながらオー
+  ディオはサポートされていませんが) hello_videoビデオプレーヤーに変更する
+  ことを検討してください。このビデオプレーヤーは生のH.264ビデオしか再生
+  できず、オーディオを再生することはできませんが、顕著な遅延なしにループ
+  します。ビデオを必要な形式に変換する方法の詳細については、hello_video
+  への変更の詳細については、設定セクションを参照してください。
+
+## ラズベリーパイをシャットダウンする
+
+ビデオルーパーで起動して実行したら、Raspberry Piをシャットダウンする方
+法に興味があるかもしれません。PiのSDカードを破損し、完全なオペレーティ
+ングシステムとビデオルーパーの再インストールが必要になる可能性があるた
+め、電源コードを引っ張る誘惑に抵抗してください！代わりに、オペレーティ
+ングシステムを破損する可能性がないように、Piをクリーンにシャットダウン
+する必要があります。
+
+Piをきれいにシャットダウンするには、ソフトウェアのインストールに使用さ
+れたPi Finderツールを使用できます。インストールを行ったときのようにPi
+Finderを実行し、Raspberry Piを見つけます。次に、Pi Finderのシャットダ
+ウンボタンをクリックすると、Piがシャットダウンする必要があります。回路
+基板の緑色のライトが点滅しなくなり、赤色のライトが着実に点灯した後、Pi
+の電源コードを安全に取り外すことができます。
+
+絶対に避けられない限り、最初にきれいにシャットダウンせずにラズベリーパ
+イから突然電源を除去しないでください!
+
+ただし、Raspberry Piをリードオンリーで起動する方法もあります。
+これなら、いきなり電源を落としても問題ありません。
+
