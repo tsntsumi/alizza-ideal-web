@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /assets/offer/
+Disallow: "/assets/offer/", "/landingpage/high-class-bento/high-class-bento-entry-form/", "/landingpage"
 Sitemap: https://www.alizza-ideal.com/sitemap/sitemap-index.xml
 Host: https://www.alizza-ideal.com
