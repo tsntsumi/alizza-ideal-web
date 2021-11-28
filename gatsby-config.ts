@@ -5,7 +5,17 @@ import tailwindcss from "tailwindcss"
 
 const plugins = [
     `gatsby-plugin-image`,
-    `gatsby-plugin-sitemap`,
+    {
+        resolve: `gatsby-plugin-advanced-sitemap`,
+        options: {
+            exclude: [
+                `/landingpage/high-class-bento/bento-entry-form`,
+                `/404`,
+                `/404.html`,
+                `https://www.alizza-ideal.com/landingpage/create-your-web-site/`,
+            ],
+        },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
