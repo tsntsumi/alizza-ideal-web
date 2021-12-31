@@ -193,12 +193,12 @@ p {
 }
 .lp-content h3 {
     @apply mx-0 my-8 py-6;
-    @apply lg:w-4/5 mx-0 lg:mx-auto px-0;
+    @apply lg:w-4/5 mx-0 lg:mx-auto px-10;
     @apply border-b-8;
     border-color: darkblue;
 }
 .lp-content h4, .lp-content h5, .lp-content h6 {
-    @apply my-6 py-2 mx-auto px-0;
+    @apply my-6 py-2 mx-auto px-10;
     @apply w-10/12 lg:w-8/12 xl:w-1/2 2xl:w-1/3;
     @apply border-b-4;
     border-color: darkblue;
