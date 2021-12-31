@@ -55,6 +55,7 @@ module.exports = {
             error: "#ef5350",
             red: "#c53030",
             darkblue: "darkblue",
+            lightblue: "lightblue",
             success: "#8bc34a",
         },
         extend: {
