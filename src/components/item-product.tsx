@@ -7,20 +7,16 @@ import { remark } from "remark"
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
 import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
-const CheckoutNow = props => {
+const CheckoutNow = (props) => {
     const { product, children } = props
     const [loading, setLoading] = useState(false)
-    const {
-        addItem,
-        clearCart,
-        redirectToCheckout,
-        checkoutSingleItem,
-    } = useShoppingCart()
+    const { addItem, clearCart, redirectToCheckout, checkoutSingleItem } =
+        useShoppingCart()
 
     return (
         <button
             disabled={loading}
-            onClick={e => {
+            onClick={(e) => {
                 clearCart()
                 addItem(product)
                 redirectToCheckout()
@@ -35,26 +31,24 @@ const CheckoutNow = props => {
 export const ItemProduct = ({ skuid }) => {
     const query = useStaticQuery(graphql`
         {
-            allStripePrice {
+            allStripePrice(filter: { active: { eq: true } }) {
                 edges {
                     node {
-                        product {
-                            name
-                            images
-                            description
-                        }
                         id
                         currency
                         unit_amount
                         billing_scheme
                         active
+                        internal {
+                            content
+                        }
                     }
                 }
             }
         }
     `)
 
-    const found = query.allStripePrice.edges.find(edge => {
+    const found = query.allStripePrice.edges.find((edge) => {
         return edge.node.id === skuid
     })
 
@@ -69,15 +63,16 @@ export const ItemProduct = ({ skuid }) => {
     }
 
     const [focused, changeFocused] = useState(false)
+    const content = JSON.parse(found?.node.internal.content)
 
     const product = {
-        sku: found?.node.id,
-        name: found?.node.product.name,
-        price: found?.node.unit_amount,
-        currency: found?.node.currency,
+        sku: content?.product.id,
+        name: content?.product.name,
+        price: content?.unit_amount,
+        currency: content?.currency,
         description:
-            found?.node.product.description || "商品が見つかりませんでした",
-        images: found?.node.product.images,
+            content?.product.description || "商品が見つかりませんでした",
+        images: content?.product.images,
     }
 
     const price = formatCurrencyString({
@@ -89,8 +84,9 @@ export const ItemProduct = ({ skuid }) => {
     return (
         <div className="blog-item w-4/5 lg:w-3/5 xl:1/2 py-4 px-8 mx-12">
             <div
-                className={`transition-all duration-300 hover:shadow-2xl shadow ${focused &&
-                    "focused"}`}
+                className={`transition-all duration-300 hover:shadow-2xl shadow ${
+                    focused && "focused"
+                }`}
             >
                 <div className="image">
                     <img

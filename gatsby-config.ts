@@ -6,9 +6,10 @@ import tailwindcss from "tailwindcss"
 const plugins = [
     `gatsby-plugin-image`,
     {
-        resolve: `gatsby-plugin-advanced-sitemap`,
+        resolve: `gatsby-plugin-sitemap`,
         options: {
-            exclude: [
+            output: "../public/",
+            excludes: [
                 `/landingpage/high-class-bento/bento-entry-form`,
                 `/404`,
                 `/404.html`,
@@ -45,7 +46,7 @@ const plugins = [
     {
         resolve: `gatsby-source-stripe`,
         options: {
-            objects: ["Price", "Plan", "Product"],
+            objects: ["Sku", "Price"],
             secretKey: process.env.STRIPE_SECRET_KEY,
             downloadFiles: false,
         },
