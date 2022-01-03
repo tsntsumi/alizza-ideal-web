@@ -48,6 +48,7 @@ const components = {
     Row: Row,
     Squeeze: Squeeze,
     Sticky: Sticky,
+    NoWrap: (props) => <span className="whitespace-nowrap" {...props} />,
 }
 
 export default function landingpage({
@@ -87,11 +88,8 @@ export default function landingpage({
             location={location}
         >
             <div className="lp-content">
-                <div
-                    id="headline"
-                    className="flex flex-col md:flex-row space-x-4 items-center"
-                >
-                    <div className="flex-1">
+                <div id="headline">
+                    <div id="desc">
                         <h1
                             dangerouslySetInnerHTML={{
                                 __html: data.mdx.frontmatter.title.replaceAll(
@@ -101,20 +99,19 @@ export default function landingpage({
                             }}
                         ></h1>
                         <div
-                            id="desc"
                             dangerouslySetInnerHTML={{
                                 __html: description,
                             }}
                         ></div>
                     </div>
                     {banner && (
-                        <div className="flex-1 mx-auto w-2/3 sm:w-1/2">
+                        <div id="banner">
                             <GatsbyImage
                                 image={banner}
                                 alt={data.mdx.frontmatter.title}
                             />
                             <div
-                                className="text-xs text-right"
+                                className="text-xs align-right"
                                 dangerouslySetInnerHTML={{
                                     __html: credit,
                                 }}
