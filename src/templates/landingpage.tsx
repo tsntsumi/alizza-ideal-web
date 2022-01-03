@@ -28,8 +28,22 @@ const components = {
     ArrowUpCircle: ArrowUpCircle,
     Avatar: Avatar,
     Col: Col,
-    CtaButton: CtaButton,
-    FileImage: FileImage,
+    CtaButton: (props) => (
+        <div className="par">
+            <CtaButton {...props} />
+        </div>
+    ),
+    FileImage: (props) => {
+        const { className } = props
+        if (className && className.indexOf("flex") !== -1) {
+            return <FileImage {...props} />
+        }
+        return (
+            <div className="par">
+                <FileImage {...props} />
+            </div>
+        )
+    },
     Offer: Offer,
     Row: Row,
     Squeeze: Squeeze,

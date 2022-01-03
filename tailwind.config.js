@@ -1,6 +1,21 @@
 const plugin = require("tailwindcss/plugin")
 const _ = require("lodash")
 
+/*
+   Responsive Design Breakpoint Guid
+   ==================================
+
+   prefix min width screen size
+   ------ --------- -----------
+   sm      640px    small
+   md      768px    medium
+   lg     1024px    large
+   xl     1280px    extra large
+   2xl    1536px    2x extra large
+
+   className="w-{default} md:w-{for medium} lg:w-{for large}
+ */
+
 const gradient = plugin(function ({ addUtilities, e, theme, variants }) {
     const gradients = theme("gradients", {})
     const gradientVariants = variants("gradients", [])
@@ -15,11 +30,13 @@ const gradient = plugin(function ({ addUtilities, e, theme, variants }) {
 })
 
 module.exports = {
+    important: true,
     purge: [
         "./src/**/*.js",
         "./src/**/*.jsx",
         "./src/**/*.ts",
         "./src/**/*.tsx",
+        "./public/**/*.html",
     ],
     theme: {
         gradients: (theme) => ({
@@ -68,6 +85,8 @@ module.exports = {
             },
         },
     },
-    variants: {},
+    variants: {
+        extend: {},
+    },
     plugins: [require(`tailwind-theme-switcher`), gradient],
 }
