@@ -156,4 +156,10 @@ if (siteMetadata.disqus) {
 export default {
     siteMetadata: siteMetadata,
     plugins: plugins,
+    flags: {
+        PRESERVE_WEBPACK_CACHE: false,
+        PRESERVE_FILE_DOWNLOAD_CACHE: false,
+        FAST_DEV: true,
+        FAST_REFRESH: true,
+    },
 }

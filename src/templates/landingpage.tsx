@@ -29,21 +29,16 @@ const components = {
     Avatar: Avatar,
     Col: Col,
     CtaButton: (props) => (
-        <div className="par">
+        <div className="noindent">
             <CtaButton {...props} />
         </div>
     ),
-    FileImage: (props) => {
-        const { className } = props
-        if (className && className.indexOf("flex") !== -1) {
-            return <FileImage {...props} />
-        }
-        return (
-            <div className="par">
-                <FileImage {...props} />
-            </div>
-        )
-    },
+    FileImage: FileImage,
+    Figure: (props) => (
+        <p className="noindent">
+            <FileImage {...props} />
+        </p>
+    ),
     Offer: Offer,
     Row: Row,
     Squeeze: Squeeze,

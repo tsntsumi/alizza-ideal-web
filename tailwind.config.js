@@ -31,7 +31,7 @@ const gradient = plugin(function ({ addUtilities, e, theme, variants }) {
 
 module.exports = {
     important: true,
-    purge: [
+    content: [
         "./src/**/*.js",
         "./src/**/*.jsx",
         "./src/**/*.ts",
@@ -84,9 +84,6 @@ module.exports = {
                 "2px": "2px",
             },
         },
-    },
-    variants: {
-        extend: {},
     },
     plugins: [require(`tailwind-theme-switcher`), gradient],
 }

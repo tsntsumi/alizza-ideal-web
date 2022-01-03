@@ -68,10 +68,6 @@ p {
     @apply w-full;
 }
 
-.title h1{
-    @apply text-color-1 font-black;
-}
-
 .supports-blend .title h1 {
     color: #000;
     background: #fff;
@@ -180,7 +176,7 @@ p {
 }
 
 .lp-content {
-    @apply m-0 p-0 w-full text-justify noindent text-base
+    @apply m-0 p-0 w-full text-justify noindent text-base !important;
 }
 
 .lp-content #headline {
@@ -210,9 +206,9 @@ p {
 .lp-content #content-body>p,
 .lp-content #content-body blockquote,
 .lp-content #content-body>div {
-    @apply w-4/5 lg:w-2/3 xl:w-2/3 2xl:w-2/3;
-    @apply mx-auto mb-2;
-    @apply text-base;
+    @apply w-4/5 lg:w-2/3 xl:w-2/3 2xl:w-2/3 !important;
+    @apply mx-auto mb-2 !important;
+    @apply text-base !important;
 }
 .lp-content #content-body blockquote {
     @apply border-l-4 border-primary px-6 py-3;
@@ -302,11 +298,11 @@ p {
 }
 
 .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 {
-    @apply font-bold text-center text-color-1 my-2 py-6;
+    @apply font-bold text-center my-2 py-6;
 }
 
 .theme-dark .post-content h1, .theme-dark .post-content h2, .theme-dark .post-content h3, .theme-dark .post-content h4, .theme-dark .post-content h5, .theme-dark .post-content h6 {
-    @apply text-color-1 font-bold;
+    @apply font-bold;
 }
 
 .post-content h1 {
