@@ -236,11 +236,6 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
-                        image {
-                            childImageSharp {
-                                gatsbyImageData(width: 1000)
-                            }
-                        }
                     }
                     fields {
                         slug
@@ -259,11 +254,6 @@ export const query = graphql`
                         title
                         description
                         date(formatString: "DD MMMM YYYY")
-                        image {
-                            childImageSharp {
-                                gatsbyImageData(width: 1000)
-                            }
-                        }
                     }
                     fields {
                         slug
