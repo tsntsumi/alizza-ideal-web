@@ -41,7 +41,11 @@ const components = {
     ),
     Offer: Offer,
     Row: Row,
-    Squeeze: Squeeze,
+    Squeeze: (props) => (
+        <p className="noindent">
+            <Squeeze {...props} />
+        </p>
+    ),
     Sticky: Sticky,
     NoWrap: (props) => <span className="whitespace-nowrap" {...props} />,
 }
