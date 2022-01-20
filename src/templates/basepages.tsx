@@ -56,7 +56,7 @@ export default function basePages({
             seo={{
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
-                image: data.mdx.frontmatter.image?.publicURL,
+                image: data.mdx.frontmatter.image.publicURL,
             }}
             location={location}
         >
