@@ -68,7 +68,7 @@ export default function landingpage({
     const banner = getImage(data.mdx.frontmatter.banner)
     const seotitle = data.mdx.frontmatter.title
     const seodesc = data.mdx.frontmatter.description
-    const seoimage = data.mdx.frontmatter.banner.publicURL
+    const seoimage = data.mdx.frontmatter.banner?.publicURL
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
             image: edge.node.childImageSharp?.gatsbyImageData,
