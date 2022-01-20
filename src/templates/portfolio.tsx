@@ -32,7 +32,7 @@ const components = {
     Button: Button,
     Col: Col,
     CtaButton: CtaButton,
-    FileImage: props => <FileImage {...props} />,
+    FileImage: (props) => <FileImage {...props} />,
     ItemProduct: ({ price, testPrice, ...props }) => (
         <ItemProduct
             skuid={process.env.NODE_ENV === "development" ? testPrice : price}
@@ -154,9 +154,6 @@ export const query = graphql`
                 title
                 date(formatString: "DD MMMM YYYY")
                 description
-                image {
-                    publicURL
-                }
                 banner {
                     publicURL
                     childImageSharp {
