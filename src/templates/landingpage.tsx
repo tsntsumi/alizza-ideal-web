@@ -83,7 +83,7 @@ export default function landingpage({
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
                 image:
-                    data.mdx.frontmatter.thumbnail?.publicURL ||
+                    data.mdx.frontmatter.icon?.publicURL ||
                     data.mdx.frontmatter.banner?.publicURL,
             }}
             location={location}
