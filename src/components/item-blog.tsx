@@ -20,13 +20,14 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps }> = ({ data }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.image)
+    const image = getImage(data.frontmatter.thumbnail)
 
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
             <div
-                className={`transition-all duration-300 hover:shadow-2xl shadow ${focused &&
-                    "focused"}`}
+                className={`transition-all duration-300 hover:shadow-2xl shadow ${
+                    focused && "focused"
+                }`}
             >
                 <Link
                     to={data.fields.slug}

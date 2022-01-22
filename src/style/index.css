@@ -176,59 +176,63 @@ p {
 }
 
 .lp-content {
-    @apply m-0 p-0 w-full text-justify noindent text-base !important;
+    @apply w-full mx-auto pb-8 sm:w-4/5;
+    @apply text-justify noindent text-base !important;
 }
 
 .lp-content #headline {
     @apply noindent;
-    @apply flex flex-wrap w-screen;
+    @apply sm:flex sm:flex-wrap sm:space-x-4;
 }
 .lp-content #headline #desc {
-    @apply flex-none w-full md:w-1/2
+    @apply sm:flex-1;
+    @apply mx-auto;
+    @apply text-base !important;
 }
-.lp-content #headline #desc p {
-    @apply w-10/12 mx-auto;
+.lp-content #headline #banner {
+    @apply sm:flex-1;
 }
 .lp-content #headline #desc h1 {
-    @apply mb-8 m-0 p-10;
-    @apply text-xl md:text-xl xl:text-2xl;
+    @apply mt-0 mb-8 p-2;
+    @apply text-xl xl:text-2xl;
     @apply font-bold text-white bg-darkblue text-center;
 }
-.lp-content #headline #desc>div>h2 {
-    @apply mx-0 my-8 py-6;
+.lp-content #headline #desc h2 {
+    @apply my-8 p-6;
     @apply text-lg;
     @apply font-bold text-white bg-darkblue text-center;
 }
-.lp-content #headline div#banner {
-    @apply flex-auto md:w-1/2 p-0 content-start;
+.lp-content #headline #desc p {
+    @apply mx-8 sm:mx-auto;
 }
 
-.lp-content #content-body>p,
-.lp-content #content-body blockquote,
-.lp-content #content-body>div {
-    @apply w-4/5 lg:w-2/3 xl:w-2/3 2xl:w-2/3 !important;
-    @apply mx-auto mb-2 !important;
-    @apply text-base !important;
+.lp-content #content-body {
+    @apply text-base;
+}
+.lp-content #content-body p {
+    @apply mx-8 sm:mx-auto text-base;
 }
 .lp-content #content-body blockquote {
     @apply border-l-4 border-primary px-6 py-3;
 }
+.lp-content #content-body h1,
 .lp-content #content-body h2 {
-    @apply w-full mx-auto my-8 p-6;
+    @apply my-8 p-6;
     @apply font-bold text-white bg-darkblue text-center;
     @apply text-lg sm:text-xl;
 }
 .lp-content h3 {
-    @apply mx-0 my-8 py-3;
-    @apply lg:w-4/5 mx-0 lg:mx-auto px-6;
+    @apply my-4 py-1;
+    @apply w-2/3 mx-auto;
     @apply border-b-8;
     @apply text-darkblue bg-transparent;
     @apply text-lg sm:text-xl font-bold text-center;
     border-color: darkblue;
 }
 .lp-content h4, .lp-content h5, .lp-content h6 {
-    @apply my-6 py-2 mx-auto px-4;
-    @apply w-10/12 lg:w-8/12 xl:w-1/2 2xl:w-1/3;
+    @apply py-1 px-1;
+    @apply my-4;
+    @apply w-2/3 mx-auto;
     @apply border-b-4;
     @apply text-darkblue bg-transparent;
     @apply text-lg font-bold text-center;
@@ -247,8 +251,7 @@ p {
 
 .lp-content #content-body ul,
 .lp-content #content-body ol {
-    @apply w-4/5 lg:w-2/3 xl:w-2/3 2xl:w-2/3;
-    @apply mx-auto pl-10;
+    @apply mx-8 pl-10;
     @apply my-6;
     @apply text-justify;
 }

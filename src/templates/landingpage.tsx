@@ -66,9 +66,6 @@ export default function landingpage({
         .processSync(data.mdx.frontmatter.description)
         .toString()
     const banner = getImage(data.mdx.frontmatter.banner)
-    const seotitle = data.mdx.frontmatter.title
-    const seodesc = data.mdx.frontmatter.description
-    const seoimage = data.mdx.frontmatter.banner?.publicURL
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
             image: edge.node.childImageSharp?.gatsbyImageData,
@@ -83,9 +80,11 @@ export default function landingpage({
     return (
         <Layout
             seo={{
-                title: seotitle,
-                description: seodesc,
-                image: seoimage,
+                title: data.mdx.frontmatter.title,
+                description: data.mdx.frontmatter.description,
+                image:
+                    data.mdx.frontmatter.thumbnail?.publicURL ||
+                    data.mdx.frontmatter.banner?.publicURL,
             }}
             location={location}
         >
@@ -121,7 +120,7 @@ export default function landingpage({
                         </div>
                     )}
                 </div>
-                <div id="content-body" className="text-justify text-base">
+                <div id="content-body">
                     <MDXProvider components={components}>
                         <MDXRenderer images={images}>
                             {data.mdx.body}

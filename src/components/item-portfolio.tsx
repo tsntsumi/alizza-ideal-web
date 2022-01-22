@@ -22,7 +22,7 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.image)
+    const image = getImage(data.frontmatter.thumbnail)
 
     const getWindowHeight = () => {
         const w = window
@@ -42,7 +42,7 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
         return w.innerWidth || e.clientWidth || g.clientWidth
     }
 
-    const updateState = p => changeState({ ...state, ...p })
+    const updateState = (p) => changeState({ ...state, ...p })
 
     const percentageThreshold = 0.3
 
