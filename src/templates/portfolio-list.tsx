@@ -58,6 +58,19 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
+                        thumbnail {
+                            publicURL
+                            childImageSharp {
+                                gatsbyImageData(
+                                    breakpoints: [98, 128, 256, 512]
+                                    placeholder: BLURRED
+                                    layout: CONSTRAINED
+                                    quality: 8
+                                    formats: [AUTO, WEBP, AVIF]
+                                )
+                                id
+                            }
+                        }
                     }
                     fields {
                         slug
