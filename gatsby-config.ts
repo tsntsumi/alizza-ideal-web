@@ -108,6 +108,11 @@ const plugins = [
         },
     },
     {
+        /*
+         * Gatsby-plugin-mdx is converter from `MDX` to `HTML`.
+         * To convert markdown file (.md or .markdown),
+         * use `gatsby-transformer-remark` plugin.
+         */
         resolve: `gatsby-plugin-mdx`,
         options: {
             gatsbyRemarkPlugins: [
