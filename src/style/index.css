@@ -182,25 +182,28 @@ p {
 
 .lp-content #headline {
     @apply noindent;
-    @apply sm:flex sm:flex-wrap sm:space-x-4;
+    @apply flex flex-row md:flex-wrap md:space-x-4;
 }
 .lp-content #headline #desc {
-    @apply sm:flex-1;
+    @apply flex-1;
     @apply mx-auto;
     @apply text-base !important;
 }
 .lp-content #headline #banner {
-    @apply sm:flex-1;
+    @apply flex-1;
 }
 .lp-content #headline #desc h1 {
-    @apply mt-0 mb-8 p-2;
+    @apply mt-0 mb-4 px-4 py-8;
     @apply text-xl xl:text-2xl;
     @apply font-bold text-white bg-darkblue text-center;
 }
 .lp-content #headline #desc h2 {
-    @apply my-8 p-6;
-    @apply text-lg;
-    @apply font-bold text-white bg-darkblue text-center;
+    @apply my-4 py-1;
+    @apply w-2/3 mx-auto;
+    @apply border-b-8;
+    @apply text-darkblue bg-transparent;
+    @apply text-lg sm:text-xl font-bold text-center;
+    border-color: darkblue;
 }
 .lp-content #headline #desc p {
     @apply mx-8 sm:mx-auto;
@@ -209,7 +212,8 @@ p {
 .lp-content #content-body {
     @apply text-base;
 }
-.lp-content #content-body p {
+.lp-content #content-body p,
+.lp-content #content-body>div {
     @apply mx-8 sm:mx-auto text-base;
 }
 .lp-content #content-body blockquote {

@@ -19,6 +19,8 @@ import { FileImage } from "../components/file-image"
 import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 
+import { ContentsQuery } from "./ContentsQuery"
+
 const components = {
     ArrowDown: ArrowDown,
     ArrowDownCircle: ArrowDownCircle,
@@ -29,9 +31,9 @@ const components = {
     Avatar: Avatar,
     Col: Col,
     CtaButton: (props) => (
-        <div className="noindent">
+        <p className="noindent">
             <CtaButton {...props} />
-        </div>
+        </p>
     ),
     FileImage: FileImage,
     Figure: (props) => (
@@ -50,7 +52,10 @@ const components = {
     NoWrap: (props) => <span className="whitespace-nowrap" {...props} />,
 }
 
-export default function landingpage({ data, location }) {
+export default function landingpage({
+    data,
+    location,
+}: PageProps<ContentsQuery, {}>) {
     const credit = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -129,8 +134,8 @@ export default function landingpage({ data, location }) {
     )
 }
 
-export const query = graphql`
-    query LandingPageQuery(
+export const query = graphql<ContentsQuery>`
+    query ContentsQuery(
         $slug: String!
         $relativeDirectory: String!
         $sourceInstanceName: String!
@@ -146,7 +151,20 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                hero
+                hero {
+                    publicURL
+                    childImageSharp {
+                        gatsbyImageData(
+                            width: 640
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                            quality: 8
+                        )
+                    }
+                }
+                banner {
+                    publicURL
+                }
             }
         }
         allFile: allFile(
