@@ -1,9 +1,17 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { NavigationListQuery } from "./__generated__/NavigationListQuery"
 import { Theme } from "./layout"
 
-type NavigationListProps = { name?: string, className?: string, liClassName?: string, current?: string, withThemeSwitch?: boolean, currentTheme?: number, switchTheme?: () => void, themes?: Theme[] }
+type NavigationListProps = {
+    name?: string
+    className?: string
+    liClassName?: string
+    current?: string
+    withThemeSwitch?: boolean
+    currentTheme?: number
+    switchTheme?: () => void
+    themes?: Theme[]
+}
 const List: React.FC<NavigationListProps> = ({
     name,
     className = "",
@@ -14,7 +22,7 @@ const List: React.FC<NavigationListProps> = ({
     switchTheme,
     themes,
 }) => {
-    const data = useStaticQuery<NavigationListQuery>(graphql`
+    const data = useStaticQuery(graphql`
         query NavigationListQuery {
             site {
                 siteMetadata {
@@ -70,7 +78,11 @@ const List: React.FC<NavigationListProps> = ({
 const ListItem = ({ data, active, liClassName }) => {
     return (
         <li className={`${liClassName} ${active ? "active" : ""}`}>
-            <Link to={data.url} title={data.name} className="text-color-2 focus:text-primary">
+            <Link
+                to={data.url}
+                title={data.name}
+                className="text-color-2 focus:text-primary"
+            >
                 <span>{data.name}</span>
             </Link>
         </li>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 
 import { useStaticQuery, graphql } from "gatsby"
 
-import { CommentsQuery } from "./__generated__/CommentsQuery"
 import { WindowLocation } from "@reach/router"
 import store from "../utils/store"
 

@@ -3,13 +3,8 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 import LandingPageItem from "../components/item-landingpage"
 import Pagination from "../components/pagination"
-import { LandingPageListQuery } from "./__generated__/LandingPageListQuery"
 
-export default function landingPagelist({
-    data,
-    pageContext,
-    location,
-}: PageProps<LandingPageListQuery, {}>) {
+export default function landingPagelist({ data, pageContext, location }) {
     const landingPageItems = data.allMdx.edges.map((item) => (
         <LandingPageItem data={item.node} key={item.node.id} />
     ))

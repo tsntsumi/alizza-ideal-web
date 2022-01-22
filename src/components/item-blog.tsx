@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowRight } from "react-feather"
-import { BlogListQuery_allMdx_edges_node } from "../templates/__generated__/BlogListQuery"
 import { Button } from "../components/ui"
 import { Calendar } from "react-feather"
 import { IndexPageQuery_blog_edges_node } from "../pages/__generated__/IndexPageQuery"
@@ -10,10 +9,7 @@ import { Link } from "gatsby"
 import { remark } from "remark"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-type ItemBlogProps =
-    | BlogListQuery_allMdx_edges_node
-    | IndexPageQuery_blog_edges_node
-export const ItemBlog: React.FC<{ data: ItemBlogProps }> = ({ data }) => {
+export const ItemBlog = ({ data }) => {
     const [focused, changeFocused] = useState(false)
     const description = remark()
         .use(recommended)

@@ -9,7 +9,6 @@ import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
 import { Avatar } from "../components/Avatar"
-import { BlogQuery } from "./__generated__/BlogQuery"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { Calendar } from "react-feather"
 import { CodeBlock } from "../components/CodeBlock"
@@ -42,7 +41,7 @@ const components = {
     FileImage: FileImage,
 }
 
-export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
+export default function blog({ location, data }) {
     const author = data.mdx.frontmatter.author ?? ""
     const credit = remark()
         .use(recommended)
@@ -150,17 +149,7 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                hero {
-                    publicURL
-                    childImageSharp {
-                        gatsbyImageData(
-                            width: 1920
-                            placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
-                        )
-                        id
-                    }
-                }
+                hero
             }
         }
         allFile: allFile(

@@ -4,15 +4,10 @@ import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowRight } from "react-feather"
 import { Button } from "./ui"
-import { IndexPageQuery_portfolio_edges_node } from "../pages/__generated__/IndexPageQuery"
 import { remark } from "remark"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-type ItemPortfolioProps = {
-    data: IndexPageQuery_portfolio_edges_node
-    even: boolean
-}
-export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
+export const ItemPortfolio = ({ data, even }) => {
     const [state, changeState] = useState({
         animated: false,
         percentage: 0,

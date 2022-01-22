@@ -11,7 +11,6 @@ import Footer from "./footer"
 import SEO, { SEOProps } from "../utils/seo"
 
 import "../style/index.css"
-import { LPThemeQuery } from "./__generated__/LPThemeQuery"
 import CookieBox from "./cookie"
 import store from "../utils/store"
 
@@ -32,7 +31,7 @@ export default ({
     location,
     robots,
 }: LPLayoutProps) => {
-    const query = useStaticQuery<LPThemeQuery>(graphql`
+    const query = useStaticQuery(graphql`
         query LPThemeQuery {
             site {
                 siteMetadata {

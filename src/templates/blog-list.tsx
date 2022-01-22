@@ -3,13 +3,8 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 import BlogItem from "../components/item-blog"
 import Pagination from "../components/pagination"
-import { BlogListQuery } from "./__generated__/BlogListQuery"
 
-export default function blogList({
-    data,
-    pageContext,
-    location,
-}: PageProps<BlogListQuery, {}>) {
+export default function blogList({ data, pageContext, location }) {
     const blogItems = data.allMdx.edges.map((item) => (
         <BlogItem data={item.node} key={item.node.id} />
     ))
@@ -47,7 +42,6 @@ export const query = graphql`
                         title
                         description
                         date(formatString: "DD MMMM YYYY")
-                        banner
                     }
                     fields {
                         slug

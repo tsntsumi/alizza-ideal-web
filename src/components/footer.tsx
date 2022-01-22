@@ -2,13 +2,9 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Logo } from "./utils"
 import Navlinks from "./navigation-list"
-import {
-    FooterLinksQuery,
-    FooterLinksQuery_site_siteMetadata_footerLinks,
-} from "./__generated__/FooterLinksQuery"
 
 export default function () {
-    const query = useStaticQuery<FooterLinksQuery>(graphql`
+    const query = useStaticQuery(graphql`
         query FooterLinksQuery {
             site {
                 siteMetadata {
@@ -52,9 +48,7 @@ export default function () {
     )
 }
 
-const ListItem: React.FC<{
-    data: FooterLinksQuery_site_siteMetadata_footerLinks
-}> = ({ data }) => {
+const ListItem = ({ data }) => {
     return (
         <li className="inline-block mx-3 animated-link-parent">
             <Link to={data.url} title={data.name}>

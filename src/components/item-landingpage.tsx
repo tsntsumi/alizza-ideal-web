@@ -2,20 +2,13 @@ import React, { useState } from "react"
 import recommended from "remark-preset-lint-recommended"
 import remarkHtml from "remark-html"
 import { ArrowRight } from "react-feather"
-import { LandingPageListQuery_allMdx_edges_node } from "../templates/__generated__/LandingPageListQuery"
 import { Button } from "../components/ui"
 import { Calendar } from "react-feather"
-import { IndexPageQuery_landingpage_edges_node } from "../pages/__generated__/IndexPageQuery"
 import { Link } from "gatsby"
 import { remark } from "remark"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-type ItemLandingPageProps =
-    | LandingPageListQuery_allMdx_edges_node
-    | IndexPageQuery_landingpage_edges_node
-export const ItemLandingPage: React.FC<{ data: ItemLandingPageProps }> = ({
-    data,
-}) => {
+export const ItemLandingPage = ({ data }) => {
     const [focused, changeFocused] = useState(false)
     const description = remark()
         .use(recommended)

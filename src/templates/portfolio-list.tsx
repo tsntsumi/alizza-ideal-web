@@ -3,13 +3,8 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 import PortfolioItem from "../components/item-portfolio"
 import Pagination from "../components/pagination"
-import { PortfolioListQuery } from "./__generated__/PortfolioListQuery"
 
-export default function portfolioList({
-    data,
-    pageContext,
-    location,
-}: PageProps<PortfolioListQuery, {}>) {
+export default function portfolioList({ data, pageContext, location }) {
     useEffect(() => {
         window.dispatchEvent(new CustomEvent("scroll"))
     }, [])
@@ -58,7 +53,6 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
-                        banner
                     }
                     fields {
                         slug

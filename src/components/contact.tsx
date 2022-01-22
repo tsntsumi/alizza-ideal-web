@@ -6,7 +6,6 @@ import { TextInput, Button } from "./ui"
 import { beforeContactFormSubmit, contactFormSubmit } from "../../config"
 
 import SocialLinks from "../utils/sociallinks"
-import { ContactQuery_site_siteMetadata_contact } from "../pages/__generated__/ContactQuery"
 
 type FeedbackState = { [id: number]: { message?: string; type?: string } }
 
@@ -143,9 +142,7 @@ const Form: React.FC<{ api: string }> = ({ api, tag }) => {
     )
 }
 
-const Description: React.FC<{
-    data: ContactQuery_site_siteMetadata_contact
-}> = ({ data }) => {
+const Description = ({ data }) => {
     return (
         <div>
             {data.description && (

@@ -11,7 +11,6 @@ import Footer from "./footer"
 import SEO, { SEOProps } from "../utils/seo"
 
 import "../style/index.css"
-import { ThemeQuery } from "./__generated__/ThemeQuery"
 import CookieBox from "./cookie"
 import store from "../utils/store"
 
@@ -31,7 +30,7 @@ export default ({
     navPlaceholder = true,
     location,
 }: LayoutProps) => {
-    const query = useStaticQuery<ThemeQuery>(graphql`
+    const query = useStaticQuery(graphql`
         query ThemeQuery {
             site {
                 siteMetadata {

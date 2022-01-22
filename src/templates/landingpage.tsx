@@ -50,10 +50,7 @@ const components = {
     NoWrap: (props) => <span className="whitespace-nowrap" {...props} />,
 }
 
-export default function landingpage({
-    data,
-    location,
-}: PageProps<LandingPageQuery, {}>) {
+export default function landingpage({ data, location }) {
     const credit = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -149,19 +146,7 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                hero {
-                    publicURL
-                    childImageSharp {
-                        gatsbyImageData(
-                            breakpoints: [98, 128, 256, 512]
-                            placeholder: BLURRED
-                            layout: CONSTRAINED
-                            quality: 8
-                            formats: [AUTO, WEBP, AVIF]
-                        )
-                        id
-                    }
-                }
+                hero
             }
         }
         allFile: allFile(

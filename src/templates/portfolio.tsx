@@ -15,7 +15,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { ItemProduct } from "../components/item-product"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { PortfolioQuery } from "./__generated__/PortfolioQuery"
 import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 import { graphql, PageProps } from "gatsby"
@@ -46,10 +45,7 @@ const components = {
     code: CodeBlock,
 }
 
-export default function porfolio({
-    location,
-    data,
-}: PageProps<PortfolioQuery, {}>) {
+export default function porfolio({ location, data }) {
     const description = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -156,17 +152,7 @@ export const query = graphql`
                 title
                 date(formatString: "DD MMMM YYYY")
                 description
-                hero {
-                    publicURL
-                    childImageSharp {
-                        gatsbyImageData(
-                            width: 1920
-                            placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
-                        )
-                        id
-                    }
-                }
+                hero
             }
         }
         allFile: allFile(

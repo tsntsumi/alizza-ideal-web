@@ -7,7 +7,6 @@ import { ArrowDown, ArrowDownCircle } from "react-feather"
 import { ArrowLeft, ArrowRight } from "react-feather"
 import { ArrowUp, ArrowUpCircle } from "react-feather"
 import { Avatar } from "../components/Avatar"
-import { BasePagesQuery } from "./__generated__/BasePagesQuery"
 import { Button, Offer, CtaButton } from "../components/ui"
 import { CodeBlock } from "../components/CodeBlock"
 import { FileImage } from "../components/file-image"
@@ -31,10 +30,7 @@ const components = {
     FileImage: FileImage,
 }
 
-export default function basePages({
-    data,
-    location,
-}: PageProps<BasePagesQuery, {}>) {
+export default function basePages({ data, location }) {
     const description = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -90,9 +86,7 @@ export const query = graphql`
             body
             frontmatter {
                 title
-                hero {
-                    publicURL
-                }
+                hero
                 description
             }
         }

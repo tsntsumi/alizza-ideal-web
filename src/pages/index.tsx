@@ -10,9 +10,8 @@ import { Button } from "../components/ui"
 import ItemPortfolio from "../components/item-portfolio"
 import ItemBlog from "../components/item-blog"
 import { Form, Description as ContactDescription } from "../components/contact"
-import { IndexPageQuery } from "./__generated__/IndexPageQuery"
 
-export default ({ data, location }: PageProps<IndexPageQuery>) => {
+export default ({ data, location }) => {
     const siteData = data.site.siteMetadata
 
     const portfolioList = data.portfolio.edges.map((item, _) => (
@@ -236,7 +235,6 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
-                        banner
                     }
                     fields {
                         slug
@@ -255,7 +253,6 @@ export const query = graphql`
                         title
                         description
                         date(formatString: "DD MMMM YYYY")
-                        banner
                     }
                     fields {
                         slug
