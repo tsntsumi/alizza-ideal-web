@@ -22,7 +22,7 @@ export const ItemLandingPage: React.FC<{ data: ItemLandingPageProps }> = ({
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.thumbnail)
+    const image = getImage(data.frontmatter.banner)
 
     return (
         <div className="landingPage-item w-full md:w-1/2 lg:w-1/3 p-4">

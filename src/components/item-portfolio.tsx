@@ -22,7 +22,7 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.thumbnail)
+    const image = getImage(data.frontmatter.banner)
 
     const getWindowHeight = () => {
         const w = window

@@ -236,7 +236,7 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
-                        thumbnail {
+                        banner {
                             publicURL
                             childImageSharp {
                                 gatsbyImageData(
@@ -267,7 +267,7 @@ export const query = graphql`
                         title
                         description
                         date(formatString: "DD MMMM YYYY")
-                        thumbnail {
+                        banner {
                             publicURL
                             childImageSharp {
                                 gatsbyImageData(

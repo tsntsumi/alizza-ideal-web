@@ -47,7 +47,7 @@ export const query = graphql`
                         title
                         description
                         date(formatString: "DD MMMM YYYY")
-                        thumbnail {
+                        banner {
                             publicURL
                             childImageSharp {
                                 gatsbyImageData(

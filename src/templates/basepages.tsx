@@ -57,8 +57,8 @@ export default function basePages({
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
                 image:
-                    data.mdx.frontmatter.thumbnail?.publicURL ||
-                    data.mdx.frontmatter.banner?.publicURL,
+                    data.mdx.frontmatter.banner?.publicURL ||
+                    data.mdx.frontmatter.hero?.publicURL,
             }}
             location={location}
         >
@@ -90,7 +90,7 @@ export const query = graphql`
             body
             frontmatter {
                 title
-                banner {
+                hero {
                     publicURL
                 }
                 description

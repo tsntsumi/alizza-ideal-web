@@ -65,7 +65,7 @@ export default function landingpage({
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.description)
         .toString()
-    const banner = getImage(data.mdx.frontmatter.banner)
+    const hero = getImage(data.mdx.frontmatter.hero)
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
             image: edge.node.childImageSharp?.gatsbyImageData,
@@ -83,8 +83,8 @@ export default function landingpage({
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
                 image:
-                    data.mdx.frontmatter.thumbnail?.publicURL ||
-                    data.mdx.frontmatter.banner?.publicURL,
+                    data.mdx.frontmatter.banner?.publicURL ||
+                    data.mdx.frontmatter.hero?.publicURL,
             }}
             location={location}
         >
@@ -105,10 +105,10 @@ export default function landingpage({
                             }}
                         ></div>
                     </div>
-                    {banner && (
-                        <div id="banner">
+                    {hero && (
+                        <div id="hero">
                             <GatsbyImage
-                                image={banner}
+                                image={hero}
                                 alt={data.mdx.frontmatter.title}
                             />
                             <div
@@ -149,7 +149,7 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                banner {
+                hero {
                     publicURL
                     childImageSharp {
                         gatsbyImageData(

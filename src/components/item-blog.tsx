@@ -20,7 +20,7 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps }> = ({ data }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.thumbnail)
+    const image = getImage(data.frontmatter.banner)
 
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">

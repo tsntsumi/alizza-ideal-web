@@ -58,7 +58,7 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
-                        thumbnail {
+                        banner {
                             publicURL
                             childImageSharp {
                                 gatsbyImageData(
