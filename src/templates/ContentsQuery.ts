@@ -23,7 +23,7 @@ export interface frontmatterNode {
     date: any | null
     description: string | null
     credit: string | null
-    hero: imageNode | null
+    image: imageNode | null
     banner: imageNode | null
 }
 

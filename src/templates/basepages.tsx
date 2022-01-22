@@ -14,6 +14,7 @@ import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { remark } from "remark"
+import { ContentsQuery } from "./ContentsQuery"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -30,7 +31,10 @@ const components = {
     FileImage: FileImage,
 }
 
-export default function basePages({ data, location }) {
+export default function basePages({
+    data,
+    location,
+}: PageProps<ContentsQuery, {}>) {
     const description = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -53,8 +57,8 @@ export default function basePages({ data, location }) {
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
                 image:
-                    data.mdx.frontmatter.banner?.publicURL ||
-                    data.mdx.frontmatter.hero?.publicURL,
+                    data.mdx.frontmatter.image?.publicURL ||
+                    data.mdx.frontmatter.banner?.publicURL,
             }}
             location={location}
         >
@@ -76,7 +80,7 @@ export default function basePages({ data, location }) {
     )
 }
 
-export const query = graphql`
+export const query = graphql<ContentsQuery>`
     query BasePagesQuery(
         $slug: String!
         $relativeDirectory: String!
@@ -86,7 +90,10 @@ export const query = graphql`
             body
             frontmatter {
                 title
-                hero {
+                image {
+                    publicURL
+                }
+                banner {
                     publicURL
                 }
                 description

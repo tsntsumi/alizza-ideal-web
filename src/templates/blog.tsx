@@ -21,6 +21,7 @@ import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
+import { ContentsQuery } from "./ContentsQuery"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -41,7 +42,7 @@ const components = {
     FileImage: FileImage,
 }
 
-export default function blog({ location, data }) {
+export default function blog({ data, location }: PageProps<ContentsQuery, {}>) {
     const author = data.mdx.frontmatter.author ?? ""
     const credit = remark()
         .use(recommended)
@@ -53,7 +54,7 @@ export default function blog({ location, data }) {
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.description ?? "")
         .toString()
-    const hero = getImage(data.mdx.frontmatter.hero)
+    const banner = getImage(data.mdx.frontmatter.banner)
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
             image: edge.node.childImageSharp?.gatsbyImageData,
@@ -71,15 +72,15 @@ export default function blog({ location, data }) {
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
                 image:
-                    data.mdx.frontmatter.banner?.publicURL ||
-                    data.mdx.frontmatter.hero?.publicURL,
+                    data.mdx.frontmatter.image?.publicURL ||
+                    data.mdx.frontmatter.banner?.publicURL,
             }}
             location={location}
         >
             <div className="md:px-4 mt-12 py-6 md:w-11/12 mx-auto">
                 <div className="mx-auto relative">
                     <GatsbyImage
-                        image={hero}
+                        image={banner}
                         alt={data.mdx.frontmatter.title}
                     />
                     <div
@@ -131,7 +132,7 @@ export default function blog({ location, data }) {
     )
 }
 
-export const query = graphql`
+export const query = graphql<ContentsQuery>`
     query BlogQuery(
         $slug: String!
         $relativeDirectory: String!
@@ -149,7 +150,10 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                hero {
+                banner {
+                    publicURL
+                }
+                image {
                     publicURL
                 }
             }

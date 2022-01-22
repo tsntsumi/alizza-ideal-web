@@ -67,7 +67,7 @@ export default function landingpage({
         .use(remarkHtml)
         .processSync(data.mdx.frontmatter.description)
         .toString()
-    const hero = getImage(data.mdx.frontmatter.hero)
+    const banner = getImage(data.mdx.frontmatter.banner)
     const images = data.allFile.edges.reduce((acc, edge) => {
         acc[edge.node?.base] = {
             image: edge.node.childImageSharp?.gatsbyImageData,
@@ -85,8 +85,8 @@ export default function landingpage({
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
                 image:
-                    data.mdx.frontmatter.banner?.publicURL ||
-                    data.mdx.frontmatter.hero?.publicURL,
+                    data.mdx.frontmatter.image?.publicURL ||
+                    data.mdx.frontmatter.banner?.publicURL,
             }}
             location={location}
         >
@@ -107,15 +107,10 @@ export default function landingpage({
                             }}
                         ></div>
                     </div>
-                    <div id="hero">
-                        SLUG--{data.mdx.frontmatter.hero.publicURL}
-                        ---SLUG HERO--
-                        {data.mdx.frontmatter?.hero?.publicURL}--HERO
-                    </div>
-                    {hero && (
-                        <div id="hero">
+                    {banner && (
+                        <div id="banner">
                             <GatsbyImage
-                                image={hero}
+                                image={banner}
                                 alt={data.mdx.frontmatter.title}
                             />
                             <div
@@ -156,7 +151,7 @@ export const query = graphql<ContentsQuery>`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                hero {
+                banner {
                     publicURL
                     childImageSharp {
                         gatsbyImageData(
@@ -167,7 +162,7 @@ export const query = graphql<ContentsQuery>`
                         )
                     }
                 }
-                banner {
+                image {
                     publicURL
                 }
             }

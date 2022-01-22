@@ -96,7 +96,7 @@ p {
 }
 
 .btn {
-    @apply h-12 px-6 outline-none inline-flex relative overflow-hidden items-center;
+    @apply h-auto px-6 outline-none inline-flex relative overflow-hidden items-center;
 }
 
 .btn.disabled {
@@ -189,9 +189,8 @@ p {
     @apply mx-auto;
     @apply text-base !important;
 }
-.lp-content #headline #hero {
+.lp-content #headline #banner {
     @apply flex-1;
-    @apply font-bold text-white bg-darkblue text-center;
 }
 .lp-content #headline #desc h1 {
     @apply mt-0 mb-4 px-4 py-8;
