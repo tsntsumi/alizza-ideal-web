@@ -149,7 +149,9 @@ export const query = graphql`
                 date(formatString: "DD MMMM YYYY")
                 description
                 credit
-                hero
+                hero {
+                    publicURL
+                }
             }
         }
         allFile: allFile(

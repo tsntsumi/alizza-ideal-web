@@ -107,6 +107,11 @@ export default function landingpage({
                             }}
                         ></div>
                     </div>
+                    <div id="hero">
+                        SLUG--{data.mdx.frontmatter.hero.publicURL}
+                        ---SLUG HERO--
+                        {data.mdx.frontmatter?.hero?.publicURL}--HERO
+                    </div>
                     {hero && (
                         <div id="hero">
                             <GatsbyImage

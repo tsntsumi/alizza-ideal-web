@@ -86,7 +86,9 @@ export const query = graphql`
             body
             frontmatter {
                 title
-                hero
+                hero {
+                    publicURL
+                }
                 description
             }
         }

@@ -152,7 +152,12 @@ export const query = graphql`
                 title
                 date(formatString: "DD MMMM YYYY")
                 description
-                hero
+                hero {
+                    publicURL
+                }
+                banner {
+                    publicURL
+                }
             }
         }
         allFile: allFile(

@@ -182,15 +182,16 @@ p {
 
 .lp-content #headline {
     @apply noindent;
-    @apply flex flex-row md:flex-wrap md:space-x-4;
+    @apply flex flex-col sm:flex-row md:flex-wrap md:space-x-4;
 }
 .lp-content #headline #desc {
     @apply flex-1;
     @apply mx-auto;
     @apply text-base !important;
 }
-.lp-content #headline #banner {
+.lp-content #headline #hero {
     @apply flex-1;
+    @apply font-bold text-white bg-darkblue text-center;
 }
 .lp-content #headline #desc h1 {
     @apply mt-0 mb-4 px-4 py-8;
