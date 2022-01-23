@@ -198,3 +198,20 @@ exports.onCreateWebpackConfig = ({ actions, stage, plugins, getConfig }) => {
         actions.replaceWebpackConfig(config)
     }
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions
+    createTypes(`
+    type MdxFrontmatter {
+      title: String!
+      description: String
+      author: String
+      image: File @fileByRelativePath
+      banner: File @fileByRelativePath
+      template: String
+      date: Date @dateformat
+      credit: String
+      robots: String
+    }
+  `)
+}
