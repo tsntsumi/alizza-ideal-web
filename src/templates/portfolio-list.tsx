@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 import PortfolioItem from "../components/item-portfolio"
 import Pagination from "../components/pagination"
+import { ContentsListQuery, imageNode } from "./ContentsListQuery"
 
 export default function portfolioList({ data, pageContext, location }) {
     useEffect(() => {
@@ -53,6 +54,9 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
+                        image {
+                            publicURL
+                        }
                     }
                     fields {
                         slug

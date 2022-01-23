@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 import BlogItem from "../components/item-blog"
 import Pagination from "../components/pagination"
+import { ContentsListQuery, imageNode } from "./ContentsQuery"
 
 export default function blogList({ data, pageContext, location }) {
     const blogItems = data.allMdx.edges.map((item) => (
@@ -27,7 +28,7 @@ export default function blogList({ data, pageContext, location }) {
     )
 }
 
-export const query = graphql`
+export const query = graphql<ContentsListQuery>`
     query BlogListQuery($skip: Int!, $limit: Int!) {
         allMdx(
             filter: { fields: { sourceName: { eq: "blog" } } }
@@ -42,6 +43,9 @@ export const query = graphql`
                         title
                         description
                         date(formatString: "DD MMMM YYYY")
+                        image {
+                            publicURL
+                        }
                     }
                     fields {
                         slug

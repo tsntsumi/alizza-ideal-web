@@ -17,7 +17,7 @@ export const ItemPortfolio = ({ data, even }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.banner)
+    const image = getImage(data.frontmatter.image)
 
     const getWindowHeight = () => {
         const w = window

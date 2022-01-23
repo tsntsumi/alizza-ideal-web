@@ -14,7 +14,7 @@ import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { remark } from "remark"
-import { ContentsQuery } from "./ContentsQuery"
+import { ContentsQuery, imageNode } from "./ContentsQuery"
 
 const components = {
     ArrowDown: ArrowDown,

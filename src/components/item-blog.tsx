@@ -15,7 +15,7 @@ export const ItemBlog = ({ data }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.banner)
+    const image = getImage(data.frontmatter.image)
 
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
@@ -31,6 +31,7 @@ export const ItemBlog = ({ data }) => {
                     onBlur={() => changeFocused(false)}
                 >
                     <div className="image">
+                        {image === null ? "NULL" : "IMAGE"}
                         <GatsbyImage
                             image={image}
                             alt={data.frontmatter.title || "Image"}

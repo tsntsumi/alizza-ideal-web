@@ -21,7 +21,7 @@ import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
-import { ContentsQuery } from "./ContentsQuery"
+import { ContentsQuery, imageNode } from "./ContentsQuery"
 
 const components = {
     ArrowDown: ArrowDown,
