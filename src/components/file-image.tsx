@@ -3,11 +3,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export const FileImage = (props) => {
-    const { base, images, alt, ...rest } = props
+    const { base, images, alt, className, ...rest } = props
 
     if (!base) {
         return (
-            <div className={rest.className}>
+            <div className={className}>
                 <div className="bg-error text-white">
                     ファイル名が指定されていません。 ファイル名を base
                     タグで指定しているか確認してください。
@@ -17,7 +17,7 @@ export const FileImage = (props) => {
     }
     if (!images) {
         return (
-            <div className={rest.className}>
+            <div className={className}>
                 <div className="bg-error text-white">
                     イメージ一覧を取り出せませんでした。 FileImage
                     タグの引数に「props.images」を したか確認してください。
@@ -27,7 +27,7 @@ export const FileImage = (props) => {
     }
     if (!images[base]) {
         return (
-            <div className={rest.className}>
+            <div className={className}>
                 <div className="bg-error text-white">
                     {`「${base}」というファイルが見つかりません。
                     ファイル名を間違えていないか確認してください。`}
@@ -41,7 +41,7 @@ export const FileImage = (props) => {
             <GatsbyImage
                 image={images[base].image}
                 alt={alt || base}
-                className={rest.className}
+                className={className}
                 objectFit="scale-down"
                 objectPosition="50% 50%"
                 {...rest}
