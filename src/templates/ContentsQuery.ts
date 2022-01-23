@@ -15,7 +15,8 @@ export interface mdxNode {
 }
 
 export interface fieldsNode {
-    sourceName: string
+    sourceName: string | null
+    slug: string | null
 }
 
 export interface frontmatterNode {
@@ -35,13 +36,6 @@ export interface imageNode {
 export interface childImageSharpNode {
     gatsbyImageData: any | null
     id: string
-}
-
-export interface gatsbyImageDataNode {
-    width: number
-    placeholder: any
-    layout: any
-    quality: number
 }
 
 export interface allFileNode {
@@ -72,18 +66,6 @@ export interface mdxEdgeListNode {
 
 export interface mdxListNode {
     id: string
-    frontmatter: frontmatterListNode
-    fields: mdxFilesNode
-}
-
-export interface frontmatterListNode {
-    title: string
-    date: any | null
-    description: string | null
-    credit: string | null
-    banner: imageNode | null
-}
-
-export interface mdxFilesNode {
-    slug: string | null
+    frontmatter: frontmatterNode
+    fields: FielsNode
 }
