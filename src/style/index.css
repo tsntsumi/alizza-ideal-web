@@ -96,7 +96,7 @@ p {
 }
 
 .btn {
-    @apply h-auto px-6 outline-none inline-flex relative overflow-hidden items-center;
+    @apply h-auto py-2 px-6 rounded-full outline-none inline-flex relative overflow-hidden items-center;
 }
 
 .btn.disabled {

@@ -158,6 +158,14 @@ export const query = graphql<ContentsQuery>`
                 }
                 banner {
                     publicURL
+                    childImageSharp {
+                        gatsbyImageData(
+                            width: 640
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                            quality: 8
+                        )
+                    }
                 }
             }
         }

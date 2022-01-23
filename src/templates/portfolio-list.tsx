@@ -56,6 +56,14 @@ export const query = graphql`
                         description
                         image {
                             publicURL
+                            childImageSharp {
+                                gatsbyImageData(
+                                    width: 640
+                                    placeholder: BLURRED
+                                    layout: CONSTRAINED
+                                    quality: 8
+                                )
+                            }
                         }
                     }
                     fields {
