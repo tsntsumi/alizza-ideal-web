@@ -45,6 +45,14 @@ export const query = graphql<ContentsListQuery>`
                         date(formatString: "DD MMMM YYYY")
                         image {
                             publicURL
+                            childImageSharp {
+                                gatsbyImageData(
+                                    breakpoints: [98, 128, 256, 512]
+                                    placeholder: BLURRED
+                                    layout: CONSTRAINED
+                                    quality: 8
+                                )
+                            }
                         }
                     }
                     fields {

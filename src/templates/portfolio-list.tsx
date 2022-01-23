@@ -56,6 +56,14 @@ export const query = graphql`
                         description
                         image {
                             publicURL
+                            childImageSharp {
+                                gatsbyImageData(
+                                    breakpoints: [98, 128, 256, 512]
+                                    placeholder: BLURRED
+                                    layout: CONSTRAINED
+                                    quality: 8
+                                )
+                            }
                         }
                     }
                     fields {

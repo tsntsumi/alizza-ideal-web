@@ -15,7 +15,7 @@ export const ItemLandingPage = ({ data }) => {
         .use(remarkHtml)
         .processSync(data.frontmatter.description)
         .toString()
-    const image = getImage(data.frontmatter.banner)
+    const image = getImage(data.frontmatter.image)
 
     return (
         <div className="landingPage-item w-full md:w-1/2 lg:w-1/3 p-4">

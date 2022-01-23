@@ -150,6 +150,14 @@ export const query = graphql<ContentsQuery>`
                 credit
                 banner {
                     publicURL
+                    childImageSharp {
+                        gatsbyImageData(
+                            breakpoints: [98, 128, 256, 512]
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                            quality: 8
+                        )
+                    }
                 }
                 image {
                     publicURL
