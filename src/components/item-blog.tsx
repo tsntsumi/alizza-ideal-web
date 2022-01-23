@@ -31,7 +31,6 @@ export const ItemBlog = ({ data }) => {
                     onBlur={() => changeFocused(false)}
                 >
                     <div className="image">
-                        {image === null ? "NULL" : "IMAGE"}
                         <GatsbyImage
                             image={image}
                             alt={data.frontmatter.title || "Image"}

@@ -152,9 +152,25 @@ export const query = graphql<ContentsQuery>`
                 credit
                 banner {
                     publicURL
+                    childImageSharp {
+                        gatsbyImageData(
+                            width: 640
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                            quality: 8
+                        )
+                    }
                 }
                 image {
                     publicURL
+                    childImageSharp {
+                        gatsbyImageData(
+                            width: 640
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                            quality: 8
+                        )
+                    }
                 }
             }
         }
