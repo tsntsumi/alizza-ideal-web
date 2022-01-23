@@ -56,9 +56,7 @@ export default function basePages({
             seo={{
                 title: data.mdx.frontmatter.title,
                 description: data.mdx.frontmatter.description,
-                image:
-                    data.mdx.frontmatter.image?.publicURL ||
-                    data.mdx.frontmatter.banner?.publicURL,
+                image: data.mdx.frontmatter.image?.publicURL,
             }}
             location={location}
         >
@@ -91,9 +89,6 @@ export const query = graphql<ContentsQuery>`
             frontmatter {
                 title
                 image {
-                    publicURL
-                }
-                banner {
                     publicURL
                 }
                 description

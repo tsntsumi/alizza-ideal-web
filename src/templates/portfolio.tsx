@@ -84,9 +84,7 @@ export default function porfolio({ location, data }) {
                 seo={{
                     title: data.mdx.frontmatter.title,
                     description: data.mdx.frontmatter.description,
-                    image:
-                        data.mdx.frontmatter.image?.publicURL ||
-                        data.mdx.frontmatter.banner?.publicURL,
+                    image: data.mdx.frontmatter.image?.publicURL,
                 }}
                 location={location}
             >
@@ -157,7 +155,6 @@ export const query = graphql<ContentsQuery>`
                     publicURL
                 }
                 banner {
-                    publicURL
                     childImageSharp {
                         gatsbyImageData(
                             width: 640
