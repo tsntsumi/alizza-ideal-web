@@ -134,6 +134,7 @@ const plugins = [
             ],
         },
     },
+    `gatsby-plugin-mdx-frontmatter`,
 ]
 
 if (siteMetadata.disqus) {

@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from "gatsby"
 import BlogItem from "../components/item-blog"
 import Pagination from "../components/pagination"
-import { ContentsListQuery, imageNode } from "./ContentsQuery"
 
 export default function blogList({ data, pageContext, location }) {
     const blogItems = data.allMdx.edges.map((item) => (

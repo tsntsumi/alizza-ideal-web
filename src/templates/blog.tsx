@@ -21,7 +21,6 @@ import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
-import { ContentsQuery, imageNode } from "./ContentsQuery"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -42,7 +41,7 @@ const components = {
     FileImage: FileImage,
 }
 
-export default function blog({ data, location }: PageProps<ContentsQuery, {}>) {
+export default function blog({ data, location }) {
     const author = data.mdx.frontmatter.author ?? ""
     const credit = remark()
         .use(recommended)
@@ -130,7 +129,7 @@ export default function blog({ data, location }: PageProps<ContentsQuery, {}>) {
     )
 }
 
-export const query = graphql<ContentsQuery>`
+export const query = graphql`
     query BlogQuery(
         $slug: String!
         $relativeDirectory: String!

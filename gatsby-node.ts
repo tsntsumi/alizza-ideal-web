@@ -205,3 +205,25 @@ exports.onCreateWebpackConfig = ({ actions, stage, plugins, getConfig }) => {
         actions.replaceWebpackConfig(config)
     }
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions
+    const typeDefs = `
+    type Mdx implements Node {
+      frontmatter: MdxFrontmatter
+    }
+    type MdxFrontmatter {
+      description: String @mdx
+      template: String
+      image: File
+      banner: File
+      credit: String
+      robots: String
+      tags: [TagValues]
+    }
+    type TagValues {
+      tag: String
+    }
+  `
+    createTypes(typeDefs)
+}

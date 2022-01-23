@@ -19,8 +19,6 @@ import { FileImage } from "../components/file-image"
 import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 
-import { ContentsQuery, imageNode } from "./ContentsQuery"
-
 const components = {
     ArrowDown: ArrowDown,
     ArrowDownCircle: ArrowDownCircle,
@@ -52,10 +50,7 @@ const components = {
     NoWrap: (props) => <span className="whitespace-nowrap" {...props} />,
 }
 
-export default function landingpage({
-    data,
-    location,
-}: PageProps<ContentsQuery, {}>) {
+export default function landingpage({ data, location }) {
     const credit = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -132,8 +127,8 @@ export default function landingpage({
     )
 }
 
-export const query = graphql<ContentsQuery>`
-    query ContentsQuery(
+export const query = graphql`
+    query LandingPageQuery(
         $slug: String!
         $relativeDirectory: String!
         $sourceInstanceName: String!

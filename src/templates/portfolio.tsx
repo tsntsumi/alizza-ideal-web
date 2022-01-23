@@ -19,7 +19,6 @@ import { Row, Col } from "../components/shortcodes/index"
 import { Squeeze } from "../components/squeeze"
 import { graphql, PageProps } from "gatsby"
 import { remark } from "remark"
-import { ContentsQuery, imageNode } from "./ContentsQuery"
 
 const components = {
     Avatar: Avatar,
@@ -135,7 +134,7 @@ export default function porfolio({ location, data }) {
     )
 }
 
-export const query = graphql<ContentsQuery>`
+export const query = graphql`
     query PortfolioQuery(
         $slug: String!
         $relativeDirectory: String!

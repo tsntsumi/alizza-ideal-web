@@ -14,7 +14,6 @@ import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { remark } from "remark"
-import { ContentsQuery, imageNode } from "./ContentsQuery"
 
 const components = {
     ArrowDown: ArrowDown,
@@ -31,10 +30,7 @@ const components = {
     FileImage: FileImage,
 }
 
-export default function basePages({
-    data,
-    location,
-}: PageProps<ContentsQuery, {}>) {
+export default function basePages({ data, location }) {
     const description = remark()
         .use(recommended)
         .use(remarkHtml)
@@ -78,7 +74,7 @@ export default function basePages({
     )
 }
 
-export const query = graphql<ContentsQuery>`
+export const query = graphql`
     query BasePagesQuery(
         $slug: String!
         $relativeDirectory: String!
