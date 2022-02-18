@@ -37,6 +37,11 @@ const components = {
     Offer: Offer,
     Row: Row,
     Sticky: Sticky,
+    Squeeze: (props) => (
+        <p className="noindent">
+            <Squeeze {...props} />
+        </p>
+    ),
     code: CodeBlock,
     FileImage: FileImage,
 }
