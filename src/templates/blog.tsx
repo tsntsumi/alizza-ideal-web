@@ -34,6 +34,11 @@ const components = {
     CtaButton: CtaButton,
     ItemProduct: ItemProduct,
     Link: Link,
+    Figure: (props) => (
+        <p className="noindent">
+            <FileImage {...props} />
+        </p>
+    ),
     Offer: Offer,
     Row: Row,
     Sticky: Sticky,
