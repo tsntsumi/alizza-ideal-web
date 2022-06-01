@@ -1,105 +1,304 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Alizza Ideal web: Blog and Product site
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Alizza Ideal web は、ちょっと個性的な会社紹介サイトです。
+個人事業主や小規模事業者の事業や、商品を紹介するのに適しています。
+ブログや商品説明ページ、その他プライバシーポリシーページなどを
+公開することができます。
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+### 構成方法
 
-## 🚀 Quick start
+ほとんどの機能を編集することができます。
+最初にカスタマイズするときは、 `config.ts` を編集してください。
 
-1.  **Create a Gatsby site.**
+以下に説明していきます。
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+注意：どのプロパティも削除しないでください。
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+```javascript
+const siteMetadata = {
+```
 
-1.  **Start developing.**
+Webページのタイトル
 
-    Navigate into your new site’s directory and start it up.
+```javascript
+    title: `Alizza Ideal`,
+```
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+サイトのURL。ページのアイコンをクリックしたときに、
+ホームへ移動するために使います。
 
-1.  **Open the source code and start editing!**
+```javascript
+    siteUrl: `http://localhost`, // You sites URL
+```
 
-    Your site is now running at `http://localhost:8000`!
+ホームページのタイトルが半角英字の場合に、
+大文字に変換して表示するかどうか。
+`true` で大文字にします。
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries)._
+```javascript
+    capitalizeTitleOnHome: true, // Whether to capitalize the letter on homepage
+```
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+ロゴ画像ファイル
 
-## 🚀 Quick start (Gatsby Cloud)
+```javascript
+    logo: `/images/logo.png`, // Logo 
+```
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+アイコン（ファビコン）：ブラウザのタブに表示するアイコン画像ファイルです。
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-default)
+```javascript
+    icon: `/images/icon.png`, // Favicon, shown in the browsers "tab"
+```
 
-## 🧐 What's inside?
+メインタイトルいっぱいに表示するタイトル画像ファイルです。
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+```javascript
+    titleImage: `/images/wall.jpg`, // The main title is filled with an image.
+```
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+SNSメディアにシェアされたときに表示する画像ファイルです。
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+```javascript
+    ogImage: `/images/wall.png`, // open graph image (shown when link is shared in social media)
+```
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+`true` を指定したときに、画面の表示内容を２カラム表示にします。
+上で指定したタイトル画像ファイルを左に、テキストを右に表示します。
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+`false` にすると、タイトル画像はテキストの背景画像として表示されます。
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+```javascript
+    twoColumnWall: true, // If true, the wall will be split into two with titleImage on left side and text on the right. If false, the title image will be used as the background of the text.
+```
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+Webページの短い説明文。
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+```javascript
+    about:"", // The short about text shown on front page
+```
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+タイトルの下に表示する短いキャッチコピー
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+```javascript
+    introTag: `PHOTOGRAPHER | VIDEOGRAPHER`, // Intro tag shown below title
+```
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+タイトルの下に表示するWebページの概要説明
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+```javascript
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
+```
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+Webページの製作者
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+```javascript
+    author: `@tsntsumi`, // Author
+```
 
-## 🎓 Learning Gatsby
+Blog の一覧を最大何項目表示するか
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+```javascript
+    blogItemsPerPage: 10,
+```
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+製品紹介の一覧を最大何項目表示するか
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+```javascript
+    productsItemsPerPage: 10,
+```
 
-## 💫 Deploy
+ダークモードをデフォルトにするかどうか
 
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/products/cloud/)
+```javascript
+    darkmode: true, // Whether to enable the darkmode by default. Change to false if you want the light mode
+```
 
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
+ダークモードとライトモードを切替可能にするかいなか
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+```javascript
+    switchTheme: true, // Whether to show a switch theme button on the navbar
+```
+
+ナビゲーションバーとフッター領域に表示するリンク。
+以下の項目の数は増やしたり減らしたりしても構いません。
+
+```javascript
+    // The links shown on the navbar and footer, follow the same structure to add or remove more items.
+```
+```javascript
+    navLinks: [{
+            name: "HOME",
+            url: "/"
+        },
+        {
+            name: "ABOUT",
+            url: "/about"
+        },
+        {
+            name: "BLOG",
+            url: "/blog"
+        },
+        {
+            name: "PRODUCTS",
+            url: "/products"
+        },
+        {
+            name: "CONTACT",
+            url: "/contact"
+        }
+    ],
+```
+
+上のナビゲーションバーリンクと同様ですが、フッター領域にだけ表示します。
+
+```javascript
+    // Same as navbar links, except these are shown on the footer
+    footerLinks: [{
+        name: "PRIVACY POLICY",
+        url: "/privacy-policy"
+    }],
+```
+
+SNSのプロフィールリンク。
+SNSのアイコン画像ファイルは、`static/images` フォルダに格納されています。
+もしSNSの項目を増やす場合にアイコン画像を使う場合は、
+`static/images` フォルダにコピーして使います。
+
+```javascript
+    // Your social profile links. The icons of the given social medias are available in the static folder. If you are adding a new item, include the icon in the static/images folder.
+    social: [{
+            name: "Facebook",
+            icon: "/images/Facebook.svg",
+            url: "#"
+        },
+        {
+            name: "Twitter",
+            icon: "/images/Twitter.svg",
+            url: "#"
+        },
+        {
+            name: "Instagram",
+            icon: "/images/Instagram.svg",
+            url: "#"
+        },
+        {
+            name: "Youtube",
+            icon: "/images/Youtube.svg",
+            url: "#"
+        }
+    ],
+```
+
+コンタクト方法一覧
+
+`api_url` には Airtable のテーブルIDを登録します。
+コンタクトフォームを使わない場合は、値をから文字列にします。
+
+必要ない項目は、削除せずに値を空文字列にしてください。
+
+```javascript
+    contact: {
+        api_url: "https://getform.io/f/f227a36xxxxxx", // leave empty ('') or false to hide form
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
+        mail: "hi@akzhy.com",
+        phone: "000-000-0000",
+        address: "1234 \nLocation \nLocation"
+    },
+```
+
+コメントを登録できるクラウドサービス「disqus」の ID を設定します。
+使用しない場合は値をから文字列にしてください。
+
+```javascript
+    disqus: `your-disqus-shortname`  // Optional, remove this if you don't use disqus
+}
+
+```
+
+#### ブログ記事を作る方法
+
+フォルダ `contents/blog` を開きます。
+次に、新しいフォルダを好きな名前で作ってください。
+それが URL になります。
+フォルダの中に、`index.md` ファイルとその他必要なファイルを格納してください。
+
+MDX のメタデータ (frontmatter) は次のような構造をしています。
+
+```
+---
+title: ブログ記事のタイトル
+date: 2019-06-29 <-- 日付は左のフォーマットの通りに書いてください
+image: ./image.jpg <-- 画像はブログ一覧画面で表示します
+banner: ./banner.jpg <-- ブログ記事のトップに表示する画像
+description: ここに書いた説明内容は、ブログ一覧ページに表示します。
+  また SEO の説明にも使います。
+---
+```
+
+ブログ記事を削除したくなったら、単に `contents/blog` の下にある
+ベログのフォルダごと削除してください。
+（注意： `blog` フォルダ自体は削除しないこと）
+
+#### 製品紹介記事の作り方
+
+`contents/products` フォルダを開きます。
+次に、新しいフォルダを好きな名前で作ってください。
+それが URL になります。
+フォルダの中には `index.md` ファイルとその他必要なファイルを格納してください。
+
+MDX のメタデータ（frontmatter）は次のような構造になります。
+
+```
+---
+title: 記事のタイトル
+date: 2019-06-29 <-- 日付は左のフォーマットの通りに書いてください
+banner: ./banner.jpg <-- 紹介記事のトップに表示する画像
+image: ./image.jpg <-- 画像は製品一覧画面で表示します
+description: ここに書いた説明内容は、ブログ一覧ページに表示します。
+  また SEO の説明にも使います。
+---
+```
+
+製品紹介ページはグリッドの作成をサポートしています。
+
+グリッドを作成する場合、次のような構造にします。
+
+```
+<Row>
+<Col>
+
+**Markdownで書いた説明文**
+
+</Col>
+</Row>
+```
+
+#### その他の説明ページを作る
+
+その他の説明ページは、 `privacy-policy` のようなページを作るときに便利です。
+
+例えば `About` ページはその他の説明ページとして作りました。
+
+まず、　`contents/basepages` フォルダを開きます。
+次に、新しいフォルダを好きな名前で作ってください。
+それが URL になります。
+フォルダの中には `index.md` ファイルとその他必要なファイルを格納してください。
+
+MDX のメタデータ（frontmatter）は次のような構造になります。
+
+```
+---
+title: 説明ページのタイトル
+image: ./image.jpg <-- シェアするときに使います
+description: ページの SEO メタデータに使う説明文
+---
+```
+
+### コンタクトフォーム
+
+コンタクトフォームは Airtable をバックエンドストレージとして使います。
+
+コンタクトフォームに入力された内容は、 Airtable サーバーに送信する前に
+内容がただしいかどうかチェックします。
+
