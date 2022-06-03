@@ -42,6 +42,20 @@ export const SqueezeForm = ({
   action,
   nextpage,
 }) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            apiKey
+            baseId
+          }
+        }
+      }
+    `
+  )
+  const { apiKey, baseId } = data.site.siteMetadata
+  const tableName = "Clients"
   const { t } = useI18next()
   const [userData, setUserData] = useState({
     name: "",
@@ -114,7 +128,15 @@ export const SqueezeForm = ({
               t("メールアドレスを確認してください")
             )
           if (vn && ve) {
-            action(userData.name, userData.email, tag, language)
+            action(
+              userData.name,
+              userData.email,
+              tag,
+              language,
+              apiKey,
+              baseId,
+              tableName
+            )
               .then(result => {
                 const resultState = {
                   submitError: "",
@@ -211,23 +233,15 @@ export const SqueezeForm = ({
   )
 }
 
-export const SubmitToAirtable = async (name, email, tag, language) => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            apiKey
-            baseId
-          }
-        }
-      }
-    `
-  )
-
-  const { apiKey, baseId } = data.site.siteMetadata
-  const tableName = "Clients"
-
+export const SubmitToAirtable = async (
+  name,
+  email,
+  tag,
+  language,
+  apiKey,
+  baseId,
+  tableName
+) => {
   const base = new Airtable({
     apiKey: apiKey,
   }).base(baseId)
