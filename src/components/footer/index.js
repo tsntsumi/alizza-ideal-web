@@ -23,8 +23,6 @@ const CopyrightStyle = styled.div`
 `
 
 export const Footer = () => {
-  const { t } = useI18next()
-
   return (
     <FooterStyles>
       <div className="footer">
