@@ -3,7 +3,6 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link, Trans, useI18next } from "gatsby-plugin-react-i18next"
 import styled from "styled-components"
-import { Logo } from "../logo"
 
 const HeaderStyles = styled.header`
   .header {

@@ -84,7 +84,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
     font-family: 'Heebo', sans-serif;
-    margin: 0;
+    margin: 0 auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--background);
@@ -171,8 +171,8 @@ hr,
 ol,
 ul,
 blockquote {
-  margin-top: calc(var(--sectionMargin) / 2);
-  margin-bottom: calc(var(--sectionMargin) / 2);
+  margin-top: calc(var(--p) / 2);
+  margin-bottom: calc(var(--p) / 2);
 }
 
 hr {
@@ -182,7 +182,7 @@ hr {
 }
 
 a {
-  color: var(--primary);
+  color: white;
   transition: color 0.3s ease;
   cursor: pointer;
 
@@ -190,6 +190,15 @@ a {
   &:focus {
     text-decoration: none;
   }
+}
+
+.header a,
+.footer a {
+   color: orange;
+}
+
+.footer {
+  color: white;
 }
 
 blockquote {

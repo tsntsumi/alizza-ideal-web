@@ -1,5 +1,7 @@
+// i18next-extract-mark-ns-start footer-component
 import * as React from "react"
 import styled from "styled-components"
+import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next"
 
 export const FooterStyles = styled.footer`
   margin-top: 0;
@@ -10,7 +12,7 @@ export const FooterStyles = styled.footer`
   border-top: 4px solid red;
 
   a {
-    color: green;
+    color: white;
     font-size: inherit;
   }
 `
@@ -18,17 +20,27 @@ export const FooterStyles = styled.footer`
 const CopyrightStyle = styled.div`
   font-size: 7pt;
   font-weight: 500;
-  color: var(--primary);
 `
 
 export const Footer = () => {
+  const { t } = useI18next()
+
   return (
     <FooterStyles>
-      <CopyrightStyle>
-        Copyright &copy; 2022, TSUTSUMI Kikuo (
-        <a href="https://www.alizza-ideal.com">Alizza Ideal</a>
-        ). All rights reserved.
-      </CopyrightStyle>
+      <div className="footer">
+        <CopyrightStyle>
+          Copyright &copy; 2022, TSUTSUMI Kikuo (
+          <a href="https://www.alizza-ideal.com">Alizza Ideal</a>
+          ). All rights reserved.
+          <Link to="/policy">
+            [ <Trans>個人情報保護</Trans> ]
+          </Link>
+          -
+          <Link to="/legal">
+            [ <Trans>特定商取引法</Trans> ]
+          </Link>
+        </CopyrightStyle>
+      </div>
     </FooterStyles>
   )
 }
