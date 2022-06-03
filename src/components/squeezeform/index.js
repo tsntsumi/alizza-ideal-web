@@ -1,6 +1,7 @@
 // i18next-extract-mark-ns-start squeezeform-component
 import * as React from "react"
 import { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { useI18next } from "gatsby-plugin-react-i18next"
 import { FormStyles, FieldStyles } from "./styles"
 import { navigate } from "gatsby"
@@ -211,8 +212,20 @@ export const SqueezeForm = ({
 }
 
 export const SubmitToAirtable = async (name, email, tag, language) => {
-  const apiKey = process.env.AIRTABLE_API_KEY
-  const baseId = process.env.AIRTABLE_SITECONF_BASE
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            apiKey
+            baseId
+          }
+        }
+      }
+    `
+  )
+
+  const { apiKey, baseId } = data.site.siteMetadata
   const tableName = "Clients"
 
   const base = new Airtable({
