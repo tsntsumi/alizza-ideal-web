@@ -39,7 +39,7 @@ const PerksBlock = ({ name, title, texts, data }) => {
 }
 
 const IndexPage = ({ data }) => {
-  const { t } = useI18next()
+  const { t, language } = useI18next()
   const heroImages = SelectImages("Heros", data)
   const suffers = [t("お悩み1"), t("お悩み2"), t("お悩み3")]
   const reasons = [t("理由1"), t("理由2"), t("理由3")]
@@ -235,6 +235,7 @@ const IndexPage = ({ data }) => {
           namelabel={t("会社名と担当者名")}
           emaillabel={t("メールアドレス")}
           tag="homepage"
+          language={language}
           action={SubmitToAirtable}
           nextpage="/thanks/homepage-thanks"
         />
