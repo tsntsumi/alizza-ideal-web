@@ -18,7 +18,7 @@ const BasicText = ({ title, content, link, linkText }) => {
               />
             </div>
           )}
-          <Button text={linkText} as={Link} to={link} />
+          <Button text={linkText} to={link} />
         </div>
       </div>
     </BasicTextStyles>

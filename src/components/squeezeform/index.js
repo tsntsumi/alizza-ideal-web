@@ -6,6 +6,7 @@ import { useI18next } from "gatsby-plugin-react-i18next"
 import { FormStyles, FieldStyles } from "./styles"
 import { navigate } from "gatsby"
 import Airtable from "airtable"
+import { Button } from "../button"
 
 export const SqueezeField = ({
   label,
@@ -222,9 +223,9 @@ export const SqueezeForm = ({
               dispatchErrorState({ type: "clearError" })
             }}
           />
-          <button className="Button" type="submit">
-            {cta}
-          </button>
+          <div style={{ textAlign: "center" }}>
+            <Button type="submit" to="#" text={cta} />
+          </div>
           <span className="success">{errorState.submitSuccess}</span>
           <span className="error">{errorState.submitError}</span>
         </div>

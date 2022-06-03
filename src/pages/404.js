@@ -1,13 +1,13 @@
 // i18next-extract-mark-ns-start 404-page
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Trans } from "gatsby-plugin-react-i18next"
+import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Button from "../components/button"
 import { Logo } from "../components/logo"
-import { MdArrowBack as ArrowBack } from "react-icons/md"
+import { MdArrowBack } from "react-icons/md"
 
 const NotFoundPageStyles = styled.section`
   position: static;
@@ -79,10 +79,11 @@ const Sorry = styled.p`
   top: calc(-0.3 * var(--notFoundTitle));
   width: unset;
   text-align: center;
-  color: var(--primary);
+  color: var(--key-dark-color);
 `
 
 const NotFoundPage = () => {
+  const { t } = useI18next()
   return (
     <Layout>
       <Seo title="404: Not found" />
@@ -94,10 +95,7 @@ const NotFoundPage = () => {
           <Trans>このページは移動したか、もう無くなってしまいました...</Trans>
         </Sorry>
         <div>
-          <Button to="/">
-            <ArrowBack />
-            <Trans>ホームに戻る</Trans>
-          </Button>
+          <Button to="/" iconLeft={<MdArrowBack />} text={t("ホームに戻る")} />
         </div>
       </NotFoundPageStyles>
     </Layout>

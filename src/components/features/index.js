@@ -25,7 +25,7 @@ const Features = ({ title, description }) => {
         })}
       </div>
       <div className="container container__tight learn__more">
-        <Button as={Link} to="/products" text="All Products" />
+        <Button to="/products" text="All Products" />
       </div>
     </FeaturedProductsStyles>
   )

@@ -1,36 +1,69 @@
 import styled from "styled-components"
 
-export const ButtonStyles = styled.button`
-  color: #fff;
-  background-color: transparent;
-  font-family: "Heebo", sans-serif;
-  border: 0;
-  text-decoration: none;
-  padding: 0;
-  transition: color 0.3s ease;
-  text-transform: capitalize;
-  font-size: var(--p);
-  font-weight: 700;
-  position: relative;
-  padding-bottom: 15px;
-  align-self: flex-start;
+export const ButtonStyles = styled.div`
+  height: 3rem;
+  padding: 1.5rem;
   display: inline-flex;
+  position: relative;
+  overflow: hidden;
   align-items: center;
+  color: white;
+  background-color: var(--key-color);
+  font-family: sans-serif;
+  font-size: var(--p);
+  border-radius: var(--p);
+  outline: 2px solid var(--key-dark-color);
+  outline-offset: 2px;
+  margin-top: 1rem; /* 16px */
 
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 3px;
-    left: 0;
-    right: 0;
-    bottom: 8px;
-    background-color: var(--primary);
-    transition: left 0.3s ease;
+  .btn {
+    width: 100%;
   }
 
-  &:focus {
-    color: var(--primary);
+  .disabled {
+    opacity: 0.5;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  span {
+    background-color: transparent;
+    position: relative;
+    z-index: 10;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 100%;
+    transition: left 0.25s;
+    transition-timing-function: cubic-bezier(1, 2.13, 1, -0.1);
+    z-index: 1;
+  }
+
+  .icon-right {
+    margin-left: 0.75rem;
+  }
+
+  .icon-left {
+    margin-right: 0.75rem;
+  }
+
+  &:focus,
+  &:hover {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    color: white;
+    margin-top: 1rem; /* 16px */
+    margin-bottom: 1rem; /* 16px */
   }
 
   @media (hover: hover) {
@@ -38,7 +71,7 @@ export const ButtonStyles = styled.button`
       cursor: pointer;
       color: var(--primary);
 
-      &::after {
+      &:after {
         left: 100%;
       }
     }

@@ -9,7 +9,7 @@ export const Claim = ({ children, title, link, linkText, float }) => {
       <div className="container container__tight">
         {title && <h2>{title}</h2>}
         <div style={{ marginBottom: "60px" }}>{children}</div>
-        {linkText && <Button text={linkText} as={Link} to={link} />}
+        {linkText && <Button text={linkText} to={link} />}
       </div>
     </ClaimStyles>
   )
