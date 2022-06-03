@@ -11,9 +11,9 @@ export const ButtonStyles = styled.div`
   background-color: var(--key-color);
   font-family: sans-serif;
   font-size: var(--p);
+  border: 4px solid var(--key-dark-color);
+  border-style: solid double;
   border-radius: var(--p);
-  outline: 2px solid var(--key-dark-color);
-  outline-offset: 2px;
   margin-top: 1rem; /* 16px */
 
   .btn {
@@ -56,8 +56,8 @@ export const ButtonStyles = styled.div`
 
   &:focus,
   &:hover {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    border: 4px solid var(--key-light-color);
+    border-style: solid single;
   }
 
   .btn-primary {
