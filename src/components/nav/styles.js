@@ -14,14 +14,6 @@ export const NavStyles = styled.nav`
     padding: 0 var(--borderSpacing) 0 var(--borderSpacing);
     background-color: var(--key-color);
     font-size: 10pt;
-
-    @media (min-width: 1024px) {
-      padding-top: 50px;
-    }
-
-    @media (min-width: 1440px) {
-      padding-top: 70px;
-    }
   }
 
   .container {
