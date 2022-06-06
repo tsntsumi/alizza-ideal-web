@@ -61,7 +61,7 @@ const ChooseLanguage = ({
 const ContactLink = ({ language }) => {
   return (
     <div className="contact">
-      <Link to="contact" language={language} type="button">
+      <Link to="/contact" language={language} type="button">
         <Trans>Get in touch</Trans>
       </Link>
     </div>
