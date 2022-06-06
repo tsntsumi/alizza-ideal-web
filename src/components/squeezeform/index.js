@@ -48,14 +48,14 @@ export const SqueezeForm = ({
       query {
         site {
           siteMetadata {
-            apiKey
-            baseId
+            airtableKey
+            airtableBaseId
           }
         }
       }
     `
   )
-  const { apiKey, baseId } = data.site.siteMetadata
+  const { airtableKey, airtableBaseId } = data.site.siteMetadata
   const tableName = "Clients"
   const { t } = useI18next()
   const [userData, setUserData] = useState({
@@ -134,8 +134,8 @@ export const SqueezeForm = ({
               userData.email,
               tag,
               language,
-              apiKey,
-              baseId,
+              airtableKey,
+              airtableBaseId,
               tableName
             )
               .then(result => {
@@ -239,13 +239,13 @@ export const SubmitToAirtable = async (
   email,
   tag,
   language,
-  apiKey,
-  baseId,
+  airtableKey,
+  airtableBaseId,
   tableName
 ) => {
   const base = new Airtable({
-    apiKey: apiKey,
-  }).base(baseId)
+    airtableKey: airtableKey,
+  }).base(airtableBaseId)
 
   const result = {
     isError: false,
@@ -268,7 +268,8 @@ export const SubmitToAirtable = async (
       if (err) {
         result.isError = true
         result.internal = err
-        result.context = apiKey + " :: " + baseId + " :: " + tableName
+        result.context =
+          airtableKey + " :: " + airtableBaseId + " :: " + tableName
         return
       }
     }

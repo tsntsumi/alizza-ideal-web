@@ -5,7 +5,7 @@ import Animate from "../animate"
 import { Nav } from "../nav"
 import { Footer } from "../footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, avoidnav }) => {
   return (
     <>
       <GlobalStyle />

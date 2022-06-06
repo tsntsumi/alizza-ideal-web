@@ -73,17 +73,24 @@ const IndexPage = ({ data }) => {
         title={t("そのお悩み、解決できます")}
         image={isolveitImages.pop()}
       >
+        <h4>
+          <Trans>あなたの悩みを解決する仕掛けとは</Trans>
+        </h4>
         <ul>
-          <li>
+          <li key="b1">
             <Trans>ブログやSNSを頑張らずに</Trans>
           </li>
-          <li>
+          <li key="b2">
             <Trans>ホームページも作らずに</Trans>
           </li>
-          <li>
+          <li key="b3">
             <Trans>９０日以内で</Trans>
           </li>
         </ul>
+        <p>
+          <Trans>Google ビジネスプロフィールを中心に組み立てる、</Trans>
+          <Trans>お客さんが、自然に、繰り返し、集まる仕掛けです。</Trans>
+        </p>
       </Banner>
 
       <Claim title={t("こんな方々が、特に成果を出しています。")}>
@@ -95,13 +102,16 @@ const IndexPage = ({ data }) => {
             marginLeft: "0",
             display: "flex",
             flex: "1 1",
+            alignItems: "center",
+            justifyContent: "center",
+            verticalAlign: "start",
           }}
         >
           <ul
             style={{
-              width: "auto",
-              minWidth: "46%",
-              margin: "0 0",
+              minWidth: "40%",
+              maxWidth: "40%",
+              margin: "0 1em",
               padding: "0 1em 0 4px",
             }}
           >
@@ -112,23 +122,25 @@ const IndexPage = ({ data }) => {
 
           <ul
             style={{
-              width: "auto",
-              minWidth: "46%",
-              margin: "auto 0",
+              minWidth: "40%",
+              maxWidth: "40%",
+              margin: "auto 1em",
               padding: "0 0 0 1em",
             }}
           >
             <li key="1">
-              <Trans>コロナ禍と景気の低迷による売上の低迷を挽回したい方</Trans>
+              <Trans>コロナ禍と景気の影響による売上の低迷を挽回したい方</Trans>
             </li>
             <li key="2">
               <Trans>挽回するだけでなく、さらに上を目指したい方</Trans>
             </li>
             <li key="3">
-              <Trans>集客する時間をなかなか作れないけど、</Trans>
               <Trans>
                 商品・サービスに自信があるし、いつも研鑽に励んでいる方
               </Trans>
+            </li>
+            <li key="4">
+              <Trans>でも、集客する時間をなかなか作れない方</Trans>
             </li>
           </ul>
         </div>

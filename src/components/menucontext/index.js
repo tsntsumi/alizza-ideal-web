@@ -1,4 +1,16 @@
+// i18next-extract-mark-ns-start menu-component
 import React, { useState, createContext } from "react"
+
+export const menuItems = [
+  {
+    path: "/",
+    text: "Home",
+  },
+  {
+    path: "/contact",
+    text: "お問い合わせ",
+  },
+]
 
 // Create the context
 export const MenuContext = createContext()

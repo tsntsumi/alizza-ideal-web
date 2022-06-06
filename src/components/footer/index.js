@@ -1,7 +1,6 @@
 // i18next-extract-mark-ns-start footer-component
 import * as React from "react"
 import styled from "styled-components"
-import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next"
 
 export const FooterStyles = styled.footer`
   margin-top: 0;
@@ -30,13 +29,6 @@ export const Footer = () => {
           Copyright &copy; 2022, TSUTSUMI Kikuo (
           <a href="https://www.alizza-ideal.com">Alizza Ideal</a>
           ). All rights reserved.
-          <Link to="/policy">
-            [ <Trans>個人情報保護</Trans> ]
-          </Link>
-          -
-          <Link to="/legal">
-            [ <Trans>特定商取引法</Trans> ]
-          </Link>
         </CopyrightStyle>
       </div>
     </FooterStyles>

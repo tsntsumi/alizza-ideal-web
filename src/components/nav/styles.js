@@ -6,9 +6,14 @@ export const NavStyles = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 100vw;
     z-index: 100;
-    padding: 20px var(--borderSpacing) 0 var(--borderSpacing);
+    margin: 0;
+    padding: 0 var(--borderSpacing) 0 var(--borderSpacing);
+    background-color: var(--key-color);
+    font-size: 10pt;
 
     @media (min-width: 1024px) {
       padding-top: 50px;
@@ -24,6 +29,10 @@ export const NavStyles = styled.nav`
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .menu {
@@ -39,6 +48,28 @@ export const NavStyles = styled.nav`
     padding: 30px var(--borderSpacing);
     display: flex;
     align-items: center;
+  }
+
+  .lang {
+    display: inline-block;
+    margin: 0 1em 0 1em;
+    vertical-align: middle;
+    z-index: 99;
+  }
+
+  .lang li {
+    font-size: var(--p);
+    button {
+      color: var(--primary);
+      font-size: var(--p);
+    }
+  }
+
+  .contact {
+    display: inline-block;
+    margin: 0 1em 0 auto;
+    vertical-align: middle;
+    z-index: 99;
   }
 `
 
@@ -162,7 +193,16 @@ export const HamburgerStyles = styled(motion.button)`
 export const LogoStyles = styled.div`
   font-weight: 700;
   font-size: 20px;
+  text-align: center;
+  align-items: center;
   letter-spacing: -0.5px;
+  margin: 0;
+  padding: 0;
+
+  img {
+    display: block;
+    margin: 0 auto -20% auto;
+  }
 
   a {
     color: #fff;

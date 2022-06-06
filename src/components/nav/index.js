@@ -1,12 +1,10 @@
 // i18next-extract-mark-ns-start nav-component
 import React, { useContext, useState } from "react"
-import MenuContext from "../menucontext"
 import { motion } from "framer-motion"
-import { menuItems } from "../../constants/links"
-import { UseSiteMetadata } from "../../hooks/use-site-metadata"
-//import UseFeaturedProduct from "../../hooks/use-featured-product"
 import { FiChevronDown as Chevron } from "react-icons/fi"
-import { Trans, Link } from "gatsby-plugin-react-i18next"
+import { Trans, Link, useI18next } from "gatsby-plugin-react-i18next"
+import { MenuContext, menuItems } from "../menucontext"
+import { useSiteMetadata } from "../hooks"
 import {
   NavStyles,
   NavTopLevel,
@@ -22,11 +20,60 @@ import {
   subMenuNavVariants,
 } from "./animation"
 
-const Nav = () => {
-  const featuredProduct = [] /* UseFeaturedProduct() */
+const ChooseLanguage = ({
+  isOpen,
+  toggle,
+  language,
+  languages,
+  originalPath,
+}) => (
+  <div className="lang">
+    <NavTopLevel>
+      <li className={isOpen ? "open" : "closed"} key="lang-top">
+        <button type="button" onClick={toggle} onKeyDown={toggle}>
+          <Trans>Language</Trans>
+          <span>.</span>
+          <Chevron />
+        </button>
+
+        <SubNavStyles
+          initial="closed"
+          animate={isOpen ? "open" : "closed"}
+          variants={subMenuNavVariants}
+        >
+          {languages.map((lang, index) => {
+            return (
+              <li key={`${lang}-${index}`}>
+                <Link to={originalPath} language={lang}>
+                  {/* i18next-extract-disable-next-line */}
+                  <Trans>{lang}</Trans>
+                  <span>.</span>
+                </Link>
+              </li>
+            )
+          })}
+        </SubNavStyles>
+      </li>
+    </NavTopLevel>
+  </div>
+)
+
+const ContactLink = ({ language }) => {
+  return (
+    <div className="contact">
+      <Link to="contact" language={language} type="button">
+        <Trans>Get in touch</Trans>
+      </Link>
+    </div>
+  )
+}
+
+export const Nav = () => {
+  const featuredProduct = [] /* useFeaturedProduct() */
 
   const [isOpen, setNav] = useContext(MenuContext)
   const [subNavIsOpen, setSubNav] = useState(false)
+  const [langNavIsOpen, setLangNav] = useState(false)
 
   const toggleNav = () => {
     setNav(isOpen => !isOpen)
@@ -35,8 +82,13 @@ const Nav = () => {
   const toggleSubNav = () => {
     setSubNav(subNavIsOpen => !subNavIsOpen)
   }
+  const toggleLangNav = () => {
+    setLangNav(langNavIsOpen => !langNavIsOpen)
+  }
 
-  const { title } = UseSiteMetadata()
+  const { title, logo } = useSiteMetadata()
+  const { originalPath } = useI18next()
+  const { language, languages } = useI18next()
 
   return (
     <NavStyles>
@@ -64,9 +116,20 @@ const Nav = () => {
             ></motion.span>
           </HamburgerStyles>
 
-          {title && (
+          <ContactLink language={language} />
+
+          <ChooseLanguage
+            isOpen={langNavIsOpen}
+            toggle={toggleLangNav}
+            language={language}
+            languages={languages}
+            originalPath={originalPath}
+          />
+
+          {(title || logo) && (
             <LogoStyles>
-              <Link to="/">
+              <Link to="/" language={language}>
+                <img src={logo} alt="logo" width="64" height="64" />
                 {title}
                 <span>.</span>
               </Link>
@@ -83,11 +146,12 @@ const Nav = () => {
       >
         <NavTopLevel>
           {menuItems.map((item, index) => (
-            <li key={index}>
+            <li key={`nt-${index}`}>
               <Link
                 onClick={toggleNav}
                 onKeyDown={toggleNav}
                 to={item.path}
+                language={language}
                 activeClassName="menu__item--active"
               >
                 {/* i18next-extract-disable-next-line */}
@@ -96,8 +160,11 @@ const Nav = () => {
               </Link>
             </li>
           ))}
-          {featuredProduct && (
-            <li className={subNavIsOpen ? "open" : "closed"}>
+          {featuredProduct && featuredProduct.length > 0 && (
+            <li
+              className={subNavIsOpen ? "open" : "closed"}
+              key="products-menu"
+            >
               <button
                 type="button"
                 onClick={toggleSubNav}
@@ -113,11 +180,12 @@ const Nav = () => {
                 animate={subNavIsOpen ? "open" : "closed"}
                 variants={subMenuNavVariants}
               >
-                <li>
+                <li key="products">
                   <Link
                     onClick={toggleNav}
                     onKeyDown={toggleNav}
                     to="/products"
+                    language={language}
                   >
                     <Trans>All Products</Trans>
                     <span>.</span>
@@ -127,11 +195,12 @@ const Nav = () => {
                 {featuredProduct.map((item, index) => {
                   const { gatsbyPath, title } = item
                   return (
-                    <li key={index}>
+                    <li key={`p-${index}`}>
                       <Link
                         onClick={toggleNav}
                         onKeyDown={toggleNav}
                         to={gatsbyPath}
+                        language={language}
                       >
                         {title}
                         <span>.</span>

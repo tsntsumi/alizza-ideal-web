@@ -72,7 +72,7 @@ export const BannerStyles = styled.section`
       background-color: var(--key-color);
       padding: 0.5em 1em;
       border-radius: 0.75em;
-      color: rgb(10, 10, 10);
+      color: rgb(250, 250, 250);
       font-weight: 500;
     }
 
@@ -82,7 +82,7 @@ export const BannerStyles = styled.section`
       padding: 1em;
       border-radius: 1em;
       width: 100%;
-      color: black;
+      color: rgb(250, 250, 250);
     }
 
     h2 {

@@ -17,7 +17,7 @@ export const Logo = () => {
   const { title, logo } = data.site.siteMetadata
 
   return (
-    <Link to="/" as="button">
+    <Link to="/">
       <LogoImageStyles>
         <img src={logo} alt={title} />
       </LogoImageStyles>

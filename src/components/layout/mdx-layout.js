@@ -1,9 +1,13 @@
 import * as React from "react"
 import { motion } from "framer-motion"
+import { MDXProvider } from "@mdx-js/react"
+import { Link } from "gatsby-plugin-react-i18next"
 import { GlobalStyle } from "./styles"
 import Animate from "../animate"
 import { Nav } from "../nav"
 import { Footer } from "../footer"
+
+const components = { Link }
 
 const Layout = ({ children }) => {
   return (
@@ -17,7 +21,7 @@ const Layout = ({ children }) => {
       >
         <Nav />
         <Animate>
-          {children}
+          <MDXProvider components={components}>{children}</MDXProvider>
           <Footer />
         </Animate>
       </motion.div>

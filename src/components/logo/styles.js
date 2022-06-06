@@ -4,6 +4,7 @@ export const LogoImageStyles = styled.div`
   background-color: transparent;
   border: 0;
   padding: 0;
+  margin-top: 0.8em;
   transition: color 0.3s ease;
 
   &:hover {

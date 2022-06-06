@@ -19,8 +19,8 @@ module.exports = {
     facebookUsername: "tsntsumi",
     instagramUsername: "",
     linkedinUsername: "",
-    apiKey: process.env.AIRTABLE_API_KEY,
-    baseId: process.env.AIRTABLE_SITECONF_BASE,
+    airtableKey: process.env.AIRTABLE_API_KEY,
+    airtableBaseId: process.env.AIRTABLE_SITECONF_BASE,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
