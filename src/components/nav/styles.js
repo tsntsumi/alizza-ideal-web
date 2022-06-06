@@ -63,6 +63,17 @@ export const NavStyles = styled.nav`
     vertical-align: middle;
     z-index: 99;
   }
+
+  .title {
+    display: inline-block;
+    marign: 0 auto 0 10em;
+    padding-left: 2em;
+    vertical-align: middle;
+    z-index: 99;
+    width: 12em;
+    color: white;
+    font-weight: bold;
+  }
 `
 
 export const NavTopLevel = styled.ul`

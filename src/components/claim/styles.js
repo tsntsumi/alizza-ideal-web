@@ -44,6 +44,7 @@ export const ClaimStyles = styled.section`
     align-items: center;
     justify-content: center;
     width: 25%;
+    overflow: hidden;
     margin-bottom: 1.5rem;
     margin-left: ${({ float }) => (float === "left" ? 0 : "3rem")};
     margin-right: ${({ float }) => (float === "right" ? 0 : "3rem")};

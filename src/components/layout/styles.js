@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   --key-color: rgba(0, 128, 128, 0.8);
   --key-dark-color: rgba(0, 102, 102, 0.8);
   --key-light-color: rgba(0, 153, 153, 0.8);
+  --highlight-color: orange;
   --inActive: #555;
   --letterSpacing: -0.075rem;
   --boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);

@@ -2,6 +2,7 @@
 import React, { useContext, useState } from "react"
 import { motion } from "framer-motion"
 import { FiChevronDown as Chevron } from "react-icons/fi"
+import { MdMail as Mailbox } from "react-icons/md"
 import { Trans, Link, useI18next } from "gatsby-plugin-react-i18next"
 import { MenuContext, menuItems } from "../menucontext"
 import { useSiteMetadata } from "../hooks"
@@ -30,8 +31,11 @@ const ChooseLanguage = ({
   <div className="lang">
     <NavTopLevel>
       <li className={isOpen ? "open" : "closed"} key="lang-top">
-        <button type="button" onClick={toggle} onKeyDown={toggle}>
+        <div>
           <Trans>Language</Trans>
+        </div>
+        <button type="button" onClick={toggle} onKeyDown={toggle}>
+          <Trans>{language}</Trans>
           <span>.</span>
           <Chevron />
         </button>
@@ -41,17 +45,18 @@ const ChooseLanguage = ({
           animate={isOpen ? "open" : "closed"}
           variants={subMenuNavVariants}
         >
-          {languages.map((lang, index) => {
-            return (
-              <li key={`${lang}-${index}`}>
-                <Link to={originalPath} language={lang}>
-                  {/* i18next-extract-disable-next-line */}
-                  <Trans>{lang}</Trans>
-                  <span>.</span>
-                </Link>
-              </li>
-            )
-          })}
+          {languages.map(
+            (lang, index) =>
+              lang !== language && (
+                <li key={`${lang}-${index}`}>
+                  <Link to={originalPath} language={lang}>
+                    {/* i18next-extract-disable-next-line */}
+                    <Trans>{lang}</Trans>
+                    <span>.</span>
+                  </Link>
+                </li>
+              )
+          )}
         </SubNavStyles>
       </li>
     </NavTopLevel>
@@ -62,8 +67,27 @@ const ContactLink = ({ language }) => {
   return (
     <div className="contact">
       <Link to="/contact" language={language} type="button">
+        <span
+          style={{
+            position: "relative",
+            top: "0.3em",
+            fontSize: "1.5em",
+            margin: "auto 0.25em auto 0",
+            virticalAlign: "middle",
+          }}
+        >
+          <Mailbox />
+        </span>
         <Trans>Get in touch</Trans>
       </Link>
+    </div>
+  )
+}
+
+const Title = () => {
+  return (
+    <div className="title">
+      <Trans>お客が集まる仕掛けをプログラミング</Trans>
     </div>
   )
 }
@@ -116,6 +140,7 @@ export const Nav = () => {
             ></motion.span>
           </HamburgerStyles>
 
+          <Title />
           <ContactLink language={language} />
 
           <ChooseLanguage

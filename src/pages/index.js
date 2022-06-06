@@ -32,6 +32,17 @@ const PerksBlock = ({ name, title, texts, data }) => {
           {images && (
             <GatsbyImage image={getImage(images.shift())} alt={`Image ${i}`} />
           )}
+          <div
+            style={{
+              fontSize: "8px",
+              color: "lightGley",
+              textAlign: "right",
+            }}
+          >
+            <a href="https://www.vecteezy.com/free-vector">
+              Vectors by Vecteezy
+            </a>
+          </div>
         </Perk>
       ))}
     </Perks>
@@ -42,8 +53,6 @@ const IndexPage = ({ data }) => {
   const { t, language } = useI18next()
   const heroImages = SelectImages("Heros", data)
   const suffers = [t("お悩み1"), t("お悩み2"), t("お悩み3")]
-  const reasons = [t("理由1"), t("理由2"), t("理由3")]
-  const guarantees = [t("保証１"), t("保証２"), t("保証３")]
   const prospectors = [
     t("見込み客１"),
     t("見込み客２"),
@@ -52,6 +61,8 @@ const IndexPage = ({ data }) => {
   ]
   const voiceImages = SelectImages("Voices", data)
   const isolveitImages = SelectImages("I Solve It", data)
+  const guaranteeImages = SelectImages("Guarantees", data)
+  const reasonImages = SelectImages("Reasons", data)
 
   return (
     <Layout>
@@ -61,14 +72,12 @@ const IndexPage = ({ data }) => {
           <Trans>キャッチフレーズ</Trans>
         </p>
       </Banner>
-
       <PerksBlock
         name="Suffers"
         title={t("あなたは、こんなお悩みがありませんか？")}
         texts={suffers}
         data={data}
       />
-
       <Banner
         title={t("そのお悩み、解決できます")}
         image={isolveitImages.pop()}
@@ -92,7 +101,6 @@ const IndexPage = ({ data }) => {
           <Trans>お客さんが、自然に、繰り返し、集まる仕掛けです。</Trans>
         </p>
       </Banner>
-
       <Claim title={t("こんな方々が、特に成果を出しています。")}>
         <div
           style={{
@@ -146,15 +154,37 @@ const IndexPage = ({ data }) => {
         </div>
       </Claim>
 
-      <PerksBlock
-        name="Reasons"
-        title={t("お客様に選ばれる理由")}
-        texts={reasons}
-        data={data}
-      />
+      <Perks title={t("お客様に選ばれる理由")}>
+        <Perk
+          title={t(
+            "お客さんの心をつかむキャッチコピーで、あなたの商品をアピール"
+          )}
+        >
+          <GatsbyImage image={getImage(reasonImages.shift())} alt="Reason 1" />
+          <div className="photoCredit">Photo by TSUTSUMI Kikuo</div>
+        </Perk>
+        <Perk
+          title={t(
+            "Googleの意図をくみとった店舗向け地域 SEO 対策で、あなたのお店を検索結果上位に表示"
+          )}
+        >
+          <GatsbyImage image={getImage(reasonImages.shift())} alt="Reason 2" />
+          <div className="photoCredit">Photo by TSUTSUMI Kikuo</div>
+        </Perk>
+        <Perk title={t("あなたの商品を引き立てる写真、動画を撮影")}>
+          <GatsbyImage image={getImage(reasonImages.shift())} alt="Reason 3" />
+          <div className="photoCredit">
+            Photo by{" "}
+            <a href="https://unsplash.com/@wenhong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Evan Qu on Unsplash
+            </a>
+          </div>
+        </Perk>
+      </Perks>
 
       <Claim title={t("お客様の声")} float="left">
         <GatsbyImage image={getImage(voiceImages.pop())} alt="Client Image" />
+
         <p>
           <Trans>
             最初は、ポータルサイトにも登録してたし、
@@ -163,7 +193,12 @@ const IndexPage = ({ data }) => {
         </p>
         <p>
           <Trans>
-            でも、はじめてみたら、写真をみてくれた人数や、
+            でも始めてみたら、たった１週間で、２年ぶりに新しいお客さんが来てくれました。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            それに、写真をみてくれた人数や、
             道順を表示してくれた人数がわかるようになったんです。
           </Trans>
           <Trans>
@@ -183,11 +218,6 @@ const IndexPage = ({ data }) => {
         </p>
         <p>
           <Trans>
-            それに、はじめてから１週間で、２年ぶりに新しいお客さんが来てくれました。
-          </Trans>
-        </p>
-        <p>
-          <Trans>
             登録していたポータルサイトの方は、知らない間にクーポンを発行されたりしたので、やめちゃいました。
           </Trans>
         </p>
@@ -200,14 +230,51 @@ const IndexPage = ({ data }) => {
           </p>
         </div>
       </Claim>
-
-      <PerksBlock
-        name="Guarantees"
-        title={t("安心の３つの保証")}
-        texts={guarantees}
-        data={data}
-      />
-
+      <Perks title={t("安心の３つの保証")}>
+        <Perk title={t("９０日間集客保証")}>
+          <GatsbyImage
+            image={getImage(guaranteeImages.shift())}
+            alt="Guarantee 1"
+          />
+          <div className="photoCredit">
+            Photo and Designed by TSUTSUMI Kikuo
+          </div>
+          <p>９０日以内に集客できなければ返金します。</p>
+        </Perk>
+        <Perk title={t("３００リスト獲得保保証")}>
+          <GatsbyImage
+            image={getImage(guaranteeImages.shift())}
+            alt="Guarantee 2"
+          />
+          <div className="photoCredit">
+            Photo by{" "}
+            <a href="https://unsplash.com/photos/3Mhgvrk4tjM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">
+              {" "}
+              Stephen Phillips - Hostreviews.co.uk
+            </a>
+          </div>
+          <p>
+            ３０日以内に顧客リストが３００件集まらなければ、獲得するまで無料でコミットします。
+          </p>
+        </Perk>
+        <Perk title={t("お客さんが集まる仕掛け２０万円相当を提供")}>
+          <GatsbyImage
+            image={getImage(guaranteeImages.shift())}
+            alt="Guarantee 3"
+          />
+          <div className="photoCredit">
+            Photo by{" "}
+            <a href="https://unsplash.com/@arkanperdana?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Arkan Perdana on Unsplash
+            </a>
+          </div>
+          <p>
+            <Trans>
+              お客さんが集まるようになるクラウドシステムを、あなたの代わりにわたしが購入して提供いたします。
+            </Trans>
+          </p>
+        </Perk>
+      </Perks>
       <Claim title={t("本サイト限定キャンペーンのお知らせ")}>
         <h3>
           <Trans>
@@ -221,15 +288,33 @@ const IndexPage = ({ data }) => {
           <Trans>しかも、制作費、運用費はこちらで負担します。</Trans>
         </p>
         <p>
-          <Trans>さらに、ネット広告からリストを取得するための</Trans>{" "}
           <Trans>
-            LP（ランディングページ）も費用を請求することなく制作いたします。
+            さらに、ネット広告からリストを取得するための
+            LP（ランディングページ）も、費用を請求することなく制作いたします。
           </Trans>
         </p>
         <p>
           <Trans>
-            ただし、広告・宣伝の成果は、わたしの実績として使用させていただきます。
+            ご請求させていただくのは、３０日たって成果がでたとき以降の継続する場合だけ。もちろん、３０日以降に継続するかどうかはご自由にお決めください。
           </Trans>
+        </p>
+        <p>
+          <Trans>
+            つまり、あなたは３０日間、あなたのお店の広告・宣伝を無料で試すことができます。それでもし、わたしを気に入っていただければ、ご継続していただけると嬉しく思います。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            ただし、３０日間無料でお試しいただくには、ひとつだけ条件があります。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            それは、広告・宣伝の結果を、わたしの成果と実績として使用させていただけくこと。このページにも掲載しているお客様の声として、可能な範囲で掲載させていただきます。
+          </Trans>
+        </p>
+        <p>
+          <Trans>それだけです。</Trans>
         </p>
 
         <p>
@@ -240,6 +325,9 @@ const IndexPage = ({ data }) => {
               先着３人までの特別キャンペーンです。お問い合わせはお早めに。
             </Trans>
           </span>
+        </p>
+        <p>
+          <Trans>あなたとお会いできるのを楽しみにしています。</Trans>
         </p>
 
         <SqueezeForm
@@ -252,10 +340,6 @@ const IndexPage = ({ data }) => {
           nextpage="/thanks/homepage-thanks"
         />
       </Claim>
-
-      <div style={{ fontSize: "8px", color: "lightGley" }}>
-        <a href="https://www.vecteezy.com/free-vector">Vectors by Vecteezy</a>
-      </div>
     </Layout>
   )
 }
