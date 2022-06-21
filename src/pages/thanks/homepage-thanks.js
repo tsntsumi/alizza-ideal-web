@@ -1,17 +1,15 @@
 // i18next-extract-mark-ns-start homepage-thanks
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Trans, Link, useI18next } from "gatsby-plugin-react-i18next"
+import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import { Banner } from "../../components/banner"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
-import { LinkButtonStyles } from "../../components/button/styles"
 
 const HPThanksPage = ({ data }) => {
   const { t } = useI18next()
 
-  const images = data.Images.edges
+  const images = data.images.edges
     .map(e => e.node.data.Images.localFiles.map(img => img))
     .flat()
     .filter((e, i) => !!e)
@@ -45,7 +43,7 @@ const HPThanksPage = ({ data }) => {
 
 export const query = graphql`
   query costcoThanksQuery($language: String!) {
-    Images: allAirtable(
+    images: allAirtable(
       filter: {
         table: { eq: "SiteContents" }
         data: { Name: { eq: "HPThanks" } }
@@ -57,13 +55,17 @@ export const query = graphql`
           id
           data {
             Name
+            Status
             Images {
               localFiles {
+                absolutePath
                 base
                 url
                 childImageSharp {
                   gatsbyImageData(
-                    formats: [AUTO, WEBP, AVIF]
+                    breakpoints: [360, 720, 1024]
+                    jpgOptions: { progressive: true }
+                    formats: [JPG]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

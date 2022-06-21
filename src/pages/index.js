@@ -375,13 +375,14 @@ export const query = graphql`
             Status
             Images {
               localFiles {
+                absolutePath
                 base
                 url
                 childImageSharp {
                   gatsbyImageData(
                     breakpoints: [360, 720, 1024]
                     jpgOptions: { progressive: true }
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [JPG]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )
