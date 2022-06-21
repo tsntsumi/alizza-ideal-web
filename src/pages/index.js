@@ -250,9 +250,7 @@ const IndexPage = ({ data }) => {
       </Claim>
       <Perks title={t("安心の３つの保証")}>
         <Perk title={t("９０日間集客保証")} image={guaranteeImages.shift()}>
-          <div className="photoCredit">
-            Photo and Designed by TSUTSUMI Kikuo
-          </div>
+          <div className="photoCredit">Photo and Illust by TSUTSUMI Kikuo</div>
           <p>
             <Trans>９０日以内に集客できなければ返金します。</Trans>
           </p>

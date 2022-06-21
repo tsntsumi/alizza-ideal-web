@@ -56,25 +56,14 @@ export const PerkStyles = styled.aside`
     .gatsby-image-wrapper {
       float: left;
       width: 46%;
+      min-width: 30%;
     }
     h3 {
       width: 54%;
+      min-width: 25%;
       text-align: start;
       margin: 0 0 0.4em 0.4em !important;
       padding: 0 1em;
-    }
-  }
-
-  @media (max-width: 800px) {
-    display: flex;
-    width: 98%;
-    .gatsby-image-wrapper {
-      float: left;
-      width: 46%;
-    }
-    h3 {
-      width: 50%;
-      text-align: center;
     }
   }
 
@@ -103,5 +92,7 @@ export const PerkStyles = styled.aside`
 
   .photoCredit {
     font-size: 0.6em;
+    margin: 1em;
+    min-width: 10%;
   }
 `
