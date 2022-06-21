@@ -32,7 +32,7 @@ export default function BasePage({ data }) {
 }
 
 export const query = graphql`
-  query BasePageQuery($frontmatter__slug: String!, $language: String!) {
+  query BasePageQuery($frontmatter__slug: String, $language: String!) {
     mdx(
       fields: { locale: { eq: $language } }
       frontmatter: { slug: { eq: $frontmatter__slug } }
