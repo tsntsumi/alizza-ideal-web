@@ -1,6 +1,9 @@
 const sharp = require("sharp")
-sharp.cache(false)
-sharp.simd(false)
+
+if (process.env.NO_CACHE_ON_BUILD) {
+  sharp.cache(false)
+  sharp.simd(false)
+}
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
