@@ -15,7 +15,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-type Locale implements Node {
+type Locale implements Node @dontInfer {
   ns: String
   data: String
   language: String
