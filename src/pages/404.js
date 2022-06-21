@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start 404-page
+// i18next-extract-mark-ns-start 404
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"

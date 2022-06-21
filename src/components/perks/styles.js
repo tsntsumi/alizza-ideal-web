@@ -100,4 +100,8 @@ export const PerkStyles = styled.aside`
       object-position: center;
     }
   }
+
+  .photoCredit {
+    font-size: 0.6em;
+  }
 `

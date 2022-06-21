@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start home-page
+// i18next-extract-mark-ns-start index
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -28,10 +28,7 @@ const PerksBlock = ({ name, title, texts, data }) => {
   return (
     <Perks title={title}>
       {texts.map((t, i) => (
-        <Perk title={t} key={`perk-${i}`}>
-          {images && (
-            <GatsbyImage image={getImage(images.shift())} alt={`Image ${i}`} />
-          )}
+        <Perk title={t} key={`perk-${i}`} image={images.shift()}>
           <div
             style={{
               fontSize: "8px",
@@ -159,20 +156,22 @@ const IndexPage = ({ data }) => {
           title={t(
             "お客さんの心をつかむキャッチコピーで、あなたの商品をアピール"
           )}
+          image={reasonImages.shift()}
         >
-          <GatsbyImage image={getImage(reasonImages.shift())} alt="Reason 1" />
           <div className="photoCredit">Photo by TSUTSUMI Kikuo</div>
         </Perk>
         <Perk
           title={t(
             "Googleの意図をくみとった店舗向け地域 SEO 対策で、あなたのお店を検索結果上位に表示"
           )}
+          image={reasonImages.shift()}
         >
-          <GatsbyImage image={getImage(reasonImages.shift())} alt="Reason 2" />
           <div className="photoCredit">Photo by TSUTSUMI Kikuo</div>
         </Perk>
-        <Perk title={t("あなたの商品を引き立てる写真、動画を撮影")}>
-          <GatsbyImage image={getImage(reasonImages.shift())} alt="Reason 3" />
+        <Perk
+          title={t("あなたの商品を引き立てる写真、動画を撮影")}
+          image={reasonImages.shift()}
+        >
           <div className="photoCredit">
             Photo by{" "}
             <a href="https://unsplash.com/@wenhong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
@@ -231,21 +230,18 @@ const IndexPage = ({ data }) => {
         </div>
       </Claim>
       <Perks title={t("安心の３つの保証")}>
-        <Perk title={t("９０日間集客保証")}>
-          <GatsbyImage
-            image={getImage(guaranteeImages.shift())}
-            alt="Guarantee 1"
-          />
+        <Perk title={t("９０日間集客保証")} image={guaranteeImages.shift()}>
           <div className="photoCredit">
             Photo and Designed by TSUTSUMI Kikuo
           </div>
-          <p>９０日以内に集客できなければ返金します。</p>
+          <p>
+            <Trans>９０日以内に集客できなければ返金します。</Trans>
+          </p>
         </Perk>
-        <Perk title={t("３００リスト獲得保保証")}>
-          <GatsbyImage
-            image={getImage(guaranteeImages.shift())}
-            alt="Guarantee 2"
-          />
+        <Perk
+          title={t("３００リスト獲得保保証")}
+          image={guaranteeImages.shift()}
+        >
           <div className="photoCredit">
             Photo by{" "}
             <a href="https://unsplash.com/photos/3Mhgvrk4tjM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">
@@ -254,14 +250,15 @@ const IndexPage = ({ data }) => {
             </a>
           </div>
           <p>
-            ３０日以内に顧客リストが３００件集まらなければ、獲得するまで無料でコミットします。
+            <Trans>
+              ３０日以内に顧客リストが３００件集まらなければ、獲得するまで無料でコミットします。
+            </Trans>
           </p>
         </Perk>
-        <Perk title={t("お客さんが集まる仕掛け２０万円相当を提供")}>
-          <GatsbyImage
-            image={getImage(guaranteeImages.shift())}
-            alt="Guarantee 3"
-          />
+        <Perk
+          title={t("お客さんが集まる仕掛け２０万円相当を提供")}
+          image={guaranteeImages.shift()}
+        >
           <div className="photoCredit">
             Photo by{" "}
             <a href="https://unsplash.com/@arkanperdana?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">

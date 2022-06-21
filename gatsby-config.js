@@ -32,6 +32,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/i18n/locales`,
+        name: `locale`,
+      },
+    },
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
@@ -67,60 +74,10 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-source-airtable`,
-      options: {
-        apiKey: process.env.AIRTABLE_API_KEY,
-        concurrency: 5,
-        tables: [
-          {
-            baseId: process.env.AIRTABLE_SITECONF_BASE,
-            tableName: "SiteContents",
-            defaultValues: {
-              Name: "",
-              Description: "",
-            },
-            mapping: { Description: `text/markdown`, Images: `fileNode` },
-            separateNodeType: false,
-            separateMapType: false,
-          },
-          {
-            baseId: process.env.AIRTABLE_SITECONF_BASE,
-            tableName: "Coupons",
-            defaultValues: {
-              Name: "",
-              Tag: "",
-            },
-            separateNodeType: false,
-            separateMapType: false,
-          },
-        ],
-      },
-    },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [`gatsby-remark-images`],
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/pages/`,
-        name: `pages`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/locales`,
-        name: `locale`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         localeJsonSourceName: `locale`,
-        languages: [`en`, `ja`],
+        languages: [`en`, `ja`, `tl`],
         defaultLanguage: `ja`,
         generateDefaultLanguagePage: true,
         redirect: true,
@@ -133,6 +90,18 @@ module.exports = {
           nsSeparator: true,
         },
         pages: [
+          {
+            matchPath: `/:lang?/(legal|policy)/:uid`,
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: `/:lang?/blog/:uid`,
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: `/:lang?/services/:uid`,
+            getLanguageFromPath: true,
+          },
           {
             matchPath: `/:lang?/404/:uid`,
             getLanguageFromPath: true,
@@ -205,6 +174,14 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages/`,
         name: `pages`,
+        extensions: [".js", `.jsx`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/contents`,
+        name: `contents`,
       },
     },
     {
@@ -213,13 +190,78 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/components/layout"),
         },
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1024,
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `noopener`,
+            },
+          },
+        ],
       },
     },
-    `gatsby-plugin-mdx-source-name`,
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        concurrency: 5,
+        tables: [
+          {
+            baseId: process.env.AIRTABLE_SITECONF_BASE,
+            tableName: "SiteContents",
+            defaultValues: {
+              Name: "",
+              Description: "",
+            },
+            mapping: { Description: `text/markdown`, Images: `fileNode` },
+            separateNodeType: false,
+            separateMapType: false,
+          },
+          {
+            baseId: process.env.AIRTABLE_SITECONF_BASE,
+            tableName: "Coupons",
+            defaultValues: {
+              Name: "",
+              Tag: "",
+            },
+            separateNodeType: false,
+            separateMapType: false,
+          },
+        ],
+      },
+    },
     {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [`gatsby-remark-images`],
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `ja`,
+        locales: process.env.LOCALES || `ja en tl`,
+        configPath: require.resolve(`./src/i18n/config.json`),
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n-react-i18next`,
+      options: {
+        locales: `./src/i18n/locales`,
+        i18nextOptions: {
+          ns: ["translation", "404"],
+        },
       },
     },
 

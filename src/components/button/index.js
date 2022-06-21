@@ -19,7 +19,13 @@ export const Button = props => {
     const dis = disabled ?? false
     if (b[0] === "button") {
       return (
-        <ButtonStyles>
+        <ButtonStyles
+          style={{
+            backgroundColor: bgColor || "var(--key-color)",
+            borderColor: bgColor || "var(--key-dark-color)",
+            color: "var(--key-dark-color)",
+          }}
+        >
           <button
             type={t}
             className={`btn btn-primary ${dis ? " disabled" : ""}`}
@@ -31,14 +37,13 @@ export const Button = props => {
     }
   }
   return (
-    <ButtonStyles>
-      <Link
-        to={to}
-        title={text}
-        style={{
-          backgroundColor: bgColor || "var(--key-coro)",
-        }}
-      >
+    <ButtonStyles
+      style={{
+        backgroundColor: bgColor || "var(--key-color)",
+        borderColor: "var(--key-dark-color)",
+      }}
+    >
+      <Link to={to} title={text}>
         <div className="btn btn-primary">{innerComponents}</div>
       </Link>
     </ButtonStyles>

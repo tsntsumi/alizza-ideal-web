@@ -224,7 +224,7 @@ export const SqueezeForm = ({
             }}
           />
           <div style={{ textAlign: "center" }}>
-            <Button type="submit" to="#" text={cta} />
+            <Button type="submit" to="#" text={cta} bgColor="orange" />
           </div>
           <span className="success">{errorState.submitSuccess}</span>
           <span className="error">{errorState.submitError}</span>

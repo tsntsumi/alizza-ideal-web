@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start contact-page
+// i18next-extract-mark-ns-start contact
 import * as React from "react"
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
@@ -58,7 +58,7 @@ export default ContactPage
 
 export const query = graphql`
   query contactQuery($language: String!) {
-    locales: allLocale(filter: { language: { eq: $language } }) {
+    locales: allLocale(filter: { language: { in: [$language] } }) {
       edges {
         node {
           ns

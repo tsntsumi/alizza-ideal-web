@@ -1,4 +1,5 @@
 import * as React from "react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { PerksStyles, PerkStyles } from "./styles"
 
 export const Perks = ({ children, title }) => {
@@ -12,11 +13,12 @@ export const Perks = ({ children, title }) => {
   )
 }
 
-export const Perk = ({ children, title }) => {
+export const Perk = ({ children, title, image }) => {
   return (
     <PerkStyles>
-      {children}
+      {image && <GatsbyImage image={getImage(image)} alt={`Perk Image`} />}
       {title && <h3>{title}</h3>}
+      {children}
     </PerkStyles>
   )
 }

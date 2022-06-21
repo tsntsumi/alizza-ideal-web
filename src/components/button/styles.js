@@ -1,6 +1,7 @@
+import React from "react"
 import styled from "styled-components"
 
-export const ButtonStyles = styled.div`
+export const ButtonStyles = styled(props => <div {...props} />)`
   height: 3rem;
   padding: 1.5rem;
   display: inline-flex;
@@ -11,8 +12,7 @@ export const ButtonStyles = styled.div`
   background-color: var(--key-color);
   font-family: sans-serif;
   font-size: var(--p);
-  border: 4px solid var(--key-dark-color);
-  border-style: solid double;
+  border: thick solid var(--key-dark-color);
   border-radius: var(--p);
   margin-top: 1rem; /* 16px */
 
