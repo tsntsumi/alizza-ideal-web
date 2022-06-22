@@ -1,18 +1,21 @@
 // i18next-extract-mark-ns-start basepage
 import React from "react"
 import { graphql } from "gatsby"
-import { Link, Trans, useI18next } from "gatsby-plugin-react-i18next"
+import { Trans } from "gatsby-plugin-react-i18next"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
+import { MdxLink } from "gatsby-theme-i18n"
+import { LocalizedLink } from "gatsby-theme-i18n"
 
-const components = {}
+const components = {
+  a: MdxLink,
+}
 
 export default function BasePage({ data }) {
   const {
     body,
     frontmatter: { title, date },
   } = data.mdx
-  const { language } = useI18next
   return (
     <>
       <h1>{title}</h1>
@@ -20,15 +23,17 @@ export default function BasePage({ data }) {
         <p>
           <i>date: {date}</i>
         </p>
-        <Link to="/" language={language}>
+        <LocalizedLink to="/">
           <Trans>[HOME]</Trans>
-        </Link>
+        </LocalizedLink>
       </div>
-      <MDXProvider components={components}>{body}</MDXProvider>
+      <MDXProvider components={components}>
+        <MDXRenderer>{body}</MDXRenderer>
+      </MDXProvider>
       <div>
-        <Link to="/" language={language}>
+        <LocalizedLink to="/">
           <Trans>[HOME]</Trans>
-        </Link>
+        </LocalizedLink>
       </div>
     </>
   )

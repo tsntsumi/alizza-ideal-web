@@ -76,45 +76,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
-        localeJsonSourceName: `locale`,
         languages: [`en`, `ja`, `tl`],
         defaultLanguage: `ja`,
-        generateDefaultLanguagePage: true,
-        redirect: true,
-        siteUrl: siteUrl,
-        i18nextOptions: {
-          interpolation: {
-            escapeValue: true,
-          },
-          keySeparator: true,
-          nsSeparator: true,
-        },
-        pages: [
-          {
-            matchPath: `/:lang?/legal/:uid`,
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: `/:lang?/policy/:uid`,
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: `/:lang?/blog/:uid`,
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: `/:lang?/services/:uid`,
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: `/:lang?/404/:uid`,
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: `/:lang?/:uid`,
-            getLanguageFromPath: true,
-          },
-        ],
       },
     },
     {
@@ -124,6 +87,8 @@ module.exports = {
         excludes: [
           "/**/offers/**",
           "/offers/**",
+          "/**/thanks/**",
+          "/thanks/**",
           "/**/404",
           "/**/404.html",
           "/ebook/**",
@@ -144,7 +109,12 @@ module.exports = {
               { userAgent: "*", disallow: "/offers/" },
               { userAgent: "*", disallow: "/ja/offers/" },
               { userAgent: "*", disallow: "/en/offers/" },
+              { userAgent: "*", disallow: "/tl/offers/" },
               { userAgent: "*", disallow: "/ebook/" },
+              { userAgent: "*", disallow: "/thanks/" },
+              { userAgent: "*", disallow: "/ja/thanks/" },
+              { userAgent: "*", disallow: "/en/thanks/" },
+              { userAgent: "*", disallow: "/tl/thanks/" },
             ],
           },
         },
@@ -187,8 +157,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/contents`,
-        name: `contents`,
+        path: `${__dirname}/contents/basepages`,
+        name: `basepage`,
       },
     },
     {
@@ -266,8 +236,8 @@ module.exports = {
       resolve: `gatsby-theme-i18n`,
       options: {
         defaultLang: `ja`,
-        //prefixDefault: true,
-        locales: null, // process.env.LOCALES || `ja en tl`,
+        prefixDefault: false,
+        locales: process.env.LOCALES || `ja en tl`,
         configPath: require.resolve(`./src/i18n/config.json`),
       },
     },
@@ -275,7 +245,13 @@ module.exports = {
       resolve: `gatsby-theme-i18n-react-i18next`,
       options: {
         locales: `./src/i18n/locales`,
-        i18nextOptions: {},
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false,
+          },
+          keySeparator: false,
+          nsSeparator: false,
+        },
       },
     },
 

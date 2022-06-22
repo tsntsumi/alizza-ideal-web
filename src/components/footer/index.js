@@ -1,7 +1,8 @@
 // i18next-extract-mark-ns-start translation
 import * as React from "react"
 import styled from "styled-components"
-import { Trans, Link, useI18next } from "gatsby-plugin-react-i18next"
+import { Trans, Link } from "gatsby-plugin-react-i18next"
+import { LocalizedLink } from "gatsby-theme-i18n"
 
 export const FooterStyles = styled.footer`
   margin-top: 0;
@@ -24,7 +25,6 @@ const CopyrightStyle = styled.div`
 `
 
 export const Footer = () => {
-  const { language } = useI18next
   return (
     <FooterStyles>
       <div className="footer">
@@ -32,13 +32,13 @@ export const Footer = () => {
           Copyright &copy; 2022, TSUTSUMI Kikuo (
           <a href="https://www.alizza-ideal.com">Alizza Ideal</a>
           ). All rights reserved. [{" "}
-          <Link to="/legal" language={language}>
+          <LocalizedLink to="/legal">
             <Trans>特定商取引法</Trans>
-          </Link>{" "}
+          </LocalizedLink>{" "}
           |{" "}
-          <Link to="/policy" language={language}>
+          <LocalizedLink to="/policy">
             <Trans>個人情報保護</Trans>
-          </Link>{" "}
+          </LocalizedLink>{" "}
           ]
         </CopyrightStyle>
       </div>

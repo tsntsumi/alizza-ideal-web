@@ -104,7 +104,12 @@ const NotFoundPage = () => {
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: { language: { eq: $language } }) {
+    locales: allLocale(
+      filter: {
+        language: { in: [$language] }
+        ns: { in: ["translation", "404"] }
+      }
+    ) {
       edges {
         node {
           ns
