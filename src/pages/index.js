@@ -381,8 +381,9 @@ export const query = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     breakpoints: [360, 720, 1024]
-                    jpgOptions: { progressive: true }
+                    jpgOptions: { progressive: false }
                     formats: [JPG]
+                    quality: 50
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

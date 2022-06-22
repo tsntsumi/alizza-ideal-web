@@ -47,7 +47,7 @@ module.exports = {
           formats: [`jpg`],
           placeholder: `dominantColor`,
           quality: 50,
-          breakpoints: [750, 1080, 1366],
+          breakpoints: [340, 740, 1024],
           backgroundColor: `transparent`,
           tracedSVGOptions: {},
           blurredOptions: {},
