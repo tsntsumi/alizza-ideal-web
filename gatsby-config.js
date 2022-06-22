@@ -91,7 +91,11 @@ module.exports = {
         },
         pages: [
           {
-            matchPath: `/:lang?/(legal|policy)/:uid`,
+            matchPath: `/:lang?/legal/:uid`,
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: `/:lang?/policy/:uid`,
             getLanguageFromPath: true,
           },
           {
@@ -104,6 +108,10 @@ module.exports = {
           },
           {
             matchPath: `/:lang?/404/:uid`,
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: `/:lang?/:uid`,
             getLanguageFromPath: true,
           },
         ],
@@ -189,7 +197,15 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/components/layout"),
         },
+        mediaTypes: [`text/markdown`, `text/x-markdown`],
         extensions: [`.mdx`, `.md`],
+        rehypePlugins: [
+          // Generate heading ids for rehype-autolink-headings
+          import("rehype-slug"),
+          // To pass options, use a 2-element array with the
+          // configuration in an object in the second element
+          [import("rehype-autolink-headings"), { behavior: "wrap" }],
+        ],
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
@@ -223,7 +239,7 @@ module.exports = {
               Name: "",
               Description: "",
             },
-            mapping: { Description: `text/markdown`, Images: `fileNode` },
+            mapping: { Images: `fileNode` },
             separateNodeType: false,
             separateMapType: false,
           },
@@ -250,7 +266,8 @@ module.exports = {
       resolve: `gatsby-theme-i18n`,
       options: {
         defaultLang: `ja`,
-        locales: process.env.LOCALES || `ja en tl`,
+        //prefixDefault: true,
+        locales: null, // process.env.LOCALES || `ja en tl`,
         configPath: require.resolve(`./src/i18n/config.json`),
       },
     },
@@ -258,9 +275,7 @@ module.exports = {
       resolve: `gatsby-theme-i18n-react-i18next`,
       options: {
         locales: `./src/i18n/locales`,
-        i18nextOptions: {
-          ns: ["translation", "404"],
-        },
+        i18nextOptions: {},
       },
     },
 

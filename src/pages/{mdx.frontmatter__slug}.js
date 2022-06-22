@@ -3,6 +3,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link, Trans, useI18next } from "gatsby-plugin-react-i18next"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+
+const components = {}
 
 export default function BasePage({ data }) {
   const {
@@ -21,7 +24,7 @@ export default function BasePage({ data }) {
           <Trans>[HOME]</Trans>
         </Link>
       </div>
-      <MDXRenderer>{body}</MDXRenderer>
+      <MDXProvider components={components}>{body}</MDXProvider>
       <div>
         <Link to="/" language={language}>
           <Trans>[HOME]</Trans>

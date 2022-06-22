@@ -38,6 +38,7 @@
     "gatsby-remark-smartypants": "^5.16.0",
     "gatsby-source-airtable": "^2.3.0",
     "gatsby-source-filesystem": "^4.4.0",
+    "gatsby-theme-i18n": "^3.0.0",
     "gatsby-theme-i18n-react-i18next": "^3.0.0",
     "gatsby-transformer-remark": "^5.4.0",
     "gatsby-transformer-sharp": "^4.4.0",
