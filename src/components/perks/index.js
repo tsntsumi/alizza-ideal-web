@@ -8,7 +8,7 @@ export const Perks = ({ children, title }) => {
       <div className="container container__tight">
         <h2>{title}</h2>
       </div>
-      <div className="container container__tight">{children}</div>
+      <div className="perks container container__tight">{children}</div>
     </PerksStyles>
   )
 }
@@ -18,7 +18,7 @@ export const Perk = ({ children, title, image }) => {
     <PerkStyles>
       {image && <GatsbyImage image={getImage(image)} alt={`Perk Image`} />}
       {title && <h3>{title}</h3>}
-      {children}
+      <div className="perk">{children}</div>
     </PerkStyles>
   )
 }

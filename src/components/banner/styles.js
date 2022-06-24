@@ -83,6 +83,11 @@ export const BannerStyles = styled.section`
       border-radius: 1em;
       width: 100%;
       color: rgb(250, 250, 250);
+
+      ul {
+        padding: 1em 0 1em 2em;
+        }
+      }
     }
 
     h2 {

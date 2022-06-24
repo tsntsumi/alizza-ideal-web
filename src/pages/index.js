@@ -125,8 +125,7 @@ const IndexPage = ({ data }) => {
             marginRight: "0",
             marginLeft: "0",
             display: "flex",
-            flex: "1 1",
-            alignItems: "center",
+            alignItems: "flex-start",
             justifyContent: "center",
             verticalAlign: "start",
           }}
@@ -177,7 +176,7 @@ const IndexPage = ({ data }) => {
           )}
           image={reasonImages.shift()}
         >
-          <div className="photoCredit">Photo by TSUTSUMI Kikuo</div>
+          <span className="photoCredit">Photo by TSUTSUMI Kikuo</span>
         </Perk>
         <Perk
           title={t(
@@ -185,18 +184,18 @@ const IndexPage = ({ data }) => {
           )}
           image={reasonImages.shift()}
         >
-          <div className="photoCredit">Photo by TSUTSUMI Kikuo</div>
+          <span className="photoCredit">Photo by TSUTSUMI Kikuo</span>
         </Perk>
         <Perk
           title={t("あなたの商品を引き立てる写真、動画を撮影")}
           image={reasonImages.shift()}
         >
-          <div className="photoCredit">
+          <span className="photoCredit">
             Photo by{" "}
             <a href="https://unsplash.com/@wenhong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
               Evan Qu on Unsplash
             </a>
-          </div>
+          </span>
         </Perk>
       </Perks>
 
@@ -250,42 +249,44 @@ const IndexPage = ({ data }) => {
       </Claim>
       <Perks title={t("安心の３つの保証")}>
         <Perk title={t("９０日間集客保証")} image={guaranteeImages.shift()}>
-          <div className="photoCredit">Photo and Illust by TSUTSUMI Kikuo</div>
           <p>
             <Trans>９０日以内に集客できなければ返金します。</Trans>
+            <span className="photoCredit">
+              Photo and Illust by TSUTSUMI Kikuo
+            </span>
           </p>
         </Perk>
         <Perk
           title={t("３００リスト獲得保保証")}
           image={guaranteeImages.shift()}
         >
-          <div className="photoCredit">
-            Photo by{" "}
-            <a href="https://unsplash.com/photos/3Mhgvrk4tjM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">
-              {" "}
-              Stephen Phillips - Hostreviews.co.uk
-            </a>
-          </div>
           <p>
             <Trans>
               ３０日以内に見込み客リストが３００件集まらなければ、獲得するまで無料で集客にコミットします。
             </Trans>
+            <span className="photoCredit">
+              Photo by{" "}
+              <a href="https://unsplash.com/photos/3Mhgvrk4tjM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">
+                {" "}
+                Stephen Phillips - Hostreviews.co.uk
+              </a>
+            </span>
           </p>
         </Perk>
         <Perk
           title={t("お客さんが集まる仕掛け２０万円相当を提供")}
           image={guaranteeImages.shift()}
         >
-          <div className="photoCredit">
-            Photo by{" "}
-            <a href="https://unsplash.com/@arkanperdana?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-              Arkan Perdana on Unsplash
-            </a>
-          </div>
           <p>
             <Trans>
               お客さんが集まるようになるクラウドシステムを、あなたの代わりにわたしが購入して提供いたします。
             </Trans>
+            <span className="photoCredit">
+              Photo by{" "}
+              <a href="https://unsplash.com/@arkanperdana?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                Arkan Perdana on Unsplash
+              </a>
+            </span>
           </p>
         </Perk>
       </Perks>

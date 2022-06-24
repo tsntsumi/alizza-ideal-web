@@ -3,12 +3,16 @@ import styled from "styled-components"
 export const ClaimStyles = styled.section`
   position: relative;
   text-align: justify;
-  color: darkGreen;
+  align-items: start-start;
+  color: white;
+  background-color: var(--key-color);
 
   h2 {
     text-align: center;
+    margin-bottom: 1em;
     font-size: var(--h5);
     font-weight: 800;
+    white-space: nowrap;
     color: white;
   }
 

@@ -247,8 +247,8 @@ export const LogoStyles = styled.div`
     margin: 0 auto -20% auto;
     width: 10vw;
     height: 10vw;
-    min-width: 10vw;
-    min-height: 10vw;
+    min-width: 64px;
+    min-height: 64px;
     max-width: 64px;
     max-height: 64px;
   }

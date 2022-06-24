@@ -1,21 +1,16 @@
 import styled from "styled-components"
 
 export const PerksStyles = styled.section`
-  background-color: #000;
-  position: relative;
-  min-width: 98%;
+  background-color: var(--key-dark-color);
 
-  .container {
-    display: flex;
-    width: auto;
-    margin-right: 0;
-    margin-left: 0;
+  .perks.container {
+    width: 100%;
+    display: block;
   }
 
   .perks__divider {
     font-size: 20px;
     color: var(--primary);
-    z-index: 2;
 
     @media (min-width: 1024px) {
       font-size: 35px;
@@ -24,63 +19,48 @@ export const PerksStyles = styled.section`
 
   h2 {
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-    color: var(--primary);
-    z-index: 2;
-    margin-right: 0;
-    margin-left: 0;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: var(--h5);
+    font-weight: 800;
+    white-space: nowrap;
+    color: white;
   }
 
-  @media (max-width: 800px) {
-    .container {
-      display: block;
-      width: 100%;
+  @media (min-width: 400px) {
+    .perks.container {
+      display: flex;
+      justify-content: space-between;
     }
   }
 `
 
 export const PerkStyles = styled.aside`
-  max-width: 98%;
-  min-width: 150px;
-  text-align: start;
-  flex: 1;
-  z-index: 2;
-  margin-right: 0.5em !important;
-  margin-left: 0.5em !important;
+  width: 100%;
+  display: flex;
 
-  @media (max-width: 800px) {
-    display: flex;
-    width: 98%;
-    min-width: 96%;
-    margin: inherit 0 !important;
-    padding: inherit 0 !important;
-    .gatsby-image-wrapper {
-      float: left;
-      width: 46%;
-      min-width: 30%;
-    }
-    h3 {
-      width: 54%;
-      min-width: 25%;
-      text-align: start;
-      margin: 0 0 0.4em 0.4em !important;
-      padding: 0 1em;
-    }
-  }
+  color: white;
+  font-size: 10px;
+  text-align: justify;
 
   h3 {
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-    font-size: var(--h5);
+    font-size: 1.2em;
+    font-weight: 800;
+    width: 30%;
+    padding: 0 0.4px;
   }
 
-  p {
-    margin-bottom: 0;
-    text-align: justify;
+  .perk {
+    width: 40%;
+    padding: 0 0.4px;
   }
 
   .gatsby-image-wrapper {
     align-items: center;
     justify-content: center;
-    margin: 0 4px calc(var(--gap) / 2) 4px;
+    margin: 0 0.4em 0.4em 0;
+    width: 30%;
 
     img {
       width: 100%;
@@ -92,7 +72,29 @@ export const PerkStyles = styled.aside`
 
   .photoCredit {
     font-size: 0.6em;
-    margin: 1em;
-    min-width: 10%;
+    margin: 0.4em;
+    min-width: 6em;
+  }
+
+  @media (min-width: 400px) {
+    background-color: var(--key-color);
+    display: block;
+    width: 30%;
+
+    h3 {
+      width: 100%;
+      padding: 0 1em;
+    }
+    .perk {
+      width: 100%;
+      padding: 0 1em 0.2em 1em;
+    }
+    .gatsby-image-wrapper {
+      width: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 `
