@@ -11,9 +11,16 @@ export const NavStyles = styled.nav`
     min-width: 100vw;
     z-index: 100;
     margin: 0;
-    padding: 0 var(--borderSpacing) 0 var(--borderSpacing);
+    padding: 0;
     background-color: var(--key-color);
     font-size: 10pt;
+
+    @media (min-width: 340px) {
+      padding: 0 calc(var(--borderSpacing) * 0.5);
+    }
+    @media (min-width: 768px) {
+      padding: 0 var(--borderSpacing) 0 var(--borderSpacing);
+    }
   }
 
   .container {
@@ -30,6 +37,7 @@ export const NavStyles = styled.nav`
   .menu {
     background-color: #000;
     width: var(--menuWidth);
+    min-width: var(--menuWidth);
     transform: translateX(calc(var(--menuWidth) * -1));
     height: 100%;
     top: 0;
@@ -37,23 +45,32 @@ export const NavStyles = styled.nav`
     left: 0;
     position: fixed;
     z-index: 99;
-    padding: 30px var(--borderSpacing);
+    padding: 30px var(--borderSpacing) auto 1em;
     display: flex;
     align-items: center;
   }
 
   .lang {
     display: inline-block;
-    margin: 0 1em 0 1em;
+    margin: 0 1em;
     vertical-align: middle;
     z-index: 99;
+    font-size: 1em;
+    width: 20%;
+    max-width: 8em;
   }
 
   .lang li {
-    font-size: var(--p);
+    font-size: 1em;
+    white-space: nowrap;
+    margin: 0;
     button {
       color: var(--primary);
-      font-size: var(--p);
+      font-size: 0.8em;
+    }
+    .subnav {
+      font-size: 0.8em;
+      min-width: 3em;
     }
   }
 
@@ -62,24 +79,45 @@ export const NavStyles = styled.nav`
     margin: 0 1em 0 auto;
     vertical-align: middle;
     z-index: 99;
+    font-size: 1em;
+    width: 26%;
+    max-width: 8em;
+    text-align: right;
+  }
+
+  .icon {
+    display: inline-block;
+    position: relative;
+    top: 0.3em;
+    font-size: 1.5em;
+    margin: auto 0.25em auto 0;
+    virtical-align: middle;
   }
 
   .title {
     display: inline-block;
     marign: 0 auto 0 10em;
-    padding-left: 2em;
+    padding-left: 1em;
     vertical-align: middle;
     z-index: 99;
     width: 12em;
     color: white;
     font-weight: bold;
+    font-size: 0.8em;
+    min-width: 16%;
+    @media (min-width: 340px) {
+      font-size: 0.9em;
+    }
+    @media (min-width: 768px) {
+      font-size: 1em;
+    }
   }
 `
 
 export const NavTopLevel = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 1em;
 
   > li,
   > li > button {
@@ -141,7 +179,7 @@ export const NavTopLevel = styled.ul`
 `
 
 export const SubNavStyles = styled(motion.ul)`
-  padding-left: calc(var(--gap) / 2);
+  padding-left: 1em;
   list-style: none;
   margin: 0;
 
@@ -171,6 +209,7 @@ export const HamburgerStyles = styled(motion.button)`
   border: none;
   width: 30px;
   height: 30px;
+  min-width: 15px;
   padding: 0;
   cursor: pointer;
   outline: none;
@@ -195,22 +234,41 @@ export const HamburgerStyles = styled(motion.button)`
 
 export const LogoStyles = styled.div`
   font-weight: 700;
-  font-size: 20px;
+  font-size: 0.4em;
   text-align: center;
   align-items: center;
   letter-spacing: -0.5px;
   margin: 0;
   padding: 0;
+  white-space: nowrap;
 
   img {
     display: block;
     margin: 0 auto -20% auto;
+    width: 10vw;
+    height: 10vw;
+    min-width: 10vw;
+    min-height: 10vw;
+    max-width: 64px;
+    max-height: 64px;
   }
 
   a {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
+  }
+
+  @media (min-width: 340px) {
+    font-size: 0.6em;
+  }
+
+  @media (min-width: 512px) {
+    font-size: 0.8em;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1em;
   }
 
   @media (min-width: 1024px) {

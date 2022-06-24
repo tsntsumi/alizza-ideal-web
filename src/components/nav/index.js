@@ -41,6 +41,7 @@ const ChooseLanguage = ({
         </button>
 
         <SubNavStyles
+          className="subnav"
           initial="closed"
           animate={isOpen ? "open" : "closed"}
           variants={subMenuNavVariants}
@@ -67,16 +68,7 @@ const ContactLink = ({ language }) => {
   return (
     <div className="contact">
       <Link to="/contact" language={language} type="button">
-        <span
-          style={{
-            position: "relative",
-            top: "0.3em",
-            fontSize: "1.5em",
-            margin: "auto 0.25em auto 0",
-            virticalAlign: "middle",
-            display: "inline-block",
-          }}
-        >
+        <span className="icon">
           <Mailbox />
         </span>
         <Trans>Get in touch</Trans>
@@ -155,7 +147,7 @@ export const Nav = () => {
           {(title || logo) && (
             <LogoStyles>
               <Link to="/" language={language}>
-                <img src={logo} alt="logo" width="64" height="64" />
+                <img src={logo} alt="logo" />
                 {title}
                 <span>.</span>
               </Link>
