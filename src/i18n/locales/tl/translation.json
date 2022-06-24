@@ -1,1 +1,19 @@
-{}
+{
+  "Language": "Language",
+  "TEL:": "TEL:",
+  "en": "English",
+  "ja": "日本語",
+  "tl": "Tangalog",
+  "お名前を入力してください": "Isulat ang iyong Pangalan",
+  "お問い合わせ": "Makipag-ugnayan",
+  "お客が集まる仕掛けをプログラミング": "Programming ang mekanismo na darating ang mga customer",
+  "お申し込み内容を受け付けました。後ほどご案内のメールをお送りします": "Natanggap na namin ang iyong aplikasyon. Padadalhan ka namin ng email na may intructions mamaya.",
+  "お申し込み内容を格納中にエラーが発生しました。しばらく待ってから、もう一度ボタンを押してみてください": "May naganap na error habang isinasagawa ang iyong aplikasyon. Mangyaring maghintay ng ilang sandali at subukang muli ang button.",
+  "ご入力内容を保存時にエラーが発生しました。しばらく待ってから、もう一度ボタンを押してみてください": "Nagkaroon ng error noong sine-save ang iyong entry. Mangyaring maghintay ng ilang sandali at subukang i-tap muli ang button.",
+  "メールアドレスを入力してください": "Ilagay ang iyong email address",
+  "メールアドレスを確認してください": "Maling email address",
+  "個人情報保護": "Privacy",
+  "個人情報保護方針": "Abiso sa privacy",
+  "特定商取引法": "Legal",
+  "特定商取引法表記": "Legal na pag-unawa"
+}

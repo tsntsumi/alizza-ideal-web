@@ -167,8 +167,8 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/components/layout"),
         },
-        mediaTypes: [`text/markdown`, `text/x-markdown`],
-        extensions: [`.mdx`, `.md`],
+        mediaTypes: [`text/x-markdown`],
+        extensions: [`.mdx`],
         rehypePlugins: [
           // Generate heading ids for rehype-autolink-headings
           import("rehype-slug"),

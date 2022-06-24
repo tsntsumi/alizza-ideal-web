@@ -58,7 +58,12 @@ export default ContactPage
 
 export const query = graphql`
   query contactQuery($language: String!) {
-    locales: allLocale(filter: { language: { in: [$language] } }) {
+    locales: allLocale(
+      filter: {
+        language: { in: [$language] }
+        ns: { in: ["translation", "contact"] }
+      }
+    ) {
       edges {
         node {
           ns

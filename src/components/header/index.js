@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start header-component
+// i18next-extract-mark-ns-start translation
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link, Trans, useI18next } from "gatsby-plugin-react-i18next"

@@ -1,6 +1,5 @@
-// i18next-extract-mark-ns-start banner-component
+// i18next-extract-mark-ns-start translation
 import * as React from "react"
-import { Link } from "gatsby-plugin-react-i18next"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { BannerStyles } from "./styles"
 import Button from "../button"

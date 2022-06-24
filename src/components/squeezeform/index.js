@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start squeezeform-component
+// i18next-extract-mark-ns-start translation
 import * as React from "react"
 import { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"

@@ -1,7 +1,7 @@
 // i18next-extract-mark-ns-start translation
 import * as React from "react"
 import styled from "styled-components"
-import { Trans, Link } from "gatsby-plugin-react-i18next"
+import { Trans } from "gatsby-plugin-react-i18next"
 import { LocalizedLink } from "gatsby-theme-i18n"
 
 export const FooterStyles = styled.footer`

@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start nav-component
+// i18next-extract-mark-ns-start translation
 import React, { useContext, useState } from "react"
 import { motion } from "framer-motion"
 import { FiChevronDown as Chevron } from "react-icons/fi"
@@ -74,6 +74,7 @@ const ContactLink = ({ language }) => {
             fontSize: "1.5em",
             margin: "auto 0.25em auto 0",
             virticalAlign: "middle",
+            display: "inline-block",
           }}
         >
           <Mailbox />

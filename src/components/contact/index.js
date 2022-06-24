@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start contact-component
+// i18next-extract-mark-ns-start translation
 import * as React from "react"
 import { useI18next } from "gatsby-plugin-react-i18next"
 import Button from "../button"

@@ -395,7 +395,12 @@ export const query = graphql`
       }
     }
 
-    locales: allLocale(filter: { language: { eq: $language } }) {
+    locales: allLocale(
+      filter: {
+        language: { eq: $language }
+        ns: { in: ["translation", "index"] }
+      }
+    ) {
       edges {
         node {
           ns

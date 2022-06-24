@@ -1,1 +1,19 @@
-{}
+{
+  "Language": "Language",
+  "TEL:": "TEL:",
+  "en": "English",
+  "ja": "日本語",
+  "tl": "Tangalog",
+  "お名前を入力してください": "Enter your name",
+  "お問い合わせ": "Get in touch",
+  "お客が集まる仕掛けをプログラミング": "Programming the mechanism that SELLS",
+  "お申し込み内容を受け付けました。後ほどご案内のメールをお送りします": "We have accepted your application. We will send you an email with instructions later",
+  "お申し込み内容を格納中にエラーが発生しました。しばらく待ってから、もう一度ボタンを押してみてください": "An error occurred while storing your application. Please wait a moment and try the button again",
+  "ご入力内容を保存時にエラーが発生しました。しばらく待ってから、もう一度ボタンを押してみてください": "An error occurred when saving your entry. Please wait a moment and try tapping the button again",
+  "メールアドレスを入力してください": "Enter your email address",
+  "メールアドレスを確認してください": "Incorrect email address",
+  "個人情報保護": "Privacy",
+  "個人情報保護方針": "Privacy policy",
+  "特定商取引法": "Legal",
+  "特定商取引法表記": "Legal notice"
+}

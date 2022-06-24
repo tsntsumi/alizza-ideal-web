@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start menu-component
+// i18next-extract-mark-ns-start translation
 import React, { useState, createContext } from "react"
 
 export const menuItems = [
