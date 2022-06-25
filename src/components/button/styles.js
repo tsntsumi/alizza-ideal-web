@@ -1,49 +1,52 @@
 import React from "react"
 import styled from "styled-components"
 
-export const ButtonStyles = styled(props => <div {...props} />)`
+export const ButtonStyles = styled.div`
   height: 3rem;
-  padding: 1.5rem;
   display: inline-flex;
   position: relative;
   overflow: hidden;
-  align-items: center;
-  color: white;
-  background-color: var(--key-color);
-  font-family: sans-serif;
-  font-size: var(--p);
-  border: thick solid var(--key-dark-color);
-  border-radius: var(--p);
   margin-top: 1rem; /* 16px */
+  padding: 0;
+  border-radius: var(--p);
 
   .btn {
+    padding: 1em;
+    white-space: nowrap;
+    overflow: hidden;
     width: 100%;
+    height: 100%;
+    background-color: ${props => props.bgColor || "var(--key-color)"};
+    border: thick solid ${props => props.bdColor || "var(--key-dark-color)"};
+    border-radius: var(--p);
+    align-items: center;
+    font-family: sans-serif;
+    font-size: var(--p);
+    color: ${props => props.color || "white"};
+    margin: 0;
+    span {
+      display: inline-block;
+      position: relative;
+      virtical-align: middle;
+    }
+  }
+
+  .btn-primary {
+    color: white;
+    border: 0;
+    outline-color: ${props => props.bdColor};
+    outline-width: 3px;
+    outline-offset: 3px;
   }
 
   .disabled {
     opacity: 0.5;
+    background-color: darkgray;
+    color: lightgray;
   }
 
   a:link {
     text-decoration: none;
-  }
-
-  span {
-    background-color: transparent;
-    position: relative;
-    z-index: 10;
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 100%;
-    transition: left 0.25s;
-    transition-timing-function: cubic-bezier(1, 2.13, 1, -0.1);
-    z-index: 1;
   }
 
   .icon-right {
@@ -58,12 +61,6 @@ export const ButtonStyles = styled(props => <div {...props} />)`
   &:hover {
     border: 4px solid var(--key-light-color);
     border-style: solid single;
-  }
-
-  .btn-primary {
-    color: white;
-    margin-top: 1rem; /* 16px */
-    margin-bottom: 1rem; /* 16px */
   }
 
   @media (hover: hover) {

@@ -1,23 +1,26 @@
 // i18next-extract-mark-ns-start translation
 import * as React from "react"
 import { useI18next } from "gatsby-plugin-react-i18next"
-import Button from "../button"
+import { SqueezeForm, SubmitInquiryToAirtable } from "../squeezeform"
 import { ContactStyles } from "./styles"
 
 const Contact = () => {
-  const { t } = useI18next()
+  const { t, language } = useI18next()
   return (
     <ContactStyles className="section">
-      <form name="contact" netlify>
-        <input placeholder={t("Your name...")} type="text" name="name" />
-        <input placeholder={t("Your email...")} type="email" name="email" />
-        <textarea
-          placeholder={t("Your message...")}
-          name="message"
-          rows="5"
-        ></textarea>
-        <Button text={t("Send Message")} />
-      </form>
+      <div className="container container__tight">
+        <SqueezeForm
+          cta={t("今すぐ問い合わせる")}
+          namelabel={t("Your name...")}
+          emaillabel={t("Your email...")}
+          inquirylabel={t("Your message...")}
+          tag="inquiry"
+          language={language}
+          acceptInqiry={true}
+          action={SubmitInquiryToAirtable}
+          nextpage="/thanks/homepage-thanks"
+        />
+      </div>
     </ContactStyles>
   )
 }

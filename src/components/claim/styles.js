@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const ClaimStyles = styled.section`
   position: relative;
   text-align: justify;
-  align-items: start-start;
+  align-items: flex-start;
   color: white;
   background-color: var(--key-color);
 

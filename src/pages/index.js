@@ -8,7 +8,7 @@ import Seo from "../components/seo"
 import { Banner } from "../components/banner"
 import { Claim } from "../components/claim"
 import { Perks, Perk } from "../components/perks"
-import { SqueezeForm, SubmitToAirtable } from "../components/squeezeform"
+import { SqueezeForm, SubmitEmailToAirtable } from "../components/squeezeform"
 
 const SelectImages = (name, data) => {
   return data.images.edges
@@ -351,7 +351,7 @@ const IndexPage = ({ data }) => {
           emaillabel={t("メールアドレス")}
           tag="homepage"
           language={language}
-          action={SubmitToAirtable}
+          action={SubmitEmailToAirtable}
           nextpage="/thanks/homepage-thanks"
         />
       </Claim>

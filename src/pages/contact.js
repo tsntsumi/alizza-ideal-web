@@ -33,7 +33,7 @@ const ContactPage = ({ data }) => {
         </SimpleBanner>
         <Contact />
         <Remark>
-          <div className="container">
+          <div className="section container container__tight">
             <hr />
             <div>
               <Trans>電話番号</Trans>: <code>+81 90 4225 8826</code>

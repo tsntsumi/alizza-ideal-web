@@ -8,26 +8,18 @@ export const Button = props => {
   const innerComponents = (
     <React.Fragment>
       {props.iconLeft && <span className="icon-left">{props.iconLeft}</span>}
-      <span>{props.text}</span>
+      <span>{text}</span>
       {props.iconRight && <span className="icon-right">{props.iconRight}</span>}
     </React.Fragment>
   )
 
   if (type) {
-    const b = type.split(",")
-    const t = b[1] ? b[1] : "button"
     const dis = disabled ?? false
-    if (b[0] === "button") {
+    if (type === "button" || type === "submit") {
       return (
-        <ButtonStyles
-          style={{
-            backgroundColor: bgColor || "var(--key-color)",
-            borderColor: bgColor || "var(--key-dark-color)",
-            color: "var(--key-dark-color)",
-          }}
-        >
+        <ButtonStyles bgColor={bgColor}>
           <button
-            type={t}
+            type={type}
             className={`btn btn-primary ${dis ? " disabled" : ""}`}
           >
             {innerComponents}
@@ -37,14 +29,9 @@ export const Button = props => {
     }
   }
   return (
-    <ButtonStyles
-      style={{
-        backgroundColor: bgColor || "var(--key-color)",
-        borderColor: "var(--key-dark-color)",
-      }}
-    >
-      <Link to={to} title={text}>
-        <div className="btn btn-primary">{innerComponents}</div>
+    <ButtonStyles color="white" bgColor={bgColor}>
+      <Link to={to} title={text} className="btn btn-primary">
+        {innerComponents}
       </Link>
     </ButtonStyles>
   )

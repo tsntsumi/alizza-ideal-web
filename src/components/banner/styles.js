@@ -59,6 +59,7 @@ export const BannerStyles = styled.section`
 
     h1 {
       border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      background-color: var(--key-dark-color);
       display: inline-block;
       font-size: 1.4em;
       padding: 10px;
@@ -69,7 +70,6 @@ export const BannerStyles = styled.section`
     h1,
     h2,
     h3 {
-      background-color: var(--key-color);
       padding: 0.5em 1em;
       border-radius: 0.75em;
       color: rgb(250, 250, 250);

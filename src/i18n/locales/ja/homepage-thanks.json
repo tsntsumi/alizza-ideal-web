@@ -1,9 +1,4 @@
 {
-  "お問い合わせありがとうございます": "Thank You For Your Inquiry",
-  "まもなく、確認メールをお送りいたします。": "You will receive a confirmation email in a few minutes.",
-  "もし、３〜５分ほどたっても届かない場合、メールの迷惑フォルダやスパムフォルダに保存されている可能性があります。": "If you do not receive it after 3-5 minutes, it may have been filed in your email junk or spam folder.",
-  "まず迷惑フォルダを確認してみてください。": "Check your junk/spam folder first.",
-  "その中にも見つからない場合は、": "If you cannot find it in there, ",
-  "もう一度メールアドレスを入力しなおして、お問い合わせください。": "please re-enter your email address again to contact us.",
-  "よろしくおねがいします。": "Thank you in advance."
+  "まもなく、メールにて確認メールをお送りいたします。": "まもなく、確認メールをお送りいたします。",
+  "もう一度メールアドレスを入力しなおして、お問い合わせください。": "info+hp@alizza-ideal.com まで問い合わせください。"
 }

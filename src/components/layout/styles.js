@@ -103,7 +103,6 @@ h2 {
     line-height: 1.25em;
     font-weight: 700;
     letter-spacing: var(--letterSpacing);
-
     @media(min-width: 1200px) {
         margin-bottom: 1.5rem;
     }

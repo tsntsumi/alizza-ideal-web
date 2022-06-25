@@ -1,37 +1,12 @@
 // i18next-extract-mark-ns-start translation
 import * as React from "react"
 import { useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import { useI18next } from "gatsby-plugin-react-i18next"
 import { FormStyles, FieldStyles } from "./styles"
 import { navigate } from "gatsby"
 import Airtable from "airtable"
+import { MdMail as Mailbox } from "react-icons/md"
 import { Button } from "../button"
-
-export const SqueezeField = ({
-  label,
-  type,
-  name,
-  id,
-  feedback,
-  onChange,
-  onFocus,
-}) => {
-  return (
-    <FieldStyles>
-      <input
-        type={type}
-        name={name}
-        id={id}
-        placeholder={`${label}`}
-        autoComplete="off"
-        onChange={onChange}
-        onFocus={onFocus}
-      />
-      <span className="feedback">{feedback}</span>
-    </FieldStyles>
-  )
-}
 
 export const SqueezeForm = ({
   children,
@@ -40,32 +15,21 @@ export const SqueezeForm = ({
   cta,
   tag,
   language,
+  acceptInqiry,
   action,
   nextpage,
 }) => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            airtableKey
-            airtableBaseId
-          }
-        }
-      }
-    `
-  )
-  const { airtableKey, airtableBaseId } = data.site.siteMetadata
-  const tableName = "Clients"
   const { t } = useI18next()
   const [userData, setUserData] = useState({
     name: "",
     email: "",
+    inquiry: "",
     tag: tag,
   })
   const initialErrorState = {
     name: "",
     email: "",
+    inquiry: "",
     submitSuccess: "",
     submitError: "",
   }
@@ -73,6 +37,7 @@ export const SqueezeForm = ({
     return {
       name: initialState.name,
       email: initialState.email,
+      inquiry: initialState.inquiry,
       submitSuccess: initialState.submitSuccess,
       submitError: initialState.submitError,
     }
@@ -83,6 +48,8 @@ export const SqueezeForm = ({
         return { ...state, ...{ name: "" } }
       case "clearEmail":
         return { ...state, ...{ email: "" } }
+      case "clearInquiry":
+        return { ...state, ...{ inquiry: "" } }
       case "clearError":
         return initErrorState(initialErrorState)
       case "init":
@@ -128,16 +95,15 @@ export const SqueezeForm = ({
               email => !!email.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/),
               t("メールアドレスを確認してください")
             )
-          if (vn && ve) {
-            action(
-              userData.name,
-              userData.email,
-              tag,
-              language,
-              airtableKey,
-              airtableBaseId,
-              tableName
+          const vi =
+            !acceptInqiry ||
+            validate(
+              "inquiry",
+              inquiry => inquiry.trim().length > 7,
+              t("お問い合わせ内容を７文字以上入力してください")
             )
+          if (vn && ve && vi) {
+            action(userData, language || "ja")
               .then(result => {
                 const resultState = {
                   submitError: "",
@@ -223,8 +189,33 @@ export const SqueezeForm = ({
               dispatchErrorState({ type: "clearError" })
             }}
           />
+          {acceptInqiry && (
+            <SqueezeText
+              name="inquiry"
+              label={t("Your message...")}
+              id="inquiry"
+              feedback={errorState.inquiry}
+              onChange={e => {
+                setUserData({
+                  ...userData,
+                  inquiry: e.target.value,
+                })
+                dispatchErrorState({ type: "clearError" })
+              }}
+              onFocus={e => {
+                dispatchErrorState({ type: "clearError" })
+              }}
+              rows="5"
+            />
+          )}
           <div style={{ textAlign: "center" }}>
-            <Button type="submit" to="#" text={cta} bgColor="orange" />
+            <Button
+              type="submit"
+              to="#"
+              text={cta}
+              bgColor="orange"
+              iconLeft={<Mailbox />}
+            />
           </div>
           <span className="success">{errorState.submitSuccess}</span>
           <span className="error">{errorState.submitError}</span>
@@ -234,18 +225,83 @@ export const SqueezeForm = ({
   )
 }
 
-export const SubmitToAirtable = async (
+export const SqueezeField = ({
+  label,
+  type,
   name,
-  email,
-  tag,
-  language,
-  airtableKey,
-  airtableBaseId,
-  tableName
-) => {
+  id,
+  feedback,
+  onChange,
+  onFocus,
+}) => {
+  return (
+    <FieldStyles>
+      <input
+        type={type}
+        name={name}
+        id={id}
+        placeholder={`${label}`}
+        autoComplete="off"
+        onChange={onChange}
+        onFocus={onFocus}
+      />
+      <span className="feedback">{feedback}</span>
+    </FieldStyles>
+  )
+}
+
+export const SqueezeText = ({
+  label,
+  type,
+  name,
+  id,
+  feedback,
+  onChange,
+  onFocus,
+}) => {
+  return (
+    <FieldStyles>
+      <textarea
+        name={name}
+        id={id}
+        placeholder={`${label}`}
+        autoComplete="off"
+        onChange={onChange}
+        onFocus={onFocus}
+      ></textarea>
+      <span className="feedback">{feedback}</span>
+    </FieldStyles>
+  )
+}
+
+export const SubmitEmailToAirtable = (userData, language) => {
+  const fields = {
+    Name: userData.name,
+    Email: userData.email,
+    Tag: userData.tag,
+    Language: language,
+  }
+  return SubmitToAirtable("Clients", fields)
+}
+
+export const SubmitInquiryToAirtable = (userData, language) => {
+  const fields = {
+    Name: userData.name,
+    Email: userData.email,
+    Inquiry: userData.inquiry,
+    Tag: userData.tag,
+    Language: language,
+  }
+  return SubmitToAirtable("Clients", fields)
+}
+
+export const SubmitToAirtable = async (tableName, fields) => {
+  const apiKey = process.env.AIRTABLE_API_KEY
+  const baseId = process.env.AIRTABLE_SITECONF_BASE
+
   const base = new Airtable({
-    airtableKey: airtableKey,
-  }).base(airtableBaseId)
+    apiKey: apiKey,
+  }).base(baseId)
 
   const result = {
     isError: false,
@@ -256,21 +312,15 @@ export const SubmitToAirtable = async (
   base(tableName).create(
     [
       {
-        fields: {
-          Name: name,
-          Email: email,
-          Tag: tag,
-          Language: language,
-        },
+        fields: fields,
       },
     ],
     (err, records) => {
       if (err) {
         result.isError = true
         result.internal = err
-        result.context =
-          airtableKey + " :: " + airtableBaseId + " :: " + tableName
-        return
+        result.context = apiKey + " :: " + baseId + " :: " + tableName
+        return result
       }
     }
   )
