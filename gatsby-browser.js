@@ -3,11 +3,22 @@ import { MenuProvider } from "./src/components/menucontext"
 import { AnimatePresence } from "framer-motion"
 import "@fontsource/heebo/400.css"
 import "@fontsource/heebo/700.css"
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+
+const config = {
+  useSystemColorMode: true,
+}
+
+const theme = extendTheme({ config })
 
 export function wrapPageElement({ element }) {
   return <AnimatePresence exitBeforeEnter>{element}</AnimatePresence>
 }
 
 export function wrapRootElement({ element }) {
-  return <MenuProvider>{element}</MenuProvider>
+  return (
+    <ChakraProvider resetCss theme={theme}>
+      <MenuProvider>{element}</MenuProvider>
+    </ChakraProvider>
+  )
 }

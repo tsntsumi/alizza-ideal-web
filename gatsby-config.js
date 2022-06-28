@@ -162,6 +162,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/contents/blog`,
+        name: `blog`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
@@ -209,7 +216,10 @@ module.exports = {
               Name: "",
               Description: "",
             },
-            mapping: { Images: `fileNode` },
+            mapping: {
+              Descritption: "text/markdown",
+              Images: `fileNode`,
+            },
             separateNodeType: false,
             separateMapType: false,
           },
@@ -229,7 +239,17 @@ module.exports = {
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [`gatsby-remark-images`],
+        plugins: [
+          `gatsby-remark-images`,
+          `@pauliescanlon/gatsby-remark-sticky-table`,
+        ],
+      },
+    },
+    {
+      resolve: `@pauliescanlon/gatsby-remark-sticky-table`,
+      options: {
+        height: 250,
+        backgroundColor: "#ffffff",
       },
     },
     {
@@ -254,7 +274,10 @@ module.exports = {
         },
       },
     },
-
+    `@chakra-ui/gatsby-plugin`,
+    {
+      resolve: "gatsby-plugin-mdx-frontmatter",
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

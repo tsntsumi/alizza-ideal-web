@@ -23,6 +23,14 @@ type Locale implements Node @dontInfer {
   data: String
   language: String
 }
-  `
+
+type Mdx implements Node {
+  frontmatter: MdxFrontmatter
+}
+
+type MdxFrontmatter {
+  description: String @mdx
+}
+`
   createTypes(typeDefs)
 }

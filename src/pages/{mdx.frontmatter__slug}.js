@@ -6,6 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { MdxLink } from "gatsby-theme-i18n"
 import { LocalizedLink } from "gatsby-theme-i18n"
+import BlogPage from "./blog/BlogPage"
 
 const components = {
   a: MdxLink,
@@ -14,8 +15,15 @@ const components = {
 export default function BasePage({ data }) {
   const {
     body,
-    frontmatter: { title, date },
+    frontmatter: { date, title, slug },
   } = data.mdx
+  if (slug.match(/\/blog\//)) {
+    return (
+      <>
+        <BlogPage data={data} />
+      </>
+    )
+  }
   return (
     <>
       <h1>{title}</h1>
@@ -52,6 +60,32 @@ export const query = graphql`
         date(formatString: "YYYY-MM-DD")
         slug
         title
+        description
+        banner {
+          childImageSharp {
+            gatsbyImageData(
+              breakpoints: [360, 720, 1024]
+              jpgOptions: { progressive: false }
+              formats: [JPG]
+              quality: 50
+              layout: CONSTRAINED
+              placeholder: BLURRED
+            )
+          }
+        }
+        images {
+          childImageSharp {
+            gatsbyImageData(
+              breakpoints: [360, 720]
+              jpgOptions: { progressive: false }
+              formats: [JPG]
+              quality: 50
+              layout: CONSTRAINED
+              placeholder: BLURRED
+            )
+          }
+        }
+        tags
       }
     }
     locales: allLocale(
