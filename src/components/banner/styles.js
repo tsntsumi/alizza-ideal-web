@@ -18,7 +18,7 @@ export const BannerStyles = styled.section`
     justify-content: flex-start;
     min-height: calc(100vh - var(--header-height) * 1.25);
     overflow-y: scroll;
-    padding-bottom: 1em;
+    margin-bottom: 0;
   }
 
   .gradient,
@@ -50,44 +50,43 @@ export const BannerStyles = styled.section`
     width: 100%;
     max-width: 80vw;
     text-align: justify;
-    margin-top: 1rem;
     padding-top: calc(var(--header-height));
+    margin-bottom: 1.5em;
+  }
 
-    @media (min-width: 768px) {
-      width: 66vw;
-    }
+  @media (min-width: 768px) {
+    width: 66vw;
+  }
 
-    h1 {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-      background-color: var(--key-dark-color);
-      display: inline-block;
-      font-size: 1.4em;
-      padding: 10px;
-      border-radius: 20px;
-      width: 100%;
-    }
+  h1 {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    background-color: var(--key-dark-color);
+    display: inline-block;
+    font-size: 1.4em;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+  }
 
-    h1,
-    h2,
-    h3 {
-      padding: 0.5em 1em;
-      border-radius: 0.75em;
-      color: rgb(250, 250, 250);
-      font-weight: 500;
-    }
+  h1,
+  h2,
+  h3 {
+    padding: 0.5em 1em;
+    border-radius: 0.75em;
+    color: rgb(250, 250, 250);
+    font-weight: 500;
+  }
 
-    .description {
-      display: inline-block;
-      background-color: var(--key-light-color);
-      padding: 1em;
-      border-radius: 1em;
-      width: 100%;
-      color: rgb(250, 250, 250);
+  .description {
+    display: inline-block;
+    background-color: var(--key-light-color);
+    padding: 1em;
+    border-radius: 1em;
+    width: 100%;
+    color: rgb(250, 250, 250);
 
-      ul {
-        padding: 1em 0 1em 2em;
-        }
-      }
+    ul {
+      padding: 1em 0 1em 2em;
     }
 
     h2 {

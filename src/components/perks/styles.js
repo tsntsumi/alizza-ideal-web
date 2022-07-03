@@ -3,9 +3,16 @@ import styled from "styled-components"
 export const PerksStyles = styled.section`
   background-color: var(--key-dark-color);
 
-  .perks.container {
+  .section,
+  .section__padding {
+    margin: 0;
+  }
+
+  .container {
     width: 100%;
     display: block;
+    margin-top: 0;
+    margin-botom: 0;
   }
 
   .perks__divider {
@@ -20,6 +27,7 @@ export const PerksStyles = styled.section`
   h2 {
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     margin-bottom: 1em;
+    margin-top: 0;
     text-align: center;
     font-size: var(--h5);
     font-weight: 800;
@@ -38,6 +46,7 @@ export const PerksStyles = styled.section`
 export const PerkStyles = styled.aside`
   width: 100%;
   display: flex;
+  background-color: rgb(224, 235, 235);
 
   color: white;
   font-size: 10px;

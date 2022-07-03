@@ -1,3 +1,4 @@
+// i18next-extract-mark-ns-start blog
 import React from "react"
 import { Container, Grid, Box } from "@chakra-ui/react"
 import { graphql } from "gatsby"
@@ -6,10 +7,11 @@ import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 
 export default function BlogIndexPage({ data }) {
+  const { posts } = data
   return (
     <Layout>
       <Seo title="Blogs" />
-      <Container maxW="container.xl" mt="90px">
+      <Container maxW="container.xl" mt="90px" mb="1em">
         <Box px={4} mt={4}>
           <Grid
             templateColumns={{
@@ -22,9 +24,8 @@ export default function BlogIndexPage({ data }) {
               xl: 6,
             }}
           >
-            {data.allMdx.edges.map((e, index) => {
+            {posts.edges.map((e, index) => {
               const loading = index <= 4 ? "eager" : "lazy"
-              console.log("node.id = ", e.node.id)
               return <List node={e.node} loading={loading} key={index} />
             })}
           </Grid>
@@ -36,24 +37,39 @@ export default function BlogIndexPage({ data }) {
 
 export const query = graphql`
   query BlogIndexQuery($language: String!) {
-    allMdx(
-      filter: {
-        fields: { locale: { in: [$language, ""] } }
-        frontmatter: { slug: { glob: "/blog/*" } }
-      }
+    posts: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { fields: { locale: { eq: $language }, source: { eq: "blog" } } }
     ) {
       edges {
         node {
-          id
-          excerpt(pruneLength: 64)
           frontmatter {
             date(fromNow: true)
             slug
-            tags
             title
+            description
+            tags
+            banner {
+              childImageSharp {
+                gatsbyImageData(formats: AUTO, width: 256)
+              }
+            }
           }
         }
       }
+    }
+    tags: allMdx(
+      filter: { fields: { locale: { eq: "ja" }, source: { eq: "blog" } } }
+      sort: { fields: frontmatter___tags, order: ASC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            tags
+          }
+        }
+      }
+      distinct(field: frontmatter___tags)
     }
     locales: allLocale(
       filter: {

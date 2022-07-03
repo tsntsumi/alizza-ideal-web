@@ -25,6 +25,8 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-mdx-source-name`,
+    `gatsby-plugin-mdx-frontmatter`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -44,8 +46,8 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: [`jpg`],
-          placeholder: `dominantColor`,
+          formats: [`auto`, `webp`, `jpg`],
+          placeholder: `blurred`,
           quality: 50,
           breakpoints: [340, 740, 1024],
           backgroundColor: `transparent`,
@@ -239,6 +241,7 @@ module.exports = {
     {
       resolve: "gatsby-transformer-remark",
       options: {
+        gfm: true,
         plugins: [
           `gatsby-remark-images`,
           `@pauliescanlon/gatsby-remark-sticky-table`,
@@ -275,9 +278,6 @@ module.exports = {
       },
     },
     `@chakra-ui/gatsby-plugin`,
-    {
-      resolve: "gatsby-plugin-mdx-frontmatter",
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

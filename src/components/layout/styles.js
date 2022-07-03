@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   --borderSpacing: 30px;
   --menuWidth: 100vw;
   --blockquote: 20px;
-  --background: rgb(51, 153, 102, 0.5);
+  --background: rgb(224, 235, 235);
   --primary: rgb(0, 204, 204);
   --key-color: rgba(0, 128, 128, 0.8);
   --key-dark-color: rgba(0, 102, 102, 0.8);
@@ -82,18 +82,21 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
 }  
 
-
 body {
     font-family: 'Heebo', sans-serif;
     margin: 0 auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--background);
+    background-color: rgb(224, 235, 235);
     color: #fff;
     overflow-x: hidden;
     font-size: var(--p);
     min-height: 100vh;
     overflow-y: scroll;
+}
+
+section {
+    background-color: rgb(224, 235, 235);
 }
 
 h1,
@@ -138,6 +141,16 @@ h5 {
 
 h6 {
   font-size: var(--h6);
+}
+
+h1 ~ *,
+h2 ~ *,
+h3 ~ *,
+h4 ~ *,
+h5 ~ *,
+h6 ~ * {
+    padding-left: var(--borderSpacing);
+    padding-right:  var(--borderSpacing);
 }
 
 p {
@@ -211,8 +224,7 @@ blockquote {
 }
 
 .container {
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
 
   &__tight {
     max-width: 1400px;
@@ -246,11 +258,11 @@ blockquote {
 }
 
 .section {
-    margin-top: var(--sectionMargin);
-    margin-bottom: var(--sectionMargin);
-    padding: 0 var(--borderSpacing);
+    padding: 0;
 
     &.section__padding {
+        margin-top: 0;
+        margin-bottom: 0;
         padding-top: var(--sectionMargin);
         padding-bottom: var(--sectionMargin);
     }
