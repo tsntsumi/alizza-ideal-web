@@ -17,7 +17,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+  const { createTypes, printTypeDefinitions } = actions
   const typeDefs = `
 type Locale implements Node @dontInfer {
   ns: String
@@ -43,6 +43,47 @@ type Frontmatter @dontInfer {
 }
   `
   createTypes(typeDefs)
+  printTypeDefinitions({ path: "./typeDefs.txt" })
+}
+
+exports.onCreateNode = async ({
+  node,
+  createNodeId,
+  actions: { createNodeField, createNode },
+  cache,
+  store,
+}) => {
+  if (
+    (node.internal.type === "Mdx") & node.frontmatter &&
+    node.frontmatter.imageURLs
+  ) {
+    let imageURLs = await Promise.all(
+      node.frontmatter.imageURLs.map(url => {
+        try {
+          return createRemoteFileNode({
+            url,
+            parentNodeId: node.id,
+            createNode,
+            createNodeId,
+            cache,
+            store,
+          })
+        } catch (error) {
+          console.error(error)
+        }
+        return null
+      })
+    )
+    if (imageURLs) {
+      createNodeField({
+        node,
+        name: "imageURLs",
+        value: imageURLs.map(image => {
+          return image.id
+        }),
+      })
+    }
+  }
 }
 
 exports.onCreateNode = async ({
