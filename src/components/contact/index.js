@@ -4,7 +4,7 @@ import { useI18next } from "gatsby-plugin-react-i18next"
 import { SqueezeForm, SubmitInquiryToAirtable } from "../squeezeform"
 import { ContactStyles } from "./styles"
 
-const Contact = () => {
+const Contact = ({ tag }) => {
   const { t, language } = useI18next()
   return (
     <ContactStyles className="section">
@@ -14,7 +14,7 @@ const Contact = () => {
           namelabel={t("Your name...")}
           emaillabel={t("Your email...")}
           inquirylabel={t("Your message...")}
-          tag="inquiry"
+          tag={tag || "inquiry"}
           language={language}
           acceptInqiry={true}
           action={SubmitInquiryToAirtable}
