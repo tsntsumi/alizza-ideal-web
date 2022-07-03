@@ -43,7 +43,7 @@ type Frontmatter @dontInfer {
 }
   `
   createTypes(typeDefs)
-  printTypeDefinitions({ path: "./typeDefs.txt" })
+  // printTypeDefinitions({ path: "./typeDefs.txt" })
 }
 
 exports.onCreateNode = async ({
