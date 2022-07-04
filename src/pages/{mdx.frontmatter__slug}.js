@@ -17,6 +17,7 @@ const components = {
   Contact: Contact,
   GatsbyImage: GatsbyImage,
   getImage: getImage,
+  clear: props => <div style={{ clear: "both" }} />,
 }
 
 export default function MdxPage({ data }) {
@@ -124,10 +125,13 @@ const MdxPageStyles = styled.section`
   ol,
   ul,
   blockquote {
-    margin: 1rem auto 1rem 2rem;
+    margin: 1em auto 1em 2em;
+  }
+  blockquote {
+    font-size: 1.1em;
   }
   li {
-    margin: 0.5rem auto 0.5rem auto;
+    margin: 0.25em auto;
     color: var(--bodyColor);
   }
 

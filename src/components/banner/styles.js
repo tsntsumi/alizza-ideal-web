@@ -52,10 +52,10 @@ export const BannerStyles = styled.section`
     text-align: justify;
     padding-top: calc(var(--header-height));
     margin-bottom: 1.5em;
-  }
 
-  @media (min-width: 768px) {
-    width: 66vw;
+    @media (min-width: 768px) {
+      width: 66vw;
+    }
   }
 
   h1 {
