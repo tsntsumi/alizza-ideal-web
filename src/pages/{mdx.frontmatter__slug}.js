@@ -17,7 +17,17 @@ const components = {
   Contact: Contact,
   GatsbyImage: GatsbyImage,
   getImage: getImage,
-  clear: props => <div style={{ clear: "both" }} />,
+  clear: props => <div style={{ clear: "both" }} {...props} />,
+  PhotoCredit: props => (
+    <div
+      style={{
+        fontSize: "0.6em",
+        margin: "0.4em",
+        minWidth: "6em",
+      }}
+      {...props}
+    />
+  ),
 }
 
 export default function MdxPage({ data }) {
