@@ -1,6 +1,6 @@
-import { existSync, rmSync } from "node:fs"
 const { createRemoteFileNode } = require("gatsby-source-filesystem")
 const fs = require("fs")
+const path = require("path")
 const sharp = require("sharp")
 
 if (process.env.NO_CACHE_ON_BUILD) {
@@ -50,9 +50,10 @@ type Frontmatter @dontInfer {
   imageURLs: [String]
 }
   `
+
   createTypes(typeDefs)
-  if (existSync("./typeDefs.txt")) {
-    rmSync("./typeDefs.txt")
+  if (fs.existsSync("./typeDefs.txt")) {
+    fs.rmSync("./typeDefs.txt")
   }
   printTypeDefinitions({ path: "./typeDefs.txt" })
 }
