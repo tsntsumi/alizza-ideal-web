@@ -9,50 +9,65 @@ import Seo from "../components/seo"
 import SimpleBanner from "../components/simplebanner"
 import styled from "styled-components"
 
+const ContactPage = ({ data }) => {
+  const { t } = useI18next()
+  return (
+    <>
+      <Layout>
+        <ContactPageStyles>
+          <Seo title="Get in touch" />
+          <SimpleBanner title={t("Get in touch")}>
+            <StaticImage
+              className="banner__image"
+              src="../../static/i-programmer-chair.jpg"
+              alt="Contact me"
+            />
+          </SimpleBanner>
+          <Contact />
+          <Remark>
+            <div className="section container container__tight">
+              <hr />
+              <div>
+                <Trans>電話番号</Trans>: <code>+81 90 4225 8826</code>
+              </div>
+              <ul>
+                <li>
+                  <Trans>
+                    基本的にお電話でのお問い合わせ、ご質問は承っておりません。
+                  </Trans>
+                  <Trans>留守番電話にメッセージをお残しください。</Trans>
+                  <Trans>こちらから折り返しお電話いたします。</Trans>
+                </li>
+              </ul>
+            </div>
+          </Remark>
+        </ContactPageStyles>
+      </Layout>
+    </>
+  )
+}
+
+const ContactPageStyles = styled.section`
+  text-align: justify;
+  align-items: flex-start;
+`
+
 const Remark = styled.div`
   .container {
     max-width: 750px;
     box-sizing: content-box;
     margin-left: auto;
     margin-right: auto;
+    color: black;
+
+    padding-left: var(--borderSpacing);
+    padding-right: var(--borderSpacing);
+
+    ul {
+      margin-left: 1em;
+    }
   }
 `
-
-const ContactPage = ({ data }) => {
-  const { t } = useI18next()
-  return (
-    <>
-      <Seo title="Get in touch" />
-      <Layout>
-        <SimpleBanner title={t("Get in touch")}>
-          <StaticImage
-            className="banner__image"
-            src="../../static/i-programmer-chair.jpg"
-            alt="Contact me"
-          />
-        </SimpleBanner>
-        <Contact />
-        <Remark>
-          <div className="section container container__tight">
-            <hr />
-            <div>
-              <Trans>電話番号</Trans>: <code>+81 90 4225 8826</code>
-            </div>
-            <ul>
-              <li>
-                <Trans>
-                  基本的にお電話でのお問い合わせ、ご質問は承っておりません。
-                </Trans>
-                <Trans>留守番電話にメッセージをお残しください。</Trans>
-                <Trans>こちらから折り返しお電話いたします。</Trans>
-              </li>
-            </ul>
-          </div>
-        </Remark>
-      </Layout>
-    </>
-  )
-}
 
 export default ContactPage
 

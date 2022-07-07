@@ -2,8 +2,9 @@ import styled from "styled-components"
 
 export const FormStyles = styled.section`
   margin: 0;
-  padding: var(--p) 0;
+  padding: var(--p) var(--borderSpacing);
   text-align: justify;
+  border-color: transparent;
 
   .success {
     color: lightGreen;
@@ -34,10 +35,15 @@ export const FieldStyles = styled.div`
     border-radius: 1em;
     width: 100%;
     font-size: var(--p);
-    font-weight: 700;
+    font-weight: 300;
     font-family: "Heebo", sans-serif;
     padding: var(--p) 0.5em;
     margin: 0;
+    background-color: var(--key-white-color);
+    color: var(--key-dark-color);
+    &::placeholder {
+      color: gray;
+    }
   }
 
   .feedback {

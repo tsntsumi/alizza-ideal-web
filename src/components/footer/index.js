@@ -15,6 +15,10 @@ export const FooterStyles = styled.footer`
     color: white;
     font-size: inherit;
   }
+
+  .link {
+    color: orange;
+  }
 `
 
 const CopyrightStyle = styled.div`
@@ -31,11 +35,11 @@ export const Footer = () => {
           Copyright &copy; 2022, TSUTSUMI Kikuo (
           <a href="https://www.alizza-ideal.com">Alizza Ideal</a>
           ). All rights reserved. [{" "}
-          <Link to="/legal">
+          <Link to="/legal" className="link">
             <Trans>特定商取引法</Trans>
           </Link>{" "}
           |{" "}
-          <Link to="/policy">
+          <Link to="/policy" className="link">
             <Trans>個人情報保護</Trans>
           </Link>{" "}
           ]

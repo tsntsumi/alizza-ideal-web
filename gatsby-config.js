@@ -256,7 +256,13 @@ module.exports = {
         backgroundColor: "#ffffff",
       },
     },
-    `@chakra-ui/gatsby-plugin`,
+    {
+      resolve: `@chakra-ui/gatsby-plugin`,
+      options: {
+        resetCSS: true,
+        portalZIndex: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {

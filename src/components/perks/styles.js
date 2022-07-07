@@ -13,6 +13,8 @@ export const PerksStyles = styled.section`
     display: block;
     margin-top: 0;
     margin-botom: 0;
+    padding-left: var(--borderSpacing);
+    padding-right: var(--borderSpacing);
   }
 
   .perks__divider {

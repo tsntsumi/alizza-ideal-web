@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
 
 :root {
   --doc-height: 100%;
-  --header-height: 32px;
+  --header-height:64px;
   --bannerTitle: 34px;
   --notFoundTitle: calc(var(--bannerTitle) * 8);
   --borderSpacing: 30px;
@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   --key-color: rgba(0, 128, 128, 0.8);
   --key-dark-color: rgba(0, 102, 102, 0.8);
   --key-light-color: rgba(0, 153, 153, 0.8);
+  --key-base-color: rgb(224, 235, 235);
+  --key-white-color: rgb(244, 255, 255);
   --highlight-color: orange;
   --inActive: #555;
   --letterSpacing: -0.075rem;
@@ -87,16 +89,12 @@ body {
     margin: 0 auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: rgb(224, 235, 235);
+    background-color: key-base-color;
     color: #fff;
     overflow-x: hidden;
     font-size: var(--p);
     min-height: 100vh;
     overflow-y: scroll;
-}
-
-section {
-    background-color: rgb(224, 235, 235);
 }
 
 h1,
@@ -160,11 +158,7 @@ p {
 }
 
 p {
-    text-indent: 1rem;
-}
-li {
-    text-align: justify;
-    text-indent: 0;
+    text-indent: 1em;
 }
 
 b,
@@ -186,6 +180,12 @@ ul,
 blockquote {
   margin-top: calc(var(--p) / 2);
   margin-bottom: calc(var(--p) / 2);
+}
+
+li {
+  margin-left: 1em;
+  text-align: justify;
+  text-indent: 0;
 }
 
 hr {
@@ -261,8 +261,6 @@ blockquote {
     padding: 0;
 
     &.section__padding {
-        margin-top: 0;
-        margin-bottom: 0;
         padding-top: var(--sectionMargin);
         padding-bottom: var(--sectionMargin);
     }

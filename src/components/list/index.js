@@ -27,7 +27,7 @@ const Item = ({ node, loading }) => {
           <Box mt="1" fontWeight="semibold" as="h3" lineHeight="tight" px={1}>
             {title}
           </Box>
-          <Box mt="1" as="p" px={1} fontSize="7pt">
+          <Box mt="0.5em" p="0.5em" fontSize="7pt">
             <MDXRenderer>{description}</MDXRenderer>
           </Box>
         </Box>

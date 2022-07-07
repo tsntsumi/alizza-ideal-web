@@ -8,11 +8,13 @@ export const ClaimStyles = styled.section`
   background-color: var(--key-color);
 
   h2 {
-    text-align: center;
+    text-align: left;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
     margin-bottom: 1em;
     font-size: var(--h5);
     font-weight: 800;
-    white-space: nowrap;
+    white-space: wrap;
     color: white;
   }
 

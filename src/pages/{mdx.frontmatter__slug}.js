@@ -41,42 +41,45 @@ export default function MdxPage({ data }) {
     <Layout>
       <Seo title={t(title)} />
       {source === "basepage" && (
-        <>
-          <h1>
-            <Trans>{title}</Trans>
-          </h1>
-          <p className="date">
-            <Trans>Date:</Trans> <i>date</i>
-          </p>
-        </>
+        <MdxPageStyles>
+          <div className="section section__padding">
+            <h1>{title}</h1>
+            <p className="date">
+              <Trans>Date:</Trans> <i>{date}</i>
+            </p>
+            <MDXProvider components={components}>
+              <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
+            </MDXProvider>
+          </div>
+        </MdxPageStyles>
       )}
       {source === "blog" && (
-        <Banner title={t(title)} image={banner}>
-          <p
-            style={{
-              textAlign: "right",
-              marginBottom: "1em",
-              marginTop: 0,
-              fontSize: "0.8em",
-            }}
-          >
-            <span>
-              <Trans>Date:</Trans>
-              <i>{date}</i>
-            </span>
-          </p>
-          <MDXProvider components={components}>
-            <MDXRenderer>{description}</MDXRenderer>
-          </MDXProvider>
-        </Banner>
+        <>
+          <Banner title={t(title)} image={banner}>
+            <p
+              style={{
+                textAlign: "right",
+                marginBottom: "1em",
+                marginTop: 0,
+                fontSize: "0.8em",
+              }}
+            >
+              <span>
+                <Trans>Date:</Trans>
+                <i>{fromNow}</i>
+              </span>
+            </p>
+            <MDXProvider components={components}>
+              <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
+            </MDXProvider>
+          </Banner>
+          <MdxPageStyles>
+            <MDXProvider components={components}>
+              <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
+            </MDXProvider>
+          </MdxPageStyles>
+        </>
       )}
-      <MdxPageStyles>
-        <div className="section section__padding">
-          <MDXProvider components={components}>
-            <MDXRenderer images={images}>{body}</MDXRenderer>
-          </MDXProvider>
-        </div>
-      </MdxPageStyles>
     </Layout>
   )
 }
@@ -85,32 +88,54 @@ const MdxPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
   color: black;
-  background-color: #e0ebeb;
+  background-color: var(--key-base-color);
 
-  .section,
-  .section__padding {
+  .section {
     padding: 0;
-    background-color: #e0ebeb;
+    border-radius: 0;
+    .section__padding {
+      background-color: #e0ebeb;
+      margin-top: 67px;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      border-top: red 2px solid;
+    }
+  }
+
+  .date {
+    text-align: right;
+    margin-bottom: 1em;
+    margin-top: 0;
+    font-size: 0.8em;
   }
 
   h1,
   h2,
   h3 {
     font-family: sans-serif;
-    padding: 1em;
+    padding: 0.7em;
     margin: 1em 0;
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  h1,
+  h2 {
+    font-weight: 800;
+    color: white;
+    background-color: var(--key-color);
   }
 
   h1 {
     font-size: var(--h3);
+    padding: 0.7em;
+    margin-top: 0;
   }
 
   h2 {
-    text-align: center;
     font-size: var(--h5);
-    font-weight: 800;
-    color: white;
-    background-color: var(--key-color);
   }
 
   h3 {
@@ -143,6 +168,10 @@ const MdxPageStyles = styled.section`
   li {
     margin: 0.25em auto;
     color: var(--bodyColor);
+  }
+
+  a {
+    color: darkred;
   }
 
   table {
@@ -182,7 +211,8 @@ export const query = graphql`
     ) {
       frontmatter {
         title
-        date(fromNow: true)
+        fromNow: date(fromNow: true)
+        date(formatString: "YYYY-MM-DD")
         description
         tags
         banner {

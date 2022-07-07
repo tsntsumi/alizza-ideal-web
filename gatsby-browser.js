@@ -6,7 +6,8 @@ import "@fontsource/heebo/700.css"
 import { ChakraProvider, extendTheme } from "@chakra-ui/react"
 
 const config = {
-  useSystemColorMode: true,
+  useSystemColorMode: false,
+  initialColorMode: "light",
 }
 
 const theme = extendTheme({ config })
@@ -17,7 +18,7 @@ export function wrapPageElement({ element }) {
 
 export function wrapRootElement({ element }) {
   return (
-    <ChakraProvider resetCss theme={theme}>
+    <ChakraProvider theme={theme}>
       <MenuProvider>{element}</MenuProvider>
     </ChakraProvider>
   )
