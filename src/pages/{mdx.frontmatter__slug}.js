@@ -14,7 +14,6 @@ import Banner from "../components/banner"
 const components = {
   Contact: Contact,
   GatsbyImage: GatsbyImage,
-  getImage: getImage,
   clear: props => <div style={{ clear: "both" }} {...props} />,
   PhotoCredit: props => (
     <div
@@ -33,8 +32,10 @@ export default function MdxPage({ data }) {
   const {
     body,
     fields: { source },
-    frontmatter: { title, date, description, banner, images },
+    frontmatter: { title, date, fromNow, description, banner, images },
   } = data?.mdx
+
+  const gottenImages = images.map(i => getImage(i))
 
   return (
     <Layout>
