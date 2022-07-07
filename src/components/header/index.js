@@ -3,7 +3,6 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link, Trans, useI18next } from "gatsby-plugin-react-i18next"
 import styled from "styled-components"
-import { Nav } from "../nav"
 
 const HeaderStyles = styled.header`
   .header {
@@ -46,15 +45,6 @@ const LogoStyles = styled.div`
   text-align: center;
   display: inline-block;
   top: 20px;
-`
-
-const Phone = styled.div`
-  display: inline-block;
-  vertical-align: middle;
-  z-index: 10;
-  margin-left: auto;
-  font-size: 1em;
-  font-weight: 800;
 `
 
 const Selector = styled.div`

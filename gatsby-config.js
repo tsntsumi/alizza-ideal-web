@@ -256,29 +256,34 @@ module.exports = {
         backgroundColor: "#ffffff",
       },
     },
+    `@chakra-ui/gatsby-plugin`,
     {
-      resolve: `gatsby-theme-i18n`,
+      resolve: `gatsby-plugin-react-i18next`,
       options: {
-        defaultLang: `ja`,
-        prefixDefault: false,
-        locales: process.env.LOCALES || `ja en tl`,
-        configPath: require.resolve(`./src/i18n/config.json`),
-      },
-    },
-    {
-      resolve: `gatsby-theme-i18n-react-i18next`,
-      options: {
-        locales: `./src/i18n/locales`,
+        localeJsonSourceName: `locale`,
+        languages: [`ja`, `en`, `tl`],
+        defaultLanguage: `ja`,
+        siteUrl: `https://alizza-ideal.com`,
+        trailingSlash: "always",
         i18nextOptions: {
           interpolation: {
-            escapeValue: false,
+            escapeValue: false, // not needed for react as it escapes by default
           },
           keySeparator: false,
           nsSeparator: false,
         },
+        pages: [
+          {
+            matchPath: "/:lang?/blog/:uid",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/:uid",
+            getLanguageFromPath: true,
+          },
+        ],
       },
     },
-    `@chakra-ui/gatsby-plugin`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

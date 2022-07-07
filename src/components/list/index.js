@@ -3,7 +3,7 @@ import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Box, AspectRatio, useColorModeValue } from "@chakra-ui/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { LocalizedLink } from "gatsby-theme-i18n"
+import { Link } from "gatsby-plugin-react-i18next"
 
 const Item = ({ node, loading }) => {
   const bg = useColorModeValue("white", "green.900")
@@ -19,7 +19,7 @@ const Item = ({ node, loading }) => {
       position="relative"
       bg={bg}
     >
-      <LocalizedLink to={slug}>
+      <Link to={slug}>
         <AspectRatio maxW="320px" ratio={1 / 1}>
           <GatsbyImage loading={loading} image={getImage(banner)} alt={title} />
         </AspectRatio>
@@ -31,7 +31,7 @@ const Item = ({ node, loading }) => {
             <MDXRenderer>{description}</MDXRenderer>
           </Box>
         </Box>
-      </LocalizedLink>
+      </Link>
     </Box>
   )
 }

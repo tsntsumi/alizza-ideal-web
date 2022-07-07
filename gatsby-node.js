@@ -1,4 +1,6 @@
+import { existSync, rmSync } from "node:fs"
 const { createRemoteFileNode } = require("gatsby-source-filesystem")
+const fs = require("fs")
 const sharp = require("sharp")
 
 if (process.env.NO_CACHE_ON_BUILD) {
@@ -28,6 +30,12 @@ type Locale implements Node @dontInfer {
 type Mdx implements Node {
   frontmatter: Frontmatter
   imageURLs: [File] @link(from: "fields.imageURLs")
+  fields: MdxFields
+}
+
+type MdxFields {
+  locale: String
+  isDefault: Boolean
 }
 
 type Frontmatter @dontInfer {
@@ -43,47 +51,10 @@ type Frontmatter @dontInfer {
 }
   `
   createTypes(typeDefs)
-  // printTypeDefinitions({ path: "./typeDefs.txt" })
-}
-
-exports.onCreateNode = async ({
-  node,
-  createNodeId,
-  actions: { createNodeField, createNode },
-  cache,
-  store,
-}) => {
-  if (
-    (node.internal.type === "Mdx") & node.frontmatter &&
-    node.frontmatter.imageURLs
-  ) {
-    let imageURLs = await Promise.all(
-      node.frontmatter.imageURLs.map(url => {
-        try {
-          return createRemoteFileNode({
-            url,
-            parentNodeId: node.id,
-            createNode,
-            createNodeId,
-            cache,
-            store,
-          })
-        } catch (error) {
-          console.error(error)
-        }
-        return null
-      })
-    )
-    if (imageURLs) {
-      createNodeField({
-        node,
-        name: "imageURLs",
-        value: imageURLs.map(image => {
-          return image.id
-        }),
-      })
-    }
+  if (existSync("./typeDefs.txt")) {
+    rmSync("./typeDefs.txt")
   }
+  printTypeDefinitions({ path: "./typeDefs.txt" })
 }
 
 exports.onCreateNode = async ({
@@ -124,5 +95,11 @@ exports.onCreateNode = async ({
         }),
       })
     }
+  }
+  if (node.internal.type === "Mdx") {
+    const basename = path.basename(node.fileAbsolutePath, ".mdx")
+    const extname = path.extname(basename)
+    const language = (extname || ".ja").substr(1, 2).toLowerCase()
+    createNodeField({ node, name: "locale", value: language })
   }
 }

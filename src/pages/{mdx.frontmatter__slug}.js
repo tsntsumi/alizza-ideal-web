@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
-import { MdxLink } from "gatsby-theme-i18n"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import Seo from "../components/seo"
@@ -13,7 +12,6 @@ import Contact from "../components/contact"
 import Banner from "../components/banner"
 
 const components = {
-  a: MdxLink,
   Contact: Contact,
   GatsbyImage: GatsbyImage,
   getImage: getImage,
@@ -37,6 +35,7 @@ export default function MdxPage({ data }) {
     fields: { source },
     frontmatter: { title, date, description, banner, images },
   } = data?.mdx
+
   return (
     <Layout>
       <Seo title={t(title)} />
