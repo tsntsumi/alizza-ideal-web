@@ -58,8 +58,7 @@ const Remark = styled.div`
     box-sizing: content-box;
     margin-left: auto;
     margin-right: auto;
-    color: black;
-
+    color: white;
     padding-left: var(--borderSpacing);
     padding-right: var(--borderSpacing);
 
