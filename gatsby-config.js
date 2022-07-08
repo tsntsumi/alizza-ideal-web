@@ -76,13 +76,6 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-react-i18next`,
-      options: {
-        languages: [`en`, `ja`, `tl`],
-        defaultLanguage: `ja`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: "/sitemap",
@@ -174,7 +167,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/layout"),
+          default: require.resolve("./src/components/layout/mdx-layout"),
         },
         mediaTypes: [`text/x-markdown`],
         extensions: [`.mdx`],
@@ -278,16 +271,7 @@ module.exports = {
           keySeparator: false,
           nsSeparator: false,
         },
-        pages: [
-          {
-            matchPath: "/:lang?/blog/:uid",
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: "/:lang?/:uid",
-            getLanguageFromPath: true,
-          },
-        ],
+        pages: [],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
