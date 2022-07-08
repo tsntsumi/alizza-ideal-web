@@ -48,7 +48,7 @@ export const PerksStyles = styled.section`
 export const PerkStyles = styled.aside`
   width: 100%;
   display: flex;
-  background-color: rgb(224, 235, 235);
+  background-color: var(--key-color);
 
   color: white;
   font-size: 10px;
