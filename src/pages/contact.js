@@ -50,6 +50,7 @@ const ContactPage = ({ data }) => {
 const ContactPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
+  background-color: var(--key-dark-color);
 `
 
 const Remark = styled.div`
