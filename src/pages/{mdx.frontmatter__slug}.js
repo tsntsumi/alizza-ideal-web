@@ -27,61 +27,68 @@ const components = {
   ),
 }
 
-export default function MdxPage({ data }) {
-  const { t } = useI18next()
+const BasePage = ({ mdx, t }) => {
   const {
     body,
-    fields: { source },
-    frontmatter: { title, date, fromNow, description, banner, images },
-  } = data?.mdx
+    frontmatter: { title, date },
+  } = mdx
+  return (
+    <Layout>
+      <Seo title={t(title)} />
+      <MdxPageStyles>
+        <div className="section section__padding">
+          <h1>{title}</h1>
+          <p className="date">
+            <Trans>Date:</Trans> <i>{date}</i>
+          </p>
+          <MDXProvider components={components}>
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        </div>
+      </MdxPageStyles>
+    </Layout>
+  )
+}
 
+const BlogPage = ({ mdx, t }) => {
+  const {
+    body,
+    frontmatter: { title, fromNow, description, banner, images },
+  } = mdx
   const gottenImages = images.map(i => getImage(i))
 
   return (
     <Layout>
       <Seo title={t(title)} />
-      {source === "basepage" && (
+      <>
+        <Banner title={t(title)} image={banner}>
+          <p className="date">
+            <span>
+              <Trans>Date:</Trans> <i>{fromNow}</i>
+            </span>
+          </p>
+          <MDXProvider components={components}>
+            <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
+          </MDXProvider>
+        </Banner>
         <MdxPageStyles>
-          <div className="section section__padding">
-            <h1>{title}</h1>
-            <p className="date">
-              <Trans>Date:</Trans> <i>{date}</i>
-            </p>
-            <MDXProvider components={components}>
-              <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
-            </MDXProvider>
-          </div>
+          <MDXProvider components={components}>
+            <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
+          </MDXProvider>
         </MdxPageStyles>
-      )}
-      {source === "blog" && (
-        <>
-          <Banner title={t(title)} image={banner}>
-            <p
-              style={{
-                textAlign: "right",
-                marginBottom: "1em",
-                marginTop: 0,
-                fontSize: "0.8em",
-              }}
-            >
-              <span>
-                <Trans>Date:</Trans>
-                <i>{fromNow}</i>
-              </span>
-            </p>
-            <MDXProvider components={components}>
-              <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
-            </MDXProvider>
-          </Banner>
-          <MdxPageStyles>
-            <MDXProvider components={components}>
-              <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
-            </MDXProvider>
-          </MdxPageStyles>
-        </>
-      )}
+      </>
     </Layout>
   )
+}
+
+export default function MdxPage({ data }) {
+  const { t } = useI18next()
+  const source = data.source.fields.source
+  if (source === "basepage") {
+    return <BasePage mdx={data?.basepage} t={t} />
+  }
+
+  return <BlogPage mdx={data?.blogpage} t={t} />
 }
 
 const MdxPageStyles = styled.section`
@@ -205,8 +212,32 @@ const MdxPageStyles = styled.section`
 
 export const query = graphql`
   query MdxPageQuery($frontmatter__slug: String!, $language: String!) {
-    mdx(
+    source: mdx(
       fields: { locale: { eq: $language } }
+      frontmatter: { slug: { eq: $frontmatter__slug } }
+    ) {
+      fields {
+        locale
+        source
+      }
+    }
+    basepage: mdx(
+      fields: { locale: { eq: $language }, source: { eq: "basepage" } }
+      frontmatter: { slug: { eq: $frontmatter__slug } }
+    ) {
+      frontmatter {
+        title
+        date(formatString: "YYYY-MM-DD")
+        slug
+      }
+      fields {
+        locale
+        source
+      }
+      body
+    }
+    blogpage: mdx(
+      fields: { locale: { eq: $language }, source: { eq: "blog" } }
       frontmatter: { slug: { eq: $frontmatter__slug } }
     ) {
       frontmatter {
@@ -227,9 +258,9 @@ export const query = graphql`
         }
       }
       fields {
+        locale
         source
       }
-      slug
       body
     }
     locales: allLocale(
