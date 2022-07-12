@@ -10,6 +10,10 @@ export const menuItems = [
     path: "/contact",
     text: "お問い合わせ",
   },
+  {
+    path: "/blog",
+    text: "ブログ",
+  },
 ]
 
 // Create the context
