@@ -26,7 +26,7 @@ module.exports = {
     facebookUsername: "tsntsumi",
     instagramUsername: "",
     linkedinUsername: "",
-    airtableKey: `${airtableApiKey}`,
+    airtableApiKey: `${airtableApiKey}`,
     airtableBaseId: `${airtableBaseId}`,
   },
   plugins: [

@@ -9,6 +9,11 @@ import { MdMail as Mailbox } from "react-icons/md"
 import { Button } from "../button"
 import { useSiteMetadata } from "../hooks"
 
+const airtableConfig = {
+  airtableApiKey: "",
+  airtableBaseId: "",
+}
+
 export const SqueezeForm = ({
   children,
   namelabel,
@@ -72,6 +77,9 @@ export const SqueezeForm = ({
     dispatchErrorState({ type: "init", payload: er })
     return r
   }
+  const metadata = useSiteMetadata()
+  airtableConfig.airtableApiKey = metadata.airtableApiKey
+  airtableConfig.airtableBaseId = metadata.airtableBaseId
 
   return (
     <FormStyles>
@@ -297,9 +305,8 @@ export const SubmitInquiryToAirtable = (userData, language) => {
 }
 
 export const SubmitToAirtable = (tableName, fields) => {
-  const metadata = useSiteMetadata()
-  const apiKey = metadata.airtableKey
-  const baseId = metadata.airtableBaseId
+  const apiKey = airtableConfig.airtableApiKey
+  const baseId = airtableConfig.airtableBaseId
 
   const base = new Airtable({
     apiKey: apiKey,

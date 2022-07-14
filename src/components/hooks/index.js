@@ -18,7 +18,7 @@ export const useSiteMetadata = () => {
             facebookUsername
             instagramUsername
             linkedinUsername
-            airtableKey
+            airtableApiKey
             airtableBaseId
           }
         }
