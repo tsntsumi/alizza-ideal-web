@@ -3,10 +3,6 @@ const fs = require("fs")
 const path = require("path")
 const sharp = require("sharp")
 
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 if (process.env.NO_CACHE_ON_BUILD) {
   sharp.cache(false)
   sharp.simd(false)
