@@ -304,7 +304,7 @@ export const SubmitInquiryToAirtable = (userData, language) => {
   return SubmitToAirtable("Clients", fields)
 }
 
-export const SubmitToAirtable = (tableName, fields) => {
+export const SubmitToAirtable = async (tableName, fields) => {
   const apiKey = airtableConfig.airtableApiKey
   const baseId = airtableConfig.airtableBaseId
 
