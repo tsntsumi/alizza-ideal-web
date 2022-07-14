@@ -299,6 +299,9 @@ export const SubmitToAirtable = async (tableName, fields) => {
   const apiKey = process.env.AIRTABLE_API_KEY
   const baseId = process.env.AIRTABLE_SITECONF_BASE
 
+  console.log("API KEY: ", apiKey)
+  console.log("BASE ID: ", baseId)
+
   const base = new Airtable({
     apiKey: apiKey,
   }).base(baseId)
