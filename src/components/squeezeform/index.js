@@ -285,6 +285,9 @@ export const SubmitEmailToAirtable = (userData, language) => {
 }
 
 export const SubmitInquiryToAirtable = (userData, language) => {
+  const apiKey = process.env.AIRTABLE_API_KEY
+  const baseId = process.env.AIRTABLE_SITECONF_BASE
+
   const fields = {
     Name: userData.name,
     Email: userData.email,
@@ -298,9 +301,6 @@ export const SubmitInquiryToAirtable = (userData, language) => {
 export const SubmitToAirtable = async (tableName, fields) => {
   const apiKey = process.env.AIRTABLE_API_KEY
   const baseId = process.env.AIRTABLE_SITECONF_BASE
-
-  console.log("API KEY: ", apiKey)
-  console.log("BASE ID: ", baseId)
 
   const base = new Airtable({
     apiKey: apiKey,
