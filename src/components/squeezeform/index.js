@@ -7,6 +7,7 @@ import { navigate } from "gatsby"
 import Airtable from "airtable"
 import { MdMail as Mailbox } from "react-icons/md"
 import { Button } from "../button"
+import { useSiteMetadata } from "../hooks"
 
 export const SqueezeForm = ({
   children,
@@ -296,8 +297,9 @@ export const SubmitInquiryToAirtable = (userData, language) => {
 }
 
 export const SubmitToAirtable = (tableName, fields) => {
-  const apiKey = process.env.AIRTABLE_API_KEY
-  const baseId = process.env.AIRTABLE_SITECONF_BASE
+  const metadata = useSiteMetadata()
+  const apiKey = metadata.airtableKey
+  const baseId = metadata.airtableBaseId
 
   const base = new Airtable({
     apiKey: apiKey,

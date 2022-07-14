@@ -1,8 +1,15 @@
+const env =
+  process.env.NODE_ENV === "production" || !process.env.NODE_ENV
+    ? ".env"
+    : ".env." + process.env.NODE_ENV
+
 require("dotenv").config({
-  path: `.env`,
+  path: `${env}`,
 })
 
 const siteUrl = `https://www.alizza-ideal.com/`
+const airtableApiKey = process.env.AIRTABLE_API_KEY
+const airtableBaseId = process.env.AIRTABLE_SITECONF_BASE
 
 module.exports = {
   siteMetadata: {
@@ -19,8 +26,8 @@ module.exports = {
     facebookUsername: "tsntsumi",
     instagramUsername: "",
     linkedinUsername: "",
-    airtableKey: process.env.AIRTABLE_API_KEY,
-    airtableBaseId: process.env.AIRTABLE_SITECONF_BASE,
+    airtableKey: `${airtableApiKey}`,
+    airtableBaseId: `${airtableBaseId}`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -202,11 +209,11 @@ module.exports = {
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        apiKey: process.env.AIRTABLE_API_KEY,
+        apiKey: `${airtableApiKey}`,
         concurrency: 5,
         tables: [
           {
-            baseId: process.env.AIRTABLE_SITECONF_BASE,
+            baseId: `${airtableBaseId}`,
             tableName: "SiteContents",
             defaultValues: {
               Name: "",
@@ -220,7 +227,7 @@ module.exports = {
             separateMapType: false,
           },
           {
-            baseId: process.env.AIRTABLE_SITECONF_BASE,
+            baseId: `${airtableBaseId}`,
             tableName: "Coupons",
             defaultValues: {
               Name: "",

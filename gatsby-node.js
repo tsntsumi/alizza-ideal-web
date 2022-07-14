@@ -52,10 +52,13 @@ type Frontmatter @dontInfer {
   `
 
   createTypes(typeDefs)
-  if (fs.existsSync("./typeDefs.txt")) {
-    fs.rmSync("./typeDefs.txt")
+  const typedefs = "./typeDefs.txt"
+  try {
+    printTypeDefinitions({ path: typedefs })
+  } catch (err) {
+    fs.rmSync(typedefs)
+    printTypeDefinitions({ path: typedefs })
   }
-  printTypeDefinitions({ path: "./typeDefs.txt" })
 }
 
 exports.onCreateNode = async ({
