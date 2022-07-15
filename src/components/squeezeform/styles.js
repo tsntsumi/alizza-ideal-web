@@ -7,7 +7,7 @@ export const FormStyles = styled.section`
   border-color: transparent;
 
   .success {
-    color: lightGreen;
+    color: var(--key-color);
     padding: 1em 0;
   }
   .error {
@@ -30,8 +30,7 @@ export const FieldStyles = styled.div`
 
   input,
   textarea {
-    border: 1pt solid var(--key-dark-color);
-    outline: 2px solid var(--key-dark-color);
+    border: 3pt solid var(--key-dark-color);
     border-radius: 1em;
     width: 100%;
     font-size: var(--p);
@@ -44,6 +43,12 @@ export const FieldStyles = styled.div`
     &::placeholder {
       color: gray;
     }
+  }
+
+  button,
+  .btn {
+    font-weight: 600;
+    font-size: 1.4em;
   }
 
   .feedback {

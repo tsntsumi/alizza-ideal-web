@@ -22,6 +22,7 @@ export const ButtonStyles = styled.div`
     align-items: center;
     font-family: sans-serif;
     font-size: var(--p);
+    font-weight: 400;
     color: ${props => props.color || "white"};
     margin: 0;
     span {

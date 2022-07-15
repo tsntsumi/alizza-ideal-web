@@ -49,9 +49,9 @@ const BasePage = ({ mdx, t }) => {
       <MdxPageStyles>
         <div className="section section__padding">
           <h1>{title}</h1>
-          <p className="date">
+          <div className="date">
             <Trans>Date:</Trans> <i>{date}</i>
-          </p>
+          </div>
           <MDXProvider components={components}>
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
@@ -73,14 +73,16 @@ const BlogPage = ({ mdx, t }) => {
       <Seo title={t(title)} />
       <>
         <Banner title={t(title)} image={banner}>
-          <p className="date">
-            <span>
-              <Trans>Date:</Trans> <i>{fromNow}</i>
-            </span>
-          </p>
-          <MDXProvider components={components}>
-            <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
-          </MDXProvider>
+          <MdxPageStyles>
+            <div className="date">
+              <span>
+                <Trans>Date:</Trans> <i>{fromNow}</i>
+              </span>
+            </div>
+            <MDXProvider components={components}>
+              <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
+            </MDXProvider>
+          </MdxPageStyles>
         </Banner>
         <MdxPageStyles>
           <MDXProvider components={components}>
@@ -106,7 +108,6 @@ const MdxPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
   color: black;
-  background-color: var(--key-base-color);
 
   .section {
     padding: 0;
@@ -121,6 +122,7 @@ const MdxPageStyles = styled.section`
   }
 
   .date {
+    width: 96%;
     text-align: right;
     margin-bottom: 1em;
     margin-top: 0;

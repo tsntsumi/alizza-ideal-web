@@ -22,12 +22,12 @@ export const GlobalStyle = createGlobalStyle`
   --letterSpacing: -0.075rem;
   --boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
   --textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
-  --p: 14px;
-  --h2: 20px;
-  --h3: 19px;
-  --h4: 18px;
-  --h5: 17px;
-  --h6: 16px;
+  --p: 12pt;
+  --h2: 1.5em;
+  --h3: 1.4em;
+  --h4: 1.3em;
+  --h5: 1.2em;
+  --h6: 1.1em;
   --gap: 40px;
   --footnote: 9px;
   --sectionMargin: 60px;

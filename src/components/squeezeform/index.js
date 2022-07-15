@@ -224,6 +224,7 @@ export const SqueezeForm = ({
               to="#"
               text={t(cta)}
               bgColor="orange"
+              color="darkGreen"
               iconLeft={<Mailbox />}
             />
           </div>

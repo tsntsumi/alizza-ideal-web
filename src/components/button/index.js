@@ -3,7 +3,7 @@ import { Link } from "gatsby-plugin-react-i18next"
 import { ButtonStyles } from "./styles"
 
 export const Button = props => {
-  const { text, to, type, disabled, bgColor } = props
+  const { text, to, type, disabled, bgColor, color } = props
 
   const innerComponents = (
     <React.Fragment>
@@ -17,7 +17,7 @@ export const Button = props => {
     const dis = disabled ?? false
     if (type === "button" || type === "submit") {
       return (
-        <ButtonStyles bgColor={bgColor}>
+        <ButtonStyles bgColor={bgColor} color={color || "white"}>
           <button
             type={type}
             className={`btn btn-primary ${dis ? " disabled" : ""}`}
@@ -29,7 +29,7 @@ export const Button = props => {
     }
   }
   return (
-    <ButtonStyles color="white" bgColor={bgColor}>
+    <ButtonStyles color={color || "white"} bgColor={bgColor}>
       <Link to={to} title={text} className="btn btn-primary">
         {innerComponents}
       </Link>
