@@ -4,13 +4,13 @@ import { useI18next } from "gatsby-plugin-react-i18next"
 import { SqueezeForm, SubmitInquiryToAirtable } from "../squeezeform"
 
 const Contact = ({ tag }) => {
-  const { t, language } = useI18next()
+  const { language } = useI18next()
   return (
     <SqueezeForm
-      cta={t("今すぐ問い合わせる")}
-      namelabel={t("Your name...")}
-      emaillabel={t("Your email...")}
-      inquirylabel={t("Your message...")}
+      cta={"今すぐ問い合わせる"}
+      namelabel={"Your name..."}
+      emaillabel={"Your email..."}
+      inquirylabel={"Your message..."}
       tag={tag || "inquiry"}
       language={language}
       acceptInqiry={true}

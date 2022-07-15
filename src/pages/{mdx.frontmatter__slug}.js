@@ -10,9 +10,20 @@ import Seo from "../components/seo"
 import Layout from "../components/layout"
 import Contact from "../components/contact"
 import Banner from "../components/banner"
+import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
 
 const components = {
   Contact: Contact,
+  Squeeze: props => (
+    <SqueezeForm
+      acceptInqiry={false}
+      namelabel="Your name..."
+      emaillabel="Your email..."
+      action={SubmitInquiryToAirtable}
+      nextpage="/thanks/homepage-thanks"
+      {...props}
+    />
+  ),
   GatsbyImage: GatsbyImage,
   clear: props => <div style={{ clear: "both" }} {...props} />,
   PhotoCredit: props => (

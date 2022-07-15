@@ -18,6 +18,7 @@ export const SqueezeForm = ({
   children,
   namelabel,
   emaillabel,
+  inquirylabel,
   cta,
   tag,
   language,
@@ -166,7 +167,7 @@ export const SqueezeForm = ({
         <div>
           <SqueezeField
             name="name"
-            label={namelabel}
+            label={t(namelabel)}
             type="text"
             id="name"
             feedback={errorState.name}
@@ -183,7 +184,7 @@ export const SqueezeForm = ({
           />
           <SqueezeField
             name="email"
-            label={emaillabel}
+            label={t(emaillabel)}
             type="email"
             id="email"
             feedback={errorState.email}
@@ -201,7 +202,7 @@ export const SqueezeForm = ({
           {acceptInqiry && (
             <SqueezeText
               name="inquiry"
-              label={t("Your message...")}
+              label={t(inquirylabel)}
               id="inquiry"
               feedback={errorState.inquiry}
               onChange={e => {
@@ -221,7 +222,7 @@ export const SqueezeForm = ({
             <Button
               type="submit"
               to="#"
-              text={cta}
+              text={t(cta)}
               bgColor="orange"
               iconLeft={<Mailbox />}
             />
