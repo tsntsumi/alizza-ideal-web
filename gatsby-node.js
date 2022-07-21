@@ -56,6 +56,7 @@ type Frontmatter @dontInfer {
   try {
     printTypeDefinitions({ path: typedefs })
   } catch (err) {
+    console.info("creating type def file again:", typedefs)
     fs.rmSync(typedefs)
     printTypeDefinitions({ path: typedefs })
   }

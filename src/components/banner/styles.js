@@ -19,6 +19,7 @@ export const BannerStyles = styled.section`
     min-height: calc(100vh - var(--header-height) * 1.25);
     overflow-y: scroll;
     margin-bottom: 0;
+    background-color: var(--key-light-color);
   }
 
   .gradient,

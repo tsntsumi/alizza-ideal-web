@@ -86,7 +86,9 @@ const BlogPage = ({ mdx, t }) => {
         </Banner>
         <MdxPageStyles>
           <MDXProvider components={components}>
-            <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
+            <div className="container">
+              <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
+            </div>
           </MDXProvider>
         </MdxPageStyles>
       </>
@@ -109,16 +111,8 @@ const MdxPageStyles = styled.section`
   align-items: flex-start;
   color: black;
 
-  .section {
-    padding: 0;
-    border-radius: 0;
-    .section__padding {
-      background-color: #e0ebeb;
-      margin-top: 67px;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      border-top: red 2px solid;
-    }
+  .container {
+    background-color: #e0ebeb;
   }
 
   .date {
