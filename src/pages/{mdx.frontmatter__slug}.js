@@ -15,11 +15,6 @@ import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
 const ImageContext = React.createContext()
 
 const FloatBoxStyles = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-contents: center;
   float: ${props => props.float};
   width: ${props => props.width || "30%"};
   border-radius: 0.5em;
@@ -29,17 +24,6 @@ const FloatBoxStyles = styled.div`
   margin: ${props => props.margin};
   margin-bottom: 0.75em;
   font-size: 7pt;
-
-  div:last-child {
-    padding: 0.25em 1em 0.25em 1em;
-  }
-`
-
-const ImageStyles = styled.div`
-  background-color: white;
-  border-radius: 0.5em;
-  align-contents: center;
-  width: ${props => props.width || "100%"};
 `
 
 const FloatBox = ({ children, width, float, bgColor, ...props }) => {
@@ -61,6 +45,16 @@ const FloatBox = ({ children, width, float, bgColor, ...props }) => {
   )
 }
 
+const ImageStyles = styled.div`
+  background-color: white;
+  border-radius: 0.5em;
+  align-contents: center;
+
+  .gatsby-image-wrapper {
+    width: ${props => props.width || "100%"};
+  }
+`
+
 const Image = ({ alt, image, width, ...props }) => {
   const images = React.useContext(ImageContext)
   if (!images[image]) {
@@ -78,6 +72,17 @@ const Image = ({ alt, image, width, ...props }) => {
   )
 }
 
+const CreditStyles = styled.div`
+  font-size: 7pt;
+  padding: 0.6em;
+  min-width: 6em;
+  width: 100%;
+`
+
+const PhotoCredit = ({ children, ...props }) => (
+  <CreditStyles>{children}</CreditStyles>
+)
+
 const components = {
   Contact: Contact,
   Squeeze: props => (
@@ -94,22 +99,13 @@ const components = {
   clear: props => <div style={{ clear: "both" }} {...props} />,
   FloatBox: FloatBox,
   Image: Image,
-  ImageBox: ({ children, alt, image, float, width, ...props }) => (
+  ImageBox: ({ children, alt, image, float, width, imageWidth, ...props }) => (
     <FloatBox float={float} width={width} {...props}>
-      <Image image={image} alt={alt} />
-      {children && <div>{children}</div>}
+      <Image image={image} alt={alt} width={imageWidth} />
+      {children && <PhotoCredit>{children}</PhotoCredit>}
     </FloatBox>
   ),
-  PhotoCredit: props => (
-    <div
-      style={{
-        fontSize: "0.6em",
-        margin: "0.4em",
-        minWidth: "6em",
-      }}
-      {...props}
-    />
-  ),
+  PhotoCredit: PhotoCredit,
 }
 
 const BasePage = ({ mdx, t }) => {
