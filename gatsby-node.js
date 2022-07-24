@@ -41,6 +41,7 @@ type MdxFields {
 type Frontmatter @dontInfer {
   title: String!
   slug: String!
+  author: String
   date: Date @dateformat
   description: String @mdx
   tags: [String]

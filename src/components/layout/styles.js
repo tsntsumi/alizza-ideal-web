@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   --letterSpacing: -0.075rem;
   --boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
   --textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
-  --p: 12pt;
+  --p: 11pt;
   --h2: 1.5em;
   --h3: 1.4em;
   --h4: 1.3em;
@@ -152,12 +152,9 @@ h6 ~ * {
 }
 
 p {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
     text-align: justify;
-}
-
-p {
     text-indent: 1em;
 }
 
@@ -178,12 +175,12 @@ hr,
 ol,
 ul,
 blockquote {
-  margin-top: calc(var(--p) / 2);
-  margin-bottom: calc(var(--p) / 2);
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 li {
-  margin-left: 1em;
+  margin-left: 2.5em;
   text-align: justify;
   text-indent: 0;
 }

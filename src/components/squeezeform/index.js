@@ -22,7 +22,7 @@ export const SqueezeForm = ({
   cta,
   tag,
   language,
-  acceptInqiry,
+  acceptInquiry,
   action,
   nextpage,
 }) => {
@@ -106,7 +106,7 @@ export const SqueezeForm = ({
               t("メールアドレスを確認してください")
             )
           const vi =
-            !acceptInqiry ||
+            !acceptInquiry ||
             validate(
               "inquiry",
               inquiry => inquiry.trim().length > 7,
@@ -199,7 +199,7 @@ export const SqueezeForm = ({
               dispatchErrorState({ type: "clearError" })
             }}
           />
-          {acceptInqiry && (
+          {acceptInquiry && (
             <SqueezeText
               name="inquiry"
               label={t(inquirylabel)}

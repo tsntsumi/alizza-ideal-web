@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start basepage
+// i18next-extract-mark-ns-start translate
 import React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -12,11 +12,77 @@ import Contact from "../components/contact"
 import Banner from "../components/banner"
 import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
 
+const ImageContext = React.createContext()
+
+const FloatBoxStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-contents: center;
+  float: ${props => props.float};
+  width: ${props => props.width || "30%"};
+  border-radius: 0.5em;
+  background-color: ${props => props.bgColor || "white"};
+  border: 3px solid darkblue;
+  padding: 0;
+  margin: ${props => props.margin};
+  margin-bottom: 0.75em;
+  font-size: 7pt;
+
+  div:last-child {
+    padding: 0.25em 1em 0.25em 1em;
+  }
+`
+
+const ImageStyles = styled.div`
+  background-color: white;
+  border-radius: 0.5em;
+  align-contents: center;
+  width: ${props => props.width || "100%"};
+`
+
+const FloatBox = ({ children, width, float, bgColor, ...props }) => {
+  const f = float || "right"
+  const margin =
+    f === "right"
+      ? "0 var(--borderSpacing) 0 0.75em"
+      : "0 0.75em 0 var(--borderSpacing)"
+  return (
+    <FloatBoxStyles
+      float={f}
+      width={width}
+      margin={margin}
+      bgColor={bgColor}
+      {...props}
+    >
+      {children}
+    </FloatBoxStyles>
+  )
+}
+
+const Image = ({ alt, image, width, ...props }) => {
+  const images = React.useContext(ImageContext)
+  if (!images[image]) {
+    return (
+      <ImageStyles style={{ color: "red" }}>
+        Error: could not found image file. Check youra Images list in MDX
+        frontmatter
+      </ImageStyles>
+    )
+  }
+  return (
+    <ImageStyles width={width} {...props}>
+      <GatsbyImage image={images[image]} alt={alt} />
+    </ImageStyles>
+  )
+}
+
 const components = {
   Contact: Contact,
   Squeeze: props => (
     <SqueezeForm
-      acceptInqiry={false}
+      acceptInquiry={false}
       namelabel="Your name..."
       emaillabel="Your email..."
       action={SubmitInquiryToAirtable}
@@ -26,6 +92,14 @@ const components = {
   ),
   GatsbyImage: GatsbyImage,
   clear: props => <div style={{ clear: "both" }} {...props} />,
+  FloatBox: FloatBox,
+  Image: Image,
+  ImageBox: ({ children, alt, image, float, width, ...props }) => (
+    <FloatBox float={float} width={width} {...props}>
+      <Image image={image} alt={alt} />
+      {children && <div>{children}</div>}
+    </FloatBox>
+  ),
   PhotoCredit: props => (
     <div
       style={{
@@ -64,21 +138,16 @@ const BasePage = ({ mdx, t }) => {
 const BlogPage = ({ mdx, t }) => {
   const {
     body,
-    frontmatter: { title, fromNow, description, banner, images },
+    frontmatter: { title, author, fromNow, description, banner, images },
   } = mdx
   const gottenImages = images.map(i => getImage(i))
 
   return (
     <Layout>
-      <Seo title={t(title)} />
-      <>
+      <Seo title={title} />
+      <ImageContext.Provider value={gottenImages}>
         <Banner title={t(title)} image={banner}>
           <MdxPageStyles>
-            <div className="date">
-              <span>
-                <Trans>Date:</Trans> <i>{fromNow}</i>
-              </span>
-            </div>
             <MDXProvider components={components}>
               <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
             </MDXProvider>
@@ -90,15 +159,27 @@ const BlogPage = ({ mdx, t }) => {
               <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
             </div>
           </MDXProvider>
+          <div className="bloginfo container">
+            <div>
+              <div className="date">
+                <Trans>Date:</Trans> <i>{fromNow}</i>
+              </div>
+              {author && (
+                <div className="author">
+                  <Trans>Author:</Trans> <i>{author}</i>
+                </div>
+              )}
+            </div>
+          </div>
         </MdxPageStyles>
-      </>
+      </ImageContext.Provider>
     </Layout>
   )
 }
 
 export default function MdxPage({ data }) {
   const { t } = useI18next()
-  const source = data.source.fields.source
+  const source = data.source?.fields?.source
   if (source === "basepage") {
     return <BasePage mdx={data?.basepage} t={t} />
   }
@@ -113,14 +194,26 @@ const MdxPageStyles = styled.section`
 
   .container {
     background-color: #e0ebeb;
+    padding-bottom: 1.5em;
+  }
+
+  .bloginfo {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: var(--borderSpacing);
+  }
+
+  .bloginfo > div {
+    flex-direction: column;
   }
 
   .date {
-    width: 96%;
-    text-align: right;
-    margin-bottom: 1em;
-    margin-top: 0;
     font-size: 0.8em;
+    white-space: no-wrap;
+  }
+  .author {
+    font-size: 0.8em;
+    white-space: no-wrap;
   }
 
   h1,
@@ -129,6 +222,7 @@ const MdxPageStyles = styled.section`
     font-family: sans-serif;
     padding: 0.7em;
     margin: 1em 0;
+    clear: both;
   }
 
   h2:first-child {
@@ -159,9 +253,9 @@ const MdxPageStyles = styled.section`
     color: var(--key-color);
   }
 
-  h1 ~ *,
-  h2 ~ *,
-  h3 ~ * {
+  h1 > *,
+  h2 > *,
+  h3 > * {
     padding-left: var(--borderSpacing);
     padding-right: var(--borderSpacing);
   }
@@ -169,18 +263,21 @@ const MdxPageStyles = styled.section`
   p {
     text-indent: 1em;
     text-align: justify;
+    margin-bottom: 0.4em;
   }
 
   ol,
   ul,
   blockquote {
-    margin: 1em auto 1em 2em;
+    margin: 1em 0 1em 0;
+    padding-left: var(--borderSpacing);
+    padding-right: var(--borderSpacing);
   }
   blockquote {
     font-size: 1.1em;
   }
   li {
-    margin: 0.25em auto;
+    margin: 0 2em 0 2.5em;
     color: var(--bodyColor);
   }
 
@@ -234,6 +331,7 @@ export const query = graphql`
     ) {
       frontmatter {
         title
+        author
         date(formatString: "YYYY-MM-DD")
         slug
       }
@@ -249,10 +347,12 @@ export const query = graphql`
     ) {
       frontmatter {
         title
+        author
         fromNow: date(fromNow: true)
         date(formatString: "YYYY-MM-DD")
         description
         tags
+        related
         banner {
           childImageSharp {
             gatsbyImageData(formats: AUTO)

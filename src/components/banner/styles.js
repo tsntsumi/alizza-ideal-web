@@ -65,7 +65,7 @@ export const BannerStyles = styled.section`
     display: inline-block;
     font-size: 1.4em;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     width: 100%;
   }
 
@@ -73,7 +73,7 @@ export const BannerStyles = styled.section`
   h2,
   h3 {
     padding: 0.5em 1em;
-    border-radius: 0.75em;
+    border-radius: 0.75em 0.75em 0 0;
     color: rgb(250, 250, 250);
     font-weight: 500;
   }
@@ -82,12 +82,17 @@ export const BannerStyles = styled.section`
     display: inline-block;
     background-color: var(--key-light-color);
     padding: 1em;
-    border-radius: 1em;
+    border-radius: 0 0 1em 1em;
     width: 100%;
     color: rgb(250, 250, 250);
 
     ul {
-      padding: 1em 0 1em 2em;
+      margin: 0.5em auto;
+      padding: 0;
+    }
+
+    li {
+      margin: 0 1em 0 3em;
     }
 
     h2 {
