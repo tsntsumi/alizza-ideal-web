@@ -15,7 +15,7 @@ const ContactPage = ({ data }) => {
     <>
       <Layout>
         <ContactPageStyles>
-          <Seo title="Get in touch" />
+          <Seo title={t("Get in touch")} />
           <SimpleBanner title={t("Get in touch")}>
             <StaticImage
               className="banner__image"
