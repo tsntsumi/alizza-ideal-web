@@ -13,7 +13,7 @@ const Contact = ({ tag }) => {
       inquirylabel={"Your message..."}
       tag={tag || "inquiry"}
       language={language}
-      acceptInqiry={true}
+      acceptInquiry={true}
       action={SubmitInquiryToAirtable}
       nextpage="/thanks/homepage-thanks"
     />
