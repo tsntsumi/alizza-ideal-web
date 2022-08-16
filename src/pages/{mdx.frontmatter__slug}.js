@@ -106,6 +106,9 @@ const components = {
     </FloatBox>
   ),
   PhotoCredit: PhotoCredit,
+  strong: props => (
+    <strong style={{ color: "red", fontSize: "1.2em" }} {...props} />
+  ),
 }
 
 const BasePage = ({ mdx, t }) => {
@@ -132,6 +135,9 @@ const BasePage = ({ mdx, t }) => {
 }
 
 const BlogPage = ({ mdx, t }) => {
+  if (!mdx) {
+    return <></>
+  }
   const {
     body,
     frontmatter: { title, author, fromNow, description, banner, images },
@@ -338,7 +344,7 @@ export const query = graphql`
       body
     }
     blogpage: mdx(
-      fields: { locale: { eq: $language }, source: { eq: "blog" } }
+      fields: { locale: { eq: $language }, source: { in: ["blog", "offer"] } }
       frontmatter: { slug: { eq: $frontmatter__slug } }
     ) {
       frontmatter {
