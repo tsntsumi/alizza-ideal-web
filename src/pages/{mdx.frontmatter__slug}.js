@@ -111,10 +111,36 @@ const components = {
   ),
 }
 
+const TableOfContents = ({ showTOC, tableOfContents }) => {
+  if (!showTOC) {
+    return <></>
+  }
+  return (
+    <div className="container">
+      <h2>
+        <center>
+          <Trans>Table Of Contents</Trans>
+        </center>
+      </h2>
+      <ul>
+        {tableOfContents.items.map((h, i) => {
+          console.log("toc", i, h)
+          return (
+            <li key={`toc-${i}`}>
+              <a href={`${h.url}`}>{h.title}</a>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
 const BasePage = ({ mdx, t }) => {
   const {
     body,
-    frontmatter: { title, date },
+    tableOfContents,
+    frontmatter: { title, date, showTOC },
   } = mdx
   return (
     <Layout>
@@ -126,6 +152,10 @@ const BasePage = ({ mdx, t }) => {
             <Trans>Date:</Trans> <i>{date}</i>
           </div>
           <MDXProvider components={components}>
+            <TableOfContents
+              showTOC={showTOC}
+              tableOfContents={tableOfContents}
+            />
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
         </div>
@@ -140,7 +170,16 @@ const BlogPage = ({ mdx, t }) => {
   }
   const {
     body,
-    frontmatter: { title, author, fromNow, description, banner, images },
+    tableOfContents,
+    frontmatter: {
+      title,
+      author,
+      fromNow,
+      description,
+      banner,
+      images,
+      showTOC,
+    },
   } = mdx
   const gottenImages = images.map(i => getImage(i))
 
@@ -157,6 +196,10 @@ const BlogPage = ({ mdx, t }) => {
         </Banner>
         <MdxPageStyles>
           <MDXProvider components={components}>
+            <TableOfContents
+              showTOC={showTOC}
+              tableOfContents={tableOfContents}
+            />
             <div className="container">
               <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
             </div>
@@ -336,12 +379,14 @@ export const query = graphql`
         author
         date(formatString: "YYYY-MM-DD")
         slug
+        showTOC
       }
       fields {
         locale
         source
       }
       body
+      tableOfContents(maxDepth: 2)
     }
     blogpage: mdx(
       fields: { locale: { eq: $language }, source: { in: ["blog", "offer"] } }
@@ -365,12 +410,14 @@ export const query = graphql`
             gatsbyImageData(formats: AUTO)
           }
         }
+        showTOC
       }
       fields {
         locale
         source
       }
       body
+      tableOfContents(maxDepth: 2)
     }
     locales: allLocale(
       filter: {

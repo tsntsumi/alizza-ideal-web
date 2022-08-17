@@ -46,6 +46,7 @@ type Frontmatter @dontInfer {
   description: String @mdx
   tags: [String]
   related: [String]
+  showTOC: Boolean
   banner: File @fileByRelativePath
   images: [File] @fileByRelativePath
   imageURLs: [String]
