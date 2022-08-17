@@ -79,7 +79,7 @@ const CreditStyles = styled.div`
   width: 100%;
 `
 
-const PhotoCredit = ({ children, ...props }) => (
+export const PhotoCredit = ({ children, ...props }) => (
   <CreditStyles>{children}</CreditStyles>
 )
 
@@ -124,7 +124,6 @@ const TableOfContents = ({ showTOC, tableOfContents }) => {
       </h2>
       <ul>
         {tableOfContents.items.map((h, i) => {
-          console.log("toc", i, h)
           return (
             <li key={`toc-${i}`}>
               <a href={`${h.url}`}>{h.title}</a>
