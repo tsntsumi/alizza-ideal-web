@@ -72,17 +72,6 @@ const Image = ({ alt, image, width, ...props }) => {
   )
 }
 
-const CreditStyles = styled.div`
-  font-size: 7pt;
-  padding: 0.6em;
-  min-width: 6em;
-  width: 100%;
-`
-
-export const PhotoCredit = ({ children, ...props }) => (
-  <CreditStyles>{children}</CreditStyles>
-)
-
 const components = {
   Contact: Contact,
   Squeeze: props => (
@@ -102,10 +91,9 @@ const components = {
   ImageBox: ({ children, alt, image, float, width, imageWidth, ...props }) => (
     <FloatBox float={float} width={width} {...props}>
       <Image image={image} alt={alt} width={imageWidth} />
-      {children && <PhotoCredit>{children}</PhotoCredit>}
+      {children && <div class="credit">{children}</div>}
     </FloatBox>
   ),
-  PhotoCredit: PhotoCredit,
   strong: props => (
     <strong style={{ color: "red", fontSize: "1.2em" }} {...props} />
   ),

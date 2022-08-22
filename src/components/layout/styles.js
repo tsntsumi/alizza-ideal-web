@@ -297,4 +297,11 @@ blockquote {
     }
   }
 }
+
+.credit {
+  font-size: 7pt;
+  padding: 0.6em;
+  min-width: 6em;
+  width: 100%;
+}
 `
