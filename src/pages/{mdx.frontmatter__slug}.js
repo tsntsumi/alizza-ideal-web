@@ -6,7 +6,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import Seo from "../components/seo"
 import Layout from "../components/layout"
 import Contact from "../components/contact"
 import Banner from "../components/banner"
@@ -91,7 +90,7 @@ const components = {
   ImageBox: ({ children, alt, image, float, width, imageWidth, ...props }) => (
     <FloatBox float={float} width={width} {...props}>
       <Image image={image} alt={alt} width={imageWidth} />
-      {children && <div class="credit">{children}</div>}
+      {children && <div className="credit">{children}</div>}
     </FloatBox>
   ),
   strong: props => (
@@ -131,7 +130,6 @@ const BasePage = ({ mdx, t }) => {
   } = mdx
   return (
     <Layout>
-      <Seo title={t(title)} />
       <MdxPageStyles>
         <div className="section section__padding">
           <h1>{title}</h1>
@@ -172,7 +170,6 @@ const BlogPage = ({ mdx, t }) => {
 
   return (
     <Layout>
-      <Seo title={title} />
       <ImageContext.Provider value={gottenImages}>
         <Banner title={t(title)} image={banner}>
           <MdxPageStyles>
@@ -206,6 +203,31 @@ const BlogPage = ({ mdx, t }) => {
         </MdxPageStyles>
       </ImageContext.Provider>
     </Layout>
+  )
+}
+
+export const Head = ({ location, params, data, pageContext }) => {
+  console.debug("Head location", location)
+  console.debug("Head params", params)
+  console.debug("Head data", data)
+  console.debug("Head pageContext", pageContext)
+  const mdx = data.source === "basepage" ? data.basepage : data.blogpage
+  const {
+    frontmatter: { title, author, description, banner },
+  } = mdx
+  return (
+    <>
+      <title>{pageContext.title}</title>
+      <meta name="description" content={description} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={author || ""} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta property="og:image" content={banner.publicURL} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+    </>
   )
 }
 
@@ -388,6 +410,7 @@ export const query = graphql`
         tags
         related
         banner {
+          publicURL
           childImageSharp {
             gatsbyImageData(formats: AUTO)
           }
