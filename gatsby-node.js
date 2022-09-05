@@ -108,5 +108,12 @@ exports.onCreateNode = async ({
     const extname = path.extname(basename)
     const language = (extname || ".ja").substr(1, 2).toLowerCase()
     createNodeField({ node, name: "locale", value: language })
+    if (node.frontmatter && node.frontmatter.description) {
+      createNodeField({
+        node,
+        name: "rawDescription",
+        value: node.frontmatter.description,
+      })
+    }
   }
 }

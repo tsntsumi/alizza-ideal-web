@@ -208,14 +208,9 @@ const BlogPage = ({ mdx, t }) => {
 
 export const Head = ({ location, params, data, pageContext }) => {
   const source = data.source?.fields?.source
-  const fm =
-    source === "basepage"
-      ? data.basepage.frontmatter
-      : data.blogpage.frontmatter
-  const title = fm.title
-  const author = fm.author || ""
-  const description = fm.description || fm.title
-  const banner = fm.banner
+  const mdx = source === "basepage" ? data.basepage : data.blogpage
+  const { title, author, banner } = mdx.frontmatter
+  const description = mdx.fields?.rawDescription
   return (
     <>
       <title>{title}</title>
@@ -406,6 +401,7 @@ export const query = graphql`
       }
       body
       tableOfContents(maxDepth: 2)
+      excerpt(truncate: true, pruneLength: 120)
     }
     blogpage: mdx(
       fields: { locale: { eq: $language }, source: { in: ["blog", "offer"] } }
@@ -435,9 +431,11 @@ export const query = graphql`
       fields {
         locale
         source
+        rawDescription
       }
       body
       tableOfContents(maxDepth: 2)
+      excerpt(truncate: true, pruneLength: 120)
     }
     locales: allLocale(
       filter: {
