@@ -207,21 +207,26 @@ const BlogPage = ({ mdx, t }) => {
 }
 
 export const Head = ({ location, params, data, pageContext }) => {
-  const mdx = data.source === "basepage" ? data.basepage : data.blogpage
-  const {
-    frontmatter: { title, author, description, banner },
-  } = mdx
+  const source = data.source?.fields?.source
+  const fm =
+    source === "basepage"
+      ? data.basepage.frontmatter
+      : data.blogpage.frontmatter
+  const title = fm.title
+  const author = fm.author || ""
+  const description = fm.description || fm.title
+  const banner = fm.banner
   return (
     <>
-      <title>{pageContext.title}</title>
-      <meta name="description" content={description} />
+      <title>{title}</title>
+      {description && <meta name="description" content={description} />}
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={author || ""} />
+      {author && <meta name="twitter:creator" content={author || ""} />}
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta property="og:image" content={banner.publicURL} />
+      {banner && <meta property="og:image" content={banner.publicURL} />}
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      {description && <meta property="og:description" content={description} />}
       <meta property="og:type" content="website" />
     </>
   )
@@ -326,11 +331,20 @@ const MdxPageStyles = styled.section`
   blockquote {
     font-size: 1.1em;
   }
-  li {
-    margin: 0 2em 0 2.5em;
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    padding: 0;
+    margin: 0.5em 0;
+  }
+  li,
+  ul li,
+  ol li {
+    padding: 0;
+    margin: 0 0 0 1em;
     color: var(--bodyColor);
   }
-
   a {
     color: darkred;
   }
