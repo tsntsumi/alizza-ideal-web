@@ -207,10 +207,6 @@ const BlogPage = ({ mdx, t }) => {
 }
 
 export const Head = ({ location, params, data, pageContext }) => {
-  console.debug("Head location", location)
-  console.debug("Head params", params)
-  console.debug("Head data", data)
-  console.debug("Head pageContext", pageContext)
   const mdx = data.source === "basepage" ? data.basepage : data.blogpage
   const {
     frontmatter: { title, author, description, banner },
