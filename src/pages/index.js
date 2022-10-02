@@ -482,7 +482,7 @@ const IndexPage = ({ data }) => {
           cta={t("無料相談に申し込む")}
           namelabel={t("お名前")}
           emaillabel={t("メールアドレス")}
-          tag="lseo"
+          tag="homepage"
           language={language}
           action={SubmitEmailToAirtable}
           nextpage="/thanks/lseo-thanks"
