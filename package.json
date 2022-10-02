@@ -14,6 +14,7 @@
     "@mdx-js/react": "v1",
     "@pauliescanlon/gatsby-remark-sticky-table": "^0.0.11",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-i18next-extract": "^0.9.0",
     "babel-plugin-styled-components": "^2.0.7",
     "dotenv": "^10.0.0",
     "eslint": "^8.18.0",
@@ -61,7 +62,9 @@
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
