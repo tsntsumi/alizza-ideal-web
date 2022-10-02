@@ -35,6 +35,7 @@ const ChooseLanguage = ({
           <Trans>Language</Trans>
         </div>
         <button type="button" onClick={toggle} onKeyDown={toggle}>
+          {/* i18next-extract-disable-next-line */}
           <Trans>{language}</Trans>
           <span>.</span>
           <Chevron />
@@ -80,7 +81,7 @@ const ContactLink = ({ language }) => {
 const Title = () => {
   return (
     <div className="title">
-      <Trans>お客が集まる仕掛けをプログラミング</Trans>
+      <Trans>Catch Copy on Nav Bar</Trans>
     </div>
   )
 }

@@ -13,13 +13,15 @@ export const NavStyles = styled.nav`
     margin: 0;
     padding: 0;
     background-color: var(--key-color);
-    font-size: 10pt;
+    font-size: 7pt;
 
     @media (min-width: 340px) {
       padding: 0 calc(var(--borderSpacing) * 0.5);
+      font-size: 9pt;
     }
     @media (min-width: 768px) {
       padding: 0 var(--borderSpacing) 0 var(--borderSpacing);
+      font-size: 10pt;
     }
   }
 
@@ -55,7 +57,7 @@ export const NavStyles = styled.nav`
     margin: 0 1em;
     vertical-align: middle;
     z-index: 99;
-    font-size: 1em;
+    font-size: 0.8em;
     width: 20%;
     max-width: 8em;
   }
@@ -66,20 +68,19 @@ export const NavStyles = styled.nav`
     margin: 0;
     button {
       color: var(--primary);
-      font-size: 0.8em;
+      font-size: 0.9em;
     }
     .subnav {
-      font-size: 0.8em;
+      font-size: 0.9em;
       min-width: 3em;
     }
   }
 
   .contact {
     display: inline-block;
-    margin: 0 1em 0 auto;
+    margin: 0 auto 0 auto;
     vertical-align: middle;
     z-index: 99;
-    font-size: 1em;
     width: 26%;
     max-width: 8em;
     text-align: right;

@@ -6,11 +6,8 @@ export const BannerStyles = styled.section`
   top: 0;
   margin: 0;
   padding: 0 var(--borderSpacing);
-  font-size: 10pt;
-
-  @media (min-width: 310px) {
-    font-size: 12pt;
-  }
+  font-size: var(--p);
+  font-weight: 600;
 
   .container {
     display: flex;
@@ -34,6 +31,9 @@ export const BannerStyles = styled.section`
 
   .banner__image--content {
     object-position: center;
+    @media (max-width: 340px) {
+      object-position: left;
+    }
   }
 
   .gradient {
@@ -54,6 +54,11 @@ export const BannerStyles = styled.section`
     padding-top: calc(var(--header-height));
     margin-bottom: 1.5em;
 
+    p {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
     @media (min-width: 768px) {
       width: 66vw;
     }
@@ -63,7 +68,7 @@ export const BannerStyles = styled.section`
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     background-color: var(--key-dark-color);
     display: inline-block;
-    font-size: 1.4em;
+    font-size: var(--h1);
     padding: 10px;
     border-radius: 20px 20px 0 0;
     width: 100%;
@@ -74,17 +79,17 @@ export const BannerStyles = styled.section`
   h3 {
     padding: 0.5em 1em;
     border-radius: 0.75em 0.75em 0 0;
-    color: rgb(250, 250, 250);
-    font-weight: 500;
+    color: white;
+    font-weight: 600;
   }
 
   .description {
     display: inline-block;
     background-color: var(--key-light-color);
-    padding: 1em;
+    padding: 0.25em 1em 1em 1em;
     border-radius: 0 0 1em 1em;
     width: 100%;
-    color: rgb(250, 250, 250);
+    color: white;
 
     ul {
       margin: 0.5em auto;
@@ -103,14 +108,13 @@ export const BannerStyles = styled.section`
       font-size: 1.1em;
     }
 
-    h1,
-    .price {
+    h1 .price {
       margin-top: 0;
       padding: 1em;
     }
 
     p {
-      font-weight: 400;
+      font-weight: 500;
     }
 
     p em {

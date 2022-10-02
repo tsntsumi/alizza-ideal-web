@@ -22,55 +22,38 @@ export const GlobalStyle = createGlobalStyle`
   --letterSpacing: -0.075rem;
   --boxShadow: 0px 15px 22px 3px rgba(0, 0, 0, 0.55);
   --textShadow: 0px 0px 5px rgba(0, 0, 0, 1);
-  --p: 11pt;
-  --h2: 1.5em;
-  --h3: 1.4em;
-  --h4: 1.3em;
-  --h5: 1.2em;
-  --h6: 1.1em;
+  --p: 9pt;
+  --h1: 1.4em;
+  --h2: 1.4em;
+  --h3: 1.2em;
+  --h4: 1.1em;
+  --h5: 1.1em;
+  --h6: 1em;
   --gap: 40px;
   --footnote: 9px;
   --sectionMargin: 60px;
 
   @media(min-width:375px) {
     --bannerTitle: 36px;
-    --h2: 22px;
-    --h3: 21px;
-    --h4: 20px;
-    --h5: 19px;
-    --h6: 18px;
+    --p: 9pt;
     --sectionMargin: 80px;
   }
 
   @media(min-width:414px) {
     --bannerTitle: 40px;
-    --h2: 27px;
-    --h3: 25px;
-    --h4: 23px;
-    --h5: 21px;
-    --h6: 20px;
+    --p: 10pt;
   }
 
   @media(min-width:768px) {
     --bannerTitle: 46px;    
     --blockquote: 26px;
-    --p: 15px;
-    --h2: 30px;
-    --h3: 28px;
-    --h4: 26px;
-    --h5: 24px;
-    --h6: 22px;
+    --p: 12pt;
     --sectionMargin: 100px;
   }
 
   @media(min-width:1024px) {
     --borderSpacing: 75px;
-    --p: 16px;
-    --h2: 36px;
-    --h3: 32px;
-    --h4: 29px;
-    --h5: 27px;
-    --h6: 25px;
+    --p: 12pt;
     --sectionMargin: 180px;
   }
 
@@ -200,6 +183,10 @@ a {
   &:focus {
     text-decoration: none;
   }
+}
+
+.footnote {
+  font-size: var(--footnote);
 }
 
 .header a,

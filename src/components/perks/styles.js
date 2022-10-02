@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const PerksStyles = styled.section`
   background-color: var(--key-dark-color);
+  --sectionMargin: 40px;
 
   .section,
   .section__padding {
@@ -31,9 +32,8 @@ export const PerksStyles = styled.section`
     margin-bottom: 1em;
     margin-top: 0;
     text-align: center;
-    font-size: var(--h5);
+    font-size: var(--h4);
     font-weight: 800;
-    white-space: nowrap;
     color: white;
   }
 
@@ -46,10 +46,11 @@ export const PerksStyles = styled.section`
 `
 
 export const PerkStyles = styled.aside`
+  position: relative;
   width: 100%;
   display: flex;
   background-color: var(--key-color);
-
+  padding: 0.2em 0.5em;
   color: white;
   font-size: 10px;
   text-align: justify;
@@ -58,12 +59,23 @@ export const PerkStyles = styled.aside`
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     font-size: 1.2em;
     font-weight: 800;
-    width: 30%;
-    padding: 0 0.4px;
+    width: 100%;
+    padding: 0 0.2em;
   }
 
-  .perk {
-    width: 40%;
+  p {
+    width: 100%;
+    padding: 0 0.4em;
+  }
+
+  .image {
+    width: 30%;
+    padding: 0 0.4px;
+    position: relative;
+  }
+
+  .container {
+    width: 70%;
     padding: 0 0.4px;
   }
 
@@ -71,7 +83,6 @@ export const PerkStyles = styled.aside`
     align-items: center;
     justify-content: center;
     margin: 0 0.4em 0.4em 0;
-    width: 30%;
 
     img {
       width: 100%;
@@ -82,8 +93,15 @@ export const PerkStyles = styled.aside`
   }
 
   .photoCredit {
-    font-size: 0.6em;
-    margin: 0.4em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    color: blue;
+    background-color: lightgrey;
+    font-size: 0.4em;
+    padding: 0 0.6em 0.2em 0;
+    margin: 0 0 0.2em 0;
     min-width: 6em;
   }
 
@@ -102,6 +120,7 @@ export const PerkStyles = styled.aside`
     }
     .gatsby-image-wrapper {
       width: 100%;
+      margin: 0.5em;
       img {
         width: 100%;
         height: 100%;

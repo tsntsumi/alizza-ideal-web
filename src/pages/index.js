@@ -10,207 +10,238 @@ import { Claim } from "../components/claim"
 import { Perks, Perk } from "../components/perks"
 import { SqueezeForm, SubmitEmailToAirtable } from "../components/squeezeform"
 
-const SelectImages = (name, data) => {
-  return data.images.edges
-    .filter(e => e.node.data.Name === name)
-    .map(e => e.node.data.Images.localFiles.map(img => img))
-    .flat()
-    .filter(e => !!e)
-}
-
-const PerksBlock = ({ name, title, texts, data }) => {
-  const images = SelectImages(name, data)
-
-  if (!texts || texts === []) {
-    return <></>
+class ImageDict {
+  constructor(data) {
+    this.dict = this.imageDictionary(data)
   }
 
-  return (
-    <Perks title={title}>
-      {texts.map((t, i) => (
-        <Perk title={t} key={`perk-${i}`} image={images.shift()}>
-          <div
-            style={{
-              fontSize: "8px",
-              color: "lightGley",
-              textAlign: "right",
-            }}
-          >
-            <a href="https://www.vecteezy.com/free-vector">
-              Vectors by Vecteezy
-            </a>
-          </div>
-        </Perk>
-      ))}
-    </Perks>
-  )
+  imageOf(name) {
+    const images = this.dict[name]
+    if (!images || images.length === 0) {
+      return null
+    }
+    return getImage(images.shift())
+  }
+
+  imageDictionary(data) {
+    const images = data.images.edges.reduce((p, c) => {
+      p[c.node.data.Name] = c.node.data.Images.localFiles.map(img => img)
+      return p
+    }, {})
+    return images
+  }
 }
 
 const IndexPage = ({ data }) => {
   const { t, language } = useI18next()
-  const heroImages = SelectImages("Heros", data)
-  const suffers = [t("お悩み1"), t("お悩み2"), t("お悩み3")]
-  const prospectors = [
-    t("見込み客１"),
-    t("見込み客２"),
-    t("見込み客３"),
-    t("見込み客４"),
-  ]
-  const voiceImages = SelectImages("Voices", data)
-  const isolveitImages = SelectImages("I Solve It", data)
-  const guaranteeImages = SelectImages("Guarantees", data)
-  const reasonImages = SelectImages("Reasons", data)
+  const images = new ImageDict(data)
 
   return (
     <Layout>
       <Seo title="Home" />
-      <Banner title={t("ベネフィット")} image={heroImages.shift()}>
-        <p>
-          <Trans>キャッチフレーズ</Trans>
-        </p>
-      </Banner>
-      <PerksBlock
-        name="Suffers"
-        title={t("あなたは、こんなお悩みがありませんか？")}
-        texts={suffers}
-        data={data}
-      />
       <Banner
-        title={t("そのお悩み、解決できます")}
-        image={isolveitImages.pop()}
+        title={t("ローカルSEOで、お客様が集まるお店に")}
+        image={images.imageOf("Heros")}
       >
         <p>
           <Trans>
-            あなたは、もうブログや SNS や、ホームページの
-            SEOを気にする必要はありません。
+            あなたのお店が、こんなお店になれるとしたらどうでしょうか？
           </Trans>
+          <Trans>しかも、お金も時間もほとんどかけずに！？</Trans>
         </p>
         <ul>
           <li>
-            <Trans>あなたのお店のローカル SEOと、</Trans>
+            <Trans>
+              地元で〇〇といえばあなたのお店と呼ばれる地域ダントツのお店
+            </Trans>
           </li>
           <li>
-            <Trans>Facebook や Google や YouTube 広告と、</Trans>
+            <Trans>
+              無理してお客様を集めようとしなくても、ひとりでに集まってくるお店
+            </Trans>
           </li>
           <li>
-            <Trans>クラウドシステムの仕掛けを使って、</Trans>
+            <Trans>
+              いままでお客様を集めていた時間で、お客様により満足してもらえる時間がとれるお店
+            </Trans>
+          </li>
+          <li>
+            <Trans>お客様の満足度が上がるから、毎月の売上が安定するお店</Trans>
+          </li>
+          <li>
+            <Trans>
+              売上が安定するから、あなたもスタッフも大事な人と過ごす時間が充実する店
+            </Trans>
           </li>
         </ul>
         <p>
           <Trans>
-            お客さんが自然と繰り返し集まってくるようになり、今よりもガンガン儲かるようになります。
-          </Trans>
-        </p>
-        <p>
-          <em>
-            <Trans>しかも９０日以内で！</Trans>
-          </em>
-        </p>
-        <p>
-          <Trans>
-            つまり、あなたがお客さんを集めなくても、お客さんが集まってくるようになります。
-          </Trans>
-        </p>
-        <p>
-          <Trans>
-            いわば、あなたは余分な費用をかけずに、ネット上に営業担当を雇うようなものです。
+            もし、あなたのお店をこんな理想のお店にしたいなら、
+            ローカルSEOの専門家、わたくし堤紀久夫が、あなたのお店をプロデュースします。
           </Trans>
         </p>
       </Banner>
-      <Claim title={t("こんな方々が、特に成果を出しています。")}>
-        <div
-          style={{
-            width: "auto",
-            minWidth: "98%",
-            marginRight: "0",
-            marginLeft: "0",
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            verticalAlign: "start",
-          }}
-        >
-          <ul
-            style={{
-              minWidth: "40%",
-              maxWidth: "40%",
-              margin: "0 1em",
-              padding: "0 1em 0 4px",
-            }}
-          >
-            {prospectors.map((pros, i) => (
-              <li key={`effective-${i}`}>{pros}</li>
-            ))}
-          </ul>
 
-          <ul
-            style={{
-              minWidth: "40%",
-              maxWidth: "40%",
-              margin: "auto 1em",
-              padding: "0 0 0 1em",
-            }}
-          >
-            <li key="1">
-              <Trans>コロナ禍と景気の影響による売上の低迷を挽回したい方</Trans>
-            </li>
-            <li key="2">
-              <Trans>挽回するだけでなく、さらに上を目指したい方</Trans>
-            </li>
-            <li key="3">
-              <Trans>
-                商品・サービスに自信があるし、いつも研鑽に励んでいる方
-              </Trans>
-            </li>
-            <li key="4">
-              <Trans>でも、集客する時間をなかなか作れない方</Trans>
-            </li>
-          </ul>
-        </div>
-      </Claim>
-
-      <Perks title={t("お客様に選ばれる理由")}>
+      <Perks
+        title={t("あなたは、お客様を集める時、こんなことで困っていませんか？")}
+      >
         <Perk
-          title={t(
-            "お客さんの心をつかむキャッチコピーで、あなたの商品をアピール"
-          )}
-          image={reasonImages.shift()}
-        >
-          <span className="photoCredit">Photo by TSUTSUMI Kikuo</span>
-        </Perk>
-        <Perk
-          title={t(
-            "Googleの意図をくみとった店舗向け地域 SEO 対策で、あなたのお店を検索結果上位に表示"
-          )}
-          image={reasonImages.shift()}
-        >
-          <span className="photoCredit">Photo by TSUTSUMI Kikuo</span>
-        </Perk>
-        <Perk
-          title={t("あなたの商品を引き立てる写真、動画を撮影")}
-          image={reasonImages.shift()}
-        >
-          <span className="photoCredit">
-            Photo by{" "}
-            <a href="https://unsplash.com/@wenhong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-              Evan Qu on Unsplash
+          key="suffer1"
+          image={images.imageOf("Suffers")}
+          name="a suffer"
+          credit={
+            <a href="https://www.vecteezy.com/free-vector">
+              Vectors by Vecteezy
             </a>
-          </span>
+          }
+        >
+          <h3>
+            <Trans>口コミサイトに登録したけど、リピートにつながらない</Trans>
+          </h3>
+          <p>
+            <Trans>
+              口コミサイトから流れてくる人の多くは、〇〇な人ばかり。
+            </Trans>
+            <Trans>
+              リピートにつながらないばかりか、利益までガタ落ちしているお店が増えてます。
+            </Trans>
+          </p>
+        </Perk>
+        <Perk
+          key="suffer2"
+          image={images.imageOf("Suffers")}
+          name="Suffer"
+          credit={
+            <a href="https://www.vecteezy.com/free-vector">
+              Vectors by Vecteezy
+            </a>
+          }
+        >
+          <h3>
+            <Trans>インスタグラムを始めたけど、売り上げにつながらない</Trans>
+          </h3>
+          <p>
+            <Trans>日本全国で多くのお店がインスタグラムを始めています。</Trans>
+            <Trans>でも、売り上げにつながっているところはまれです。</Trans>
+            <Trans>それには理由があるんです。</Trans>
+          </p>
+        </Perk>
+        <Perk
+          key="suffer3"
+          image={images.imageOf("Suffers")}
+          name="Suffer"
+          credit={
+            <a href="https://www.vecteezy.com/free-vector">
+              Vectors by Vecteezy
+            </a>
+          }
+        >
+          <h3>ネットで集客しなきゃ……。わかってるけど始められない</h3>
+          <p>
+            <Trans>でも、ちょっと待ってください。</Trans>
+            <Trans>
+              昨年、ネット集客を始めたばっかりに、
+              倒産してしまった優良会社もあるんです。
+            </Trans>
+          </p>
+          <p>
+            <Trans>準備なしにネット集客を始めるのは危険です。</Trans>
+          </p>
         </Perk>
       </Perks>
 
-      <Claim title={t("お客様の声")} float="left">
-        <GatsbyImage image={getImage(voiceImages.pop())} alt="Client Image" />
-
+      <Banner
+        title={t("そのお悩み、わたしが解決します")}
+        image={images.imageOf("I Solve It")}
+      >
+        <h3>
+          <Trans>
+            もし、そのような悩みをお抱えなら、
+            ローカルSEOの専門家・堤がそのお悩みを解決します。
+          </Trans>
+        </h3>
         <p>
           <Trans>
-            最初は、ポータルサイトにも登録してたし、
-            どうせやるだけ無駄かなと思ってました。
+            地元密着型の店舗オーナー様にピッタリのローカルSEOで、
+            あなたの商圏のお客様にアプローチ。
           </Trans>
         </p>
         <p>
           <Trans>
-            でも始めてみたら、たった１週間で、２年ぶりに新しいお客さんが来てくれました。
+            しかも、広告費をほとんどかけずに、３ヶ月以内に売上がアップします。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            ３ヶ月間、あなたの目標を達成するまで集客にコミットします。
+          </Trans>
+        </p>
+      </Banner>
+
+      <Perks title={t("お客様に選ばれる理由")}>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>
+            <Trans>お客さんの心をつかむキャッチコピー</Trans>
+          </h3>
+          <p>
+            <Trans>あなたの商品やお店をアピールするための、</Trans>
+            <Trans>お客さんの心をつかむキャッチコピーを書く方法。</Trans>
+          </p>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          name="reason"
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>
+            <Trans>Googleの意図を汲みとったローカル SEO 対策</Trans>
+          </h3>
+          <p>
+            <Trans>
+              あなたのお店が検索結果上位にランクインするためのローカルSEO対策。
+            </Trans>
+          </p>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          name="Suffer #1"
+          credit={
+            <span>
+              Photo by
+              <a href="https://unsplash.com/@wenhong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                Evan Qu on Unsplash
+              </a>
+            </span>
+          }
+        >
+          <h3>
+            <Trans>あなたの商品を引き立てる写真と動画の撮影</Trans>
+          </h3>
+          <p>
+            <Trans>スマホでもできる、カンタン撮影のノウハウ。</Trans>
+          </p>
+        </Perk>
+      </Perks>
+
+      <Claim
+        title={t("お客様の声")}
+        image={images.imageOf("Voices")}
+        name="Client Photo"
+        float="left"
+      >
+        <p>
+          <Trans>
+            最初は、どうせやるだけ無駄かなと思ってました。
+            口コミサイトにも登録して毎月課金してたので。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            でも始めてみたら、たった１週間で、
+            ２年ぶりに新しいお客さんが来てくれました。
           </Trans>
         </p>
         <p>
@@ -225,7 +256,8 @@ const IndexPage = ({ data }) => {
         </p>
         <p>
           <Trans>
-            もう、このお店はたたんで、実家の母とのんびり暮らそうかなと思っていたところでした。
+            もう、このお店はたたんで、実家の母とのんびり暮らそうかなと
+            思っていたところでした。
           </Trans>
         </p>
         <p>
@@ -235,10 +267,10 @@ const IndexPage = ({ data }) => {
         </p>
         <p>
           <Trans>
-            登録していたポータルサイトの方は、知らない間にクーポンを発行されたりしたので、やめちゃいました。
+            登録していた口コミサイトの方は、知らない間にクーポンを発行されたりしたので、やめちゃいました。
           </Trans>
         </p>
-        <div className="clients_profile">
+        <div className="profile">
           <p>
             <Trans>ネイルサロン経営</Trans>
           </p>
@@ -247,112 +279,215 @@ const IndexPage = ({ data }) => {
           </p>
         </div>
       </Claim>
-      <Perks title={t("安心の３つの保証")}>
-        <Perk title={t("９０日間集客保証")} image={guaranteeImages.shift()}>
-          <p>
-            <Trans>９０日以内に集客できなければ返金します。</Trans>
-            <span className="photoCredit">
-              Photo and Illust by TSUTSUMI Kikuo
-            </span>
-          </p>
-        </Perk>
-        <Perk
-          title={t("３００リスト獲得保保証")}
-          image={guaranteeImages.shift()}
-        >
-          <p>
-            <Trans>
-              ３０日以内に見込み客リストが３００件集まらなければ、獲得するまで無料で集客にコミットします。
-            </Trans>
-            <span className="photoCredit">
-              Photo by{" "}
-              <a href="https://unsplash.com/photos/3Mhgvrk4tjM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">
-                {" "}
-                Stephen Phillips - Hostreviews.co.uk
-              </a>
-            </span>
-          </p>
-        </Perk>
-        <Perk
-          title={t("お客さんが集まる仕掛け２０万円相当を提供")}
-          image={guaranteeImages.shift()}
-        >
-          <p>
-            <Trans>
-              お客さんが集まるようになるクラウドシステムを、あなたの代わりにわたしが購入して提供いたします。
-            </Trans>
-            <span className="photoCredit">
-              Photo by{" "}
-              <a href="https://unsplash.com/@arkanperdana?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-                Arkan Perdana on Unsplash
-              </a>
-            </span>
-          </p>
-        </Perk>
-      </Perks>
-      <Claim title={t("本サイト限定キャンペーンのお知らせ")}>
+      <Claim
+        title={t("安心の集客保証 ― 「９０日間」集客にコミットします")}
+        image={images.imageOf("Guarantees")}
+        name="Guarantees"
+        float="left"
+      >
         <h3>
           <Trans>
-            今ここで申し込んでくれるなら、広告・宣伝が３０日間無料！
+            もし、サポート開始から９０日後にご満足いただけなかったとしたら、
+            正式に購入していただいたものとはみなしません。
           </Trans>
         </h3>
         <p>
-          <Trans>
-            ネット広告を、３０日の間、わたしが制作・運用いたします。
-          </Trans>
-          <Trans>しかも、制作費、運用費はこちらで負担します。</Trans>
+          <Trans>先に料金をお支払いいただきますが、それは預り金です。</Trans>
         </p>
         <p>
           <Trans>
-            さらに、ネット広告から見込み客リストを取得するための
-            LP（ランディングページ）も、費用を請求することなく制作いたします。
+            お客様の目的が達成できてこそのサービスだと考えるからです。
           </Trans>
         </p>
-        <p>
+        <h3>
           <Trans>
-            ご請求させていただくのは、３０日たって成果がでたとき以降に継続する場合だけ。もちろん、３０日以降に継続するかどうかはご自由にお決めください。
+            以下を実感していただけなければ、お客様のお金を預かる資格はありません。
           </Trans>
-        </p>
+        </h3>
         <p>
-          <Trans>
-            つまり、あなたは３０日間、あなたのお店のネット広告・宣伝を無料で試すことができます。それでもし、わたしを気に入っていただければ、ご継続していただけると嬉しく思います。
-          </Trans>
+          <Trans>全額返金いたします。</Trans>
+          <Trans>とくに理由はお聞きしません。</Trans>
+          <Trans>一言「実感できなかった」とお知らせください。</Trans>
         </p>
-        <p>
-          <Trans>
-            ただし、３０日間無料でお試しいただくには、ひとつだけ条件があります。
-          </Trans>
-        </p>
-        <p>
-          <Trans>
-            それは、広告・宣伝の結果を、わたしの成果と実績として使用させていただくこと。このページにも掲載しているお客様の声として、可能な範囲で掲載させていただきます。
-          </Trans>
-        </p>
-        <p>
-          <Trans>それだけです。</Trans>
-        </p>
-
-        <p>
-          <span
-            style={{ color: "red", fontWeight: "400", fontSize: "var(--h4)" }}
-          >
+        <ul>
+          <li>
             <Trans>
-              先着３人までの特別キャンペーンです。お問い合わせはお早めに。
+              新規のお客様がサポート開始前より増え、集客の悩みから解放された。
             </Trans>
-          </span>
+          </li>
+          <li>
+            <Trans>
+              リピートしてくれるお客様が増え、気持ちに余裕ができた。
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              売上が安定し、大事な人と過ごす時間が増え、毎日が充実した。
+            </Trans>
+          </li>
+        </ul>
+        <p>
+          <Trans>
+            以上を９０日後に実感していただけなかったなら、１００％返金いたします。
+          </Trans>
+        </p>
+      </Claim>
+
+      <Claim title={t("本サイト限定キャンペーンのお知らせ")}>
+        <h3>
+          <center>
+            <Trans>今ここで申し込んでくれるなら、初回相談が完全無料！！</Trans>
+          </center>
+        </h3>
+
+        <p>
+          <Trans>
+            ここまで読んでいただいたあなたも、
+            ローカルSEOでお客様がひとりでに集まる、理想のお店にしたいと思いませんか？
+          </Trans>
         </p>
         <p>
-          <Trans>あなたとお会いできるのを楽しみにしています。</Trans>
+          <Trans>
+            今ここで、この下のフォームからお申し込みいただけたなら……
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            通常は 60 分 30,000円で提供している、
+            個別相談を無料で行わせていただきます！
+          </Trans>
         </p>
 
+        <p>
+          <Trans>この下のフォームからお申し込みください。</Trans>
+        </p>
+      </Claim>
+
+      <Claim
+        title="ローカルSEO対策こそ最先端のネット集客"
+        image={images.imageOf("I Solve It")}
+        float="right"
+      >
+        <p>
+          <Trans>
+            ローカルSEO対策は、MEO対策といったい何が違うのか
+            と疑問に思われたかもしれません。
+          </Trans>
+          <Trans>実はわたしもそうでした。</Trans>
+        </p>
+        <p>
+          <Trans>
+            ローカルSEO対策とは、MEO対策と違って、
+            最適化対策の対象がGoogleマップに限定されません。
+          </Trans>
+        </p>
+        <p>
+          <Trans>ホームページ、ブログ、SNS投稿もそうです。</Trans>
+          <Trans>チラシやポスターもそうです。</Trans>
+          <Trans>それだけでなく、お店の外観や内装までも対象です。</Trans>
+        </p>
+        <p>
+          <Trans>なぜでしょうか？</Trans>
+        </p>
+        <p>
+          <Trans>
+            ここでいう「ローカル」とは、地方とか田舎という意味ではありません。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            「ローカル」は、「グローバル」（全体、全域、広域）に対応する単語なんです。
+            したがって、いうなれば「あなたのお店のある周辺とか地域」または、
+            「あなたのお店がある地元」のことです。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            これまで行われてきた「SEO対策」は、
+            ネットのWebサイトを検索する検索エンジン（サーチ・エンジン）の
+            最適化（おプチマイズ）を目的にします。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            そして、GoogleはGoogleマップのストリートビューのために集めた写真と、
+            Google検索のためにネット上のSNSやブログなどから取り出した情報を、
+            人工知能（AI）を使って分析・マッチングして検索できるようにしたんです。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            それらを検索するエンジンを最適化するのがローカルSEO対策なのです。
+          </Trans>
+        </p>
+        <p>
+          <Trans>
+            したがって、ローカルSEO対策が最適化するのは、
+            Googleマップに限ったものではありません。
+          </Trans>
+        </p>
+        <div className="image">
+          <GatsbyImage
+            image={images.imageOf("I Solve It")}
+            alt="Target of SEO, Local SEO"
+          />
+        </div>
+        <p>
+          <Trans>
+            ホームページ、ブログ、SNS投稿、チラシやポスター、
+            お店の外観や内装などのブランディングにいたるまで、
+            最適化を行います。
+          </Trans>
+        </p>
+        <p>
+          <Trans>実に最先端のデジタルな集客手法なのです。</Trans>
+        </p>
+        <div className="profile">
+          <p>
+            <Trans>ローカルSEOエージェント</Trans>
+          </p>
+          <p>
+            <Trans>堤　紀久夫</Trans>
+          </p>
+        </div>
+      </Claim>
+
+      <Claim
+        title={t("60分間の無料個別相談")}
+        image={images.imageOf("Voices")}
+        float="left"
+      >
+        <ul>
+          <li>
+            <Trans>うちの店は何から始めたらいい？</Trans>
+          </li>
+          <li>
+            <Trans>ローカルSEOを始めるタイミングは？</Trans>
+          </li>
+          <li>
+            <Trans>本当にやりきれるか心配</Trans>
+          </li>
+        </ul>
+        <p>
+          <Trans>そんな不安、心配、疑問を６０分でスッキリさせましょう。</Trans>
+        </p>
+        <p>
+          <Trans>
+            迷っていることを誰かに話すだけでも、
+            考えが整理されて頭の中がクリアになりますよ。
+          </Trans>
+        </p>
+        <p>
+          <Trans>ご相談はこちら</Trans>
+        </p>
         <SqueezeForm
-          cta={t("今すぐ問い合わせる")}
-          namelabel={t("会社名と担当者名")}
+          cta={t("無料相談に申し込む")}
+          namelabel={t("お名前")}
           emaillabel={t("メールアドレス")}
-          tag="homepage"
+          tag="lseo"
           language={language}
           action={SubmitEmailToAirtable}
-          nextpage="/thanks/homepage-thanks"
+          nextpage="/thanks/lseo-thanks"
         />
       </Claim>
     </Layout>

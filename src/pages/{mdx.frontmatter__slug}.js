@@ -171,6 +171,7 @@ const BlogPage = ({ mdx, t }) => {
   return (
     <Layout>
       <ImageContext.Provider value={gottenImages}>
+        {/* i18next-extract-disable-next-line */}
         <Banner title={t(title)} image={banner}>
           <MdxPageStyles>
             <MDXProvider components={components}>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { PerksStyles, PerkStyles } from "./styles"
 
 export const Perks = ({ children, title }) => {
@@ -13,12 +13,17 @@ export const Perks = ({ children, title }) => {
   )
 }
 
-export const Perk = ({ children, title, image }) => {
+export const Perk = ({ children, title, image, name, credit }) => {
   return (
     <PerkStyles>
-      {image && <GatsbyImage image={getImage(image)} alt={`Perk Image`} />}
-      {title && <h3>{title}</h3>}
-      <div className="perk">{children}</div>
+      <div className="image">
+        {image && <GatsbyImage image={image} alt={name} />}
+        <div className="photoCredit">{credit && credit}</div>
+      </div>
+      <div className="container">
+        {title && <h3>{title}</h3>}
+        {children}
+      </div>
     </PerkStyles>
   )
 }

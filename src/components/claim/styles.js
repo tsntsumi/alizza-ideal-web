@@ -1,18 +1,27 @@
 import styled from "styled-components"
 
 export const ClaimStyles = styled.section`
-  position: relative;
-  text-align: justify;
-  align-items: flex-start;
-  color: white;
   background-color: var(--key-color);
+  --sectionMargin: 40px;
+
+  .section,
+  .section__padding {
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    display: block;
+    margin: 0 inherit;
+    padding-left: var(--borderSpacing);
+    padding-right: var(--borderSpacing);
+  }
 
   h2 {
-    text-align: left;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    margin-bottom: 1em;
-    font-size: var(--h5);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    margin: 0 auto 1em auto;
+    text-align: center;
+    font-size: var(--h4);
     font-weight: 800;
     white-space: wrap;
     color: white;
@@ -23,14 +32,22 @@ export const ClaimStyles = styled.section`
     font-size: var(--h6);
     font-weight: 600;
     color: white;
-  }
-
-  p {
-    text-indent: 1rem;
+    padding: 0;
     text-align: justify;
   }
 
-  .clients_profile p {
+  p {
+    text-indent: 1em;
+    text-align: justify;
+    padding: 0;
+  }
+
+  .profile {
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    margin-top: 0.8em;
+  }
+
+  .profile p {
     text-align: right;
     margin: 0;
   }
@@ -41,7 +58,7 @@ export const ClaimStyles = styled.section`
     margin: 1rem auto 1rem 2rem;
   }
   li {
-    margin: 0.5rem auto 0.5rem auto;
+    margin: 0 auto 0 auto;
     color: var(--bodyColor);
   }
 
@@ -51,9 +68,11 @@ export const ClaimStyles = styled.section`
     justify-content: center;
     width: 25%;
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    margin-left: ${({ float }) => (float === "left" ? 0 : "3rem")};
-    margin-right: ${({ float }) => (float === "right" ? 0 : "3rem")};
+    margin: 0 ${({ float }) => (float === "right" ? 0 : "1.5rem")} 0.4em
+      ${({ float }) => (float === "left" ? 0 : "1.5rem")};
+    @media (max-width: 390px) {
+      width: 50%;
+    }
   }
 
   img {
