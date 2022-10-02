@@ -82,9 +82,7 @@ const IndexPage = ({ data }) => {
         </p>
       </Banner>
 
-      <Perks
-        title={t("あなたは、お客様を集める時、こんなことで困っていませんか？")}
-      >
+      <Perks title={t("ネット集客でこんなことに困っていませんか？")}>
         <Perk
           key="suffer1"
           image={images.imageOf("Suffers")}
@@ -408,6 +406,12 @@ const IndexPage = ({ data }) => {
             最適化（おプチマイズ）を目的にします。
           </Trans>
         </p>
+        <div className="image">
+          <GatsbyImage
+            image={images.imageOf("I Solve It")}
+            alt="Target of SEO, Local SEO"
+          />
+        </div>
         <p>
           <Trans>
             そして、GoogleはGoogleマップのストリートビューのために集めた写真と、
@@ -426,12 +430,6 @@ const IndexPage = ({ data }) => {
             Googleマップに限ったものではありません。
           </Trans>
         </p>
-        <div className="image">
-          <GatsbyImage
-            image={images.imageOf("I Solve It")}
-            alt="Target of SEO, Local SEO"
-          />
-        </div>
         <p>
           <Trans>
             ホームページ、ブログ、SNS投稿、チラシやポスター、

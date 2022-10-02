@@ -45,6 +45,7 @@ export const ClaimStyles = styled.section`
   .profile {
     border-top: 2px solid rgba(255, 255, 255, 0.15);
     margin-top: 0.8em;
+    clear: both;
   }
 
   .profile p {
@@ -62,6 +63,12 @@ export const ClaimStyles = styled.section`
     color: var(--bodyColor);
   }
 
+  .container .image {
+    .gatsby-image-wrapper {
+      width: 60%;
+    }
+  }
+
   .gatsby-image-wrapper {
     float: ${({ float }) => float || "left"};
     align-items: center;
@@ -72,6 +79,9 @@ export const ClaimStyles = styled.section`
       ${({ float }) => (float === "left" ? 0 : "1.5rem")};
     @media (max-width: 390px) {
       width: 50%;
+    }
+    @media (min-width: 390px) {
+      width: 30%;
     }
   }
 

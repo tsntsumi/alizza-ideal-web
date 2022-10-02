@@ -29,10 +29,9 @@ export const PerksStyles = styled.section`
 
   h2 {
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-    margin-bottom: 1em;
-    margin-top: 0;
+    margin: 0 auto 1em auto;
     text-align: center;
-    font-size: var(--h4);
+    font-size: 1.4em;
     font-weight: 800;
     color: white;
   }
@@ -72,11 +71,21 @@ export const PerkStyles = styled.aside`
     width: 30%;
     padding: 0 0.4px;
     position: relative;
+    @media (min-width: 400px) {
+      width: 90%;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .container {
     width: 70%;
     padding: 0 0.4px;
+    @media (min-width: 400px) {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .gatsby-image-wrapper {

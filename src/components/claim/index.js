@@ -9,9 +9,7 @@ export const Claim = ({ children, title, image, name, float }) => {
         {title && <h2>{title}</h2>}
       </div>
       <div className="container container__tight">
-        <div className="image">
-          <GatsbyImage image={image} alt={name} />
-        </div>
+        <GatsbyImage image={image} alt={name} />
       </div>
       <div className="container container__tight">{children}</div>
     </ClaimStyles>
