@@ -6,10 +6,10 @@ module.exports = {
       {
         keySeparator: null,
         nsSeparator: null,
-        keyAsDefaultValue: ["en", "ja"],
-        useI18nextDefaultValue: ["en", "ja"],
+        keyAsDefaultValue: ["en", "ja", "tl"],
+        useI18nextDefaultValue: ["en", "ja", "tl"],
         discardOldKeys: true,
-        outputPath: "src/locales/{{locale}}/{{ns}}.json",
+        outputPath: "src/i18n/locales/{{locale}}/{{ns}}.json",
         customTransComponents: [["gatsby-plugin-react-i18next", "Trans"]],
       },
     ],
