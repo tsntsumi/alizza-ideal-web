@@ -485,7 +485,7 @@ const IndexPage = ({ data }) => {
           tag="homepage"
           language={language}
           action={SubmitEmailToAirtable}
-          nextpage="/thanks/lseo-thanks"
+          nextpage="/thanks/homepage-thanks"
         />
       </Claim>
     </Layout>
