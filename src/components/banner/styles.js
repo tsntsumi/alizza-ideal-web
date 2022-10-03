@@ -31,9 +31,6 @@ export const BannerStyles = styled.section`
 
   .banner__image--content {
     object-position: center;
-    @media (max-width: 340px) {
-      object-position: left;
-    }
   }
 
   .gradient {

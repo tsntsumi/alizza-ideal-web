@@ -18,15 +18,16 @@ const FloatBoxStyles = styled.div`
   width: ${props => props.width || "30%"};
   border-radius: 0.5em;
   background-color: ${props => props.bgColor || "white"};
-  border: 3px solid darkblue;
+  border: 3px solid var(--key-dark-color);
   padding: 0;
   margin: ${props => props.margin};
   margin-bottom: 0.75em;
   font-size: 7pt;
+  min-width: ${props => props.minWidth || "10px"};
 `
 
 const FloatBox = ({ children, width, float, bgColor, ...props }) => {
-  const f = float || "right"
+  const f = float || "left"
   const margin =
     f === "right"
       ? "0 var(--borderSpacing) 0 0.75em"
@@ -35,6 +36,7 @@ const FloatBox = ({ children, width, float, bgColor, ...props }) => {
     <FloatBoxStyles
       float={f}
       width={width}
+      minWidth={props.minWidth}
       margin={margin}
       bgColor={bgColor}
       {...props}
@@ -48,9 +50,11 @@ const ImageStyles = styled.div`
   background-color: white;
   border-radius: 0.5em;
   align-contents: center;
+  margin: 0.4em 0.4em;
 
   .gatsby-image-wrapper {
     width: ${props => props.width || "100%"};
+    max-width: ${props => props.maxWidth || "100vw"};
   }
 `
 
@@ -76,15 +80,17 @@ const components = {
   Squeeze: props => (
     <SqueezeForm
       acceptInquiry={false}
-      namelabel="Your name..."
-      emaillabel="Your email..."
-      action={SubmitInquiryToAirtable}
-      nextpage="/thanks/homepage-thanks"
+      namelabel={props.namelabel || "Your name..."}
+      emaillabel={props.emaillabel || "Your email..."}
+      action={props.action || SubmitInquiryToAirtable}
+      nextpage={props.nextpage || "/thanks/homepage-thanks"}
       {...props}
     />
   ),
   GatsbyImage: GatsbyImage,
   clear: props => <div style={{ clear: "both" }} {...props} />,
+  "clear-left": props => <div style={{ clear: "left" }} {...props} />,
+  "clear-right": props => <div style={{ clear: "right" }} {...props} />,
   FloatBox: FloatBox,
   Image: Image,
   ImageBox: ({ children, alt, image, float, width, imageWidth, ...props }) => (
@@ -294,10 +300,17 @@ const MdxPageStyles = styled.section`
   }
 
   h2 {
-    font-size: var(--h5);
+    font-size: var(--h4);
   }
 
   h3 {
+    text-indent: 0;
+    font-size: var(--h5);
+    font-weight: 600;
+    color: var(--key-color);
+  }
+
+  h4 {
     text-indent: 0;
     font-size: var(--h6);
     font-weight: 600;
@@ -350,6 +363,7 @@ const MdxPageStyles = styled.section`
     align-contents: center;
     border: 2px solid var(--key-dark-color);
     margin: 1em auto;
+    border-radius: 0.5em;
 
     thead {
       background-color: var(--key-color);
@@ -361,11 +375,21 @@ const MdxPageStyles = styled.section`
     tbody {
     }
 
+    caption {
+      background-color: var(--key-dark-color);
+      color: white;
+    }
+
     th,
     td {
       padding: 0.5em 1em;
       virtical-align: middle;
       padding-bottom: auto;
+    }
+
+    th {
+      background-color: var(--key-dark-color);
+      color: white;
     }
 
     tr:nth-child(odd) td {

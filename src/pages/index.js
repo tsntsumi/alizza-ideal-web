@@ -343,7 +343,8 @@ const IndexPage = ({ data }) => {
         <p>
           <Trans>
             ここまで読んでいただいたあなたも、
-            ローカルSEOでお客様がひとりでに集まる、理想のお店にしたいと思いませんか？
+            ローカルSEOでお客様がひとりでに集まる、
+            理想のお店にしたいと思いませんか？
           </Trans>
         </p>
         <p>
@@ -465,7 +466,7 @@ const IndexPage = ({ data }) => {
             <Trans>ローカルSEOを始めるタイミングは？</Trans>
           </li>
           <li>
-            <Trans>本当にやりきれるか心配</Trans>
+            <Trans>自分だけでできないの？</Trans>
           </li>
         </ul>
         <p>
