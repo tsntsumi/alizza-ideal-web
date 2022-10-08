@@ -77,7 +77,11 @@ export const BannerStyles = styled.section`
     padding: 0.5em 1em;
     border-radius: 0.75em 0.75em 0 0;
     color: white;
-    font-weight: 600;
+    font-weight: 400;
+  }
+
+  h2 {
+    border-radius: 0.5em;
   }
 
   .description {
