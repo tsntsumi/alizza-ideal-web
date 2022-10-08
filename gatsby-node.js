@@ -1,5 +1,5 @@
 const { createRemoteFileNode } = require("gatsby-source-filesystem")
-const fs = require("fs")
+const { unlink } = require("fs/promises")
 const path = require("path")
 const sharp = require("sharp")
 
@@ -55,13 +55,19 @@ type Frontmatter @dontInfer {
 
   createTypes(typeDefs)
   const typedefs = "./typeDefs.txt"
-  try {
-    printTypeDefinitions({ path: typedefs })
-  } catch (err) {
-    console.info("creating type def file again:", typedefs)
-    fs.rmSync(typedefs)
-    printTypeDefinitions({ path: typedefs })
-  }
+  unlink(typedefs)
+    .then(result => {
+      console.info("save type def file:", typedefs)
+      printTypeDefinitions({ path: typedefs })
+    })
+    .catch(err => {
+      if (err.code === "ENOENT") {
+        console.info("save type def file:", typedefs)
+        printTypeDefinitions({ path: typedefs })
+      } else {
+        console.error("cannot save type def file:", typedefs)
+      }
+    })
 }
 
 exports.onCreateNode = async ({
