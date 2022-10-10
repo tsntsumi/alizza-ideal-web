@@ -77,16 +77,7 @@ const Image = ({ alt, image, width, ...props }) => {
 
 const components = {
   Contact: Contact,
-  Squeeze: props => (
-    <SqueezeForm
-      acceptInquiry={false}
-      namelabel={props.namelabel || "Your name..."}
-      emaillabel={props.emaillabel || "Your email..."}
-      action={props.action || SubmitInquiryToAirtable}
-      nextpage={props.nextpage || "/thanks/homepage-thanks"}
-      {...props}
-    />
-  ),
+  Squeeze: props => <SqueezeForm acceptInquiry={false} {...props} />,
   GatsbyImage: GatsbyImage,
   clear: props => <div style={{ clear: "both" }} {...props} />,
   "clear-left": props => <div style={{ clear: "left" }} {...props} />,
@@ -100,7 +91,10 @@ const components = {
     </FloatBox>
   ),
   strong: props => (
-    <strong style={{ color: "red", fontSize: "1.2em" }} {...props} />
+    <strong
+      style={{ color: "darkblue", fontWeight: "bold", fontSize: "1.2em" }}
+      {...props}
+    />
   ),
 }
 
@@ -273,6 +267,17 @@ const MdxPageStyles = styled.section`
     white-space: no-wrap;
   }
 
+  .flush-right {
+    text-align: right;
+    p,
+    li {
+      text-align: right;
+    }
+    blockquote {
+      padding-right: 0;
+    }
+  }
+
   h1,
   h2,
   h3 {
@@ -354,6 +359,11 @@ const MdxPageStyles = styled.section`
     margin: 0 0 0 1em;
     color: var(--bodyColor);
   }
+  li:first-child,
+  ul > li > p:first-child,
+  ol > li > p:first-child {
+    text-indent: 0;
+  }
   a {
     color: darkred;
   }
@@ -372,6 +382,7 @@ const MdxPageStyles = styled.section`
         text-align: center;
       }
     }
+
     tbody {
     }
 
