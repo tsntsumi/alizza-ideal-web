@@ -5,12 +5,14 @@ import { graphql } from "gatsby"
 import List from "../../components/list"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
+import { GlobalStyle } from "../../components/layout/styles"
 
 export default function BlogIndexPage({ data }) {
   const { posts } = data
   return (
     <Layout>
       <Seo title="Blogs" />
+      <GlobalStyle />
       <Container maxW="container.xl" mt="90px" mb="1em">
         <Box px={4} mt={4}>
           <Grid
