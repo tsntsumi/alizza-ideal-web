@@ -15,6 +15,17 @@ const CardStyle = styled.div`
     padding: 0;
   }
 
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    img: {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .description {
     h2,
     h3,
@@ -47,6 +58,7 @@ const Item = ({ node, loading }) => {
         <Box
           borderWidth="1px"
           borderRadius="lg"
+          padding={0}
           overflow="hidden"
           key={node.id}
           position="relative"
