@@ -4,6 +4,22 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Box, AspectRatio, useColorModeValue } from "@chakra-ui/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby-plugin-react-i18next"
+import styled from "styled-components"
+
+const CardStyle = styled.div`
+  margin: 0;
+  padding: 0;
+
+  h1 ~ *,
+  h2 ~ *,
+  h3 ~ *,
+  h4 ~ *,
+  h5 ~ *,
+  h6 ~ * {
+    padding-left: 0;
+    padding-right: 0;
+  }
+`
 
 const Item = ({ node, loading }) => {
   const bg = useColorModeValue("white", "var(--key-color)")
@@ -11,7 +27,7 @@ const Item = ({ node, loading }) => {
     frontmatter: { title, description, slug, banner },
   } = node
   return (
-    <>
+    <CardStyle>
       <Box
         borderWidth="1px"
         borderRadius="lg"
@@ -20,25 +36,34 @@ const Item = ({ node, loading }) => {
         position="relative"
         bg={bg}
       >
-        <Link to={slug}>
-          <AspectRatio maxW="320px" ratio={1 / 1}>
+        <AspectRatio
+          maxW="320px"
+          ratio={1 / 1}
+          mx="auto"
+          my={0}
+          px="auto"
+          py={0}
+        >
+          <Link to={slug}>
             <GatsbyImage
               loading={loading}
               image={getImage(banner)}
               alt={title}
             />
-          </AspectRatio>
-          <Box py={2} px={2}>
-            <Box mt="1" fontWeight="semibold" as="h3" lineHeight="tight" px={1}>
-              {title}
-            </Box>
-            <Box mt="0.5em" p="0.5em" fontSize="7pt">
-              <MDXRenderer>{description}</MDXRenderer>
-            </Box>
+          </Link>
+        </AspectRatio>
+        <Box py={2} px={2}>
+          <Box mt="1" fontWeight="semibold" as="h3" lineHeight="tight" px={1}>
+            <Link to={slug}>{title}</Link>
           </Box>
-        </Link>
+          <Box mt="0.5em" p="0.5em" fontSize="7pt">
+            <Link to={slug}>
+              <MDXRenderer>{description}</MDXRenderer>
+            </Link>
+          </Box>
+        </Box>
       </Box>
-    </>
+    </CardStyle>
   )
 }
 
