@@ -50,7 +50,7 @@ const CardStyle = styled.div`
 const Item = ({ node, loading }) => {
   const bg = useColorModeValue("white", "var(--key-color)")
   const {
-    frontmatter: { title, description, slug, banner },
+    frontmatter: { title, description, slug, banner, date },
   } = node
   return (
     <>
@@ -89,6 +89,7 @@ const Item = ({ node, loading }) => {
             <Box mt="0.5em" p="0.5em" fontSize="7pt">
               <div className="description">
                 <Link to={slug}>
+                  <div style={{ textAlign: "right" }}>{date}</div>
                   <MDXRenderer>{description}</MDXRenderer>
                 </Link>
               </div>
