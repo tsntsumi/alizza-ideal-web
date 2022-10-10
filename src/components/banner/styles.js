@@ -115,12 +115,12 @@ export const BannerStyles = styled.section`
     }
 
     p {
-      font-weight: 500;
+      font-weight: 300;
     }
 
     p em {
       font-size: 1.4em;
-      font-weight: 700;
+      font-weight: 400;
     }
   }
 

@@ -31,7 +31,9 @@ Googleビジネスプロフィールによくある間違いを説明した
 この電子ブックをダウンロードしていただけます。
 
 <div style={{clear: "left"}}><FloatBox width="55%" minWidth="280px" float="left">
-  <Squeeze tag="gbp"
+  <Squeeze tag="smallbizquiz"
+      	   namelabel="お名前"
+	   emaillabel="メールアドレス"
            nextpage="/thanks/gbp-support"
            cta="今すぐ電子ブックを手に入れる"
   />
@@ -156,34 +158,15 @@ Instagram、お店のオーナー様に大人気です。
 でもちょっと待ってください。
 １００年に１度といわれた災厄の年表を作ってみました。
 
-<div><table style={{width:"80%"}}>
-<tr><th colspan="2">【ここ30年の世界的災厄】</th></tr>
-<tr><th>1990年</th><td>バブル崩壊</td></tr>
-<tr><th>2000年</th><td>台米国でITバブルの崩壊</td></tr>
-<tr><th>2010年近辺</th><td>リーマンショックに代表される金融危機、ギリシャショックを発端とした欧州の信用危機</td></tr>
-<tr><th>2020年</th><td>新型コロナウイルスの感染拡大</td></tr>
-<tr><th>2022年</th><td>ウクライナ・ロシア戦争</td></tr>
-</table></div>
+import { CenturyDisasterInTheWorld, CenturyDisasterInJapan } from "../../../src/references/once-in-a-century-disasters"
+
+<div><CenturyDisasterInTheWorld /></div>
 
 なんと、日本にも影響する100年に一度の災厄は、10年に一度は起こっています。
 
 では、日本に目を向けてみましょう。
 
-<div><table style={{width: "80%"}}>
-<tr><th colspan="2">【ここ10年の日本における災厄】</th></tr>
-<tr><th>2011年</th><td>東日本大震災</td></tr>
-<tr><th>2014年</th><td>広島北部豪雨</td></tr>
-<tr><th>2015年</th><td>台風17号（鬼怒川氾濫）</td></tr>
-<tr><th>2016年</th><td>熊本地震</td></tr>
-<tr><th>2017年</th><td>九州北部豪雨</td></tr>
-<tr><th>2018年</th><td>西日本豪雨</td></tr>
-<tr><th></th><td>大阪北部地震</td></tr>
-<tr><th></th><td>北海道胆振東部地震</td></tr>
-<tr><th>2019年</th><td>九州北部豪雨</td></tr>
-<tr><th></th><td>台風15号（千葉、神奈川）</td></tr>
-<tr><th></th><td>台風17号（東日本・関東甲信越）</td></tr>
-<tr><th>2020年</th><td>新型コロナウイルスの感染拡大</td></tr>
-</table></div>
+<div><CenturyDisasterInJapan /></div>
 
 局地的ではありますが、ほぼ毎年といっていいほど災厄が発生し、
 地方の経済がダメージを受けています。
