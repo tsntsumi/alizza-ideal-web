@@ -339,7 +339,7 @@ const MdxPageStyles = styled.section`
   ul,
   blockquote {
     margin: 1em 0 1em 0;
-    padding-left: var(--borderSpacing);
+    padding-left: calc(var(--borderSpacing) * 2);
     padding-right: var(--borderSpacing);
   }
   blockquote {

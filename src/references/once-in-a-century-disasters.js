@@ -1,3 +1,4 @@
+// i18next-extract-mark-ns-start once-in-a-century-disasters
 import * as React from "react"
 import styled from "styled-components"
 import { Trans } from "gatsby-plugin-react-i18next"

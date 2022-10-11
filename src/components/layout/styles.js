@@ -163,7 +163,7 @@ blockquote {
 }
 
 li {
-  margin-left: 2.5em;
+  margin-left: 3em;
   text-align: justify;
   text-indent: 0;
 }
