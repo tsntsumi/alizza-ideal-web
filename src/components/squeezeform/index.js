@@ -167,7 +167,7 @@ export const SqueezeForm = ({
         <div>
           <SqueezeField
             name="name"
-            label={namelabel}
+            label={namelabel || t("Name")}
             type="text"
             id="name"
             feedback={errorState.name}
@@ -184,7 +184,7 @@ export const SqueezeForm = ({
           />
           <SqueezeField
             name="email"
-            label={emaillabel}
+            label={emaillabel || t("Email")}
             type="email"
             id="email"
             feedback={errorState.email}
@@ -202,7 +202,7 @@ export const SqueezeForm = ({
           {acceptInquiry && (
             <SqueezeText
               name="inquiry"
-              label={inquirylabel}
+              label={inquirylabel || t("Inquiry...")}
               id="inquiry"
               feedback={errorState.inquiry}
               onChange={e => {
@@ -222,7 +222,7 @@ export const SqueezeForm = ({
             <Button
               type="submit"
               to="#"
-              text={cta}
+              text={cta || t("Inquire Now")}
               bgColor="orange"
               color="darkGreen"
               iconLeft={<Mailbox />}
