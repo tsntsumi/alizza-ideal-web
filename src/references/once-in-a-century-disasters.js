@@ -52,11 +52,10 @@ export const CenturyDisasterInTheWorld = () => {
   return (
     <DisastersStyles>
       <table>
-        <thead>
-          <caption>
-            <Trans>【ここ30年の世界的災厄】</Trans>
-          </caption>
-        </thead>
+        <caption>
+          <Trans>【ここ30年の世界的災厄】</Trans>
+        </caption>
+        <thead></thead>
         <tbody>
           <tr>
             <th>
@@ -116,11 +115,10 @@ export const CenturyDisasterInJapan = () => {
   return (
     <DisastersStyles>
       <table>
-        <thead>
-          <caption>
-            <Trans>【ここ10年の日本における災厄】</Trans>
-          </caption>
-        </thead>
+        <caption>
+          <Trans>【ここ10年の日本における災厄】</Trans>
+        </caption>
+        <thead></thead>
         <tbody>
           <tr>
             <th>

@@ -93,13 +93,10 @@ export const BannerStyles = styled.section`
     width: 100%;
     color: white;
 
-    ul {
-      margin: 0.5em auto;
-      padding: 0;
-    }
-
-    li {
-      margin: 0 1em 0 3em;
+    ul,
+    ol {
+      margin: 0.5em var(--borderSpacing);
+      padding: 0 0 0 1em;
     }
 
     h2 {
