@@ -5,7 +5,7 @@ export const BannerStyles = styled.section`
   height: 100%;
   top: 0;
   margin: 0;
-  padding: 0 var(--borderSpacing);
+  padding: 0;
   font-size: var(--p);
   font-weight: 600;
 
@@ -17,6 +17,7 @@ export const BannerStyles = styled.section`
     overflow-y: scroll;
     margin-bottom: 0;
     background-color: var(--key-light-color);
+    padding: 0 var(--borderSpacing);
   }
 
   .gradient,

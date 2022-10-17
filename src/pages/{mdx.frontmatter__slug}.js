@@ -11,7 +11,7 @@ import Contact from "../components/contact"
 import Banner from "../components/banner"
 import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
 
-const ImageContext = React.createContext()
+const PageContext = React.createContext()
 
 const FloatBoxStyles = styled.div`
   float: ${props => props.float};
@@ -28,21 +28,20 @@ const FloatBoxStyles = styled.div`
 
 const FloatBox = ({ children, width, float, bgColor, ...props }) => {
   const f = float || "left"
-  const margin =
-    f === "right"
-      ? "0 var(--borderSpacing) 0 0.75em"
-      : "0 0.75em 0 var(--borderSpacing)"
+  const margin = f === "right" ? "0 0 0 1.75em" : "0 1.75em 0 0"
   return (
-    <FloatBoxStyles
-      float={f}
-      width={width}
-      minWidth={props.minWidth}
-      margin={margin}
-      bgColor={bgColor}
-      {...props}
-    >
-      {children}
-    </FloatBoxStyles>
+    <div>
+      <FloatBoxStyles
+        float={f}
+        width={width}
+        minWidth={props.minWidth}
+        margin={margin}
+        bgColor={bgColor}
+        {...props}
+      >
+        {children}
+      </FloatBoxStyles>
+    </div>
   )
 }
 
@@ -59,7 +58,7 @@ const ImageStyles = styled.div`
 `
 
 const Image = ({ alt, image, width, ...props }) => {
-  const images = React.useContext(ImageContext)
+  const { images } = React.useContext(PageContext)
   if (!images[image]) {
     return (
       <ImageStyles style={{ color: "red" }}>
@@ -75,31 +74,10 @@ const Image = ({ alt, image, width, ...props }) => {
   )
 }
 
-const components = {
-  Contact: Contact,
-  Squeeze: props => <SqueezeForm acceptInquiry={false} {...props} />,
-  GatsbyImage: GatsbyImage,
-  clear: props => <div style={{ clear: "both" }} {...props} />,
-  "clear-left": props => <div style={{ clear: "left" }} {...props} />,
-  "clear-right": props => <div style={{ clear: "right" }} {...props} />,
-  FloatBox: FloatBox,
-  Image: Image,
-  ImageBox: ({ children, alt, image, float, width, imageWidth, ...props }) => (
-    <FloatBox float={float} width={width} {...props}>
-      <Image image={image} alt={alt} width={imageWidth} />
-      {children && <div className="credit">{children}</div>}
-    </FloatBox>
-  ),
-  strong: props => (
-    <strong
-      style={{ color: "darkblue", fontWeight: "bold", fontSize: "1.2em" }}
-      {...props}
-    />
-  ),
-}
+const TableOfContents = () => {
+  const { tableOfContents } = React.useContext(PageContext)
 
-const TableOfContents = ({ showTOC, tableOfContents }) => {
-  if (!showTOC) {
+  if (!tableOfContents || tableOfContents.length === 0) {
     return <></>
   }
   return (
@@ -122,6 +100,43 @@ const TableOfContents = ({ showTOC, tableOfContents }) => {
   )
 }
 
+const components = {
+  Contact: Contact,
+  Squeeze: props => (
+    <SqueezeForm
+      acceptInquiry={false}
+      action={SubmitInquiryToAirtable}
+      {...props}
+    />
+  ),
+  GatsbyImage: GatsbyImage,
+  clear: props => <div style={{ clear: "both" }} {...props} />,
+  "clear-left": props => <div style={{ clear: "left" }} {...props} />,
+  "clear-right": props => <div style={{ clear: "right" }} {...props} />,
+  FloatBox: FloatBox,
+  Image: Image,
+  ImageBox: ({ children, alt, image, float, width, imageWidth, ...props }) => (
+    <FloatBox float={float} width={width} {...props}>
+      <Image image={image} alt={alt} width={imageWidth} />
+      {children && <div className="credit">{children}</div>}
+    </FloatBox>
+  ),
+  strong: props => (
+    <strong
+      style={{ color: "darkblue", fontWeight: "bold", fontSize: "1.2em" }}
+      {...props}
+    />
+  ),
+  TableOfContents: TableOfContents,
+}
+
+const ShowTableOfContents = ({ showTOC }) => {
+  if (!showTOC) {
+    return <></>
+  }
+  return <TableOfContents />
+}
+
 const BasePage = ({ mdx, t }) => {
   const {
     body,
@@ -137,7 +152,7 @@ const BasePage = ({ mdx, t }) => {
             <Trans>Date:</Trans> <i>{date}</i>
           </div>
           <MDXProvider components={components}>
-            <TableOfContents
+            <ShowTableOfContents
               showTOC={showTOC}
               tableOfContents={tableOfContents}
             />
@@ -170,7 +185,9 @@ const BlogPage = ({ mdx, t }) => {
 
   return (
     <Layout>
-      <ImageContext.Provider value={gottenImages}>
+      <PageContext.Provider
+        value={{ images: gottenImages, tableOfContents: tableOfContents }}
+      >
         {/* i18next-extract-disable-next-line */}
         <Banner title={t(title)} image={banner}>
           <MdxPageStyles>
@@ -181,7 +198,7 @@ const BlogPage = ({ mdx, t }) => {
         </Banner>
         <MdxPageStyles>
           <MDXProvider components={components}>
-            <TableOfContents
+            <ShowTableOfContents
               showTOC={showTOC}
               tableOfContents={tableOfContents}
             />
@@ -202,7 +219,7 @@ const BlogPage = ({ mdx, t }) => {
             </div>
           </div>
         </MdxPageStyles>
-      </ImageContext.Provider>
+      </PageContext.Provider>
     </Layout>
   )
 }
@@ -282,8 +299,9 @@ const MdxPageStyles = styled.section`
   h2,
   h3 {
     font-family: sans-serif;
-    padding: 0.7em;
-    margin: 1em 0;
+    padding: 0.7em var(--borderSpacing);
+    margin: 0.4em 0;
+    text-indent: 0;
     clear: both;
   }
 
@@ -309,9 +327,10 @@ const MdxPageStyles = styled.section`
   }
 
   h3 {
-    text-indent: 0;
     font-size: var(--h5);
     font-weight: 600;
+    text-indent: 0;
+    padding: 0 var(--borderSpacing);
     color: var(--key-color);
   }
 
@@ -320,6 +339,7 @@ const MdxPageStyles = styled.section`
     font-size: var(--h6);
     font-weight: 600;
     color: var(--key-color);
+    padding: 0 var(--borderSpacing);
   }
 
   h1 > *,
