@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-
 :root {
   --doc-height: 100%;
   --header-height:64px;
@@ -12,9 +11,9 @@ export const GlobalStyle = createGlobalStyle`
   --blockquote: 20px;
   --background: rgb(224, 235, 235);
   --primary: rgb(0, 204, 204);
-  --key-color: rgba(0, 128, 128, 0.8);
-  --key-dark-color: rgba(0, 102, 102, 0.8);
-  --key-light-color: rgba(0, 153, 153, 0.8);
+  --key-color: rgba(0, 128, 128, 0.9);
+  --key-dark-color: rgba(0, 102, 102, 0.9);
+  --key-light-color: rgba(0, 153, 153, 0.9);
   --key-base-color: rgb(224, 235, 235);
   --key-white-color: rgb(244, 255, 255);
   --highlight-color: orange;
@@ -154,18 +153,18 @@ u {
   text-decoration: underline;
 }
 
-hr,
 ol,
 ul,
 blockquote {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  list-style-position: outside;
+  margin: 0.75em auto;
 }
 
 li {
-  margin-left: 3em;
+  position: relative;
   text-align: justify;
-  text-indent: 0;
+  padding-right: 2em;
+  margin-left: 5em;
 }
 
 hr {

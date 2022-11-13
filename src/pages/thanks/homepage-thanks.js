@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start homepage-thanks
+// i18next-extract-mark-ns-start thanks
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -82,7 +82,7 @@ export const query = graphql`
     locales: allLocale(
       filter: {
         language: { eq: $language }
-        ns: { in: ["translation", "homepage-thanks"] }
+        ns: { in: ["translation", "thanks"] }
       }
     ) {
       edges {

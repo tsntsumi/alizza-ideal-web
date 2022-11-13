@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start translate
+// i18next-extract-mark-ns-start translation
 import React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -164,7 +164,7 @@ const BasePage = ({ mdx, t }) => {
   )
 }
 
-const BlogPage = ({ mdx, t }) => {
+const BlogPage = ({ mdx, source, t }) => {
   if (!mdx) {
     return <></>
   }
@@ -182,22 +182,23 @@ const BlogPage = ({ mdx, t }) => {
     },
   } = mdx
   const gottenImages = images.map(i => getImage(i))
+  const withoutNavLink = source === "offer"
 
   return (
-    <Layout>
+    <Layout withoutHamburger={withoutNavLink} withoutContact={withoutNavLink}>
       <PageContext.Provider
         value={{ images: gottenImages, tableOfContents: tableOfContents }}
       >
         {/* i18next-extract-disable-next-line */}
         <Banner title={t(title)} image={banner}>
-          <MdxPageStyles>
-            <MDXProvider components={components}>
-              <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
-            </MDXProvider>
-          </MdxPageStyles>
-        </Banner>
-        <MdxPageStyles>
           <MDXProvider components={components}>
+            <MdxPageStyles>
+              <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
+            </MdxPageStyles>
+          </MDXProvider>
+        </Banner>
+        <MDXProvider components={components}>
+          <MdxPageStyles>
             <ShowTableOfContents
               showTOC={showTOC}
               tableOfContents={tableOfContents}
@@ -205,7 +206,9 @@ const BlogPage = ({ mdx, t }) => {
             <div className="container">
               <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
             </div>
-          </MDXProvider>
+          </MdxPageStyles>
+        </MDXProvider>
+        <MdxPageStyles>
           <div className="bloginfo container">
             <div>
               <div className="date">
@@ -252,7 +255,7 @@ export default function MdxPage({ data }) {
     return <BasePage mdx={data?.basepage} t={t} />
   }
 
-  return <BlogPage mdx={data?.blogpage} t={t} />
+  return <BlogPage mdx={data?.blogpage} source={source} t={t} />
 }
 
 const MdxPageStyles = styled.section`
@@ -355,33 +358,8 @@ const MdxPageStyles = styled.section`
     margin-bottom: 0.4em;
   }
 
-  ol,
-  ul,
-  blockquote {
-    margin: 1em var(--borderSpacing);
-    padding: 0.25em var(--borderSpacing);
-  }
   blockquote {
     font-size: 1.1em;
-  }
-  ul ul,
-  ol ol,
-  ul ol,
-  ol ul {
-    padding: 0;
-    margin: 0.5em 0;
-  }
-  li,
-  ul li,
-  ol li {
-    padding: 0;
-    margin: 0 0 0 1em;
-    color: var(--bodyColor);
-  }
-  li:first-child,
-  ul > li > p:first-child,
-  ol > li > p:first-child {
-    text-indent: 0;
   }
   a {
     color: darkred;

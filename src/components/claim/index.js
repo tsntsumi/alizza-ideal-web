@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ClaimStyles } from "./styles"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export const Claim = ({ children, title, image, name, float }) => {
   return (
@@ -9,7 +9,7 @@ export const Claim = ({ children, title, image, name, float }) => {
         {title && <h2>{title}</h2>}
       </div>
       <div className="container container__tight">
-        <GatsbyImage image={image} alt={name} />
+        <GatsbyImage image={getImage(image)} alt={name} />
       </div>
       <div className="container container__tight">{children}</div>
     </ClaimStyles>

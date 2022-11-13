@@ -53,16 +53,6 @@ export const ClaimStyles = styled.section`
     margin: 0;
   }
 
-  ol,
-  ul,
-  blockquote {
-    margin: 1rem auto 1rem 2rem;
-  }
-  li {
-    margin: 0 auto 0 auto;
-    color: var(--bodyColor);
-  }
-
   .container .image {
     .gatsby-image-wrapper {
       width: 60%;
@@ -75,8 +65,8 @@ export const ClaimStyles = styled.section`
     justify-content: center;
     width: 25%;
     overflow: hidden;
-    margin: 0 ${({ float }) => (float === "right" ? 0 : "1.5rem")} 0.4em
-      ${({ float }) => (float === "left" ? 0 : "1.5rem")};
+    margin: 0 ${({ float }) => (float === "right" ? 0 : "1em")} 0.4em
+      ${({ float }) => (float === "left" ? 0 : "1em")};
     @media (max-width: 390px) {
       width: 50%;
     }

@@ -5,7 +5,7 @@ import Animate from "../animate"
 import { Nav } from "../nav"
 import { Footer } from "../footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ withoutHamburger, withoutContact, children }) => {
   return (
     <>
       <GlobalStyle />
@@ -15,7 +15,10 @@ const Layout = ({ children }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.75 }}
       >
-        <Nav />
+        <Nav
+          withoutHamburger={withoutHamburger}
+          withoutContact={withoutContact}
+        />
         <Animate>
           {children}
           <Footer />

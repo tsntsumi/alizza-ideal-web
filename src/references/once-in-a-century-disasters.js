@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start once-in-a-century-disasters
+// i18next-extract-mark-ns-start translation
 import * as React from "react"
 import styled from "styled-components"
 import { Trans } from "gatsby-plugin-react-i18next"
@@ -201,13 +201,17 @@ export const CenturyDisasterInJapan = () => {
             </td>
           </tr>
           <tr>
-            <th>2020年</th>
+            <th>
+              2020<Trans>年</Trans>
+            </th>
             <td>
               <Trans>新型コロナウイルスの感染拡大</Trans>
             </td>
           </tr>
           <tr>
-            <th>2022年</th>
+            <th>
+              2022<Trans>年</Trans>
+            </th>
             <td>
               <Trans>食料品を含む物価高騰</Trans>
             </td>

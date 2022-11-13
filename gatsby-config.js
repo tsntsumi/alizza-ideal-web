@@ -89,6 +89,10 @@ module.exports = {
         excludes: [
           "/**/offers/**",
           "/offers/**",
+          "/**/offer/**",
+          "/offer/**",
+          "/**/campaign/**",
+          "/campaign/**",
           "/**/thanks/**",
           "/thanks/**",
           "/**/404",

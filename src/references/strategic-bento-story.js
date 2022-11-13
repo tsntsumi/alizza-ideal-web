@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start strategic-bento-story
+// i18next-extract-mark-ns-start translation
 import * as React from "react"
 import styled from "styled-components"
 import { useI18next } from "gatsby-plugin-react-i18next"

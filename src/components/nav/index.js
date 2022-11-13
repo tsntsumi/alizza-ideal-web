@@ -86,7 +86,7 @@ const Title = () => {
   )
 }
 
-export const Nav = () => {
+export const Nav = ({ withoutHamburger, withoutContact }) => {
   const featuredProduct = [] /* useFeaturedProduct() */
 
   const [isOpen, setNav] = useContext(MenuContext)
@@ -112,30 +112,33 @@ export const Nav = () => {
     <NavStyles>
       <div className="nav">
         <div className="container">
-          <HamburgerStyles
-            initial="closed"
-            animate={isOpen ? "open" : "closed"}
-            onClick={toggleNav}
-            onKeyDown={toggleNav}
-            aria-label={isOpen ? "Close Menu" : "Open Menu"}
-            className={isOpen ? " open" : ""}
-          >
-            <motion.span
-              className="bar"
-              variants={barOneVariants}
-            ></motion.span>
-            <motion.span
-              className="bar"
-              variants={barTwoVariants}
-            ></motion.span>
-            <motion.span
-              className="bar"
-              variants={barThreeVariants}
-            ></motion.span>
-          </HamburgerStyles>
+          {!withoutHamburger && (
+            <HamburgerStyles
+              initial="closed"
+              animate={isOpen ? "open" : "closed"}
+              onClick={toggleNav}
+              onKeyDown={toggleNav}
+              aria-label={isOpen ? "Close Menu" : "Open Menu"}
+              className={isOpen ? " open" : ""}
+            >
+              <motion.span
+                className="bar"
+                variants={barOneVariants}
+              ></motion.span>
+              <motion.span
+                className="bar"
+                variants={barTwoVariants}
+              ></motion.span>
+              <motion.span
+                className="bar"
+                variants={barThreeVariants}
+              ></motion.span>
+            </HamburgerStyles>
+          )}
 
           <Title />
-          <ContactLink language={language} />
+          {!withoutContact && <ContactLink language={language} />}
+          {withoutContact && <div className="contact"></div>}
 
           <ChooseLanguage
             isOpen={langNavIsOpen}
@@ -147,11 +150,18 @@ export const Nav = () => {
 
           {(title || logo) && (
             <LogoStyles>
-              <Link to="/" language={language}>
-                <img src={logo} alt="logo" />
-                {title}
-                <span>.</span>
-              </Link>
+              {withoutHamburger && (
+                <>
+                  <img src={logo} alt="logo" />
+                  {title}
+                </>
+              )}
+              {!withoutHamburger && (
+                <Link to="/" language={language}>
+                  <img src={logo} alt="logo" />
+                  {title}
+                </Link>
+              )}
             </LogoStyles>
           )}
         </div>

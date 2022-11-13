@@ -9,28 +9,7 @@ import { Banner } from "../components/banner"
 import { Claim } from "../components/claim"
 import { Perks, Perk } from "../components/perks"
 import { SqueezeForm, SubmitEmailToAirtable } from "../components/squeezeform"
-
-class ImageDict {
-  constructor(data) {
-    this.dict = this.imageDictionary(data)
-  }
-
-  imageOf(name) {
-    const images = this.dict[name]
-    if (!images || images.length === 0) {
-      return null
-    }
-    return getImage(images.shift())
-  }
-
-  imageDictionary(data) {
-    const images = data.images.edges.reduce((p, c) => {
-      p[c.node.data.Name] = c.node.data.Images.localFiles.map(img => img)
-      return p
-    }, {})
-    return images
-  }
-}
+import { ImageDict } from "../components/imagedict"
 
 const IndexPage = ({ data }) => {
   const { t, language } = useI18next()

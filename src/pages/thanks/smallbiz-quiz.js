@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start homepage-thanks
+// i18next-extract-mark-ns-start thanks
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -6,7 +6,7 @@ import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import { Banner } from "../../components/banner"
 
-const HPThanksPage = ({ data }) => {
+const SmallBizQuizThanksPage = ({ data }) => {
   const { t } = useI18next()
 
   const images = data.images.edges
@@ -84,7 +84,7 @@ export const query = graphql`
     locales: allLocale(
       filter: {
         language: { eq: $language }
-        ns: { in: ["translation", "homepage-thanks"] }
+        ns: { in: ["translation", "thanks"] }
       }
     ) {
       edges {
@@ -98,4 +98,4 @@ export const query = graphql`
   }
 `
 
-export default HPThanksPage
+export default SmallBizQuizThanksPage
