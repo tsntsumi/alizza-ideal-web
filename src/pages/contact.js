@@ -39,12 +39,12 @@ const NetClientInvitationPage = ({ data }) => {
             <span className="winner">商圏ひとり勝ちの</span>
             <span className="netinvite">ネット招客</span>を
             <span className="anyone">始めたい人はもういませんか？</span>
-            <div className="notcollect">
+            <h2>
               集客じゃなくて<span className="invite">招客！！</span>
-              あなたは待って招き入れるだけ
-            </div>
+            </h2>
+            <div className="notcollect">あなたは待って招き入れるだけ</div>
             <div className="booklet">
-              今なら、詳細を知りたい方にはGoogleビジネスプロフィールを始めるための
+              今なら、詳細を知りたい方にGoogleビジネスプロフィールを始めるための
               電子書籍を差し上げています。
               あなたは、商圏ダントツになるための初期設定を済ませてますか？
             </div>
@@ -70,6 +70,7 @@ const NetClientInvitationPage = ({ data }) => {
 const NetClientInvitationPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
+  color: white;
   background-color: var(--key-light-color);
   margin: 0;
   padding: 1em;
@@ -93,6 +94,8 @@ const NetClientInvitationPageStyles = styled.section`
     padding: 1em;
     marign: 1em;
     background-color: var(--key-color);
+    clear: both;
+    text-align: center;
   }
   .tagline {
     margin: 0;
@@ -115,7 +118,7 @@ const NetClientInvitationPageStyles = styled.section`
   .winner {
     color: orange;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 1.2em;
   }
   .netinvite {
     color: orange;
