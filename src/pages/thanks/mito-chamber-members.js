@@ -26,7 +26,7 @@ const ThanksMitoChamberMemberPage = ({ data }) => {
         </div>
         <div style={{ padding: "0.25em 5%" }}>
           <strong>
-            <Trans>後半に特別サービスのごご案内があります</Trans>
+            <Trans>後半に特別なご案内があります</Trans>
           </strong>
         </div>
         <h2>
@@ -48,6 +48,12 @@ const ThanksMitoChamberMemberPage = ({ data }) => {
           </Trans>
           <Trans>よろしくおねがいします。</Trans>
         </p>
+        <h3>
+          <Trans>特別なご案内</Trans>:{" "}
+          <Trans>
+            電子書籍ではなく、印刷した冊子がほしい方は☟をご覧ください
+          </Trans>
+        </h3>
       </Banner>
       <Banner
         title={t("電子書籍ではなく、印刷した冊子がほしい方へ")}
@@ -55,7 +61,7 @@ const ThanksMitoChamberMemberPage = ({ data }) => {
       >
         <p>
           <Trans>
-            もし、電子書籍で読むのは辛い。紙に印刷した冊子を送ってほしい方はいませんか？
+            電子書籍で読むのは辛い。紙に印刷した冊子を送ってほしいという方はいませんか？
           </Trans>
           <Trans>
             送料・手数料の780円で、簡易印刷したA４サイズの小冊子を郵送いたします。
