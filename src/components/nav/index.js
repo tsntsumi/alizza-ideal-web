@@ -68,7 +68,7 @@ const ChooseLanguage = ({
 const ContactLink = ({ language }) => {
   return (
     <div className="contact">
-      <Link to="/contact" language={language} type="button">
+      <Link to="/get-in-touch" language={language} type="button">
         <span className="icon">
           <Mailbox />
         </span>
@@ -86,7 +86,7 @@ const Title = () => {
   )
 }
 
-export const Nav = ({ withoutHamburger, withoutContact }) => {
+export const Nav = ({ withoutHamburger, withoutContact, withoutLanguage }) => {
   const featuredProduct = [] /* useFeaturedProduct() */
 
   const [isOpen, setNav] = useContext(MenuContext)
@@ -140,13 +140,15 @@ export const Nav = ({ withoutHamburger, withoutContact }) => {
           {!withoutContact && <ContactLink language={language} />}
           {withoutContact && <div className="contact"></div>}
 
-          <ChooseLanguage
-            isOpen={langNavIsOpen}
-            toggle={toggleLangNav}
-            language={language}
-            languages={languages}
-            originalPath={originalPath}
-          />
+          {!withoutLanguage && (
+            <ChooseLanguage
+              isOpen={langNavIsOpen}
+              toggle={toggleLangNav}
+              language={language}
+              languages={languages}
+              originalPath={originalPath}
+            />
+          )}
 
           {(title || logo) && (
             <LogoStyles>

@@ -7,7 +7,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import Layout from "../components/layout"
-import Contact from "../components/contact"
+import GetInTouch from "../components/getintouch"
 import Banner from "../components/banner"
 import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
 
@@ -101,7 +101,8 @@ const TableOfContents = () => {
 }
 
 const components = {
-  Contact: Contact,
+  Contact: GetInTouch,
+  GetInTouch: GetInTouch,
   Squeeze: props => (
     <SqueezeForm
       acceptInquiry={false}
@@ -262,6 +263,9 @@ const MdxPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
   color: black;
+  background-color: white;
+  margin-top: 0;
+  padding-top: 30px;
 
   .container {
     background-color: #e0ebeb;

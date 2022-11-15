@@ -7,7 +7,7 @@ export const menuItems = [
     text: "Home",
   },
   {
-    path: "/contact",
+    path: "/get-in-touch",
     text: "お問い合わせ",
   },
   {

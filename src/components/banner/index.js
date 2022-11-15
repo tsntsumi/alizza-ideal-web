@@ -43,7 +43,7 @@ const EnquireButton = ({ children }) => {
   }
   return (
     <div className="banner__btns">
-      <Button to="/contact">{children}</Button>
+      <Button to="/get-in-touch">{children}</Button>
     </div>
   )
 }

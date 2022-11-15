@@ -13,13 +13,14 @@ export const ButtonStyles = styled.div`
   .btn {
     padding: 1em;
     white-space: nowrap;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
     background-color: ${props => props.bgColor || "var(--key-color)"};
     border: thick solid ${props => props.bdColor || "var(--key-dark-color)"};
     border-radius: var(--p);
     align-items: center;
+    virtical-align: middle;
     font-family: sans-serif;
     font-size: var(--p);
     font-weight: 400;

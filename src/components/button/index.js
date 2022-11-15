@@ -7,9 +7,9 @@ export const Button = props => {
 
   const innerComponents = (
     <React.Fragment>
-      {props.iconLeft && <span className="icon-left">{props.iconLeft}</span>}
+      <span className="icon-left"> {props.iconLeft && props.iconLeft} </span>
       <span>{text}</span>
-      {props.iconRight && <span className="icon-right">{props.iconRight}</span>}
+      <span className="icon-right"> {props.iconRight && props.iconRight} </span>
     </React.Fragment>
   )
 

@@ -5,7 +5,12 @@ import Animate from "../animate"
 import { Nav } from "../nav"
 import { Footer } from "../footer"
 
-const Layout = ({ withoutHamburger, withoutContact, children }) => {
+const Layout = ({
+  withoutHamburger,
+  withoutContact,
+  withoutLanguage,
+  children,
+}) => {
   return (
     <>
       <GlobalStyle />
@@ -18,6 +23,7 @@ const Layout = ({ withoutHamburger, withoutContact, children }) => {
         <Nav
           withoutHamburger={withoutHamburger}
           withoutContact={withoutContact}
+          withoutLanguage={withoutLanguage}
         />
         <Animate>
           {children}

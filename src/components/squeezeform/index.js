@@ -23,6 +23,7 @@ export const SqueezeForm = ({
   tag,
   language,
   acceptInquiry,
+  withoutName,
   action,
   nextpage,
 }) => {
@@ -89,11 +90,13 @@ export const SqueezeForm = ({
         onSubmit={e => {
           e.preventDefault()
           dispatchErrorState({ type: "clearError" })
-          const vn = validate(
-            "name",
-            name => name.trim().length > 0,
-            t("お名前を入力してください")
-          )
+          const vn =
+            withoutName ||
+            validate(
+              "name",
+              name => name.trim().length > 0,
+              t("お名前を入力してください")
+            )
           const ve =
             validate(
               "email",
@@ -165,23 +168,25 @@ export const SqueezeForm = ({
         }}
       >
         <div>
-          <SqueezeField
-            name="name"
-            label={namelabel || t("Name")}
-            type="text"
-            id="name"
-            feedback={errorState.name}
-            onChange={e => {
-              setUserData({
-                ...userData,
-                name: e.target.value,
-              })
-              dispatchErrorState({ type: "clearError" })
-            }}
-            onFocus={e => {
-              dispatchErrorState({ type: "clearError" })
-            }}
-          />
+          {!withoutName && (
+            <SqueezeField
+              name="name"
+              label={namelabel || t("Name")}
+              type="text"
+              id="name"
+              feedback={errorState.name}
+              onChange={e => {
+                setUserData({
+                  ...userData,
+                  name: e.target.value,
+                })
+                dispatchErrorState({ type: "clearError" })
+              }}
+              onFocus={e => {
+                dispatchErrorState({ type: "clearError" })
+              }}
+            />
+          )}
           <SqueezeField
             name="email"
             label={emaillabel || t("Email")}
