@@ -263,7 +263,7 @@ const MdxPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
   color: black;
-  background-color: white;
+  background-color: var(--background);
   margin-top: 0;
   padding-top: 30px;
 
@@ -320,7 +320,7 @@ const MdxPageStyles = styled.section`
   h2 {
     font-weight: 800;
     color: white;
-    background-color: var(--key-color);
+    background-color: var(--key-light-color);
   }
 
   h1 {

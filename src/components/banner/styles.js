@@ -87,7 +87,7 @@ export const BannerStyles = styled.section`
 
   .description {
     display: inline-block;
-    background-color: var(--key-light-color);
+    background-color: var(--background);
     padding: 0.25em 1em 1em 1em;
     border-radius: 0 0 1em 1em;
     width: 100%;
