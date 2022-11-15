@@ -71,9 +71,12 @@ const NetClientInvitationPage = ({ data }) => {
 const NetClientInvitationPageStyles = styled.section`
   text-align: justify;
   align-items: flex-start;
-  background-color: var(--key-dark-color);
+  background-color: var(--key-light-color);
   margin: 0;
   padding: 1em;
+  @media (min-width: 1000px) {
+    margin: 0 200px 0 200px;
+  }
   .float-image {
     width: 45%;
     float: right;
