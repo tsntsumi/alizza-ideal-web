@@ -30,6 +30,7 @@ export const ButtonStyles = styled.div`
       display: inline-block;
       position: relative;
       virtical-align: middle;
+      margin: 0 0.5em;
     }
   }
 

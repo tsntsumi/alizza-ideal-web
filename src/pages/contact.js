@@ -6,7 +6,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import { GlobalStyle } from "../components/layout/styles"
 import { Footer } from "../components/footer"
 import styled from "styled-components"
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
 
@@ -21,9 +20,9 @@ const NetClientInvitationPage = ({ data }) => {
           <h1>
             GoogleマップのMEOを始めたけどお客様が来ないとお悩みの店舗オーナー様へ
           </h1>
-          <p>
+          <h2>
             <center>水戸商工会議所の商い情報宅配便からようこそ！</center>
-          </p>
+          </h2>
           <div className="float-image">
             <StaticImage
               src="../images/gbp-extreme-start-guid.png"
@@ -87,6 +86,13 @@ const NetClientInvitationPageStyles = styled.section`
   h1 {
     padding: 1em;
     font-size: 14pt;
+    color: orange;
+    background-color: var(--key-dark-color);
+  }
+  h2 {
+    padding: 1em;
+    marign: 1em;
+    background-color: var(--key-color);
   }
   .tagline {
     margin: 0;
