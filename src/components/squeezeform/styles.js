@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const FormStyles = styled.section`
-  margin: 0;
+  margin: 0 2em;
   padding: var(--p) var(--borderSpacing);
   text-align: justify;
   border-color: transparent;
@@ -18,9 +18,6 @@ export const FormStyles = styled.section`
 
 export const FieldStyles = styled.div`
   flex-wrap: wrap;
-  padding: 0;
-  margin: 0.5em 0;
-  width: 100%;
   text-align: left;
 
   &:focus {
@@ -37,7 +34,7 @@ export const FieldStyles = styled.div`
     font-weight: 300;
     font-family: "Heebo", sans-serif;
     padding: var(--p) 0.5em;
-    margin: 0;
+    margin: 0.5em 0;
     background-color: var(--key-white-color);
     color: var(--key-dark-color);
     &::placeholder {
@@ -47,8 +44,11 @@ export const FieldStyles = styled.div`
 
   button,
   .btn {
-    font-weight: 600;
+    font-weight: 800;
     font-size: 1.4em;
+    color: darkgreen;
+    padding: var(--p) 0.5em;
+    margin: 0.5em 0;
   }
 
   .feedback {

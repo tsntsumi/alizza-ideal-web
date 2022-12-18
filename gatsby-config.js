@@ -99,6 +99,7 @@ module.exports = {
           "/**/404.html",
           "/ebooks/**",
           "/gbp-marutto",
+          "/kashakasha-map-shukyaku",
           "/contact",
         ],
       },

@@ -167,7 +167,7 @@ export const SqueezeForm = ({
           }
         }}
       >
-        <div>
+        <div style={{ textAlign: "center" }}>
           {!withoutName && (
             <SqueezeField
               name="name"
@@ -223,16 +223,14 @@ export const SqueezeForm = ({
               rows="5"
             />
           )}
-          <div style={{ textAlign: "center" }}>
-            <Button
-              type="submit"
-              to="#"
-              text={cta || t("Inquire Now")}
-              bgColor="orange"
-              color="darkGreen"
-              iconLeft={<Mailbox />}
-            />
-          </div>
+          <Button
+            type="submit"
+            to="#"
+            text={cta || t("Inquire Now")}
+            bgColor="orange"
+            color="darkGreen"
+            iconLeft={<Mailbox />}
+          />
           <span className="success">{errorState.submitSuccess}</span>
           <span className="error">{errorState.submitError}</span>
         </div>

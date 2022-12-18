@@ -9,10 +9,12 @@ export const ButtonStyles = styled.div`
   margin-top: 1rem; /* 16px */
   padding: 0;
   border-radius: var(--p);
+  width: 100%;
 
   .btn {
     padding: 1em;
     white-space: nowrap;
+    width: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;

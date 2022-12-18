@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   --h5: 1.1em;
   --h6: 1em;
   --gap: 40px;
-  --footnote: 9px;
+  --footnote: 6px;
   --sectionMargin: 60px;
 
   @media(min-width:375px) {
@@ -66,13 +66,17 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
 }  
 
+html {
+    background-color: #fff;
+}
+
 body {
     font-family: 'Heebo', sans-serif;
     margin: 0 auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: key-base-color;
-    color: #fff;
+    background-color: white;
+    color: var(--key-base-color);
     overflow-x: hidden;
     font-size: var(--p);
     min-height: 100vh;

@@ -83,6 +83,7 @@ export const BannerStyles = styled.section`
 
   h2 {
     border-radius: 0.5em;
+    color: var(--key-dark-color);
   }
 
   .description {
@@ -91,7 +92,7 @@ export const BannerStyles = styled.section`
     padding: 0.25em 1em 1em 1em;
     border-radius: 0 0 1em 1em;
     width: 100%;
-    color: white;
+    color: var(--key-dark-color);
 
     li {
       margin-left: 3em;

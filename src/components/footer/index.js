@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { Trans, Link } from "gatsby-plugin-react-i18next"
 
 export const FooterStyles = styled.footer`
-  margin-top: 0;
+  margin: 0;
   font-size: var(--footnote);
   font-weight: reset;
   background-color: var(--key-color);
