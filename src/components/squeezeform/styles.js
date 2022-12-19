@@ -5,14 +5,15 @@ export const FormStyles = styled.section`
   padding: var(--p) var(--borderSpacing);
   text-align: justify;
   border-color: transparent;
+  font-size: 10pt;
 
   .success {
     color: var(--key-color);
-    padding: 1em 0;
+    padding: 1em var(--p);
   }
   .error {
     color: red;
-    padding: 1em 0;
+    padding: 1em var(--p);
   }
 `
 
@@ -21,14 +22,14 @@ export const FieldStyles = styled.div`
   text-align: left;
 
   &:focus {
-    outline: 4px solid var(--primary);
-    outline-offset: 2px;
+    outline: var(--focus-ring-width) solid var(--key-light-color);
+    outline-offset: var(--focus-ring-offset);
   }
 
   input,
   textarea {
-    border: 3pt solid var(--key-dark-color);
-    border-radius: 1em;
+    border: 3px solid var(--key-dark-color);
+    border-radius: var(--p);
     width: 100%;
     font-size: var(--p);
     font-weight: 300;
@@ -49,11 +50,13 @@ export const FieldStyles = styled.div`
     color: darkgreen;
     padding: var(--p) 0.5em;
     margin: 0.5em 0;
+    border-radius: var(--p);
   }
 
   .feedback {
     color: red;
-    padding: 1em 0;
+    padding: 0.5em var(--p);
+    font-size: 9pt;
   }
 `
 

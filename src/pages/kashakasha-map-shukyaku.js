@@ -133,7 +133,6 @@ const KashaKashaShukyakuPageStyles = styled.section`
     font-weight: 900;
     & section {
       box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
     }
     p {
       font-size: 10pt;
@@ -141,13 +140,15 @@ const KashaKashaShukyakuPageStyles = styled.section`
       margin: 0;
     }
     input#email {
-      border: 3pt solid darkblue;
+      border: 3px solid darkblue;
       background-color: white;
+      outline: none;
     }
     button {
       background-color: darkorange;
       font-size: 11pt;
       font-weight: 800;
+      border-radius: var(--p);
     }
   }
 `

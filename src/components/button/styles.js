@@ -41,7 +41,8 @@ export const ButtonStyles = styled.div`
     border: 0;
     outline-color: ${props => props.bdColor};
     outline-width: 3px;
-    outline-offset: 3px;
+    outline-offset: 4px;
+    border-radius: var(--p);
   }
 
   .disabled {
@@ -64,8 +65,8 @@ export const ButtonStyles = styled.div`
 
   &:focus,
   &:hover {
-    border: 4px solid var(--key-light-color);
-    border-style: solid single;
+    outline: var(--focus-ring-width) solid var(--key-light-color);
+    outline-offset: var(--focus-ring-offset);
   }
 
   @media (hover: hover) {

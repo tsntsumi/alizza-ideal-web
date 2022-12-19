@@ -31,6 +31,8 @@ export const GlobalStyle = createGlobalStyle`
   --gap: 40px;
   --footnote: 6px;
   --sectionMargin: 60px;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
 
   @media(min-width:375px) {
     --bannerTitle: 36px;
