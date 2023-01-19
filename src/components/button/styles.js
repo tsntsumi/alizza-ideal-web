@@ -27,7 +27,6 @@ export const ButtonStyles = styled.div`
     font-size: var(--p);
     font-weight: 400;
     color: ${props => props.color || "white"};
-    margin: 0;
     span {
       display: inline-block;
       position: relative;

@@ -164,16 +164,12 @@ const BasePage = ({ mdx, t }) => {
       >
         <MDXProvider components={components}>
           <MdxPageStyles>
-            <div className="base-page">
-              <h1>{title}</h1>
-              <ShowTableOfContents
-                showTOC={showTOC}
-                tableOfContents={tableOfContents}
-              />
-              <div className="container">
-                <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
-              </div>
-            </div>
+            <h1>{title}</h1>
+            <ShowTableOfContents
+              showTOC={showTOC}
+              tableOfContents={tableOfContents}
+            />
+            <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
           </MdxPageStyles>
         </MDXProvider>
       </PageContext.Provider>
@@ -220,9 +216,7 @@ const BlogPage = ({ mdx, source, t }) => {
               showTOC={showTOC}
               tableOfContents={tableOfContents}
             />
-            <div className="container">
-              <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
-            </div>
+            <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
           </MdxPageStyles>
         </MDXProvider>
         <MdxPageStyles>
@@ -280,8 +274,7 @@ const MdxPageStyles = styled.section`
   align-items: flex-start;
   color: black;
   background-color: var(--background);
-  margin-top: 0;
-  padding-top: 30px;
+  margin-top: var(--header-height);
 
   .container {
     background-color: #e0ebeb;
@@ -318,103 +311,46 @@ const MdxPageStyles = styled.section`
     }
   }
 
-  h1 ~ *,
-  h2 ~ *,
-  h3 ~ *,
-  h4 ~ *,
-  h5 ~ *,
-  h6 ~ * {
-    padding-left: var(--borderSpacing);
-    padding-right: var(--borderSpacing);
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: sans-serif;
-    padding: 0.7em var(--borderSpacing);
-    margin: 0.4em 0;
-    text-indent: 0;
-    clear: both;
-  }
-
-  h2:first-child {
-    margin-top: 0;
-  }
-
   h1,
   h2 {
-    font-weight: 800;
+    background-color: var(--key-color);
     color: white;
-    background-color: var(--key-light-color);
+    font-weight: 800;
+    padding: 1em;
   }
 
   h1 {
-    font-size: var(--h3);
-    padding: 0.7em;
-    margin-top: 0;
-  }
-
-  .base-page {
-    h1 {
-      margin-top: calc(var(--header-height) / 2);
-    }
+    font-size: var(--h1);
   }
 
   h2 {
-    font-size: var(--h4);
-    border-radius: 5em;
-    margin-top: 1em;
+    font-size: var(--h3);
+    border-radius: 2em;
+    margin: 0.5em var(--borderSpacing);
   }
 
   h3 {
-    font-size: var(--h5);
-    font-weight: 600;
-    text-indent: 0;
-    margin: 1.2em var(--borderSpacing) 0.7em var(--borderSpacing);
-    padding: 0.2em 0 0 0;
-    color: var(--key-color);
-    border-bottom: 0.4em solid var(--key-color);
-  }
-
-  h4 {
-    text-indent: 0;
-    font-size: var(--h6);
+    font-size: var(--h3);
     font-weight: 600;
     color: var(--key-color);
-    padding: 0;
-    margin: 0.7em var(--borderSpacing) 0.5em var(--borderSpacing);
-  }
-
-  h1 > *,
-  h2 > *,
-  h3 > * {
-    padding-left: var(--borderSpacing);
-    padding-right: var(--borderSpacing);
+    margin: 0.5em var(--borderSpacing);
+    padding: 0.1em 0.5em;
+    border-bottom: 2px solid var(--key-color);
   }
 
   ol,
-  ul {
-    margin: 0;
-    text-align: justify;
-
-    li {
-      padding: auto var(--borderSpacing);
-    }
-  }
-
-  p {
-    text-indent: 1em;
-    text-align: justify;
-    margin-bottom: 0.4em;
-  }
-
+  ul,
   blockquote {
-    font-size: 1.1em;
-  }
-
-  a {
-    color: darkred;
+    font-size: var(--p);
+    margin: 0.5em var(--borderSpacing);
+    padding: 0 0.5em 0 2.2em;
+    ol,
+    ul,
+    blockquote {
+      font-size: 1em;
+      margin: 0.2em 0 0 1em;
+      padding: 0 0 0 0.5em;
+    }
   }
 
   table {
