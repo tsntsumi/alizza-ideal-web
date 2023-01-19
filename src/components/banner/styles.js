@@ -74,6 +74,7 @@ export const BannerStyles = styled.section`
     padding: 10px;
     border-radius: 20px 20px 0 0;
     width: 100%;
+    color: white;
   }
 
   h1,
@@ -81,7 +82,6 @@ export const BannerStyles = styled.section`
   h3 {
     padding: 0.5em 1em;
     border-radius: 0.75em 0.75em 0 0;
-    color: white;
     font-weight: 600;
   }
 

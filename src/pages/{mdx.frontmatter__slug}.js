@@ -274,17 +274,18 @@ const MdxPageStyles = styled.section`
   align-items: flex-start;
   color: black;
   background-color: var(--background);
-  margin-top: var(--header-height);
 
   .container {
     background-color: #e0ebeb;
-    padding-bottom: 1.5em;
+    padding: 2em 1em;
+    margin-bottom: 0;
   }
 
   .bloginfo {
     display: flex;
     justify-content: flex-end;
-    padding-right: var(--borderSpacing);
+    padding: 1em var(--borderSpacing);
+    margin: 0;
   }
 
   .bloginfo > div {
@@ -342,14 +343,26 @@ const MdxPageStyles = styled.section`
   ul,
   blockquote {
     font-size: var(--p);
-    margin: 0.5em var(--borderSpacing);
-    padding: 0 0.5em 0 2.2em;
+    margin: 0 var(--borderSpacing);
+    padding: 0.5em 0.5em 0.5em 2.2em;
     ol,
     ul,
     blockquote {
       font-size: 1em;
       margin: 0.2em 0 0 1em;
       padding: 0 0 0 0.5em;
+    }
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      font-weight: 600;
     }
   }
 
