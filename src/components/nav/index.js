@@ -81,7 +81,7 @@ const ContactLink = ({ language }) => {
 const Title = () => {
   return (
     <div className="title">
-      <Trans>Catch Copy on Nav Bar</Trans>
+      <Trans>Catchphrase on Nav Bar</Trans>
     </div>
   )
 }

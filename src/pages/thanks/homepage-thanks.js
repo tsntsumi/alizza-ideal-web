@@ -19,6 +19,7 @@ const HPThanksPage = ({ data }) => {
       <Banner
         title={t("お問い合わせありがとうございます")}
         image={images.pop()}
+        position="left"
       >
         <h2>
           <Trans>まもなく、メールにて確認メールをお送りいたします。</Trans>

@@ -30,7 +30,13 @@ export const BannerStyles = styled.section`
     z-index: 1;
   }
 
-  .banner__image--content {
+  .banner__image--content-left {
+    object-position: left;
+  }
+  .banner__image--content-right {
+    object-position: right;
+  }
+  .banner__image--content-center {
     object-position: center;
   }
 

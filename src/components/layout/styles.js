@@ -78,7 +78,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: white;
-    color: var(--key-base-color);
+    color: white;
     overflow-x: hidden;
     font-size: var(--p);
     min-height: 100vh;
@@ -162,15 +162,14 @@ u {
 ol,
 ul,
 blockquote {
-  list-style-position: outside;
-  margin: 0.75em auto;
+  margin: 0;
+  padding 0;
+  text-align: justify;
 }
 
-li {
-  position: relative;
-  text-align: justify;
-  padding-right: 2em;
-  margin-left: 5em;
+ul.next-to-float {
+    list-style-position: inside;
+    margin-left: -1.9em;
 }
 
 hr {

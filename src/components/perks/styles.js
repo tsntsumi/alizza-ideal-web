@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const PerksStyles = styled.section`
-  background-color: var(--key-dark-color);
+  background-color: white;
+  color: var(--key-dark-color);
   --sectionMargin: 40px;
 
   .section,
@@ -30,10 +31,13 @@ export const PerksStyles = styled.section`
   h2 {
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     margin: 0 auto 1em auto;
+    border-radius: 0.25em;
     text-align: center;
     font-size: 1.4em;
     font-weight: 800;
     color: white;
+    background-color: var(--key-dark-color);
+    padding: 0.4em 0;
   }
 
   @media (min-width: 400px) {
@@ -48,14 +52,14 @@ export const PerkStyles = styled.aside`
   position: relative;
   width: 100%;
   display: flex;
-  background-color: var(--key-color);
   padding: 0.2em 0.5em;
-  color: white;
-  font-size: 10px;
+  background-color: white;
+  color: var(--key-color);
   text-align: justify;
 
   h3 {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    border-top: 2px solid var(--key-color);
+    border-bottom: 2px solid var(--key-color);
     font-size: 1.2em;
     font-weight: 800;
     width: 100%;
@@ -65,6 +69,7 @@ export const PerkStyles = styled.aside`
   p {
     width: 100%;
     padding: 0 0.4em;
+    color: var(--key-color);
   }
 
   .image {

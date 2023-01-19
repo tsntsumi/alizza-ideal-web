@@ -2,7 +2,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Banner } from "../components/banner"
@@ -19,191 +19,274 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Seo title="Home" />
       <Banner
-        title={t("ローカルSEOで、お客様が集まるお店に")}
+        title={t("小さなお店のひとりオーナー・経営者の方へ")}
         image={images.imageOf("Heros")}
+        position="center"
       >
-        <p>
-          <Trans>
-            あなたのお店が、こんなお店になれるとしたらどうでしょうか？
-          </Trans>
-          <Trans>しかも、お金も時間もほとんどかけずに！？</Trans>
-        </p>
+        <StaticImage
+          src="../images/KashaKasha-Map-Shukyaku.png"
+          alt={t("スマホでカシャカシャするだけのネット集客術")}
+        />
+      </Banner>
+
+      <Claim
+        title={t("Googleマップ集客術は、こんな人にオススメです")}
+        name="recommends"
+        float="right"
+      >
         <ul>
           <li>
             <Trans>
-              地元で〇〇といえばあなたのお店と呼ばれる地域ダントツのお店
+              新型コロナの変異種がまた流行したり、ハイパーインフレになっても、毎月きちんと売上を上げたい人
             </Trans>
           </li>
           <li>
             <Trans>
-              無理してお客様を集めようとしなくても、ひとりでに集まってくるお店
+              毎日、あなたの時間をたくさん集客に使っているのに、成果を実感できていない人
             </Trans>
           </li>
           <li>
             <Trans>
-              いままでお客様を集めていた時間で、お客様により満足してもらえる時間がとれるお店
+              多くの広告費をかけなくても、新規のお客さんが来るようにしたい人
             </Trans>
           </li>
           <li>
-            <Trans>お客様の満足度が上がるから、毎月の売上が安定するお店</Trans>
+            <Trans>
+              せっかくホームページを作ったのに、まったく問い合わせがない人
+            </Trans>
           </li>
           <li>
             <Trans>
-              売上が安定するから、あなたもスタッフも大事な人と過ごす時間が充実する店
+              ほとんど何もしなくても、問い合わせや予約が入るようにしたい人
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              ビューティーサロン、ヘアサロン、飲食店、治療院、不動産仲介業、行政書士、税理士など、店舗や事務所がある専門家の方
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              電話営業してきたMEO対策会社と契約したのに、来店数も売上も延びなかった人
+            </Trans>
+          </li>
+          <li>
+            <Trans>地域でナンバーワンのお店になりたい人</Trans>
+          </li>
+        </ul>
+      </Claim>
+
+      <Banner
+        title={t("Googleマップ集客術では、こんなことを知ることができます")}
+        image={images.imageOf("I Solve It")}
+        position="left"
+      >
+        <ul>
+          <li>
+            あなたも商圏で一人勝ち! 小さくても繁盛店がやっている方法とは？
+          </li>
+          <li>あなたの時間もお金もかけずに、 勝手にお客が集まる方法とは？</li>
+          <li>なぜ、口コミサイトにお金を払っても集客できないのか？</li>
+          <li>なぜ、インスタグラムよりGoogleマップなのか？</li>
+          <li>
+            悪い口コミを書かれても、逆にお客が集まってしまう口コミ対策とは?
+          </li>
+          <li>
+            迷惑なお客が集まってしまう！みんなやっているけど、やってはいけない集客方法とは？
+          </li>
+        </ul>
+      </Banner>
+
+      <Perks title={t("Googleマップ集客術であなたに起こること")}>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>
+            勝手にお客さんが集まるから、月末になって売上が足りないと慌てることがなくなる
+          </h3>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>
+            マップで検索１位になるだけでなく、実際に来店するお客さんが増えて、売上がアップする
+          </h3>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>
+            ブログ、SNS投稿、チラシ、DM配布など、あなたの時間もお金も使わなくてよくなる
+          </h3>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>余裕を持ってお客さんにサービスできるようになる</h3>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>お客さんが満足してくれてファンになり、リピート率がアップする</h3>
+        </Perk>
+        <Perk
+          image={images.imageOf("Reasons")}
+          credit="Photo by TSUTSUMI Kikuo"
+        >
+          <h3>
+            お客さんだけでなく、あなたの大切な人にも時間とお金を使えるようになる
+          </h3>
+        </Perk>
+      </Perks>
+
+      <Claim title={t("自己紹介")} name="self introduce" float="right">
+        <ul>
+          <li>小さなお店のためのGoogleマップ集客の専門家</li>
+          <li>副業の販売不振からインターネット・マーケティングを習得</li>
+          <li>前職はインターネットやウェブ関連のプログラマー</li>
+          <li>大学では経営学とソフトウェア工学および人工知能を専攻</li>
+          <li>
+            現在は、小さなお店のオーナーに、ゼロ円で集客できる「Googleマップ集客術」を広めている
+          </li>
+        </ul>
+        <div className="image">
+          <GatsbyImage image={images.imageOf("Heros")} alt="self introduce" />
+        </div>
+        <div style={{ clear: "both" }} />
+      </Claim>
+
+      <Claim
+        title={t("なぜGoogleマップ集客は成果が上がるのか")}
+        name="Proof"
+        float="none"
+      >
+        <h3>
+          <Trans>理由１：お客さんの行動から</Trans>
+        </h3>
+        <ul>
+          <li>
+            <Trans>お店を探している 86%の人は、Googleマップを使っている</Trans>
+          </li>
+          <li>
+            <Trans>
+              ４大地図アプリのユーザーは、99.4%がGoogleマップを使っている
+            </Trans>
+          </li>
+          <li>
+            <Trans>Googleマップを活用しているお店は、たった6%</Trans>
+          </li>
+          <li>
+            <Trans>Instagramでお店を探している人は、１０%未満</Trans>
+          </li>
+        </ul>
+        <div className="image">
+          <StaticImage
+            src="../images/Customer-vs-Owner.png"
+            alt="Customer vs Owner"
+          />
+        </div>
+        <h3>
+          <Trans>理由２：口コミサイトの問題点から</Trans>
+        </h3>
+        <ul>
+          <li>
+            <Trans>
+              口コミサイトは、お客さんが信頼しなくなって使われなくなりつつある
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              口コミサイトは、登録しても追加料金を払わないと検索上位に出ないことが多い
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              口コミサイトでクーポンを発行して集客しても、クレームが多くリピートもしないクーポン難民が集まってしまい、時間とお金を浪費する
             </Trans>
           </li>
         </ul>
-        <p>
-          <Trans>
-            もし、あなたのお店をこんな理想のお店にしたいなら、
-            ローカルSEOの専門家、わたくし堤紀久夫が、あなたのお店をプロデュースします。
-          </Trans>
-        </p>
-      </Banner>
-
-      <Perks title={t("ネット集客でこんなことに困っていませんか？")}>
-        <Perk
-          key="suffer1"
-          image={images.imageOf("Suffers")}
-          name="a suffer"
-          credit={
-            <a href="https://www.vecteezy.com/free-vector">
-              Vectors by Vecteezy
-            </a>
-          }
-        >
-          <h3>
-            <Trans>口コミサイトに登録したけど、リピートにつながらない</Trans>
-          </h3>
-          <p>
+        <div className="image">
+          <StaticImage
+            src="../images/Reliability of Review Sites.png"
+            alt="Reliability of Review Sites"
+          />
+          <div className="footnote" style={{ textAlign: "right" }}>
+            (株)テーブルチェック調べ
+          </div>
+        </div>
+        <h3>
+          <Trans>理由３：Google検索の表示から</Trans>
+        </h3>
+        <div className="float-right">
+          <StaticImage
+            src="../images/local-search-listing.png"
+            alt="Local Search Listing"
+          />
+        </div>
+        <ul>
+          <li>
             <Trans>
-              口コミサイトから流れてくる人の多くは、〇〇な人ばかり。
+              ❶検索するとGoogleマップの情報が一番上に表示される（Google広告があれば、広告が一番上）
             </Trans>
+          </li>
+          <li>
             <Trans>
-              リピートにつながらないばかりか、利益までガタ落ちしているお店が増えてます。
+              ❷検索結果からルートボタン１タップでお店までのナビを表示できる
             </Trans>
-          </p>
-        </Perk>
-        <Perk
-          key="suffer2"
-          image={images.imageOf("Suffers")}
-          name="Suffer"
-          credit={
-            <a href="https://www.vecteezy.com/free-vector">
-              Vectors by Vecteezy
-            </a>
-          }
-        >
-          <h3>
-            <Trans>インスタグラムを始めたけど、売り上げにつながらない</Trans>
-          </h3>
-          <p>
-            <Trans>日本全国で多くのお店がインスタグラムを始めています。</Trans>
-            <Trans>でも、売り上げにつながっているところはまれです。</Trans>
-            <Trans>それには理由があるんです。</Trans>
-          </p>
-        </Perk>
-        <Perk
-          key="suffer3"
-          image={images.imageOf("Suffers")}
-          name="Suffer"
-          credit={
-            <a href="https://www.vecteezy.com/free-vector">
-              Vectors by Vecteezy
-            </a>
-          }
-        >
-          <h3>
-            <Trans>ネットで集客しなきゃ……。わかってるけど始められない</Trans>
-          </h3>
-          <p>
-            <Trans>でも、ちょっと待ってください。</Trans>
+          </li>
+          <li>
             <Trans>
-              昨年、ネット集客を始めたばっかりに、
-              倒産してしまった優良会社もあるんです。
+              ❸口コミサイトのページは、マップのお店より下に表示される
             </Trans>
-          </p>
-          <p>
-            <Trans>準備なしにネット集客を始めるのは危険です。</Trans>
-          </p>
-        </Perk>
-      </Perks>
-
-      <Banner
-        title={t("そのお悩み、わたしが解決します")}
-        image={images.imageOf("I Solve It")}
-      >
+          </li>
+          <li>
+            <Trans>❹ホームページは、一番下に表示される。</Trans>
+            <Trans>スクロールしないと見えない</Trans>
+          </li>
+          <li>
+            <Trans>
+              検索した人は、検索結果の１番目から３番目しか見ない傾向がある
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              お店から６キロ以内にいる人の 80%は、検索後１日以内に来店する
+            </Trans>
+          </li>
+        </ul>
         <h3>
           <Trans>
-            もし、そのような悩みをお抱えなら、
-            ローカルSEOの専門家・堤がそのお悩みを解決します。
+            結論：小さなお店の１人オーナー・経営者には、Googleマップ集客が１番である
           </Trans>
         </h3>
+        <ul>
+          <li>
+            <Trans>あなたのお金がかからない</Trans>
+          </li>
+          <li>
+            <Trans>あなたの時間もかからない</Trans>
+          </li>
+          <li>
+            <Trans>検索上位に表示されやすい</Trans>
+          </li>
+          <li>
+            <Trans>お客さんはGoogleマップで探してる</Trans>
+          </li>
+          <li>
+            <Trans>まだ使っているお店が少ない</Trans>
+          </li>
+        </ul>
         <p>
-          <Trans>
-            地元密着型の店舗オーナー様にピッタリのローカルSEOで、
-            あなたの商圏のお客様にアプローチ。
-          </Trans>
+          <strong>
+            <Trans>つまり、今なら商圏のお客さんをひとりじめできる！</Trans>
+          </strong>
         </p>
-        <p>
-          <Trans>
-            しかも、広告費をほとんどかけずに、３ヶ月以内に売上がアップします。
-          </Trans>
-        </p>
-        <p>
-          <Trans>
-            ３ヶ月間、あなたの目標を達成するまで集客にコミットします。
-          </Trans>
-        </p>
-      </Banner>
-
-      <Perks title={t("お客様に選ばれる理由")}>
-        <Perk
-          image={images.imageOf("Reasons")}
-          credit="Photo by TSUTSUMI Kikuo"
-        >
-          <h3>
-            <Trans>お客さんの心をつかむキャッチコピー</Trans>
-          </h3>
-          <p>
-            <Trans>あなたの商品やお店をアピールするための、</Trans>
-            <Trans>お客さんの心をつかむキャッチコピーを書く方法。</Trans>
-          </p>
-        </Perk>
-        <Perk
-          image={images.imageOf("Reasons")}
-          name="reason"
-          credit="Photo by TSUTSUMI Kikuo"
-        >
-          <h3>
-            <Trans>Googleの意図を汲みとったローカル SEO 対策</Trans>
-          </h3>
-          <p>
-            <Trans>
-              あなたのお店が検索結果上位にランクインするためのローカルSEO対策。
-            </Trans>
-          </p>
-        </Perk>
-        <Perk
-          image={images.imageOf("Reasons")}
-          name="Suffer #1"
-          credit={
-            <span>
-              Photo by
-              <a href="https://unsplash.com/@wenhong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-                Evan Qu on Unsplash
-              </a>
-            </span>
-          }
-        >
-          <h3>
-            <Trans>あなたの商品を引き立てる写真と動画の撮影</Trans>
-          </h3>
-          <p>
-            <Trans>スマホでもできる、カンタン撮影のノウハウ。</Trans>
-          </p>
-        </Perk>
-      </Perks>
+      </Claim>
 
       <Claim
         title={t("お客様の声")}
@@ -211,10 +294,16 @@ const IndexPage = ({ data }) => {
         name="Client Photo"
         float="left"
       >
-        <p>
+        <h3>
           <Trans>
-            最初は、どうせやるだけ無駄かなと思ってました。
-            口コミサイトにも登録して毎月課金してたので。
+            ネイルサロンを経営するひとりオーナーネイリストのA.O.
+            様（４０代・女性）
+          </Trans>
+        </h3>
+        <p>
+          <Trans>最初は、どうせやるだけ無駄かなと思ってました。</Trans>
+          <Trans>
+            口コミサイトにも登録して毎月課金してたので、これ以上やってもだめだと思ってました。
           </Trans>
         </p>
         <p>
@@ -229,19 +318,19 @@ const IndexPage = ({ data }) => {
             道順を表示してくれた人数がわかるようになったんです。
           </Trans>
           <Trans>
-            いままで、お客さんの反応がわからなかったので、
+            いままで、ポスターを貼ったりFacebookに写真を投稿しても、なんの反応もなかったので、
             だれもお店のことを知らないんじゃないかって不安に思ってました。
           </Trans>
         </p>
         <p>
           <Trans>
-            もう、このお店はたたんで、実家の母とのんびり暮らそうかなと
+            始める直前まで、もう、このお店はたたんで、実家の母とのんびり暮らそうかなと
             思っていたところでした。
           </Trans>
         </p>
         <p>
           <Trans>
-            お客さんの反応が実感できたことで、がぜんとやる気がでてきました。
+            お客さんの反応が実感できたことで、がぜんとやる気がでてきたんです。
           </Trans>
         </p>
         <p>
@@ -249,17 +338,10 @@ const IndexPage = ({ data }) => {
             登録していた口コミサイトの方は、知らない間にクーポンを発行されたりしたので、やめちゃいました。
           </Trans>
         </p>
-        <div className="profile">
-          <p>
-            <Trans>ネイルサロン経営</Trans>
-          </p>
-          <p>
-            <Trans>A.O. 様（４０代・女性）</Trans>
-          </p>
-        </div>
       </Claim>
+
       <Claim
-        title={t("安心の集客保証 ― 「９０日間」集客にコミットします")}
+        title={t("安心の集客保証「９０日間」集客にコミット")}
         image={images.imageOf("Guarantees")}
         name="Guarantees"
         float="left"
@@ -286,22 +368,27 @@ const IndexPage = ({ data }) => {
         <p>
           <Trans>全額返金いたします。</Trans>
           <Trans>とくに理由はお聞きしません。</Trans>
-          <Trans>一言「実感できなかった」とお知らせください。</Trans>
+          <Trans>
+            ただ単に「実感できなかったので返金してもらいたい」とお知らせください。
+          </Trans>
         </p>
         <ul>
           <li>
             <Trans>
-              新規のお客様がサポート開始前より増え、集客の悩みから解放された。
+              新規のお客様が以前より増え、集客の悩みから解放されたと感じた。
+            </Trans>
+          </li>
+          <li>
+            <Trans>お客様が満足してくれることが多くなったと感じた。</Trans>
+          </li>
+          <li>
+            <Trans>
+              リピートしてくれるお客様が増え、気持ちに余裕ができたと感じた。
             </Trans>
           </li>
           <li>
             <Trans>
-              リピートしてくれるお客様が増え、気持ちに余裕ができた。
-            </Trans>
-          </li>
-          <li>
-            <Trans>
-              売上が安定し、大事な人と過ごす時間が増え、毎日が充実した。
+              売上が安定し、大事な人と過ごす時間が増え、１日終わりに充実している感じた。
             </Trans>
           </li>
         </ul>
@@ -315,15 +402,17 @@ const IndexPage = ({ data }) => {
       <Claim title={t("本サイト限定キャンペーンのお知らせ")}>
         <h3>
           <center>
-            <Trans>今ここで申し込んでくれるなら、初回相談が完全無料！！</Trans>
+            <Trans>
+              今ここで申し込んでくれるなら、初回個別集客相談が完全無料！！
+            </Trans>
           </center>
         </h3>
 
         <p>
           <Trans>
             ここまで読んでいただいたあなたも、
-            ローカルSEOでお客様がひとりでに集まる、
-            理想のお店にしたいと思いませんか？
+            Googleマップ集客術を学んで、お客様がひとりでに集まり、
+            商圏のお客さんに愛されるお店にしたいと思いませんか？
           </Trans>
         </p>
         <p>
@@ -333,98 +422,99 @@ const IndexPage = ({ data }) => {
         </p>
         <p>
           <Trans>
-            通常は 60 分 30,000円で提供している、
-            個別相談を無料で行わせていただきます！
+            通常は 60 分 5,000円で提供している、
+            個別集客相談を無料で行わせていただきます！
           </Trans>
         </p>
 
         <p>
           <Trans>この下のフォームからお申し込みください。</Trans>
         </p>
+        <SqueezeForm
+          cta={t("今すぐ無料相談に申し込む")}
+          withoutName={true}
+          emaillabel={"メールアドレスを入力"}
+          acceptInquiry={false}
+          action={SubmitEmailToAirtable}
+          nextpage="/thanks/homepage-thanks"
+          tag="homepage"
+        />
       </Claim>
 
       <Claim
-        title="ローカルSEO対策こそ最先端のネット集客"
+        title="堤からのメッセージ"
         image={images.imageOf("I Solve It")}
         float="right"
       >
+        <h3>
+          <Trans>わたしも売上で悩んでいました</Trans>
+        </h3>
         <p>
+          <Trans>数年前、結婚を機に副業を始めたんです。</Trans>
           <Trans>
-            ローカルSEO対策は、MEO対策といったい何が違うのか
-            と疑問に思われたかもしれません。
-          </Trans>
-          <Trans>実はわたしもそうでした。</Trans>
-        </p>
-        <p>
-          <Trans>
-            ローカルSEO対策とは、MEO対策と違って、
-            最適化対策の対象がGoogleマップに限定されません。
-          </Trans>
-        </p>
-        <p>
-          <Trans>ホームページ、ブログ、SNS投稿もそうです。</Trans>
-          <Trans>チラシやポスターもそうです。</Trans>
-          <Trans>それだけでなく、お店の外観や内装までも対象です。</Trans>
-        </p>
-        <p>
-          <Trans>なぜでしょうか？</Trans>
-        </p>
-        <p>
-          <Trans>
-            ここでいう「ローカル」とは、地方とか田舎という意味ではありません。
+            ハンドメイド作品を制作したのですが、全く売れることはありませんでした。
           </Trans>
         </p>
         <p>
           <Trans>
-            「ローカル」は、「グローバル」（全体、全域、広域）に対応する単語なんです。
-            したがって、いうなれば「あなたのお店のある周辺とか地域」または、
-            「あなたのお店がある地元」のことです。
+            ハンドメイドを選んだのは、子供の頃から絵を書いたり工作したりとものを作るのが大好きだったからです。
           </Trans>
         </p>
         <p>
           <Trans>
-            これまで行われてきた「SEO対策」は、
-            ネットのWebサイトを検索する検索エンジン（サーチ・エンジン）の
-            最適化（オプチマイズ）を目的にします。
+            しかし、売れるどころか、作品のページすら誰にも見てもらえませんでした。
           </Trans>
+          <Trans>
+            実際に手にとって貰えれば、質感とか、品質のよさとかわかってもらえるのにと思いました。
+          </Trans>
+          <Trans>しかし、店舗を構える余裕はありませんでした。</Trans>
         </p>
-        <div className="image">
-          <GatsbyImage
-            image={images.imageOf("I Solve It")}
-            alt="Target of SEO, Local SEO"
-          />
-        </div>
         <p>
           <Trans>
-            そして、GoogleはGoogleマップのストリートビューのために集めた写真と、
-            Google検索のためにネット上のSNSやブログなどから取り出した情報を、
-            人工知能（AI）を使って分析・マッチングして検索できるようにしたんです。
+            そこで、インターネット・マーケティングの勉強を始めたのです。
           </Trans>
         </p>
         <p>
           <Trans>
-            それらを検索するエンジンを最適化するのがローカルSEO対策なのです。
+            すると、大学で習った経営学とは、全く異なる方法論を知ることができました。
+          </Trans>
+          <Trans>小さなお店に最適なマーケティングの方法です。</Trans>
+          <Trans>
+            多くの小さなお店は、見様見真似で大きな企業向けのマーケティングを行ってしまっています。
           </Trans>
         </p>
         <p>
           <Trans>
-            したがって、ローカルSEO対策が最適化するのは、
-            Googleマップに限ったものではありません。
+            小さなお店は、小さなお店に最適で効果のある集客行うべきなんです。
           </Trans>
         </p>
         <p>
           <Trans>
-            ホームページ、ブログ、SNS投稿、チラシやポスター、
-            お店の外観や内装などのブランディングにいたるまで、
-            最適化を行います。
+            そして、Googleマップ集客術では、
+            そんな小さなお店に最適な方法をお伝えしています。
           </Trans>
         </p>
         <p>
-          <Trans>実に最先端のデジタルな集客手法なのです。</Trans>
+          <Trans>
+            これまで多くの人が、ホームページがいい、
+            いやこれからはブログだ、いやSNSだ、 Instagram だ、 今度こそ TicTok
+            で、と流行り廃りの多い集客法を
+            流浪の民のごとく、あれやこれやと試されています。
+          </Trans>
+          <Trans>あなたは、いかがですか？</Trans>
         </p>
+
+        <p>
+          <Trans>
+            できうれば、Googleマップ集客術で、
+            さまよえる集客の旅を終えられんことを願っています。
+          </Trans>
+          <Trans>わたしのように、 無駄な回り道は避けられますように。</Trans>
+        </p>
+
         <div className="profile">
           <p>
-            <Trans>ローカルSEOエージェント</Trans>
+            <Trans>小さなお店のGoogleマップ集客の専門家</Trans>
           </p>
           <p>
             <Trans>堤　紀久夫</Trans>
@@ -433,16 +523,16 @@ const IndexPage = ({ data }) => {
       </Claim>
 
       <Claim
-        title={t("60分間の無料個別相談")}
+        title={t("弊サイト限定、60分間の無料個別集客相談")}
         image={images.imageOf("Voices")}
         float="left"
       >
-        <ul>
+        <ul className="next-to-float">
           <li>
             <Trans>うちの店は何から始めたらいい？</Trans>
           </li>
           <li>
-            <Trans>ローカルSEOを始めるタイミングは？</Trans>
+            <Trans>うちの店でも効果あるの？</Trans>
           </li>
           <li>
             <Trans>自分だけでできないの？</Trans>
@@ -458,11 +548,11 @@ const IndexPage = ({ data }) => {
           </Trans>
         </p>
         <p>
-          <Trans>ご相談はこちら</Trans>
+          <Trans>無料の集客相談はこちら</Trans>
         </p>
         <SqueezeForm
-          cta={t("無料相談に申し込む")}
-          namelabel={t("お名前")}
+          cta={t("無料集客相談に申し込む")}
+          withoutName={true}
           emaillabel={t("メールアドレス")}
           tag="homepage"
           language={language}

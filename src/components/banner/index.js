@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { BannerStyles } from "./styles"
 import Button from "../button"
 
-const BannerImage = ({ image }) => {
+const BannerImage = ({ image, position }) => {
   if (!image) {
     return <></>
   }
@@ -12,8 +12,8 @@ const BannerImage = ({ image }) => {
     <GatsbyImage
       image={getImage(image)}
       alt="Banner Image"
-      className="banner__image"
-      imgClassName="banner__image--content"
+      className={`banner__image`}
+      imgClassName={`banner__image--content-${position}`}
     />
   )
 }
@@ -48,11 +48,11 @@ const EnquireButton = ({ children }) => {
   )
 }
 
-export const Banner = ({ children, title, image, enquire }) => {
+export const Banner = ({ children, title, image, enquire, position }) => {
   return (
     <>
       <BannerStyles>
-        <BannerImage image={image} />
+        <BannerImage image={image} position={position || "center"} />
         <div className="container">
           <div className="banner__content">
             <BannerTitle title={title} />

@@ -10,8 +10,8 @@ export const Claim = ({ children, title, image, name, float }) => {
       </div>
       <div className="container container__tight">
         <GatsbyImage image={getImage(image)} alt={name} />
+        {children}
       </div>
-      <div className="container container__tight">{children}</div>
     </ClaimStyles>
   )
 }

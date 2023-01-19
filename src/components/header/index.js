@@ -86,7 +86,7 @@ export const Header = () => {
               </Link>
             </LogoStyles>
             <a href="mailto:info@alizza-ideal.com" alt="mail me">
-              <Trans>あなたのお店の集客にコミットする Aliza Ideal</Trans>
+              <Trans>catchphrase</Trans>
             </a>
             <Selector>
               {"[ "}

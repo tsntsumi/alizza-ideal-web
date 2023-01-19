@@ -14,6 +14,10 @@ export const menuItems = [
     path: "/blog",
     text: "ブログ",
   },
+  {
+    path: "/aboutme",
+    text: "私について",
+  },
 ]
 
 // Create the context
