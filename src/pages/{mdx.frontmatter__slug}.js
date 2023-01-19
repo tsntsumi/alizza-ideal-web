@@ -156,7 +156,7 @@ const BasePage = ({ mdx, t }) => {
     tableOfContents,
     frontmatter: { title, date, images, showTOC },
   } = mdx
-  const gottenImages = images.map(i => getImage(i))
+  const gottenImages = images ? images.map(i => getImage(i)) : []
   return (
     <Layout>
       <PageContext.Provider
@@ -198,7 +198,7 @@ const BlogPage = ({ mdx, source, t }) => {
       showTOC,
     },
   } = mdx
-  const gottenImages = images.map(i => getImage(i))
+  const gottenImages = images ? images.map(i => getImage(i)) : []
   const withoutNavLink = source === "offer"
 
   return (
