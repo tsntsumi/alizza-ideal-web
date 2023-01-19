@@ -9,7 +9,11 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import GetInTouch from "../components/getintouch"
 import Banner from "../components/banner"
-import { SqueezeForm, SubmitInquiryToAirtable } from "../components/squeezeform"
+import {
+  SqueezeForm,
+  SubmitInquiryToAirtable,
+  SubmitEmailToAirtable,
+} from "../components/squeezeform"
 
 const PageContext = React.createContext()
 
@@ -46,7 +50,7 @@ const FloatBox = ({ children, width, float, bgColor, ...props }) => {
 }
 
 const ImageStyles = styled.div`
-  background-color: white;
+  background-color: transparent;
   border-radius: 0.5em;
   align-contents: center;
   margin: 0.4em 0.4em;
@@ -110,6 +114,14 @@ const components = {
       {...props}
     />
   ),
+  SqueezeEmail: props => (
+    <SqueezeForm
+      acceptInquiry={false}
+      action={SubmitEmailToAirtable}
+      withoutName={true}
+      {...props}
+    />
+  ),
   GatsbyImage: GatsbyImage,
   clear: props => <div style={{ clear: "both" }} {...props} />,
   "clear-left": props => <div style={{ clear: "left" }} {...props} />,
@@ -142,25 +154,29 @@ const BasePage = ({ mdx, t }) => {
   const {
     body,
     tableOfContents,
-    frontmatter: { title, date, showTOC },
+    frontmatter: { title, date, images, showTOC },
   } = mdx
+  const gottenImages = images.map(i => getImage(i))
   return (
     <Layout>
-      <MdxPageStyles>
-        <div className="section section__padding">
-          <h1>{title}</h1>
-          <div className="date">
-            <Trans>Date:</Trans> <i>{date}</i>
-          </div>
-          <MDXProvider components={components}>
-            <ShowTableOfContents
-              showTOC={showTOC}
-              tableOfContents={tableOfContents}
-            />
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        </div>
-      </MdxPageStyles>
+      <PageContext.Provider
+        value={{ images: gottenImages, tableOfContents: tableOfContents }}
+      >
+        <MDXProvider components={components}>
+          <MdxPageStyles>
+            <div className="base-page">
+              <h1>{title}</h1>
+              <ShowTableOfContents
+                showTOC={showTOC}
+                tableOfContents={tableOfContents}
+              />
+              <div className="container">
+                <MDXRenderer images={gottenImages}>{body}</MDXRenderer>
+              </div>
+            </div>
+          </MdxPageStyles>
+        </MDXProvider>
+      </PageContext.Provider>
     </Layout>
   )
 }
@@ -329,16 +345,26 @@ const MdxPageStyles = styled.section`
     margin-top: 0;
   }
 
+  .base-page {
+    h1 {
+      margin-top: calc(var(--header-height) / 2);
+    }
+  }
+
   h2 {
     font-size: var(--h4);
+    border-radius: 5em;
+    margin-top: 1em;
   }
 
   h3 {
     font-size: var(--h5);
     font-weight: 600;
     text-indent: 0;
-    padding: 0 var(--borderSpacing);
+    margin: 1.2em var(--borderSpacing) 0.7em var(--borderSpacing);
+    padding: 0.2em 0 0 0;
     color: var(--key-color);
+    border-bottom: 0.4em solid var(--key-color);
   }
 
   h4 {
@@ -346,7 +372,8 @@ const MdxPageStyles = styled.section`
     font-size: var(--h6);
     font-weight: 600;
     color: var(--key-color);
-    padding: 0 var(--borderSpacing);
+    padding: 0;
+    margin: 0.7em var(--borderSpacing) 0.5em var(--borderSpacing);
   }
 
   h1 > *,
@@ -365,8 +392,17 @@ const MdxPageStyles = styled.section`
   blockquote {
     font-size: 1.1em;
   }
+
   a {
     color: darkred;
+  }
+
+  ul {
+    margin-bottom: 0.7em;
+  }
+
+  li li {
+    margin-left: 1.2em;
   }
 
   table {
@@ -430,6 +466,11 @@ export const query = graphql`
         author
         date(formatString: "YYYY-MM-DD")
         slug
+        images {
+          childImageSharp {
+            gatsbyImageData(formats: AUTO)
+          }
+        }
         showTOC
       }
       fields {
