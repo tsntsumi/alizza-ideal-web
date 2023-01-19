@@ -202,14 +202,14 @@ const BlogPage = ({ mdx, source, t }) => {
       <PageContext.Provider
         value={{ images: gottenImages, tableOfContents: tableOfContents }}
       >
-        {/* i18next-extract-disable-next-line */}
-        <Banner title={t(title)} image={banner}>
-          <MDXProvider components={components}>
-            <MdxPageStyles>
+        <MDXProvider components={components}>
+          <MdxPageStyles>
+            {/* i18next-extract-disable-next-line */}
+            <Banner title={t(title)} image={banner}>
               <MDXRenderer images={gottenImages}>{description}</MDXRenderer>
-            </MdxPageStyles>
-          </MDXProvider>
-        </Banner>
+            </Banner>
+          </MdxPageStyles>
+        </MDXProvider>
         <MDXProvider components={components}>
           <MdxPageStyles>
             <ShowTableOfContents
@@ -274,6 +274,8 @@ const MdxPageStyles = styled.section`
   align-items: flex-start;
   color: black;
   background-color: var(--background);
+  margin-top: 0;
+  padding-top: 1em;
 
   .container {
     background-color: #e0ebeb;
@@ -351,6 +353,17 @@ const MdxPageStyles = styled.section`
       font-size: 1em;
       margin: 0.2em 0 0 1em;
       padding: 0 0 0 0.5em;
+    }
+  }
+
+  .description {
+    padding: 1em 0;
+    margin: 0;
+    ol,
+    ul,
+    blockquote {
+      margin: 0;
+      padding: 0;
     }
   }
 
