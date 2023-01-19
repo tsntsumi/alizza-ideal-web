@@ -1,6 +1,7 @@
 {
   "<0> kikuo+quiz@alizza-ideal.com</0> までメールにてお問い合わせください。": "Please email <0> kikuo+quiz@alizza-ideal.com</0>.",
   "<0> kikuo+zeroyen@alizza-ideal.com</0> までメールにてお問い合わせください。": "Please email <0> kikuo+zeroyen@alizza-ideal.com</0>.",
+  "<0> kikuo@alizza-ideal.com</0> までメールにてお問い合わせください。": "<0> kikuo@alizza-ideal.com</0> までメールにてお問い合わせください。",
   "あなたのお店をGoogleビジネスプロフィールへ無料で登録し初期設定をいたします。": "We will register your shop on your Google Business Profile for free and set it up for you.",
   "お名前または屋号": "name",
   "お問い合わせありがとうございます": "Thank You For Your Inquiry",
@@ -20,12 +21,19 @@
   "わたしは多くの方々に、Googleビジネスプロフィールの効果を実感していただきたいと思っています。": "I would like many people to realize the effect of the Google Business Profile.",
   "パソコンをもっていない": "don't have a computer",
   "下のお申し込みフォームに、お名前または屋号とメールアドレスを入力してボタンを押すだけです。": "Simply enter your name or business name and email address in the form below and press the button.",
+  "下のリンクからお支払い方法を選択できます。": "下のリンクからお支払い方法を選択できます。",
   "今すぐ無料で申し込む": "Apply now for free",
   "以下のような方が方がいらっしゃいましたら、どうぞお気軽にお申し込みください。": "If you are one of the following people, please feel free to apply.",
   "何から手を付けたらいいかわからない": "I don't know where to start",
   "始め方がわからない方へ無料で登録設定いたします": "For those who do not know how to start, we will register for free",
+  "後半に特別なご案内があります": "後半に特別なご案内があります",
   "後半に特別無料サービスのごご案内があります": "There is a special free service information in the second half",
+  "特別なご案内": "特別なご案内",
   "登録したあと何をすればいいか途方に暮れている": "I am at a loss as to what to do after registering",
   "登録したはいいけど放置したまま": "It's okay to register, but leave it alone",
-  "追ってメールにてご連絡いたします。": "We will contact you by email."
+  "追ってメールにてご連絡いたします。": "We will contact you by email.",
+  "送料・手数料の780円で、簡易印刷したA４サイズの小冊子を郵送いたします。": "送料・手数料の780円で、簡易印刷したA４サイズの小冊子を郵送いたします。",
+  "電子書籍ではなく、印刷した冊子がほしい方は☟をご覧ください": "電子書籍ではなく、印刷した冊子がほしい方は☟をご覧ください",
+  "電子書籍ではなく、印刷した冊子がほしい方へ": "電子書籍ではなく、印刷した冊子がほしい方へ",
+  "電子書籍で読むのは辛い。紙に印刷した冊子を送ってほしいという方はいませんか？": "電子書籍で読むのは辛い。紙に印刷した冊子を送ってほしいという方はいませんか？"
 }

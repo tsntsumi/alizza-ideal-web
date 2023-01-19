@@ -318,6 +318,16 @@ const MdxPageStyles = styled.section`
     }
   }
 
+  h1 ~ *,
+  h2 ~ *,
+  h3 ~ *,
+  h4 ~ *,
+  h5 ~ *,
+  h6 ~ * {
+    padding-left: var(--borderSpacing);
+    padding-right: var(--borderSpacing);
+  }
+
   h1,
   h2,
   h3 {
@@ -383,6 +393,16 @@ const MdxPageStyles = styled.section`
     padding-right: var(--borderSpacing);
   }
 
+  ol,
+  ul {
+    margin: 0;
+    text-align: justify;
+
+    li {
+      padding: auto var(--borderSpacing);
+    }
+  }
+
   p {
     text-indent: 1em;
     text-align: justify;
@@ -395,14 +415,6 @@ const MdxPageStyles = styled.section`
 
   a {
     color: darkred;
-  }
-
-  ul {
-    margin-bottom: 0.7em;
-  }
-
-  li li {
-    margin-left: 1.2em;
   }
 
   table {
