@@ -139,6 +139,12 @@ h6 ~ * {
     padding-right:  var(--borderSpacing);
 }
 
+ol,
+ul,
+blockquote {
+  text-align: justify;
+}
+
 p {
     margin-top: 0.5em;
     margin-bottom: 1em;
@@ -157,14 +163,6 @@ i {
 
 u {
   text-decoration: underline;
-}
-
-ol,
-ul,
-blockquote {
-  margin: 0;
-  padding 0;
-  text-align: justify;
 }
 
 ul.next-to-float {
@@ -212,8 +210,6 @@ blockquote {
 }
 
 .container {
-  margin: 0;
-
   &__tight {
     max-width: 1400px;
   }
@@ -246,8 +242,6 @@ blockquote {
 }
 
 .section {
-    padding: 0;
-
     &.section__padding {
         padding-top: var(--sectionMargin);
         padding-bottom: var(--sectionMargin);

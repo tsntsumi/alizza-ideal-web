@@ -9,9 +9,12 @@ import styled from "styled-components"
 const CardStyle = styled.div`
   margin: 0;
   padding: 0;
+  color: var(--key-dark-color);
+  background-color: white;
+  border-radius: 0.5em;
 
   .title {
-    margin: 1em;
+    margin: 0;
     padding: 0;
   }
 
@@ -31,8 +34,9 @@ const CardStyle = styled.div`
     h3,
     h4,
     h5 {
-      font-weight: 700;
+      font-weight: 400;
       font-size: var(--h3);
+      padding: 0;
     }
 
     h1 ~ *,
@@ -44,11 +48,22 @@ const CardStyle = styled.div`
       padding-left: 0;
       padding-right: 0;
     }
+
+    ol,
+    ul {
+      margin: 0;
+      padding: 0.5em 0.5em 0.5em 2.2em;
+      ol,
+      ul,
+      blockquote {
+        margin: 0.2em 0 0 1em;
+        padding: 0 0 0 0.5em;
+      }
+    }
   }
 `
 
 const Item = ({ node, loading }) => {
-  const bg = useColorModeValue("white", "var(--key-color)")
   const {
     frontmatter: { title, description, slug, banner, date },
   } = node
@@ -62,7 +77,7 @@ const Item = ({ node, loading }) => {
           overflow="hidden"
           key={node.id}
           position="relative"
-          bg={bg}
+          bg="transparent"
         >
           <AspectRatio
             maxW="480px"

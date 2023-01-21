@@ -4,10 +4,7 @@ export const BannerStyles = styled.section`
   position: relative;
   height: 100%;
   top: 0;
-  margin: 0;
-  padding: 0;
   font-size: var(--p);
-  font-weight: 600;
 
   .container {
     display: flex;
@@ -53,7 +50,8 @@ export const BannerStyles = styled.section`
     z-index: 2;
     min-height: 33vh;
     width: 100%;
-    max-width: 80vw;
+    max-width: 65vw;
+    max-height: 45%;
     text-align: justify;
     padding-top: calc(var(--header-height));
     margin-bottom: 1.5em;
@@ -76,6 +74,7 @@ export const BannerStyles = styled.section`
     padding: 10px;
     border-radius: 20px 20px 0 0;
     width: 100%;
+    color: white;
   }
 
   h1,
@@ -83,8 +82,7 @@ export const BannerStyles = styled.section`
   h3 {
     padding: 0.5em 1em;
     border-radius: 0.75em 0.75em 0 0;
-    color: white;
-    font-weight: 400;
+    font-weight: 600;
   }
 
   h2 {

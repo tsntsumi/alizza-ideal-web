@@ -13,7 +13,7 @@ export default function BlogIndexPage({ data }) {
     <Layout>
       <Seo title="Blogs" />
       <GlobalStyle />
-      <Container maxW="container.xl" mt="90px" mb="1em">
+      <Container maxW="container.xl" mt="0" mb="0" pt="90px" pb="1em">
         <Box px={4} mt={4}>
           <Grid
             templateColumns={{

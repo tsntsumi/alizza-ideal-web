@@ -13,8 +13,8 @@ export const PerksStyles = styled.section`
   .container {
     width: 100%;
     display: block;
-    margin-top: 0;
-    margin-botom: 0;
+    flex-flow: row wrap;
+    margin: 0 inherit;
     padding-left: var(--borderSpacing);
     padding-right: var(--borderSpacing);
   }
@@ -31,13 +31,13 @@ export const PerksStyles = styled.section`
   h2 {
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     margin: 0 auto 1em auto;
+    padding: 0.3em 0.1em;
     border-radius: 0.25em;
     text-align: center;
     font-size: 1.4em;
     font-weight: 800;
     color: white;
     background-color: var(--key-dark-color);
-    padding: 0.4em 0;
   }
 
   @media (min-width: 400px) {
@@ -50,7 +50,8 @@ export const PerksStyles = styled.section`
 
 export const PerkStyles = styled.aside`
   position: relative;
-  width: 100%;
+  width: 25%;
+  min-width: 200px;
   display: flex;
   padding: 0.2em 0.5em;
   background-color: white;
@@ -59,15 +60,15 @@ export const PerkStyles = styled.aside`
 
   h3 {
     border-top: 2px solid var(--key-color);
-    border-bottom: 2px solid var(--key-color);
-    font-size: 1.2em;
-    font-weight: 800;
+    border-bottom: 1px solid var(--key-color);
+    font-weight: 700;
     width: 100%;
     padding: 0 0.2em;
   }
 
   p {
     width: 100%;
+    font-size: var(--p);
     padding: 0 0.4em;
     color: var(--key-color);
   }
@@ -88,8 +89,6 @@ export const PerkStyles = styled.aside`
     padding: 0 0.4px;
     @media (min-width: 400px) {
       width: 100%;
-      margin: 0;
-      padding: 0;
     }
   }
 
@@ -120,7 +119,6 @@ export const PerkStyles = styled.aside`
   }
 
   @media (min-width: 400px) {
-    background-color: var(--key-color);
     display: block;
     width: 30%;
 
