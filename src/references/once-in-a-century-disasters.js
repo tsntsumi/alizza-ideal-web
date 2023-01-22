@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start translation
+// i18next-extract-mark-ns-start common
 import * as React from "react"
 import styled from "styled-components"
 import { Trans } from "gatsby-plugin-react-i18next"
