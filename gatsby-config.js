@@ -11,6 +11,8 @@ const siteUrl = `https://www.alizza-ideal.com/`
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_SITECONF_BASE
 
+const { languages, defaultLanguage } = require("./languages")
+
 module.exports = {
   siteMetadata: {
     title: `Alizza Ideal`,
@@ -30,7 +32,23 @@ module.exports = {
     airtableBaseId: `${airtableBaseId}`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-favicons",
+      options: {
+        logo: "./src/images/logo.svg",
+        appName: "My Website",
+        background: "#fff",
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-mdx-source-name`,
     `gatsby-plugin-mdx-frontmatter`,
@@ -283,19 +301,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
-        localeJsonSourceName: `locale`,
-        languages: [`ja`, `en`, `tl`],
-        defaultLanguage: `ja`,
-        siteUrl: `https://alizza-ideal.com`,
-        trailingSlash: "always",
+        languages,
+        defaultLanguage,
+        siteUrl,
         i18nextOptions: {
+          // debug: true,
+          fallbackLng: defaultLanguage,
+          supportedLngs: languages,
+          defaultNS: "common",
           interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
           },
-          keySeparator: false,
-          nsSeparator: false,
         },
-        pages: [],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -18,11 +18,11 @@ So first, install plain boiler-plate.
   rm package-lock.json
   yarn add @mdx-js/mdx @mdx-js/react dotenv \
   framer-motion gatsby-background-image gatsby-plugin-mdx \
-  gatsby-plugin-mdx-source-name gatsby-plugin-react-helmet \
+  gatsby-plugin-mdx-source-name \
   gatsby-plugin-robots-txt gatsby-plugin-sharp \
   gatsby-plugin-sitemap gatsby-source-filesystem \
   gatsby-transformer-remark gatsby-transformer-sharp \
-  gbimage-bridge gsap react react-dom react-helmet \
+  gbimage-bridge gsap react react-dom \
   react-icons react-image-gallery styled-components \
   gatsby-plugin-react-i18next react-i18next \
   gatsby-remark-images
