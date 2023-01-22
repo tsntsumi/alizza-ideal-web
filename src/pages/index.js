@@ -11,13 +11,24 @@ import { Perks, Perk } from "../components/perks"
 import { SqueezeForm, SubmitEmailToAirtable } from "../components/squeezeform"
 import { ImageDict } from "../components/imagedict"
 
+export const Head = ({ location, params, data, pageContext }) => {
+  const title = "Home" || pageContext.title
+
+  return (
+    <Seo
+      title={title}
+      pathname={location.pathname}
+      lang={pageContext.language}
+    />
+  )
+}
+
 const IndexPage = ({ data }) => {
   const { t, language } = useI18next()
   const images = new ImageDict(data)
 
   return (
     <Layout>
-      <Seo title="Home" />
       <Banner
         title={t("小さなお店のひとりオーナー・経営者の方へ")}
         image={images.imageOf("Heros")}
@@ -602,10 +613,7 @@ export const query = graphql`
     }
 
     locales: allLocale(
-      filter: {
-        language: { eq: $language }
-        ns: { in: ["translation", "index"] }
-      }
+      filter: { language: { eq: $language }, ns: { in: ["common", "index"] } }
     ) {
       edges {
         node {
