@@ -74,10 +74,7 @@ export const query = graphql`
       distinct(field: frontmatter___tags)
     }
     locales: allLocale(
-      filter: {
-        language: { in: [$language] }
-        ns: { in: ["translation", "blog"] }
-      }
+      filter: { language: { in: [$language] }, ns: { in: ["common", "blog"] } }
     ) {
       edges {
         node {

@@ -1,10 +1,10 @@
-// i18next-extract-mark-ns-start translation
+// i18next-extract-mark-ns-start common
 import React, { useState, createContext } from "react"
 
 export const menuItems = [
   {
     path: "/",
-    text: "Home",
+    text: "ホーム",
   },
   {
     path: "/get-in-touch",

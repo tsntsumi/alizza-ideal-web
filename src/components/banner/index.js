@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start translation
+// i18next-extract-mark-ns-start common
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { BannerStyles } from "./styles"

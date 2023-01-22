@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start translation
+// i18next-extract-mark-ns-start common
 import React, { useContext, useState } from "react"
 import { motion } from "framer-motion"
 import { FiChevronDown as Chevron } from "react-icons/fi"
@@ -81,7 +81,7 @@ const ContactLink = ({ language }) => {
 const Title = () => {
   return (
     <div className="title">
-      <Trans>Catchphrase on Nav Bar</Trans>
+      <Trans>スマホでカシャカシャ、地域で１番</Trans>
     </div>
   )
 }

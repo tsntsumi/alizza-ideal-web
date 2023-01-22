@@ -1,4 +1,4 @@
-// i18next-extract-mark-ns-start translation
+// i18next-extract-mark-ns-start markdown
 import React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -223,11 +223,11 @@ const BlogPage = ({ mdx, source, t }) => {
           <div className="bloginfo container">
             <div>
               <div className="date">
-                <Trans>Date:</Trans> <i>{fromNow}</i>
+                <Trans>Date</Trans>: <i>{fromNow}</i>
               </div>
               {author && (
                 <div className="author">
-                  <Trans>Author:</Trans> <i>{author}</i>
+                  <Trans>Author</Trans>: <i>{author}</i>
                 </div>
               )}
             </div>
@@ -275,7 +275,7 @@ const MdxPageStyles = styled.section`
   color: black;
   background-color: var(--background);
   margin-top: 0;
-  padding-top: 1em;
+  padding-top: var(header-height);
 
   .container {
     background-color: #e0ebeb;
@@ -324,6 +324,7 @@ const MdxPageStyles = styled.section`
 
   h1 {
     font-size: var(--h1);
+    margin-top: var(--header-height);
   }
 
   h2 {
@@ -492,7 +493,7 @@ export const query = graphql`
     locales: allLocale(
       filter: {
         language: { eq: $language }
-        ns: { in: ["translation", "basepage", "blog"] }
+        ns: { in: ["markdown", "common", "basepage", "blog"] }
       }
     ) {
       edges {

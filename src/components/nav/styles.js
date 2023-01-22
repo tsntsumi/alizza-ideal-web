@@ -9,11 +9,15 @@ export const NavStyles = styled.nav`
     width: 100vw;
     max-width: 100vw;
     min-width: 100vw;
+    height: var(--header-height);
+    max-height: var(--header-height);
+    min-height: var(--header-height);
     z-index: 100;
     margin: 0;
     padding: 0;
     background-color: var(--key-color);
     font-size: 7pt;
+    color: white;
 
     @media (min-width: 340px) {
       padding: 0 calc(var(--borderSpacing) * 0.5);
