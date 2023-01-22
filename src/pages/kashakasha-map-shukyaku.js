@@ -166,7 +166,7 @@ export const query = graphql`
     locales: allLocale(
       filter: {
         language: { in: [$language] }
-        ns: { in: ["translation", "kashakasha"] }
+        ns: { in: ["common", "kashakasha"] }
       }
     ) {
       edges {
