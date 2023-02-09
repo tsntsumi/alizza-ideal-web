@@ -137,13 +137,6 @@ const YTVideo = () => {
           player?.playVideo()
         }}
       />
-      <YouTube
-        id="youtube-video"
-        videoId="kpEoUcvEVfA"
-        opts={options}
-        onReady={onPlayerReady}
-        onStateChange={onPlayerStateChange}
-      />
     </div>
   )
 }
