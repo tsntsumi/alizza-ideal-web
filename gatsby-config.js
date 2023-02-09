@@ -32,23 +32,6 @@ module.exports = {
     airtableBaseId: `${airtableBaseId}`,
   },
   plugins: [
-    {
-      resolve: "gatsby-plugin-favicons",
-      options: {
-        logo: "./src/images/logo.svg",
-        appName: "My Website",
-        background: "#fff",
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          yandex: false,
-          windows: false,
-        },
-      },
-    },
     `gatsby-plugin-image`,
     `gatsby-plugin-mdx-source-name`,
     `gatsby-plugin-mdx-frontmatter`,
