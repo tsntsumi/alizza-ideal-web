@@ -454,7 +454,7 @@ const PageStyles = styled.section`
 `
 
 export const query = graphql`
-  query kashakashaDeBestShopQuery($language: String!) {
+  query kashakashaTrialEntryQuery($language: String!) {
     locales: allLocale(
       filter: {
         language: { eq: $language }
@@ -472,4 +472,4 @@ export const query = graphql`
   }
 `
 
-export default KashaKashaDeBestShop
+export default KashaKashaTrialEntry
