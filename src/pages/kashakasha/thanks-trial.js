@@ -82,7 +82,10 @@ const ThanksKashakashaTrialPage = ({ location, data, pageContext }) => {
 export const query = graphql`
   query thanksKashakashaTrialQuery($language: String!) {
     locales: allLocale(
-      filter: { language: { eq: $language }, ns: { in: ["common", "thanks"] } }
+      filter: {
+        language: { eq: $language }
+        ns: { in: ["common", "kashakasha", "thanks"] }
+      }
     ) {
       edges {
         node {
