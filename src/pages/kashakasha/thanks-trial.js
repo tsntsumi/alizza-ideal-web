@@ -56,7 +56,7 @@ const ThanksKashakashaTrialPage = ({ location, data, pageContext }) => {
         </h2>
         <hr />
         <div className="container">
-          <div>{location.state.email} 様</div>
+          <div className="link">{location?.state?.email} 様</div>
           <p>
             <Trans>
               もし、３〜５分ほどたっても届かない場合、
@@ -66,7 +66,14 @@ const ThanksKashakashaTrialPage = ({ location, data, pageContext }) => {
           </p>
           <p>
             <Trans>その中にも見つからない場合は、</Trans>
-            <a href="mailto:kikuo+trial@alizza-ideal.com">
+            <a
+              href="mailto:kikuo+trial@alizza-ideal.com"
+              style={{
+                color: "blue",
+                textDecoration: "underline",
+                fontFamily: "monospace",
+              }}
+            >
               kikuo+trial@alizza-ideal.com
             </a>
             <Trans>までメールにてお問い合わせください。</Trans>

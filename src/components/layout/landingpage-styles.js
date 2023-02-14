@@ -2,10 +2,6 @@ import styled from "styled-components"
 
 export const LandingPageStyles = styled.section`
   color: black;
-  a {
-    color: blue;
-    text-decoration: underline;
-  }
 
   #video-container {
     position: relative;
@@ -185,12 +181,6 @@ export const LandingPageStyles = styled.section`
       border: 3px solid darkblue;
       background-color: white;
       outline: none;
-    }
-    button {
-      background-color: darkorange;
-      font-size: 11pt;
-      font-weight: 800;
-      border-radius: var(--p);
     }
   }
   .button-34 {
