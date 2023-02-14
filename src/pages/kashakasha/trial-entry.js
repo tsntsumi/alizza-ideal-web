@@ -2,7 +2,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { graphql, navigate } from "gatsby"
-//import Airtable from "airtable"
+import Airtable from "airtable"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import moment from "moment"
 import "moment/locale/ja"
@@ -15,15 +15,6 @@ import {
   Submit,
   StatusMessage,
 } from "../../components/applicationform"
-
-const Airtable = require("airtable")
-
-Airtable.configure({
-  endpointUrl: "https://api.airtable.com",
-  apiKey: process.env.AIRTABLE_API_KEY,
-})
-
-const base = Airtable.base(process.env.AIRTABLE_DB)
 
 export const Head = ({ location, params, data, pageContext }) => {
   return (
@@ -167,6 +158,13 @@ const SelectSlots = ({ language }) => {
 }
 
 const submitToAirtable = async (inputs, dispatch) => {
+  const apiKey = process.env.AIRTABLE_API_KEY
+  const baseId = process.env.AIRTABLE_DB
+
+  const base = new Airtable({
+    apiKey: apiKey,
+  }).base(baseId)
+
   const valueOf = name => inputs?.find(i => i.name === name)?.value
   const tableName = "Clients"
   const clientsFields = {
@@ -190,7 +188,7 @@ const submitToAirtable = async (inputs, dispatch) => {
         return {
           isError: true,
           internal: err,
-          context: tableName,
+          context: apiKey + " :: " + baseId + " :: " + tableName,
         }
       }
       console.log("added records", records)
