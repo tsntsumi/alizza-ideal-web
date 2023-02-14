@@ -56,7 +56,6 @@ const ThanksKashakashaTrialPage = ({ location, data, pageContext }) => {
         </h2>
         <hr />
         <div className="container">
-          <div className="link">{location?.state?.email} 様</div>
           <p>
             <Trans>
               もし、３〜５分ほどたっても届かない場合、
