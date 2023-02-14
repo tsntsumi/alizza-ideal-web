@@ -158,8 +158,8 @@ const SelectSlots = ({ language }) => {
 }
 
 const submitToAirtable = async (inputs, dispatch) => {
-  const apiKey = process.env.AIRTABLE_API_KEY
-  const baseId = process.env.AIRTABLE_DB
+  const apiKey = process.env.GATSBY_AIRTABLE_API_KEY
+  const baseId = process.env.GATSBY_AIRTABLE_DB
 
   const base = new Airtable({
     apiKey: apiKey,
