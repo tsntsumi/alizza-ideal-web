@@ -182,18 +182,20 @@ const TrialSessionButton = () => {
           <Trans>円</Trans>
         </span>
       </center>
-      <center className="button-34">
-        <Link to="/kashakasha/trial-entry">
-          <span className="zero-yen">
-            <Trans>無料</Trans>
-          </span>
-          <Trans>Gooleマップアカウント開設個別体験会に申し込んで</Trans>
-          <br />
-          <span className="zero-yen">
-            <Trans>「集客の素」</Trans>
-          </span>
-          <Trans>３点セットを手に入れる</Trans>
-        </Link>
+      <center>
+        <div className="button-34">
+          <Link to="/kashakasha/trial-entry">
+            <span className="zero-yen">
+              <Trans>無料</Trans>
+            </span>
+            <Trans>Gooleマップアカウント開設個別体験会に申し込んで</Trans>
+            <br />
+            <span className="zero-yen">
+              <Trans>「集客の素」</Trans>
+            </span>
+            <Trans>３点セットを手に入れる</Trans>
+          </Link>
+        </div>
       </center>
     </div>
   )

@@ -196,6 +196,15 @@ export const LandingPageStyles = styled.section`
       EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto,
       "Helvetica Neue", "Noto Sans", sans-serif;
     font-size: 16px;
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
+    @media (max-width: 440px) {
+      font-size: 12px;
+    }
+    @media (max-width: 380px) {
+      font-size: 10px;
+    }
     font-weight: 700;
     line-height: 24px;
     opacity: 1;
