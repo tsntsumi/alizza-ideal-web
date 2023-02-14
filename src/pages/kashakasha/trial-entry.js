@@ -93,8 +93,6 @@ const SelectSlots = ({ language }) => {
   const apiKey = process.env.GATSBY_AIRTABLE_API_KEY
   const baseId = process.env.GATSBY_AIRTABLE_DB
 
-  console.log("key", apiKey, "id", baseId)
-
   const base = new Airtable({
     apiKey: apiKey,
   }).base(baseId)
