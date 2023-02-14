@@ -90,8 +90,9 @@ const KashaKashaTrialEntry = ({ data, pageContext }) => {
 }
 
 const SelectSlots = ({ language }) => {
-  const apiKey = process.env.AIRTABLE_API_KEY
-  const baseId = process.env.AIRTABLE_DB
+  const apiKey =
+    process.env.AIRTABLE_API_KEY || process.env.GATSBY_AIRTABLE_API_KEY
+  const baseId = process.env.AIRTABLE_DB || process.env.GATSBY_AIRTABLE_DB
 
   console.log("key", apiKey, "id", baseId)
 
