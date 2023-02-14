@@ -9,7 +9,7 @@ require("dotenv").config({
 
 const siteUrl = `https://www.alizza-ideal.com/`
 const airtableApiKey = process.env.AIRTABLE_API_KEY
-const airtableBaseId = process.env.AIRTABLE_SITECONF_BASE
+const airtableBaseId = process.env.AIRTABLE_DB
 
 const { languages, defaultLanguage } = require("./languages")
 
@@ -249,6 +249,20 @@ module.exports = {
             defaultValues: {
               Name: "",
               Tag: "",
+            },
+            separateNodeType: false,
+            separateMapType: false,
+          },
+          {
+            baseId: `${airtableBaseId}`,
+            tableName: "Slots",
+            defaultValues: {
+              SlotStartTime: "",
+              SlotEndTime: "",
+              SlotAssignee: "",
+              SlotIsAvailable: false,
+              SlotDuration: "1:00",
+              SlotRecordId: "",
             },
             separateNodeType: false,
             separateMapType: false,

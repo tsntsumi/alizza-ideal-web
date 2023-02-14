@@ -4,9 +4,9 @@ import { useState } from "react"
 import { graphql, Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
-import styled from "styled-components"
-import { GlobalStyle } from "../components/layout/styles"
-import Seo from "../components/seo"
+import { GlobalStyle } from "../../components/layout/styles"
+import { LandingPageStyles } from "../../components/layout/landingpage-styles"
+import Seo from "../../components/seo"
 import YouTube from "react-youtube"
 
 export const Head = ({ location, params, data, pageContext }) => {
@@ -27,7 +27,7 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
   return (
     <>
       <GlobalStyle />
-      <PageStyles>
+      <LandingPageStyles>
         <h1 id="target-call">
           <span style={{ whiteSpace: "nowrap" }}>
             <Trans>小さなお店の１人オーナー・経営者の方へ</Trans>
@@ -55,13 +55,21 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
           </span>
         </h2>
         <h3 id="start-to-click" style={{ color: "yellow", fontWeight: "800" }}>
-          <Trans>🔻タップして再生！🔻</Trans>
+          <Trans>🔻動画をタップして再生！🔻</Trans>
         </h3>
         <YTVideo />
-        <StaticImage
-          src="../images/GMCA-open-account-trial.png"
-          alt="open account trial"
-        />
+        <div
+          style={{
+            textAlign: "center",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          <StaticImage
+            src="../../images/GMCA-open-account-trial.png"
+            alt="open account trial"
+          />
+        </div>
         <TrialSessionButton />
         <h2>
           <span style={{ color: "yellow", whiteSpace: "nowrap" }}>
@@ -80,7 +88,7 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
         <TrialSessionButton />
-      </PageStyles>
+      </LandingPageStyles>
     </>
   )
 }
@@ -174,8 +182,8 @@ const TrialSessionButton = () => {
           <Trans>円</Trans>
         </span>
       </center>
-      <center className="applicate-button">
-        <Link to="/kashakasha-map-shukyaku">
+      <center className="button-34">
+        <Link to="/kashakasha/trial-entry">
           <span className="zero-yen">
             <Trans>無料</Trans>
           </span>
@@ -197,7 +205,7 @@ const TrialSessionFlow = () => {
       <h3>
         <Trans>お申し込みから体験会までの流れ</Trans>
       </h3>
-      <div class="container">
+      <div className="container">
         <ol>
           <li>
             <Trans>申込みボタンを押して、お申込み画面を開く</Trans>
@@ -218,7 +226,7 @@ const TrialSessionFlow = () => {
 
 const TrialSessionPricing = () => {
   return (
-    <div class="container">
+    <div className="container">
       <p>
         <Trans>通常５，０００円のところ</Trans>
       </p>
@@ -252,11 +260,11 @@ const TrialSessionPricing = () => {
           <rp>）</rp>
         </ruby>
       </center>
-      <ul class="note">
+      <ul className="note">
         <li>
           <Trans>
-            体験会は、お一人づつ個別に開催させていただいているため、時間的・体力的に限界がありますので、
-            予告なく終了することがございます。この機会を逃さないよう、お早めにお申し込み下さい
+            体験会は、お一人づつ個別に開催させていただいているため、時間的・体力的に限界があります。
+            そのため、予告なく終了することがございます。この機会を逃さないよう、お早めにお申し込み下さい
           </Trans>
         </li>
       </ul>
@@ -266,193 +274,46 @@ const TrialSessionPricing = () => {
 
 const ExclusiveOffersForParticipants = () => {
   return (
-    <div className="container">
-      <p>
-        <Trans>
-          体験会にご参加いただいた方には、以下の電子書籍「【集客の素】３点セット」をお渡しいたします
-        </Trans>
-      </p>
-      <ol>
-        <li>
-          <Trans>Googleに好かれる店舗情報の「登録チェックリスト」</Trans>
-        </li>
-        <li>
+    <>
+      <div className="container">
+        <p>
           <Trans>
-            ミスをなくしてライバルを突き離す「やってはいけないGoogleマップ集客方法」
+            体験会にご参加いただいた方には、以下の電子書籍「【集客の素】３点セット」をお渡しいたします
           </Trans>
-        </li>
-        <li>
-          <Trans>
-            お客さんを買う気にさせる「ＰＯＰデザインテンプレート集」
-          </Trans>
-        </li>
-      </ol>
+        </p>
+        <ol>
+          <li>
+            <Trans>Googleに好かれる店舗情報の「登録チェックリスト」</Trans>
+            <br />
+            <Trans>
+              チェックリストの３１の項目をすべて登録するだけで、表示順位がアップします。
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              ミスをなくしてライバルを突き離す「やってはいけないGoogleマップ集客方法」
+            </Trans>
+          </li>
+          <li>
+            <Trans>
+              お客さんを買う気にさせる「ＰＯＰデザインテンプレート集」
+            </Trans>
+          </li>
+        </ol>
+      </div>
       <StaticImage
-        src="../images/GMCA-elements-to-cxaq.png"
+        style={{
+          textAlign: "center",
+          margin: 0,
+          padding: 0,
+        }}
+        src="../../images/GMCA-elements-to-cxaq.png"
         alt="Exclusive offers"
       />
       <div style={{ clear: "both" }} />
-    </div>
+    </>
   )
 }
-
-const PageStyles = styled.section`
-  #video-container {
-    position: relative;
-    width: 100%;
-    padding: 56.25% 0 0 0;
-    margin: 0;
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  #youtube-video {
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .trial-offer {
-    padding: 0.75em;
-    background-color: #3e88bf;
-    color: white;
-    @media (min-width: 800px) {
-      font-size: 2em;
-    }
-  }
-
-  .zero-yen {
-    font-weight: 900;
-    color: yellow;
-  }
-  .zero {
-    font-size: 1.5em;
-  }
-  .limited {
-    font-size: 1.2em;
-  }
-
-  .applicate-button {
-    background-color: orange;
-    border: 4px solid orange;
-    border-radius: 1.2em;
-    font-size: 0.8em;
-    font-weight: bold;
-    padding: 0.4em;
-    cursor: pointer;
-    .zero-yen {
-      color: darkred;
-    }
-    &:hover {
-      background: white;
-      color: orange;
-      border: 4px solid orange;
-    }
-  }
-
-  text-align: justify;
-  align-items: flex-start;
-  color: darkgrey;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-  font-size: 11pt;
-  height: 100%;
-  min-height: 100%;
-  @media (min-width: 1000px) {
-    margin: 0 200px 0 200px;
-  }
-  .banner-image {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
-  h1,
-  h2,
-  h3 {
-    padding: 0.3em;
-    margin: 0;
-    color: white;
-    font-size: 1.2em;
-    text-align: center;
-  }
-  h1,
-  h2 {
-    background-color: #1e426d;
-  }
-  h2,
-  h3 {
-    padding: 1em 0.3em;
-  }
-  h3 {
-    background-color: #4797c7;
-  }
-  @media (min-width: 450px) {
-    h1,
-    h2,
-    h3 {
-      font-size: 1.8em;
-    }
-  }
-  .container {
-    color: black;
-    margin: 1.2em auto;
-    ul,
-    ol {
-      margin: 1em 0.4em;
-    }
-    .zero {
-      color: darkred;
-      font-weight: 800;
-    }
-  }
-  .note {
-    color: blue;
-    font-size: 0.8em;
-  }
-  .lp-content {
-    height: auto;
-    padding: 0;
-    margin: 0;
-  }
-  .squeeze-form {
-    clear: both;
-    padding: 0;
-    width: 100%;
-    font-size: 1.6em;
-    font-weight: 900;
-    & section {
-      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-    }
-    p {
-      font-size: 10pt;
-      padding: 0;
-      margin: 0;
-    }
-    input#email {
-      border: 3px solid darkblue;
-      background-color: white;
-      outline: none;
-    }
-    button {
-      background-color: darkorange;
-      font-size: 11pt;
-      font-weight: 800;
-      border-radius: var(--p);
-    }
-  }
-`
 
 export const query = graphql`
   query kashakashaDeBestShopQuery($language: String!) {
