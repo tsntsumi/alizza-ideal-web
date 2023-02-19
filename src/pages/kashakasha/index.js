@@ -16,10 +16,10 @@ export const Head = ({ location, params, data, pageContext }) => {
         pathname={location.pathname}
         lang={pageContext.language}
       />
-      <HTMLComment text="KLSフォーム埋め込みタグ" />
+      {"<!-- KLSフォーム埋め込みタグ -->"}
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://kli.jp/external/fform/WqfU"></script>
-      <HTMLComment text="KLSフォーム埋め込みタグ" />
+      {"<!-- KLSフォーム埋め込みタグ -->"}
     </>
   )
 }
