@@ -1,9 +1,8 @@
 // i18next-extract-mark-ns-start kashakasha
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Trans, useI18next } from "gatsby-plugin-react-i18next"
+import { useI18next } from "gatsby-plugin-react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
-import "moment/locale/ja"
 import { GlobalStyle } from "../../components/layout/styles"
 import Seo from "../../components/seo"
 import { FormStyles } from "../../components/applicationform/styles"

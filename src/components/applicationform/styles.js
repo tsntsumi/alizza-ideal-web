@@ -178,4 +178,10 @@ export const FieldStyles = styled.div`
   }
 `
 
+export const Credits = styled.div`
+  font-size: 6px;
+  color: grey;
+  padding: 0.3em;
+`
+
 export default FormStyles
