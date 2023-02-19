@@ -1,6 +1,19 @@
 import styled from "styled-components"
 
 export const FormStyles = styled.section`
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  color: darkgrey;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  font-size: 11pt;
+  @media (min-width: 1000px) {
+    margin: 0 200px 0 200px;
+  }
   .button-34 {
     background: #5e5df0;
     border-radius: 999px;
@@ -24,18 +37,6 @@ export const FormStyles = styled.section`
     width: fit-content;
     word-break: break-word;
     border: 0;
-  }
-  text-align: justify;
-  align-items: flex-start;
-  color: darkgrey;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-  font-size: 11pt;
-  height: 100%;
-  min-height: 100%;
-  @media (min-width: 1000px) {
-    margin: 0 200px 0 200px;
   }
   .banner-image {
     width: 100%;
@@ -70,9 +71,24 @@ export const FormStyles = styled.section`
       font-size: 1.8em;
     }
   }
+  #offer-banner {
+    padding: 0;
+    margin: 0.7em 0 0 0;
+  }
+  .iframe-wrapper {
+    flex: 2;
+    padding: 0;
+    margin: 0;
+  }
+  .iframe-wrapper > iframe {
+    flex: 1 1;
+    height: 100%;
+  }
   .container {
     color: black;
-    margin: 1.2em auto;
+    margin: 0;
+    padding: 0;
+    height: 100%;
     ul,
     ol {
       margin: 1em 0.4em;
