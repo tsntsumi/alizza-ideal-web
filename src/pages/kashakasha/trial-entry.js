@@ -1,5 +1,6 @@
 // i18next-extract-mark-ns-start kashakasha
 import * as React from "react"
+import HTMLComment from "react-html-comment"
 import { graphql } from "gatsby"
 import { useI18next } from "gatsby-plugin-react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
@@ -15,8 +16,10 @@ export const Head = ({ location, params, data, pageContext }) => {
         pathname={location.pathname}
         lang={pageContext.language}
       />
+      <HTMLComment text="KLSフォーム埋め込みタグ" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://kli.jp/external/sform/AsPe"></script>
+      <HTMLComment text="KLSフォーム埋め込みタグ" />
     </>
   )
 }
@@ -36,12 +39,14 @@ const KashaKashaTrialEntry = ({ data, pageContext }) => {
           id="offer-banner"
         />
         <div className="iframe-wrapper">
+          <HTMLComment text="KLSフォーム埋め込みタグ" />
           <iframe
             title="kls"
             width="100%"
             className="kls-sform-AsPe"
             data-src="https://kli.jp/sf/AsPe/"
           ></iframe>
+          <HTMLComment text="KLSフォーム埋め込みタグ" />
         </div>
       </FormStyles>
     </>
