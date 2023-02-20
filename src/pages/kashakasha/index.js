@@ -1,59 +1,52 @@
 // i18next-extract-mark-ns-start kashakasha
 import * as React from "react"
-import HTMLComment from "react-html-comment"
 import { graphql } from "gatsby"
-import { useI18next, Trans } from "gatsby-plugin-react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
+import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import { GlobalStyle } from "../../components/layout/styles"
+import { LandingPageStyles } from "../../components/layout/landingpage-styles"
+import { Credits } from "../../components/applicationform/styles"
 import Seo from "../../components/seo"
-import { FormStyles, Credits } from "../../components/applicationform/styles"
 
 export const Head = ({ location, params, data, pageContext }) => {
   return (
-    <>
-      <Seo
-        title={pageContext.title}
-        pathname={location.pathname}
-        lang={pageContext.language}
-      />
-      {"<!-- KLSフォーム埋め込みタグ -->"}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="https://kli.jp/external/fform/WqfU"></script>
-      {"<!-- KLSフォーム埋め込みタグ -->"}
-    </>
+    <Seo
+      title={pageContext.title}
+      pathname={location.pathname}
+      lang={pageContext.language}
+    />
   )
 }
 
 const KashaKashaShukyakuPage = ({ data, pageContext }) => {
   const { t } = useI18next()
-  pageContext.title = t("Googleマップ集客術")
+  pageContext.title = t("Googleマップ集客術　オンラインプログラム登録フォーム")
 
   return (
     <>
       <GlobalStyle />
-      <FormStyles>
-        <div className="lp-container">
-          <div className="lp-content">
-            <h1>
-              <Trans>小さなお店のひとりオーナー・経営者の方へ</Trans>
-            </h1>
-            <div className="banner-image">
-              <StaticImage
-                src="../../images/KashaKasha-Map-Shukyaku.png"
-                alt={t("スマホでカシャカシャ・ネット集客術")}
-              />
-            </div>
-          </div>
+      <LandingPageStyles>
+        <h1 style={{ padding: "0.75em 0em" }}>
+          <Trans>小さなお店のひとりオーナー・経営者の方へ</Trans>
+        </h1>
+        <div className="banner-image">
+          <StaticImage
+            src="../images/KashaKasha-Map-Shukyaku.png"
+            alt={t("スマホでカシャカシャ・ネット集客術")}
+          />
         </div>
-        <div className="iframe-wrapper" style={{ top: "-100px" }}>
-          <HTMLComment text="KLSフォーム埋め込みタグ" />
-          <iframe
-            title="kls"
-            width="100%"
-            className="kls-fform-WqfU"
-            data-src="https://kli.jp/ff/WqfU/"
-          ></iframe>
-          <HTMLComment text="KLSフォーム埋め込みタグ" />
+        <div className="container">
+          <center>
+            <div className="button-34">
+              <center>
+                <a href="https://page.line.me/014gbllc">
+                  <Trans>LINEでお友だち追加して</Trans>
+                  <br />
+                  <Trans>オンラインプログラムをもらう</Trans>
+                </a>
+              </center>
+            </div>
+          </center>
         </div>
         <Credits className="lp-content">
           <span>authors: </span>
@@ -89,7 +82,7 @@ const KashaKashaShukyakuPage = ({ data, pageContext }) => {
           </span>
           .
         </Credits>
-      </FormStyles>
+      </LandingPageStyles>
     </>
   )
 }
