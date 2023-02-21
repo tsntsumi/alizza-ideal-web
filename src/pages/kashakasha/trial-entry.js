@@ -89,9 +89,11 @@ const KashaKashaTrialEntry = ({ data, pageContext }) => {
               return null
             }}
           />
-          <Submit form={formId} id="submit">
-            <Trans>選択した日時で個別体験会に参加する</Trans>
-          </Submit>
+          <center>
+            <Submit form={formId} id="submit">
+              <Trans>選択した日時で個別体験会に参加する</Trans>
+            </Submit>
+          </center>
         </div>
       </ApplicationForm>
     </>

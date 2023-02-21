@@ -184,7 +184,7 @@ const TrialSessionButton = () => {
       </center>
       <center>
         <div className="button-34">
-          <a href="https://line.alizza-ideal.com/t/Kh41/bkr88H7/">
+          <Link to="/kashakasha/trial-entry">
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
@@ -194,7 +194,7 @@ const TrialSessionButton = () => {
               <Trans>「集客の素」</Trans>
             </span>
             <Trans>３点セットを手に入れる</Trans>
-          </a>
+          </Link>
         </div>
       </center>
     </div>
