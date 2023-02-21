@@ -2,6 +2,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
+import moment from "moment"
+import "moment/locale/ja"
 import { GlobalStyle } from "../../components/layout/styles"
 import { LandingPageStyles } from "../../components/layout/landingpage-styles"
 import Seo from "../../components/seo"
@@ -21,8 +23,10 @@ const ThanksKashakashaTrialPage = ({ location, data, pageContext }) => {
   pageContext.title = t(
     "Googleマップ集客術　Googleマップアカウント開設個別体験会登録確認ページ"
   )
-  console.log("location", location)
-  console.log("pageContext", pageContext)
+  const email = location.state?.email
+  const start = location.state?.start
+  moment.locale("ja")
+  const starttime = moment(start)
 
   return (
     <>
@@ -51,31 +55,24 @@ const ThanksKashakashaTrialPage = ({ location, data, pageContext }) => {
             <Trans>個別体験会ご登録ありがとうございます</Trans>
           </span>
         </h1>
+
+        <div>LINE ID: {email && `${email} 様`}</div>
+        <div>開催日時：{starttime?.format("L (dd) LT")}</div>
+
         <h2 style={{ textAlign: "justify" }}>
-          <Trans>まもなく、参加登録のご確認メールをお送りいたします。</Trans>
+          <Trans>
+            後ほど、参加登録確認のメッセージをLINEへお送りいたします。
+          </Trans>
         </h2>
         <hr />
         <div className="container">
           <p>
             <Trans>
-              もし、３〜５分ほどたっても届かない場合、
-              メールの迷惑メールフォルダやスパムフォルダに保存されている可能性があります。
+              もし、１時間以上たっても確認メッセージが届かない場合、
             </Trans>
-            <Trans>まず迷惑メールフォルダを確認してみてください。</Trans>
+            <Trans>LINEでメッセージして下さい。</Trans>
           </p>
           <p>
-            <Trans>その中にも見つからない場合は、</Trans>
-            <a
-              href="mailto:kikuo+trial@alizza-ideal.com"
-              style={{
-                color: "blue",
-                textDecoration: "underline",
-                fontFamily: "monospace",
-              }}
-            >
-              kikuo+trial@alizza-ideal.com
-            </a>
-            <Trans>までメールにてお問い合わせください。</Trans>
             <Trans>よろしくおねがいします。</Trans>
           </p>
           <p style={{ textAlign: "right" }}>堤紀久夫 from Alizza Ideal</p>

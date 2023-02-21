@@ -8,8 +8,8 @@ require("dotenv").config({
 })
 
 const siteUrl = `https://www.alizza-ideal.com/`
-const airtableApiKey = process.env.AIRTABLE_API_KEY
-const airtableBaseId = process.env.AIRTABLE_DB
+const airtableApiKey = process.env.GATSBY_AIRTABLE_API_KEY
+const airtableBaseId = process.env.GATSBY_AIRTABLE_DB
 
 const { languages, defaultLanguage } = require("./languages")
 

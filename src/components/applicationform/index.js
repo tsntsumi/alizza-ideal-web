@@ -1,6 +1,5 @@
 // i18next-extract-mark-ns-start common
 import * as React from "react"
-// import { FormStyles } from "./styles"
 import { LandingPageStyles } from "../../components/layout/landingpage-styles"
 import { useI18next } from "gatsby-plugin-react-i18next"
 
@@ -164,9 +163,7 @@ const Form = ({ children, id, doSubmit }) => {
     error: t(
       "ご入力内容を保存時にエラーが発生しました。しばらく待ってから、もう一度ボタンを押してみてください"
     ),
-    success: t(
-      "お申し込み内容を受け付けました。後ほどご案内のメールをお送りします"
-    ),
+    success: t("お申し込み内容を受け付けました。後ほどご案内をお送りします"),
     except: t(
       "お申し込み内容を格納中にエラーが発生しました。しばらく待ってから、もう一度ボタンを押してみてください"
     ),

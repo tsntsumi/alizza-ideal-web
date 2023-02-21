@@ -67,15 +67,24 @@ const KashaKashaTrialEntry = ({ data, pageContext }) => {
         <SelectSlots language={language} />
         <div className="container">
           <InputText
-            type="email"
+            type="text"
             name="email"
-            placeholder={t("メールアドレス")}
+            placeholder={t("LINE ID")}
             validator={value => {
               if (!value || value.trim().length === 0) {
-                return t("メールアドレスを入力してください")
+                return (
+                  t("LINE ID を入力してください") +
+                  t("LINE ID は ") +
+                  t("LINE のホーム＞設定ボタン（右上）＞プロフィールボタンで") +
+                  t(" 確認してください")
+                )
               }
-              if (!value.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/)) {
-                return t("メールアドレスを確認してください")
+              if (!value.match(/^@?[a-zA-Z0-9._]{4,20}$/)) {
+                return (
+                  t("LINE ID が正しくありません。") +
+                  t("LINE のホーム＞設定ボタン（右上）＞プロフィールボタンで") +
+                  t(" ID を確認してください")
+                )
               }
               return null
             }}
@@ -114,15 +123,14 @@ const SelectSlots = ({ language }) => {
           "SlotIsAvailable",
         ],
         filterByFormula: "AND({SlotIsAvailable}, NOT({Client}))",
-        maxRecords: 7,
-        pageSize: 7,
+        maxRecords: 31,
+        pageSize: 31,
         view: "Grid view",
         userLocale: language,
         sort: [{ field: "SlotStartTime", direction: "asc" }],
       })
       .firstPage((err, records) => {
         if (err) {
-          console.log("slots retrieve error:", err)
           return <>{err}</>
         }
         const s = []
@@ -140,7 +148,6 @@ const SelectSlots = ({ language }) => {
         })
         setSlots(s)
         setLoading("")
-        console.log(s.length, "slots are retrieved")
       })
   }, [slots, setSlots, setLoading, base, language])
 
@@ -148,7 +155,7 @@ const SelectSlots = ({ language }) => {
     <div className="container">
       {<span>{loading}</span>}
       {slots.map((s, i) => (
-        <Slot slot={s} index={i} key={`slot-key-${i}`} firstnode={slots[0]} />
+        <Slot slot={s} index={i} key={`slot-key-${i}`} />
       ))}
       <StatusMessage name="slot" />
     </div>
@@ -172,7 +179,6 @@ const submitToAirtable = async (inputs, dispatch) => {
     Language: valueOf("language"),
     Slot: [valueOf("slot")],
   }
-  console.log("fields", clientsFields)
 
   base(tableName).create(
     [
@@ -189,7 +195,7 @@ const submitToAirtable = async (inputs, dispatch) => {
           context: apiKey + " :: " + baseId + " :: " + tableName,
         }
       }
-      console.log("added records", records)
+
       const slotId = valueOf("slot")
       base("Slots").update(
         [
@@ -209,11 +215,11 @@ const submitToAirtable = async (inputs, dispatch) => {
               context: "Slots " + slotId,
             }
           }
-          console.log("update Slots record", slotId)
           navigate("/kashakasha/thanks-trial", {
             state: {
               email: valueOf("email"),
               slot: valueOf("slot"),
+              start: records[0].fields.SlotStartTime,
             },
             replace: true,
           })
@@ -225,12 +231,15 @@ const submitToAirtable = async (inputs, dispatch) => {
   return { isError: false, internal: null, context: "" }
 }
 
-const Slot = ({ slot, loading, index, firstnode }) => {
+const Slot = ({ slot, loading, index }) => {
   const { t } = useI18next()
   moment.locale("ja")
-  const firsttime = moment(firstnode?.start)
+  const today = moment()
   const starttime = moment(slot?.start)
-  if (index > 7 && starttime.diff(firsttime, "days") > 7) {
+  if (starttime.diff(today, "days") <= 0) {
+    return <></>
+  }
+  if (starttime.diff(today, "days") > 7) {
     return <></>
   }
   const endtime = moment(slot?.end)

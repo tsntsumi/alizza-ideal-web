@@ -124,7 +124,7 @@ export const LandingPageStyles = styled.section`
   }
   h2,
   h3 {
-    padding: 1em 0.3em;
+    padding: 1em 1.3em;
   }
   h3 {
     background-color: #4797c7;
@@ -217,9 +217,11 @@ export const LandingPageStyles = styled.section`
     word-break: break-word;
     border: 0;
   }
-  input#email {
+  input#email,
+  input#text {
     width: 100%;
     border: 3px solid darkblue;
+    border-radius: 1em;
     background-color: white;
     padding: 0.2em;
     outline: none;
