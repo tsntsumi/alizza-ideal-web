@@ -31,7 +31,7 @@ const KashaKashaShukyakuPage = ({ data, pageContext }) => {
         </h1>
         <div className="banner-image">
           <StaticImage
-            src="../images/KashaKasha-Map-Shukyaku.png"
+            src="../../images/KashaKasha-Map-Shukyaku.png"
             alt={t("スマホでカシャカシャ・ネット集客術")}
           />
         </div>
