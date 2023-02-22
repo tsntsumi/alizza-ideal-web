@@ -2,6 +2,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { graphql, navigate } from "gatsby"
+import queryString from "query-string"
 import Airtable from "airtable"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import moment from "moment"
@@ -10,7 +11,7 @@ import { GlobalStyle } from "../../components/layout/styles"
 import Seo from "../../components/seo"
 import {
   ApplicationForm,
-  InputText,
+  InputHidden,
   InputRadio,
   Submit,
   StatusMessage,
@@ -26,12 +27,14 @@ export const Head = ({ location, params, data, pageContext }) => {
   )
 }
 
-const KashaKashaTrialEntry = ({ data, pageContext }) => {
+const KashaKashaTrialEntry = ({ data, pageContext, location }) => {
   const { t, language } = useI18next()
   const formId = "kashakasha-trial"
   pageContext.title = t(
     "Googleマップ集客術　Googleマップアカウント開設個別体験会登録フォーム"
   )
+  const params = queryString.parse(location.search)
+  const lineid = params["name"]
 
   return (
     <>
@@ -41,6 +44,7 @@ const KashaKashaTrialEntry = ({ data, pageContext }) => {
         tag="kashakasha-trial"
         doSubmit={submitToAirtable}
       >
+        <InputHidden name="email" value={lineid} />
         <h1 style={{ padding: "0.75em 0em" }}>
           <span
             style={{
@@ -66,29 +70,6 @@ const KashaKashaTrialEntry = ({ data, pageContext }) => {
         </h1>
         <SelectSlots language={language} />
         <div className="container">
-          <InputText
-            type="text"
-            name="email"
-            placeholder={t("LINE ID")}
-            validator={value => {
-              if (!value || value.trim().length === 0) {
-                return (
-                  t("LINE ID を入力してください") +
-                  t("LINE ID は ") +
-                  t("LINE のホーム＞設定ボタン（右上）＞プロフィールボタンで") +
-                  t(" 確認してください")
-                )
-              }
-              if (!value.match(/^@?[a-zA-Z0-9._]{4,20}$/)) {
-                return (
-                  t("LINE ID が正しくありません。") +
-                  t("LINE のホーム＞設定ボタン（右上）＞プロフィールボタンで") +
-                  t(" ID を確認してください")
-                )
-              }
-              return null
-            }}
-          />
           <center>
             <Submit form={formId} id="submit">
               <Trans>選択した日時で個別体験会に参加する</Trans>

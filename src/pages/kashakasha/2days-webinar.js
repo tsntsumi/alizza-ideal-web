@@ -2,6 +2,7 @@
 import * as React from "react"
 import { useState } from "react"
 import { graphql, Link } from "gatsby"
+import queryString from "query-string"
 import { StaticImage } from "gatsby-plugin-image"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import { GlobalStyle } from "../../components/layout/styles"
@@ -19,11 +20,14 @@ export const Head = ({ location, params, data, pageContext }) => {
   )
 }
 
-const KashaKashaDeBestShop = ({ data, pageContext }) => {
+const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
   const { t } = useI18next()
   pageContext.title = t(
     "スマホでカシャカシャするだけで地域No.1店を目指せる！Googleマップ集客術"
   )
+  const params = queryString.parse(location.search)
+  const lineid = params["name"]
+
   return (
     <>
       <GlobalStyle />
@@ -70,7 +74,7 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
             alt="open account trial"
           />
         </div>
-        <TrialSessionButton />
+        <TrialSessionButton name={lineid} />
         <h2>
           <span style={{ color: "yellow", whiteSpace: "nowrap" }}>
             <Trans>Googleマップ・アカウント開設個別体験会</Trans>
@@ -81,13 +85,13 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
           <Trans>参加費用について</Trans>
         </h2>
         <TrialSessionPricing />
-        <TrialSessionButton />
+        <TrialSessionButton name={lineid} />
         <h2>
           <Trans>参加者限定特典のご紹介</Trans>
         </h2>
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
-        <TrialSessionButton />
+        <TrialSessionButton name={lineid} />
       </LandingPageStyles>
     </>
   )
@@ -157,7 +161,7 @@ const YTVideo = () => {
   )
 }
 
-const TrialSessionButton = () => {
+const TrialSessionButton = ({ name }) => {
   return (
     <div className="trial-offer">
       <center>
@@ -184,7 +188,7 @@ const TrialSessionButton = () => {
       </center>
       <center>
         <div className="button-34">
-          <Link to="/kashakasha/trial-entry-form.html">
+          <Link to={`/kashakasha/trial-entry/?name=${name}`}>
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>

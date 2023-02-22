@@ -57,7 +57,7 @@ const inputsReducer = (inputs, action) => {
   }
 }
 
-export const InputText = ({ type, name, placeholder, validator }) => {
+export const InputText = ({ type, name, placeholder, value, validator }) => {
   const dispatch = React.useContext(InputsDispatchContext)
   const onChange = text => {
     dispatch({
@@ -68,9 +68,9 @@ export const InputText = ({ type, name, placeholder, validator }) => {
   React.useEffect(() => {
     dispatch({
       type: "added",
-      input: { type: type, name: name, validator: validator },
+      input: { type: type, name: name, value: value, validator: validator },
     })
-  }, [type, name, validator, dispatch])
+  }, [type, name, value, validator, dispatch])
 
   return (
     <>
@@ -80,6 +80,7 @@ export const InputText = ({ type, name, placeholder, validator }) => {
         id={type}
         name={name || type}
         key={name || type}
+        value={value}
         onChange={e => {
           onChange(e.target.value)
         }}
