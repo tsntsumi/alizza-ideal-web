@@ -184,7 +184,7 @@ const TrialSessionButton = () => {
       </center>
       <center>
         <div className="button-34">
-          <Link to="/kashakasha/trial-entry-form">
+          <Link to="/kashakasha/trial-entry-form.html">
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
