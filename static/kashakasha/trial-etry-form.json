@@ -1,0 +1,53 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://www.alizza-ideal.com/GMCA_trial_session.gif",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "fit",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    },
+    "margin": "none",
+    "position": "relative",
+    "align": "start",
+    "gravity": "top",
+    "offsetTop": "-14px"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "アカウント開設",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "text",
+        "text": "個別体験会参加フォーム"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "体験会の日時を選択する",
+          "text": "体験会参加フォームを表示"
+        }
+      }
+    ],
+    "flex": 0
+  }
+}
