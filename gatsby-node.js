@@ -2,6 +2,7 @@ const { createRemoteFileNode } = require("gatsby-source-filesystem")
 const { unlink } = require("fs/promises")
 const path = require("path")
 const sharp = require("sharp")
+const replace = require("replace-in-file")
 
 if (process.env.NO_CACHE_ON_BUILD) {
   sharp.cache(false)
@@ -122,4 +123,17 @@ exports.onCreateNode = async ({
       })
     }
   }
+}
+
+exports.onPostBuild = ({ reporter, basePath, pathPrefix }) => {
+  replace.sync({
+    files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
+    from: /<kls-form-embeded-tag>(.*?)<\/kls-form-embeded-tag>/g,
+    to: `\n<!-- KLSフォーム埋め込みタグ -->\n$1\n<!-- KLSフォーム埋め込みタグ -->\n`,
+  })
+  replace.sync({
+    files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
+    from: /<new-line><\/new-line>/g,
+    to: `\n`,
+  })
 }

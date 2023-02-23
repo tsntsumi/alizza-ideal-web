@@ -18,8 +18,6 @@ export const Head = ({ location, params, data, pageContext }) => {
         pathname={location.pathname}
         lang={pageContext.language}
       />
-      <kls-embeded-script-1-tag></kls-embeded-script-1-tag>
-      <kls-embeded-script-2-tag></kls-embeded-script-2-tag>
     </>
   )
 }
@@ -35,8 +33,6 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
   return (
     <>
       <GlobalStyle />
-      <kls-embeded-script-1-tag></kls-embeded-script-1-tag>
-      <kls-embeded-script-2-tag></kls-embeded-script-2-tag>
       <LandingPageStyles>
         <h1 id="target-call">
           <span style={{ whiteSpace: "nowrap" }}>
@@ -102,14 +98,14 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
           id="entry-form"
           style={{ display: "none", width: "100%", height: "100%" }}
         >
-          <kls-embeded-tag></kls-embeded-tag>
-          <iframe
-            title="trial-entry"
-            width="100%"
-            class="kls-sform-AsPe"
-            data-src="https://kli.jp/sf/AsPe/"
-          ></iframe>
-          <kls-embeded-tag></kls-embeded-tag>
+          <kls-form-embeded-tag>
+            <iframe
+              title="trial-entry"
+              width="100%"
+              class="kls-sform-AsPe"
+              data-src="https://kli.jp/sf/AsPe/"
+            ></iframe>
+          </kls-form-embeded-tag>
         </div>
       </LandingPageStyles>
     </>

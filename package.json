@@ -26,7 +26,6 @@
     "gatsby-background-image": "^1.6.0",
     "gatsby-plugin-gatsby-cloud": "^4.17.0",
     "gatsby-plugin-google-gtag": "^4.17.0",
-    "gatsby-plugin-html-comments": "^1.0.0",
     "gatsby-plugin-image": "^2.17.0",
     "gatsby-plugin-manifest": "^4.17.0",
     "gatsby-plugin-mdx": "^3.17.0",
@@ -64,6 +63,7 @@
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
+    "replace-in-file": "^6.3.5",
     "styled-components": "^5.3.5",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"

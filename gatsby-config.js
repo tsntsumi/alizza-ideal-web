@@ -312,28 +312,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-html-comments`,
-      options: {
-        files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
-        comment: [
-          {
-            regexp: /<kls-embeded-tag>(.*?)<\/kls-embeded-tag>/g,
-            comment: `\n<!-- KLSフォーム埋め込みタグ -->\n`,
-          },
-          {
-            regexp:
-              /<kls-embeded-script-1-tag>(.*?)<\/kls-embeded-script-1-tag>/g,
-            comment: `\n<!-- KLSフォーム埋め込みタグ -->\n<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>\n`,
-          },
-          {
-            regexp:
-              /<kls-embeded-script-2-tag>(.*?)<\/kls-embeded-script-2-tag>/g,
-            comment: `<script src="https://kli.jp/external/sform/AsPe"></script>\n<!-- KLSフォーム埋め込みタグ -->\n`,
-          },
-        ],
-      },
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
