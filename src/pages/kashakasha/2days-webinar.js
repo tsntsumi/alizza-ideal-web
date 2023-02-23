@@ -2,13 +2,28 @@
 import * as React from "react"
 import { useState } from "react"
 import { graphql, Link } from "gatsby"
-import queryString from "query-string"
 import { StaticImage } from "gatsby-plugin-image"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
 import { GlobalStyle } from "../../components/layout/styles"
 import { LandingPageStyles } from "../../components/layout/landingpage-styles"
 import Seo from "../../components/seo"
 import YouTube from "react-youtube"
+import styled from "styled-components"
+
+const EntryFormStyles = styled.div`
+  #entry-form {
+    width: "100%";
+    height: "100vh";
+    margin: 0;
+    padding: 0;
+  }
+  #entry-form iframe {
+    width: "100%";
+    height: "100%";
+    margin: 0;
+    padding: 0;
+  }
+`
 
 export const Head = ({ location, params, data, pageContext }) => {
   return (
@@ -92,6 +107,17 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
         <TrialSessionButton />
+        <EntryFormStyles>
+          <div id="entry-form">
+            <kls-form-embeded-tag>
+              <iframe
+                width="100%"
+                class="kls-sform-AsPe"
+                data-src="https://kli.jp/sf/AsPe/"
+              ></iframe>
+            </kls-form-embeded-tag>
+          </div>
+        </EntryFormStyles>
       </LandingPageStyles>
     </>
   )
@@ -188,7 +214,7 @@ const TrialSessionButton = ({}) => {
       </center>
       <center>
         <div className="button-34">
-          <Link to="/kashakasha/trial-entry-form">
+          <a href="/kashakasha-trial-entry-form.html">
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
@@ -198,7 +224,7 @@ const TrialSessionButton = ({}) => {
               <Trans>「集客の素」</Trans>
             </span>
             <Trans>３点セットを手に入れる</Trans>
-          </Link>
+          </a>
         </div>
       </center>
     </div>
