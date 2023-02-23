@@ -1,7 +1,7 @@
 // i18next-extract-mark-ns-start kashakasha
 import * as React from "react"
 import { useState } from "react"
-import { graphql, navigate } from "gatsby"
+import { graphql, Link } from "gatsby"
 import queryString from "query-string"
 import { StaticImage } from "gatsby-plugin-image"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -94,10 +94,7 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
         <TrialSessionButton name={lineid} />
-        <div
-          id="entry-form"
-          style={{ display: "block", width: "100%", height: "100%" }}
-        >
+        <div id="entry-form" style={{ width: "100%", height: "100%" }}>
           <kls-form-embeded-tag>
             <iframe
               width="100%"
@@ -202,13 +199,7 @@ const TrialSessionButton = ({ name }) => {
       </center>
       <center>
         <div className="button-34">
-          <button
-            onClick={() => {
-              const entry = document.getElementById("entry-form")
-              entry.style.display = "block"
-              navigate(`#entry-form`)
-            }}
-          >
+          <Link to="#entry-form">
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
@@ -218,7 +209,7 @@ const TrialSessionButton = ({ name }) => {
               <Trans>「集客の素」</Trans>
             </span>
             <Trans>３点セットを手に入れる</Trans>
-          </button>
+          </Link>
         </div>
       </center>
     </div>
