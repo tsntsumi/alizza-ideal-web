@@ -319,7 +319,17 @@ module.exports = {
         comment: [
           {
             regexp: /<kls-embeded-tag>(.*?)<\/kls-embeded-tag>/g,
-            comment: `<!-- KLSフォーム埋め込みタグ -->`,
+            comment: `\n<!-- KLSフォーム埋め込みタグ -->\n`,
+          },
+          {
+            regexp:
+              /<kls-embeded-script-1-tag>(.*?)<\/kls-embeded-script-1-tag>/g,
+            comment: `\n<!-- KLSフォーム埋め込みタグ -->\n<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>\n`,
+          },
+          {
+            regexp:
+              /<kls-embeded-script-2-tag>(.*?)<\/kls-embeded-script-2-tag>/g,
+            comment: `<script src="https://kli.jp/external/sform/AsPe"></script>\n<!-- KLSフォーム埋め込みタグ -->\n`,
           },
         ],
       },

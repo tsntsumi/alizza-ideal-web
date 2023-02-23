@@ -18,10 +18,8 @@ export const Head = ({ location, params, data, pageContext }) => {
         pathname={location.pathname}
         lang={pageContext.language}
       />
-      <kls-embeded-tag></kls-embeded-tag>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="https://kli.jp/external/sform/AsPe"></script>
-      <kls-embeded-tag></kls-embeded-tag>
+      <kls-embeded-script-1-tag></kls-embeded-script-1-tag>
+      <kls-embeded-script-2-tag></kls-embeded-script-2-tag>
     </>
   )
 }
@@ -37,6 +35,8 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
   return (
     <>
       <GlobalStyle />
+      <kls-embeded-script-1-tag></kls-embeded-script-1-tag>
+      <kls-embeded-script-2-tag></kls-embeded-script-2-tag>
       <LandingPageStyles>
         <h1 id="target-call">
           <span style={{ whiteSpace: "nowrap" }}>
