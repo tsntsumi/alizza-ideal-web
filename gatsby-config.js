@@ -32,6 +32,7 @@ module.exports = {
     airtableBaseId: `${airtableBaseId}`,
   },
   plugins: [
+    `@wardpeet/gatsby-plugin-static-site`,
     `gatsby-plugin-image`,
     `gatsby-plugin-mdx-source-name`,
     `gatsby-plugin-mdx-frontmatter`,

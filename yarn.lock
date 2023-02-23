@@ -3465,6 +3465,13 @@
   dependencies:
     resolve "^1.10.0"
 
+"@wardpeet/gatsby-plugin-static-site@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@wardpeet/gatsby-plugin-static-site/-/gatsby-plugin-static-site-0.3.0.tgz#92285d19c032279e3f8e0b2cde1759fcef33bee3"
+  integrity sha512-i+QvV3CKUh4bO4yL9THjOXPKMzQ0MOCxNog56gVMRHdUCF7gSHvS9KzSFelEqfdI6dGcvBVxEfNhnFrBdSjrZQ==
+  dependencies:
+    webpack "^5.30.0"
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
@@ -13891,6 +13898,36 @@ webpack-virtual-modules@^0.3.2:
   integrity sha512-RXQXioY6MhzM4CNQwmBwKXYgBs6ulaiQ8bkNQEl2J6Z+V+s7lgl/wGvaI/I0dLnYKB8cKsxQc17QOAVIphPLDw==
   dependencies:
     debug "^3.0.0"
+
+webpack@^5.30.0:
+  version "5.75.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.75.0.tgz#1e440468647b2505860e94c9ff3e44d5b582c152"
+  integrity sha512-piaIaoVJlqMsPtX/+3KTTO6jfvrSYgauFVdt8cr9LTHKmcq/AMd4mhzsiP7ZF/PGRNPGA8336jldh9l2Kt2ogQ==
+  dependencies:
+    "@types/eslint-scope" "^3.7.3"
+    "@types/estree" "^0.0.51"
+    "@webassemblyjs/ast" "1.11.1"
+    "@webassemblyjs/wasm-edit" "1.11.1"
+    "@webassemblyjs/wasm-parser" "1.11.1"
+    acorn "^8.7.1"
+    acorn-import-assertions "^1.7.6"
+    browserslist "^4.14.5"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^5.10.0"
+    es-module-lexer "^0.9.0"
+    eslint-scope "5.1.1"
+    events "^3.2.0"
+    glob-to-regexp "^0.4.1"
+    graceful-fs "^4.2.9"
+    json-parse-even-better-errors "^2.3.1"
+    loader-runner "^4.2.0"
+    mime-types "^2.1.27"
+    neo-async "^2.6.2"
+    schema-utils "^3.1.0"
+    tapable "^2.1.1"
+    terser-webpack-plugin "^5.1.3"
+    watchpack "^2.4.0"
+    webpack-sources "^3.2.3"
 
 webpack@^5.61.0, webpack@^5.74.0:
   version "5.74.0"
