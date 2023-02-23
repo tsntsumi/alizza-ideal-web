@@ -1,6 +1,5 @@
 // i18next-extract-mark-ns-start kashakasha
 import * as React from "react"
-import { useState } from "react"
 import { graphql, Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -124,7 +123,7 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
 }
 
 const YTVideo = () => {
-  const [player, setPlayer] = useState()
+  const [player, setPlayer] = React.useState()
   const playButtonUrl = "/GMCA_Play_Button.gif"
   const trialImageUrl = "/GMCA_trial_session.gif"
 
