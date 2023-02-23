@@ -22,13 +22,11 @@ export const Head = ({ location, params, data, pageContext }) => {
   )
 }
 
-const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
+const KashaKashaDeBestShop = ({ data, pageContext }) => {
   const { t } = useI18next()
   pageContext.title = t(
     "スマホでカシャカシャするだけで地域No.1店を目指せる！Googleマップ集客術"
   )
-  const params = queryString.parse(location.search)
-  const lineid = params["name"]
 
   return (
     <>
@@ -76,7 +74,7 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
             alt="open account trial"
           />
         </div>
-        <TrialSessionButton name={lineid} />
+        <TrialSessionButton />
         <h2>
           <span style={{ color: "yellow", whiteSpace: "nowrap" }}>
             <Trans>Googleマップ・アカウント開設個別体験会</Trans>
@@ -87,22 +85,13 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
           <Trans>参加費用について</Trans>
         </h2>
         <TrialSessionPricing />
-        <TrialSessionButton name={lineid} />
+        <TrialSessionButton />
         <h2>
           <Trans>参加者限定特典のご紹介</Trans>
         </h2>
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
-        <TrialSessionButton name={lineid} />
-        <div id="entry-form" style={{ width: "100%", height: "100vh" }}>
-          <kls-form-embeded-tag>
-            <iframe
-              width="100%"
-              class="kls-sform-AsPe"
-              data-src="https://kli.jp/sf/AsPe/"
-            ></iframe>
-          </kls-form-embeded-tag>
-        </div>
+        <TrialSessionButton />
       </LandingPageStyles>
     </>
   )
@@ -172,7 +161,7 @@ const YTVideo = () => {
   )
 }
 
-const TrialSessionButton = ({ name }) => {
+const TrialSessionButton = ({}) => {
   return (
     <div className="trial-offer">
       <center>
@@ -199,7 +188,7 @@ const TrialSessionButton = ({ name }) => {
       </center>
       <center>
         <div className="button-34">
-          <Link to="#entry-form">
+          <Link to="/kashakasha/trial-entry-form">
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
