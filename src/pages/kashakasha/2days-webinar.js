@@ -214,7 +214,7 @@ const TrialSessionButton = ({}) => {
       </center>
       <center>
         <div className="button-34">
-          <a href="/kashakasha-trial-entry-form.html">
+          <Link to="/kashakasha-trial-entry-form.html">
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
@@ -224,7 +224,7 @@ const TrialSessionButton = ({}) => {
               <Trans>「集客の素」</Trans>
             </span>
             <Trans>３点セットを手に入れる</Trans>
-          </a>
+          </Link>
         </div>
       </center>
     </div>
