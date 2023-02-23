@@ -100,7 +100,6 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
         >
           <kls-form-embeded-tag>
             <iframe
-              title="trial-entry"
               width="100%"
               class="kls-sform-AsPe"
               data-src="https://kli.jp/sf/AsPe/"
