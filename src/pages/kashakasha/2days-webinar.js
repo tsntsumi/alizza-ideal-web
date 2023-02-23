@@ -1,7 +1,7 @@
 // i18next-extract-mark-ns-start kashakasha
 import * as React from "react"
 import { useState } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import queryString from "query-string"
 import { StaticImage } from "gatsby-plugin-image"
 import { Trans, useI18next } from "gatsby-plugin-react-i18next"
@@ -12,11 +12,17 @@ import YouTube from "react-youtube"
 
 export const Head = ({ location, params, data, pageContext }) => {
   return (
-    <Seo
-      title={pageContext.title}
-      pathname={location.pathname}
-      lang={pageContext.language}
-    />
+    <>
+      <Seo
+        title={pageContext.title}
+        pathname={location.pathname}
+        lang={pageContext.language}
+      />
+      <kls-embeded-tag />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://kli.jp/external/sform/AsPe"></script>
+      <kls-embeded-tag />
+    </>
   )
 }
 
@@ -92,6 +98,19 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
         <TrialSessionButton name={lineid} />
+        <div
+          id="entry-form"
+          style={{ display: "none", width: "100%", height: "100%" }}
+        >
+          <kls-embeded-tag />
+          <iframe
+            title="trial-entry"
+            width="100%"
+            class="kls-sform-AsPe"
+            data-src="https://kli.jp/sf/AsPe/"
+          ></iframe>
+          <kls-embeded-tag />
+        </div>
       </LandingPageStyles>
     </>
   )
@@ -188,7 +207,13 @@ const TrialSessionButton = ({ name }) => {
       </center>
       <center>
         <div className="button-34">
-          <Link to={`/kashakasha/trial-entry/?name=${name}`}>
+          <button
+            onClick={() => {
+              const entry = document.getElementById("entry-form")
+              entry.style.display = "block"
+              navigate(`#entry-form`)
+            }}
+          >
             <span className="zero-yen">
               <Trans>無料</Trans>
             </span>
@@ -198,7 +223,7 @@ const TrialSessionButton = ({ name }) => {
               <Trans>「集客の素」</Trans>
             </span>
             <Trans>３点セットを手に入れる</Trans>
-          </Link>
+          </button>
         </div>
       </center>
     </div>

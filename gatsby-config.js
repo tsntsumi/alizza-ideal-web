@@ -312,6 +312,18 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-html-comments`,
+      options: {
+        files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
+        comment: [
+          {
+            regexp: /<kls-embeded-tag *\/>/g,
+            comment: `<!-- KLSフォーム埋め込みタグ -->`,
+          },
+        ],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
