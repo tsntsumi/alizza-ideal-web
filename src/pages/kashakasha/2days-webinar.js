@@ -96,7 +96,7 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
         <TrialSessionButton name={lineid} />
         <div
           id="entry-form"
-          style={{ display: "none", width: "100%", height: "100%" }}
+          style={{ display: "block", width: "100%", height: "100%" }}
         >
           <kls-form-embeded-tag>
             <iframe
