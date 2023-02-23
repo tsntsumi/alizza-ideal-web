@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { FaqStyles } from "./styles"
 import { MdExpandMore as Chevron } from "react-icons/md"
 import { motion } from "framer-motion"
-import { RenderString } from "../renderstring"
 
 const Faq = ({ title, description }) => {
   const [showInfo, setInfo] = useState(false)
@@ -19,7 +18,7 @@ const Faq = ({ title, description }) => {
   }
 
   const toggleInfo = () => {
-    setInfo((showInfo) => !showInfo)
+    setInfo(showInfo => !showInfo)
   }
   return (
     <FaqStyles className={showInfo ? `${"faq-open"}` : `${"faq-closed"}`}>

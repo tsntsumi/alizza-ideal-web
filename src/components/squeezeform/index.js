@@ -1,6 +1,5 @@
 // i18next-extract-mark-ns-start common
-import * as React from "react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { useI18next } from "gatsby-plugin-react-i18next"
 import { FormStyles, FieldStyles } from "./styles"
 import { navigate } from "gatsby"

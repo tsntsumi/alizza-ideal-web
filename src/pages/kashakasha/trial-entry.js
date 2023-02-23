@@ -1,6 +1,5 @@
 // i18next-extract-mark-ns-start kashakasha
-import * as React from "react"
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, navigate } from "gatsby"
 import queryString from "query-string"
 import Airtable from "airtable"
