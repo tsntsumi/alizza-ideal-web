@@ -318,7 +318,7 @@ module.exports = {
         files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
         comment: [
           {
-            regexp: /<kls-embeded-tag *\/>/g,
+            regexp: /<kls-embeded-tag>(.*?)<\/kls-embeded-tag>/g,
             comment: `<!-- KLSフォーム埋め込みタグ -->`,
           },
         ],

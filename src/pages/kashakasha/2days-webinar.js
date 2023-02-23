@@ -18,10 +18,10 @@ export const Head = ({ location, params, data, pageContext }) => {
         pathname={location.pathname}
         lang={pageContext.language}
       />
-      <kls-embeded-tag />
+      <kls-embeded-tag></kls-embeded-tag>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://kli.jp/external/sform/AsPe"></script>
-      <kls-embeded-tag />
+      <kls-embeded-tag></kls-embeded-tag>
     </>
   )
 }
@@ -102,14 +102,14 @@ const KashaKashaDeBestShop = ({ data, pageContext, location }) => {
           id="entry-form"
           style={{ display: "none", width: "100%", height: "100%" }}
         >
-          <kls-embeded-tag />
+          <kls-embeded-tag></kls-embeded-tag>
           <iframe
             title="trial-entry"
             width="100%"
             class="kls-sform-AsPe"
             data-src="https://kli.jp/sf/AsPe/"
           ></iframe>
-          <kls-embeded-tag />
+          <kls-embeded-tag></kls-embeded-tag>
         </div>
       </LandingPageStyles>
     </>
