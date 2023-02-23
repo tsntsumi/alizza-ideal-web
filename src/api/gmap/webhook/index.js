@@ -1,5 +1,7 @@
 const handler = (req, res) => {
   try {
+    console.log("gmap webhook")
+
     if (req.method !== "POST") {
       return res.status(404).json({ message: "This endpoint requires a POST" })
     }
@@ -13,7 +15,20 @@ const handler = (req, res) => {
       .digest("base64")
 
     // Compare x-line-signature request header and the signature
-    res.json({ message: "Success", headers: req.headers })
+    const requestSignature = Object.keys(req.headers).find((k, i) =>
+      req.headers[k].match(/^x-line-signature$/i)
+    )
+    if (requestSignature) {
+      if (requestSignature !== signature) {
+        console.error("line signature unmatched")
+        res.statusCode = 500
+        res.statusMessage = "Signature unmatched error"
+        return
+      }
+    }
+    res
+      .status(500)
+      .json({ message: "Success", status: 500, headers: req.headers })
   } catch (err) {
     console.error(err)
     res.json({ message: "There has been a big error.", error: err })
