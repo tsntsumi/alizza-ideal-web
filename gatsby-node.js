@@ -2,7 +2,6 @@ const { createRemoteFileNode } = require("gatsby-source-filesystem")
 const { unlink } = require("fs/promises")
 const path = require("path")
 const sharp = require("sharp")
-const replace = require("replace-in-file")
 
 if (process.env.NO_CACHE_ON_BUILD) {
   sharp.cache(false)
@@ -125,7 +124,11 @@ exports.onCreateNode = async ({
   }
 }
 
-exports.createRedirect = () => ({
-  fromPath: "/*",
-  toPath: "https://gmap.alizza-ideal.com/",
-})
+exports.onCreatePages = async ({ actions }) => {
+  const { createRedirect } = actions
+
+  createRedirect({
+    fromPath: "/*",
+    toPath: "https://gmap.alizza-ideal.com/",
+  })
+}
