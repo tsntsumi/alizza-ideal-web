@@ -124,3 +124,8 @@ exports.onCreateNode = async ({
     }
   }
 }
+
+exports.createRedirect({
+  fromPath: "/*",
+  toPath: "https://gmap.alizza-ideal.com/",
+})
