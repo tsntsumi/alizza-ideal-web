@@ -37,15 +37,19 @@ const KashaKashaShukyakuPage = ({ data, pageContext }) => {
         </div>
         <div className="container">
           <center>
-            <div className="button-34">
-              <center>
-                <a href="https://page.line.me/014gbllc">
-                  <Trans>LINEでお友だち追加して</Trans>
-                  <br />
-                  <Trans>オンラインプログラムをもらう</Trans>
-                </a>
-              </center>
-            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html:
+                  '\
+<div class="line-it-button" data-lang="ja" data-type="friend" data-env="REAL"   data-lineid="@014gbllc" style="display: none;"></div>\n\
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>\n',
+              }}
+            />
+            <p>
+              <Trans>LINEでお友だち追加して</Trans>
+              <br />
+              <Trans>オンラインプログラムをもらう</Trans>
+            </p>
           </center>
         </div>
         <Credits className="lp-content">

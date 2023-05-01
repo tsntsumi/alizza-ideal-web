@@ -106,17 +106,6 @@ const KashaKashaDeBestShop = ({ data, pageContext }) => {
         <ExclusiveOffersForParticipants />
         <div style={{ clear: "both" }} />
         <TrialSessionButton />
-        <EntryFormStyles>
-          <div id="entry-form">
-            <kls-form-embeded-tag>
-              <iframe
-                width="100%"
-                class="kls-sform-AsPe"
-                data-src="https://kli.jp/sf/AsPe/"
-              ></iframe>
-            </kls-form-embeded-tag>
-          </div>
-        </EntryFormStyles>
       </LandingPageStyles>
     </>
   )

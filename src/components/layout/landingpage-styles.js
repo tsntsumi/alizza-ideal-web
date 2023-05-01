@@ -66,7 +66,8 @@ export const LandingPageStyles = styled.section`
     }
   }
 
-  .button-34 {
+  .button-34,
+  .button-34-green {
     background: #5e5df0;
     border-radius: 999px;
     box-shadow: #5e5df0 0 10px 20px -10px;
@@ -89,6 +90,11 @@ export const LandingPageStyles = styled.section`
     width: fit-content;
     word-break: break-word;
     border: 0;
+  }
+
+  .button-34-green {
+    background: #06c755;
+    box-shadow: lime 0 10px 20px -10px;
   }
 
   text-align: justify;

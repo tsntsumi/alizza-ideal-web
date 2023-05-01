@@ -124,16 +124,3 @@ exports.onCreateNode = async ({
     }
   }
 }
-
-exports.onPostBuild = ({ reporter, basePath, pathPrefix }) => {
-  replace.sync({
-    files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
-    from: /<kls-form-embeded-tag>(.*?)<\/kls-form-embeded-tag>/g,
-    to: `\n<!-- KLSフォーム埋め込みタグ -->\n$1\n<!-- KLSフォーム埋め込みタグ -->\n`,
-  })
-  replace.sync({
-    files: [`./public/kashakasha/**/*.html`, `./public/kashakasha/*.html`],
-    from: /<new-line><\/new-line>/g,
-    to: `\n`,
-  })
-}
